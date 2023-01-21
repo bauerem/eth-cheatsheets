@@ -1,0 +1,1 @@
+Ex 9 from 16.04.19, 10:21:28: X~Exp(lam) => Y=lam*X~Exp(1)

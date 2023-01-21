@@ -1,0 +1,348 @@
+\documentclass[11pt]{article}
+
+
+\usepackage{amsmath,amssymb, upgreek, amsthm}
+\usepackage[german]{babel}
+\usepackage{thmtools}
+\theoremstyle{definition}
+
+\DeclareMathOperator{\Ber}{Ber}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Geo}{Geo}
+\DeclareMathOperator{\NB}{NB}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Hype}{Hypergeo}
+\DeclareMathOperator{\iid}{i.i.d.}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\mse}{MSE}
+
+\newcommand{\est}{\hat{\theta}}
+\newcommand{\estt}{\tilde{\theta}}
+
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newtheorem{eg}{Example}
+\newtheorem{ex}{Exercise}
+\newtheorem{defn}{Definition}
+\newtheorem{rem}{Remark}
+
+%comments
+\iffalse 
+Missings stuff: application lecture ??
+ \fi
+
+\title{\textbf{Formulary}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+Discrete distributions:
+
+\begin{defn}\textbf{(Uniform):}
+A random variable $X$ taking values in the finite set $\{x_1,...,x_n\}$ for some integer $n\geq 1$ is said to be uniform if $P(X=x_i)=\frac{1}{n}\forall i\in\{1,...,n\}$. We write $X\sim\mathcal{U}\{x_1,...,x_n\}$.
+\end{defn}
+
+\begin{defn}\textbf{(Bernoulli):}
+$X_1,...,X_n:\Omega\rightarrow\{0,1\}$ are usually referred to as Bernoulli random variables or Bernoulli trials with "success" probability $p$. We write $X_1,...,X_n\sim^{\iid}\Ber(p)$.
+\end{defn}
+
+\begin{defn}\textbf{(Binomial):}
+Let $X_1,...,X_n$ be i.i.d. random variables such that $P(X_i=1)=p=1-P(X_i=0)\forall\in\{1,...,n\}$ and some fixed $p\in (0,1)$.\\
+Define $S_n:=X_1+\cdots+X_n$ called a Binomial random variable with parameters $n$ and $p$. We write $S_n\sim \Bin(n,p)$.
+\end{defn}
+
+\begin{prop}
+Let $S_n\sim \Bin(n,p)$ ($n\in\mathbb{N}$, $p\in(0,1)$). Then:\\
+a) $P(S_n=k)={n\choose{k}}p^k(1-p)^{n-k}$ for $k\in\{0,1,...,n\})$
+\end{prop}
+
+\begin{prop}
+$X_i\sim \Bin(n_i,p) \Rightarrow S_n:= \Sigma Xi := X_1+...+X_k\sim  \Bin(\Sigma n_i , p)$ [L13]
+\end{prop}
+
+\begin{prop}\textbf{(Geometric):}
+Let $(X_n)_{n\geq 1}$ be i.i.d. Bernoulli random variables with success probability $p\in(0,1)$. Define the random variable $X$ as the first integer $i\geq 1$ for which $X_i=1$. $X$ is called a geometric random variable with success probability $p$. We write $X\sim \Geo(p)$ or $X\sim\mathcal{G}(p)$.
+\end{prop}
+
+\begin{defn}\textbf{(Negative Binomial):}
+Let $(X_n)_{n\geq 1}$ be i.i.d. Bernoulli random variables with success probability $p\in (0,1)$. Define $X$ as the random variable which is equal to the first integer $i$ for which $\sum^i_{j=1} X_j=r$ where $r$ is some fixed integer $\in\{1,2,...\}$. $X$ is said to be a Negative Binomial random variable with parameters $p$ and $r$. Note that by definition $X\geq r$. We write $X\sim \NB(r,p).$
+\end{defn}
+
+\begin{prop}
+
+\end{prop}
+
+\begin{prop}
+$X_i\sim NB(r_i,p) \Rightarrow \Sigma X_i := X_1+...+X_k\sim NB(\Sigma r_i , p)$ [L13]
+\end{prop}
+\begin{defn}\textbf{(Hypergeometric):}
+Consider a population with $N$ distinct individuals and composed exactly of $D$ individuals of type I and $N-D$ individuals of type II. Draw from this population $n$ individuals at random and without replacement (an individual cannot be selected more than once). Define $X=$ number of individuals of \underline{type I} among the $n$ selected ones. Then, $X$ is called a Hypergeometric random variable with parameters $n$, $D$ and $N$. We write $X\sim \Hype (n,D,N)$.
+\end{defn}
+\begin{defn}\textbf{(Poisson):}
+A random variable $X$ taking its values in $\mathbb{N}_0$ is called Poisson random variable if $P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}$ for all $k \in \mathbb{N}_0$ and some given $\lambda\in(0,\infty)$. We write $X\sim\Poi(\lambda)$ or $X\sim\mathcal{P}(\lambda)$. Here, $\lambda$ is called rate or intensity.
+\end{defn}
+
+\begin{thm}
+Let $\lambda\in(0,\infty)$ and consider $S_n\sim\Bin(n,\frac{\lambda}{n})$ for $n\geq [\lambda+1]$. Then for $k\in\mathbb{N}_0$
+\[\lim_{n\rightarrow\infty}P(S_n=k)=\frac{e^{-\lambda}\lambda^k}{k!}.\]
+\end{thm}
+
+\begin{prop}
+$Xi\sim Poi(\lambda_i) \Rightarrow \Sigma X_i := X_1+...+X_k\sim  Poi(\Sigma\lambda_i)$ [L13]
+\end{prop}
+Continuous distributions [L14]:
+\begin{defn}\textbf{(Uniform):} If $X\sim f$ with $f(x):=1_{[0,1]}(x)$ then X is said to be a uniform random variable on [0,1]. We write $X\sim U([0,1])$.
+\end{defn}
+\begin{defn}\textbf{(Beta):} If $X\sim f$ with $f(x):=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1} 1_{(0,1)}(x)$ with $\alpha,\beta>0$ and $\Gamma(a):=\int_0^\infty t^{\alpha-1}e^{-t}dt$ for $a \in (0,\infty)$ then $X$ is said to be a Beta random variable with parameters $\alpha$ and $\beta$.
+\end{defn}
+\begin{defn}\textbf{(Exponential):} If $X\sim f$ with $f(x):=\lambda e^{-\lambda x}1_{(0,\infty)}(x)$, then $X$ is said to be an exponential random variable with parameters/rate/intensity lambda. We write $X\sim Exp(\lambda)$.
+\end{defn}
+\begin{defn}\textbf{(Gamma):} If $X\sim f$ with $f(x):=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}1_{(0,\infty)}(x)$ for $alpha,beta>0$ then $X$ is said to be a gamma random variable with shape parameter alpha and rate/intensity beta. We write $X\sim G(\alpha,\beta)$. Note that if $alpha=1$, then $G(\alpha,\beta) =^d \Exp(\beta)$.
+\end{defn}
+
+\begin{ex}\textbf{(S7E3d))}
+Let $X_1,...,X_n\sim^{\iid} G(\alpha_i,\beta)$, $\alpha_1,...,\alpha_n$, $\beta>0$, then $X_1+\cdots+X_n\sim G(\alpha_1+\cdots+\alpha_n,\beta)$.
+\end{ex}
+
+\begin{defn}\textbf{(Normal/Gaussian):} If $X\sim f$ with $f(x):=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$, $x \in R$ then $X$ is said to be a standard Normal Gaussian random variable. We write $X\sim N(0,1)$. Note that here 0 and 1 correspond to expectation and variance of $X$ respectively.
+\end{defn}
+
+\begin{defn}
+A usual notation for $x\mapsto \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$ is $\phi$ and for its cdf $x\mapsto \int^x_\infty \frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt$ is $\Phi$.
+\end{defn}
+\begin{prop}
+Let $X_1,...,X_n\sim^{i.i.d.} N(0,1)$ then $X_1+\cdots+X_n\sim N(0,n)$.
+\end{prop}
+
+\begin{thm}
+Let $X$ be some application $g$ defined on an open set $O\subset \mathbb{R}$ s.t. $g\in C^1(O)$, $g$ is strictly monotone on $O$ with $g'(x)\neq 0\forall x\in O$ and $P(X\in O)=1$.
+\\Then the random variable $Y=g(X)$ is absolutely continuous with density equal a.e. to $$f_Y(y)=\frac{f_X\circ g^{-1}(y)}{|g'\circ g^{-1}(y)|}1_{y\in g(O)}(y).$$
+\end{thm}
+
+\begin{defn}\textbf{(Normal/Gaussian):} A random variable $X$ is said to have normal distribution with parameters $\mu\in\mathbb{R}$ and $\sigma\in (0,\infty)$ if it has density $f(x)=f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$, $x \in R$. We then write $X\sim N(\mu,\sigma^2)$.
+\end{defn}
+
+\begin{thm}
+a) If $X\sim N(\mu,\sigma^2)$ then $Z=\frac{X-\mu}{\sigma}\sim N(0,1)$\\
+$Z\sim N(0,1) $ then $ X=\mu+\sigma Z \sim N(\mu,\sigma^2)$\\
+b) If $X\sim N(\mu,\sigma^2)$ then $\forall x\in \mathbb{R}:F_X(x)=\Phi(\frac{x-\mu}{\sigma^2})$. In particular, $F_X(\mu)=\frac{1}{2}$.\\
+c),d)
+\end{thm}
+
+\begin{thm}
+Let $X_1,...,X_n$ be $n\geq 2$ independent random variables such that $X_i\sim N(\mu_i,\sigma_i^2)$, $\mu_i\in\mathbb{R}$ and $\sigma_i\in(0,\infty)$. Let $S_n:=\sum^n_{i=1} X_i$. \\
+Then $S_n\sim N(\sum^n_{i=1}\mu_i , \sum^n_{i=1}\sigma_i^2)$.
+\end{thm}
+
+\begin{defn}\textbf{(S8E4; Quantile transformation)}
+Given a cdf $F$, the \textbf{quantile} $t_{\alpha}$ of order $\alpha\in(0,1)$ is defined as
+\[t_{\alpha}=\inf\{t:F(t)\geq\alpha\}=:F^{-1}(\alpha)\]
+$F^{-1}$ denotes the generalized inverse of F. When the latter is bijective (at least in the neighborhood of $t_{\alpha})$, then $F^{-1}$ is the inverse of $F$ in the classical sense.
+\end{defn}
+
+\begin{defn}
+Let $(Z_n)_{n\geq 1}$ be a sequence of random variables (not necessarily defined on the same probability space). We say that $(Z_n)_{n\geq 1}$ \textbf{converges in distribution} (in law or weakly) towards $Z\sim N(0,1)$ if $F_{Z_n}(x)\rightarrow_{n\rightarrow\infty} F(x)=\Phi(x)\forall x\in \mathbb{R}$.\\
+We write $Z_n\rightarrow^d_{n\rightarrow\infty} Z$ or ....
+\end{defn}
+
+\begin{thm}[Central Limit Theorem] Let $X_1,...,X_n$ be i.i.d. random variables with expectation $\mu$ and variance $\sigma$ ($\mu\in\mathbb{R},\sigma\in(0,\infty)$). Then \[Z_n=\frac{\sqrt{n}(\bar{X_n}-\mu)}{\sigma}\rightarrow^d_{n\rightarrow\infty}Z\sim N(0,1)\]
+(recall $\bar{X_n}=\frac{1}{n}\sum^n_{i=1}X_i$) or equivalently $\frac{S_n-n\mu}{\sqrt{n}\sigma}\rightarrow^d_{n\rightarrow\infty}Z\sim N(0,1)$.
+\end{thm}
+
+\begin{thm}[de Moivre-Laplace Theorem] Let $X_n\sim\Bin(n,p)$ $p\in(0,1)$. Then 
+\[\frac{X_n-np}{\sqrt{np(1-p)}}\rightarrow^d_{n\rightarrow\infty}Z\sim N(0,1)\]
+\[\iff P(\frac{X_n-np}{\sqrt{np(1-p)}}\leq x)\rightarrow_{n\rightarrow\infty}\Phi(x) \forall x\in \mathbb{R}.\]
+\end{thm}
+
+\begin{thm}[Iterated Expectation Formula] Provided $E[X]$ exists:
+\[ E[X]=E[E[X|Y]].\]
+\end{thm}
+
+\begin{thm}[Iterated Variance Formula] Provided $Var(X)$ exists:
+\[ \var(X)=E[\var(X|Y)]+ \var(E[X|Y]).\]
+\end{thm}
+
+\begin{defn}
+Let $(X,Y)$ be a random pair s.t. $0<\var(Y)<\infty$. The \textbf{correlation} between $X$ and $Y$ is defined as $\mathcal{C}_{X,Y}=\frac{\cov(X,Y)}{\sqrt{\var(X)}\sqrt{\var(Y)}}$
+\end{defn}
+
+\begin{thm}
+\begin{enumerate}
+\item $\forall c \in \mathbb{R},X:E[X]<\infty \implies \cov(X,c)=0$,
+\item Provided $Var(X)<\infty$, $\cov(X,X)=\var(X)$,
+\item Provided $\forall i,j:\cov(X_i,Y_j)<\infty$ it holds that \[\cov(\sum^n_{i=1}a_i X_i,\sum^m_{j=1}b_j Y_j)=\sum^n_{i=1}\sum^m_{j=1} a_i b_j \cov(X_i,Y_j),\]
+\item If $X$ and $Y$ are independent, then $\cov(X,Y)=0=\rho_{X,Y}$
+\item $|\rho_{X,Y}|\leq 1.$ Furthermore, 
+\[\rho_{X,Y}=1\iff \exists a\in\mathbb{R},b>0:P(Y=a+bX)=1,\]
+\[\rho_{X,Y}=-1\iff \exists a\in\mathbb{R},b<0:P(Y=a+bX)=1.\]
+\end{enumerate}
+\end{thm}
+
+\begin{defn}
+Let $(X,Y)$ be a discrete random pair with joint pmf $p$. In this case, for any function $g$ on $\mathbb{R}^2$ $Z=g(X,Y)$ is a discrete random variable. We call its (marginal) pmf the function 
+\[p_z(z)=P(Z=z)=\sum_{(x,y): g(x,y)=z}p(x,y).\]
+\end{defn}
+
+\begin{prop}
+Let $(X,Y)$ be a discrete random pair. Then:
+\begin{enumerate}
+\item $E[g(Y)|Y=y]=g(y)$ for any function $g$ on $\R^2$)
+\item $E[Xg(Y)|Y=y]=g(y)E[X|Y=y]$ (provided that $E[X|Y=y]$ exists) for $g$ on $\mathbb{R}^2$.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+Let $(X,Y)$ be a discrete random pair. Then $X$ and $Y$ are independent if and only if.
+\begin{enumerate}
+\item $\forall x\in\R^2,y\in\R: p_Y(y)>0 \implies p(x|y)=p_X(x)$, or
+\item $\forall y\in\R^2,x\in\R: p_X(x)>0 \implies p(y|x)=p_Y(y)$
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+If $(X,Y)$ is a discrete random vector s.t. $X$ and $Y$ are independent , then for any function $g$ on $\mathbb{R}$ s.t. $E[g(X)]$ exists, we have $E[X|Y=y]=E[g(X)].$ 
+\end{prop}
+
+\begin{defn}
+\begin{enumerate}
+\item Let $(X,Y)$ be a discrete random pair with joint pmf $p$. Denote $E[X|Y=y]=\mu_X(y)$. Then, the conditional variance of $X$ given $Y=y$ is 
+\[var(X|Y=y)=\sum_x p(x|y)(x-\mu_x(y))^2.\]
+\item For $y\in Y=\{y_1,...\}$ it is clear that $E[X|Y=y]$ depends on.............
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+A random vector $X=(X_1,...,X_n)^T$ is said to be absolutely continuous with respect to Lebesgue measure $\lambda_n$ defined on $(\R^n,\mathcal{B}_{\R^n})$ if its induced probability measure $P_X<<\lambda_n$.
+In this case, it follows from the Radon-Nikodyn theorem that there exists a non-negative measurable function f defined on $\R^n$:
+\[P_X(B)=\int_B f(x_1,...,x_n)d\lambda_n(x_1,...,x_n)=:\int_B f(x_1,...,x_n)dx_1,...,dx_n.\]
+$f$ is called the (joint) density of $X$.
+\end{defn}
+
+\begin{defn}
+Let $(X,Y)^T$ be the 2-d random vector with density $f$ (on $\R^2$).
+\begin{enumerate}
+\item The conditional density of $X$ given $Y=y$ is defined as
+$f(x|y)=\frac{f(x,y)}{f_Y(y)}$ wherever $f_Y(y)>0$ and $f(x|y)=0$ wherever $f_Y(y)=0$.
+\item $f(y|x)$ is defined analogously.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}(conditional variance). Conditional variance is defined as $\var (X|Y)=h(Y)$, where $h(y):=\int_{\R}(y-E(y|X=x))^2 f(y|x)dy$.
+\end{defn}
+
+\begin{rem}
+It now still holds that:
+\begin{enumerate}
+\item $E[X]=E[E[X|Y]]$ (whenever $E[X]<\infty$) and
+\item $\var (X)=E[\var(X|Y)]+ \var (E[X|Y])$ (whenever $\var (X)<\infty$).
+\end{enumerate}
+\end{rem}
+
+\begin{thm} Let $X=(X_1,...,X_n)^T$ be an absolutely continuous random vector with joint density $f=f_X$. Consider $g:\mathcal{O}\rightarrow g(\mathcal{O})\subset \R^n$ a bijective application defined on an open set $\mathcal{O}\subset\R^n$ s.t. $g\in C^1(\mathcal{O})$ and
+\[J_g(x)=\det\begin{pmatrix}
+\partial_1 g_1  &  \cdots  &  \partial_n g_1\\
+\vdots        &\         &  \vdots\\
+\partial_1 g_n  &\cdots    &  \partial_n g_n\\
+\end{pmatrix}.\]
+Assume that $P(X\in\mathcal{O})=1$. Then $Y=g(X)$ is an absolutely continuous with joint density
+\[f_Y(y)=\frac{f_X\circ g^{-1}(y)}{|J_g\circ g^{-1}(y)|}1_{g(\mathcal{O})}.\]
+\end{thm}
+
+\begin{rem} Recall that $X=(X_1,...,X_n)^T\sim N(\mu,\Sigma)$, that is $X$ is a Gaussian vector with expectation $\mu =(E(X_1),...,E(X_n))^T$ and covariance matrix $\Sigma$ ($\Sigma_{ij}=\cov(X_i,X_j))$. If $X=^d\mu+AZ$, where $A$ is a square root of $\Sigma$ (i.e. $\Sigma=AA^T$) and $Z=(Z_1,...,Z_n)^T\sim N(0,id_n)$ meaning that $Z_1,...,Z_n\sim^{\iid} N(0,1)$ and
+\[f_Z(z)=\prod^n_{i=1} f_{Z_i}(z_i)=\frac{1}{(2\pi)^{n/2}}e^{\frac{1}{2}\sum^n_{i=1}z_i^2}=\frac{1}{(2\pi)^{n/2}}e^{\frac{1}{2}z^T z}\]
+for $z=(z_1,...,z_n)^T\in\R^n.$
+\end{rem}
+
+\begin{thm} If $X\sim N(\mu,\Sigma)$ and $\Sigma$ is invertible (pos. definite), then $X$ is absolutely continuous with density 
+\[f_X(x)=\frac{1}{(2\pi)^{n/2}\sqrt{\det(\Sigma)}}e^{-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)}\ \forall X=(X_1,...,X_n)^T\in\R.\]
+\end{thm}
+
+\begin{itemize}
+\item $X_1,...,X_n$ independent with induced probability measure $P_{X_i}(B)=P_{X_1}(B)\ \forall B\in\mathcal{B}(\mathcal{X})=\sigma-$Algebra on $\mathcal{X}$.
+\item We will assume that $P_{X_1}\in\mathcal{P}$, where $\mathcal{P}=\{ P_\theta | \theta\in\Theta\}$, $\Theta\subset\R^d$ is the parameter space and $P_\theta$ a probability measure on $\mathcal{X}$. Then $\mathcal{P}$ is called a parametric model.
+\item We further assume that $\forall\theta\in\Theta:P_\theta$ admits a density w.r.t. some $\sigma$-finite dominating measure $\mu$ on $(\mathcal{X},\mathcal{B})$. We will denote this densit by $f(\cdot|\theta)$.
+\end{itemize}
+
+\begin{defn}Let $X_1,...,X_n\sim^{\iid}f(\cdot|\theta_0)$ with $\theta_0\in\Theta\subset\R^d,\ d\geq 1$. $\hat{\theta}$ is an \textbf{estimator} for $\theta_0$, based on $X_1,...,X_n$, if $\hat{\theta}$ is a \textbf{statistic} of $X_1,...,X_n$, that is any quantity of the form $T(X_1,...,X_n)$, where $T$ is a measurable map on $(\R^n,\mathcal{B}(\R^n))$.
+\end{defn}
+
+\begin{defn}Let $X_1,...,X_n\sim^{\iid}f(\cdot | \theta_0)$ with $\theta_0=(\theta_{01},...,\theta_{0d})^T\in\Theta\subset\R^d,\ d\geq 1$. Also suppose that if $X\sim f(\cdot|\theta)$ the moments $E[X],...,E[X^d]$ exist and
+\begin{align*}
+\theta_1 &= \Psi_1(E[X],...,E[X^d])\\
+\theta_2 &= \Psi_2(E[X],...,E[X^d])\\
+\ &\ \ \vdots \\
+\theta_d &= \Psi_d(E[X],...,E[X^d])
+\end{align*}
+with $\Psi_1,...,\Psi_d$ some measurable functions.\\
+The \textbf{moment estimator}, $\hat{\theta}$, of $\theta_0$ is obtained by replacing $E[X^j]$ by its empirical estimator: $\frac{1}{n}\sum^n_{i=1}X^j_i$ for $j\in\{1,...,d\}$, i.e.
+\begin{align*}
+\theta_1 &= \Psi_1(\frac{1}{n}\sum^n_{i=1}X_i,...,\frac{1}{n}\sum^n_{i=1}X^d_i)\\
+ &\ \ \vdots \\
+\theta_d &= \Psi_d\frac{1}{n}\sum^n_{i=1}X_i,...,\frac{1}{n}\sum^n_{i=1}X^d_i).\\
+\end{align*}
+\end{defn}
+
+\begin{defn}
+\begin{itemize}
+\item Let $X_1,...,X_n\sim^{\iid}f(\cdot|\theta_0)$ with some unknown $\theta_0\in\Theta$, the \textbf{likelihood function} defined by $\Theta$ is given by $L(\theta)=\prod^n_{i=1}f(x_i|\theta),\ \theta\in\Theta.$
+\item The \textbf{maximum likelihood estimator} (MLE) is defined by $\hat{\theta}=\argmax_{\theta\in\Theta} L(\theta).$ Provided it exists and is unique, and is a measurable map of $X_1,...,X_n$).
+\end{itemize}
+\end{defn}
+
+Now let $d=1$, i.e. $\Theta\subset\R$.
+
+\begin{thm}Let $X_1,...,X_n\sim^{\iid}f(\cdot|\theta_0)$ with $\theta_0\in\Theta$. Let $\hat{\theta}$ ($=\hat{\theta}_n$) be the MLE based on $X_1,...,X_n.$ Under some regularity conditions (on $(x,\theta)\mapsto f(x,\theta)$ the MLE $\hat{\theta}$ is consistent, that is $\lim_{n\rightarrow\infty} P(|\hat{\theta}-\theta|>\epsilon)=0\ \forall \epsilon>0$ ($\iff\hat{\theta}\rightarrow^P\theta_0$ as $ n\rightarrow\infty$).
+\end{thm}
+
+\begin{thm}Let $X_1,...,X_n\sim^{\iid}f(\cdot|\theta_0)$ with $\theta_0\in\Theta$. Let $\hat{\theta}$ ($\hat{\theta}_n$) be the MLE based on $X_1,...,X_n$ under additional regularity conditions, it holds that
+\[\sqrt{n}(\hat{\theta}- \theta_0)\rightarrow N(0,\frac{1}{I(\theta_0)},\]
+where 
+\[I(\theta_0)=E[(\frac{\partial\log(f(x_1,\theta))}{\partial\theta}|_{\theta=\theta_0})^2]=-E[\frac{\partial^2\log(f(x_1,\theta))}{\partial\theta^2}|_{\theta=\theta_0}] \]
+is called the Fischer information of the model for $\theta=\theta_0$ and is assumed to belong to $(0,\infty)$.
+\end{thm}
+
+Suppose we have two estimators $\hat{\theta}=\hat{\theta_n}$ and $\tilde{\theta}=\tilde{\theta_n}$ computed on the basis of i.i.d. random variables $X_1,...,X_n\sim f(\cdot|\theta_0)$, $\theta_0\in\Theta$.
+
+\begin{defn}
+\begin{itemize}
+\item An estimator $\hat{\theta_n}$ of $\theta_0\in\Theta$ computed on the basis of i.i.d. random variables $X_1,...,X_n\sim f(\cdot|\theta_0)$ is said to be \textbf{unbiased} if $E[\hat{\theta_n}]=\theta_0\ (\forall\theta_0\texttt{ unknown in }\Theta)$
+\item The \textbf{mean square error} of $\hat{\theta_n}$ is defined as $\mse(\hat{\theta_n}):=E[(\hat{\theta_n}-\theta_0)^2]$ (provided that $E[\hat{\theta_n}^2]<\infty$).
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+$\mse(\est_n)=var(\est)+(E[\est_n]-\theta_0)^2$ and $bias(\est_n):=E[\est_n]-\theta_0$. If $\est_n$ is unbiased i.e. $bias(\est_n)=0$, then $\mse(\est_n)=\var(\est_n)$.
+\end{rem}
+
+\begin{defn}
+We say that $\est_n$ is $\textbf{more efficient}$ than $\tilde{\theta}_n$ if $\mse(\est_n)\leq\mse(\tilde{\theta}_n)$. We define the \textbf{efficiency} of $\est_n$ relative to $\estt_n$ as $eff(\est_n,\estt_n):=\frac{\mse(\estt)}{\mse(\est_n})$. (So if $eff(\est_n,\estt_n)\geq 1$ then $\est_n$ is more efficient than $\estt_n$)
+\end{defn}
+
+\begin{thm}
+Let $X_1,...,X_n\sim^{\iid} f(\cdot|\theta_0)$ for some $\theta_0\in\Theta$. If $\est_n=T(X_1,..,X_n)$ with $T$ some measurable map is an unbiased estimator of $\theta_0$, then $\var(\est_n)\geq\frac{1}{nI(\theta_0}$, where $I(\theta_0)$ is the Fischer Information (under some regularity conditions).
+\end{thm}
+
+\begin{defn}
+A statistic $T(X_1,...,X_n)$ is said to be \textbf{sufficient} for $\theta$ if the conditional distribution of $(x_1,...,x_n)^T$ given $T(X_1,...,X_n)=t$ does not depend on $\theta$, whenever $X_1,...,X_n\sim^{\iid} f(\cdot|\theta_0)$.
+\end{defn}
+
+\begin{thm}(Factorization Theorem) A statistic $T(X_1,...,X_n)$ is sufficient for $\theta$ if and only if there exist non-negative functions $g$ and $h$ s.t.
+\[L(\theta)=\Pi^n_{i=1}f(X_i|\theta)=g(T(X_1,...,X_n),\theta)\cdot  h(X_1,...,X_n)\]
+\end{thm}
+
+\begin{cor}(Sh 12 Ex 2.b)) If $T$ is sufficient for $\theta$ then $cT$ is sufficient for $\theta$ for any $c\in\R^\times$.
+\end{cor}
+
+
+
+\end{document}

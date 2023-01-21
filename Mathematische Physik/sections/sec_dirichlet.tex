@@ -1,0 +1,101 @@
+\chapter{Dirichletproblem}
+
+\section{Dirichlet und Neumannrandbedingungen}
+
+\begin{namedtheorem}{Definition}
+  Für $u\in C^2(D)$, $D\subset\R^n$ lautet die \textbf{Laplace-Gleichung} $\triangle u(x) = 0$, $x\in D$, Lösungen heissen \textbf{harmonische Funktionen}. Ist $D$ ein beschränktes Gebiet in $\R^n$ mit glattem Rand $\partial D$. Typische Randwertprobleme sind
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{2}
+    \begin{enumerate}[(i)]
+      \item \textbf{Dirichletproblem (D)}
+        \begin{align*}
+          \begin{cases}
+            \triangle u(x) = 0 & x\in D \\
+            u(x) = f(x) & x\in\partial D
+          \end{cases},
+        \end{align*}
+      \item \textbf{Neumannproblem (N)}
+        \begin{align*}
+          \begin{cases}
+            \triangle u(x) = 0 & x\in D \\
+            \frac{\partial u}{\partial n}(x) = g(x) & x\in\partial D
+          \end{cases}.
+        \end{align*}
+    \end{enumerate}
+  \end{multicols}}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 1.1 (Eindeutigkeit)}
+  Seien $u_1,u_2$ zwei Lösungen von (D). Dann ist $u_1 = u_2$. Seien $u_1,u_2$ zwei Lösungen von (N). Dann ist $u_1 = u_2 + $ const.
+\end{namedtheorem}
+
+\section{Greensche Funktionen}
+
+\begin{namedtheorem}{Lemma 2.1}
+  Sei $u\in C^2(\overline{D})$. Dann gilt für $x\in D$ $u(x)=\int_D E(x-y) \triangle u(y) \D y = \int_{\partial D} \left(E(x-y)\frac{\partial u}{\partial n_y} - u(y)\frac{\partial}{\partial n_y} E(x-y) \right) \D \Omega(y)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 2.1 (Greensche-Funktion)}
+  Sei $D\subset\R^n$ offen mit glattem Rand. Eine stetige Funktion $G(x,y)$ auf $\{(x,y)\in \overline{D}\times D: x\neq y\}$ heisst \textbf{Greensche Funktion} des Gebiets $D$ (für den Laplace-Operator), falls
+  \begin{enumerate}[(i)]
+    \item $G(x,y)=E(x-y) + v(x,y)$, $v\in C^2(\overline{D}\times D)$ und $\triangle_x v(x,y)=0$,
+    \item $G(x,y)=0$, $x\in\partial D$, $y\in D$.
+  \end{enumerate}
+  Insbesondere ist für $x\neq y$ $\triangle_x G(x,y)=0$. Wir schreiben $\triangle_x$ für den Laplace-Operator $\sum\partial^2/\partial x_i^2$ in den Variablen $x$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.2 (Form der Lösung)}
+  Falls $u$ eine Lösung von (D) ist, hat man $u(x) = \int_{\partial D}\frac{\partial G}{\partial n_y}(y,x)f(y)\D \Omega(y)$ für alle $x\in D$.
+\end{namedtheorem}
+
+\section{Methode der Spiegelbildladung, Poissonformel}
+\hfill \\
+Eine \textbf{Spiegelung} um die Sphäre vom Radius $R$ ist die Abbildung $y\mapsto y^{\ast}=\frac{R^2}{|y^2|}y$. Sie erfüllt $y^{\ast\ast}=y$, $|y^{\ast}|=\frac{R^2}{|y|}$ und $|y||x-y^{\ast}|=|x||y-x^{\ast}|$.
+
+\begin{namedtheorem}{Greensche Funktionen} sind gegeben durch \\
+$G(x,y)=\begin{cases}
+	\frac1{|S^{n-1}|(2-n)}\left(|x-y|^{2-n}-\left(\frac{|y|}R\right)^{2-n}|x-y^{\ast}|^{2-n}\right) & n\geq3,\\
+	\frac1{2\pi}(\log|x-y|-\log(|x-y^{\ast}|\frac{|y|}R)) & n=2.
+\end{cases}$
+\end{namedtheorem}
+
+% \begin{namedtheorem}{Greensche Funktionen} sind gegeben durch \\
+%   $G(x,y)=\frac1{|S^{n-1}|(2-n)}\left(|x-y|^{2-n}-\left(\frac{|y|}R\right)^{2-n}|x-y^{\ast}|^{2-n}\right)$ für $n\geq3$, \\
+%   $G(x,y)=\frac1{2\pi}(\log|x-y|-\log(|x-y^{\ast}|\frac{|y|}R))$ für $n=2$.
+% \end{namedtheorem}
+
+\begin{namedtheorem}{Definition}
+  Der \textbf{Poisson-Kern} ist definiert durch $H(y,x)=\frac{\partial}{\partial n_y}G(y,x)=\scalprod{\nabla_yG(y,x),n(y)}=\frac1{|S^{n-1}| R}\frac{R^2-|x|^2}{|x-y|^n}$ für $x,y\in\R^n$, $|y|=R$, $n=2,3,\ldots$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.1 (Poisson Formel, Lösung)}
+  Sei $D$ die Kugel $\{x\in\R^n:|x|<\R\}$, $f$ stetig auf $\partial D$.
+  \begin{align*}
+  u(x)=\int_{|y|=R} f(y) H(y,x) \D\Omega(y)=\frac{R^2-|x|^2}{|S^{n-1}| R} \int_{|y|=R} \frac{f(y)}{|x-y|^n} \D\Omega(y), \quad x\in D
+  \end{align*}
+   ist glatt auf $\{x\in\R^n: |x|<R\}$, harmonisch und konvergiert gegen $f$, wenn $|x|\rightarrow R$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.2 (Mittelwertprinzip)}
+  Sei $u$ harmonisch auf einer offenen Menge $D\subset\R^n$. Für jede Kugel $B_R(x)\subset D$ gilt $u(x)=\frac1{|S_R(x)|}\int_{S_R(x)}u(y)\D\Omega(y)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.3 (Maximum-Prinzip)}
+ Ist $u$ harmonisch auf einem Gebiet $D$ und sei $x_0\in D$ eine Maximalstelle, d.h. $u(x)\leq u(x_0)$ für alle $x\in D$. Dann ist $u$ konstant.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.4}
+  Sei $D\subset\R^n$ ein Gebiet und $u$ eine stetige Funktion auf dem Abschluss $\overline{D}$, die harmonisch auf $D$, sodass $u(x)=0$ auf dem Rand $\partial D$. Dann ist $u(x)=0$ für alle $x\in\overline{D}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.5}
+  Sei $u$ harmonisch in $B_R(x)$. Dann ist $|\partial_{x_i}u(x)|\leq\frac{n}R \max_{|y-x|=R}|u(y)|$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 3.6}
+Jede auf ganz $\R^n$ beschränkte harmonische Funktion ist konstant.
+\end{namedtheorem}
+
+%\begin{namedtheorem}{Korollar 3.7}
+%  Jedes nichtkonstante Polynom mit komplexen Koeffizienten hat eine komplexe Nullstelle.
+%\end{namedtheorem}

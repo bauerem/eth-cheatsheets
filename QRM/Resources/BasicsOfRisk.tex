@@ -1,0 +1,165 @@
+\section*{Basics Of Risk}
+\subsection*{Risk mappings $L:\Omega\rightarrow\R$}
+\textbf{Portfolio val:} $V_t$ ; 
+\textbf{1-period-ahead loss:} $L_{t+1}=-\Delta V_{t+1}$
+\textbf{Loss distribution:} $\mu_L=L^\#\mathbb{P}=\mathbb{P}\circ L^{-1}$ (push-forward)
+
+\textbf{Thm:} If $F_L$ absolutely continuous w.r.t. Lebesgue measure $\implies \exists f: F_L(x)=\int^x_{-\infty} f(x)dx$ i.e. density of $L$
+
+\textbf{P\&L:} $\Delta V_{t+1}=-L_{t+1}$;
+\textbf{Discounted P\&L:} $\Delta V_{t+1}=\frac{V_{t+1}}{1+r}-V_t$
+
+\textbf{Risk factor model:} $V_t=f(t,Z_t)$, $f:\R_+\times\R^d\rightarrow\R$ m-able
+
+\textbf{Risk factors changes:} $X_{t+1}=Z_{t+1}-Z_t\in \R^d$
+
+\textbf{Linearized loss:} $L^\Delta_{t+1}=-f_t(t,Z_t)-\sum^d_{j=1} f_{z^j}(t,Z_t)X^j_{t+1}$
+
+\textbf{E.g. stock portfolio:}
+
+Value: $V_t=\sum^d_{j=1}\lambda^j S^j_t$ ($Z^j_t=\log S^j_t$ log-prices)
+
+Lin. approx: $\exp(X^j_t)-1\approx X^j_t$
+
+Lin. loss: $L^\Delta_{t+1}=-\sum^d_{j=1} w^j_t X^j_{t+1}=w^\top X_{t+1}$
+
+\textbf{Risk-neutral valuation:} $V^H_t=\E^\mathbb{Q}_t[e^{-r(T-t)}H],\; t<T$, where $\E^\mathbb{Q}_t$, w. $\mathbb{Q}$ market prices, $\mathbb{P}$ historical data
+
+\subsection*{Generating loss distributions:}
+\begin{enumerate}
+    \item Analytical method: linear loss
+    \item Historical simulation: use edf using realized
+    \item Monte carlo simulation: use edf using simulated
+\end{enumerate}
+
+\textbf{Risk measure:} $\rho:L\in \mathcal{M}\rightarrow \rho(L)\in\R$
+
+
+\subsection*{Quantiles}
+\textbf{$\alpha$-quantile} is any $q$ s.t. $\mathbb{P}(L<q)\leq \alpha \leq \mathbb{P}(L\leq q)$ 
+
+
+\textbf{Left-$\alpha$-quantile:} $q^-_L(\alpha)=\min\{x:F_L(x)\geq\alpha\}$ 
+%=\sup\{x:F(x)<\alpha\}$
+(left-cont)
+
+\textbf{Right-$\alpha$-quantile:} $q^+_L(\alpha)=\inf\{x:F_L(x)>\alpha\}$
+%=\sup\{x:F(x)\leq\alpha\}$
+(right-cont)
+
+\textbf{Thm:} $q:\alpha\mapsto q(\alpha)$ arb. quantile func. of $L$, $x\in\R$ fixed:
+\begin{itemize}
+    \item $\alpha<F_L(x)\implies q(\alpha)\leq x$
+    \item $q(\alpha)\leq x \implies \alpha\leq F_L(x) $
+    \item $\{\alpha\in(0,1):\alpha<F_L(x)\}\subseteq \{\alpha\in (0,1): q(\alpha)\leq x\}\subseteq \{\alpha\in(0,1):\alpha\leq F_L(x)\}$
+    \item $\lambda(\alpha\in (0,1): q(\alpha)\leq x)=F_L(x),$ w $\lambda=$Lebesgue
+    \item $q:\alpha\mapsto q(\alpha)$ has the same distribution under $\lambda$ as $L$ under $\mathbb{P}$.
+\end{itemize}
+
+$1\{\alpha\in (0,1)\}q_L(\alpha)d\alpha = L dP$
+$\Rightarrow 1\{\alpha\in (0,1)\}\text{VaR}_{\alpha}(L)d\alpha=LdP$
+
+
+\subsection*{Value-at-Risk: $\text{VaR}_\alpha(X)$ for $X\in L^0(\mathbb{P})$}
+\[
+  \text{VaR}_\alpha(X) = \min\{m\in\R : \mathbb{P}[X - m \leq 0]
+  \geq \alpha\}
+\]
+
+\textbf{Props:}
+\begin{enumerate}
+    \item $\alpha\mapsto \VaR(L)$ non-decreasing / montone
+    \item $L\geq L'$ a.s. $\implies \VaR(L)\geq \VaR(L')$
+    \item $\VaR(a + bL) = a + b\VaR(L)$, \quad \textcolor{red}{b>0}
+    \item $\VaR$ does \textbf{not} see what happens in tails (freq measure)
+    \item $\VaR(L)$ satisfies (M), (T), (P) but not (S) and (C)\\
+    E.g. bonds $L_1,L_2$ w. $T=1$, $NV=100$, $r=5\%$, default $p = 0.009$: $\text{VaR}_{0.99}(L_1+L_2)=95>-10=\text{VaR}_{0.99}(2L_1)=\text{VaR}_{0.99}(L_1)+\text{VaR}_{0.99}(L_2)$
+\end{enumerate}
+
+\textbf{Lemma:} Let $L$ be a RV taking values in interval $I \subseteq
+\mathbb{R}$. Then
+\[
+  \text{VaR}_\alpha(f(L)) = f(\text{VaR}_\alpha(L))
+\]
+for each $\alpha \in (0, 1)$ and every \textcolor{red}{strictly increasing} continuous function
+$f: I \to \mathbb{R}$.
+
+\subsection*{Average-Value-at-Risk}
+For $L \in L^1(\bbP)$ define
+\[
+    \text{AVaR}_\alpha(L) := \frac{1}{1-\alpha}\int_\alpha^1
+    \text{VaR}_u(L)du
+    = \frac{1}{1-\alpha}\int_\alpha^1 q_L^{-}(u)du
+\]
+
+\textbf{Props:}
+\begin{enumerate}
+    \item If $\bbP[L \geq \VaR(L)] = 1 - \alpha \iff \text{AVaR}_\alpha(L) = \text{ES}_\alpha(L)$
+    \item If $F_L$ is continuous, then
+        $\text{AVaR}_\alpha(L) = \text{ES}_\alpha(L)$
+    \item $\text{AVaR}_\alpha(a + bL) = a + b\text{AVaR}_\alpha(L)$, \quad \textcolor{red}{b>0}
+    \item $\text{AVaR}_\alpha(L) \geq \text{AVaR}_\beta(L)$ for $\alpha \geq \beta$.
+    \item Satisfies (M), (T), (P), (C) i.e. is coherent
+\end{enumerate}
+
+\textbf{E.g.}
+\begin{itemize}
+    \item $\VaR(\mathcal{N}(\mu,\sigma^2))=\mu+\sigma\Phi^{-1}(\alpha)$\\ $\VaR(v^\top\mathcal{N}(\mu,\Sigma))=v^\top\mu+v^\top\Sigma v\Phi^{-1}(\alpha)$
+    \item $\VaR(\text{Exp}(\lambda))=$
+\end{itemize}
+
+\subsection*{Expected Shortfall: $\ES(X)$ for $X\in L^1(\mathbb{P})$}
+\[
+  \text{ES}_\alpha(X) = \mathbb{E}[X | X \geq \text{VaR}_\alpha(X)]
+\]
+
+\textbf{Lemma:} Let $L$ be a RV and $a\in \mathbb{R}$ s.t. $\mathbb{P}[L \geq a] > 0$. Then:
+
+\begin{align*}
+    \E[L | L \geq a] = a + \frac{\int_a^\infty \bbP[L \textcolor{red}{>} x]dx}
+    {\bbP[L \geq a]}
+    = a + \frac{\int_a^\infty \bbP[L \textcolor{red}{\geq} x]dx}
+    {\bbP[L \geq a]}
+\end{align*}
+
+\textbf{Props:}
+\begin{enumerate}
+    \item $\alpha\mapsto \text{ES}_\alpha(L)$ non-decreasing; $\ES(L) \geq \text{ES}_\beta(L)$ for $\alpha \geq \beta$
+    \item $\VaR (L)\leq \ES$
+    \item $\text{ES}_\alpha(a + bL) = a + b\text{ES}_\alpha(L)$,  \quad \textcolor{red}{b>0}
+    \item $\ES$ looks into the tail (severity measure but more data)
+    \item Satisfies (M), (T), (P)
+\end{enumerate}
+
+\subsection*{Special cases: TODO?}
+
+\subsection*{Coherent risk measures}
+Let $\mathcal{L}$ be a vector space of r.v.s $L$ on $(\Omega, \mathcal{F}, \mathbb{P})$
+(modeling uncertain losses); e.g. $L = L^p(\mathbb{P})$ for some $p \in \{0\} \cup [1, \infty]$
+
+\textbf{Coherent risk measure} $\rho:\mathcal{L}\rightarrow \R$ satisfies:\\
+(M) Monotonicity: $\rho(L_1)\leq \rho(L_2)$ for $L_1\leq L_2$ $\mathbb{P}$-a.s.\\
+(T) Translation prop: $\rho(L+m)=\rho(L)+m$, for all $m\in\R$\\
+(S) Subadditivity: $\rho(L_1+L_2)\leq \rho(L_1)+\rho(L_2)$\\
+(P) Positive homogeneity: $\rho(\lambda L)=\lambda \rho(L)$ for all $\lambda\in\R_+$\\
+
+\textbf{Convex risk measure} satisfies (M), (T) and
+(C) Convexity: $\rho(\lambda L_1 + (1-\lambda) L_2)\leq \lambda\rho( L_1) + (1-\lambda) \rho(L_2)$ for all $\lambda\in(0,1)$
+
+\textbf{Thm:} coherence $\implies$ convexity\\
+Proof: Under (P): (S)$\iff$(C)
+
+\textbf{Worst expected losses}:
+Let $\mathcal{P}$ be an arbitrary non-empty set of probability measures with $\mathbb{Q}<<\mathbb{P}$, then\\
+$\rho_{\mathcal{P}} = \sup_{\mathbb{Q}\in\mathcal{P}}\E^{\mathbb{Q}}L$ is a coherent risk measure.
+
+\textbf{Thm:} Let $L \in L^1(\mathbb{P})$ and $\alpha \in (0, 1)$. Then
+\[
+    A\VaR(L) = \min_{s\in\R}(\frac{\E (L-s)^+}{1-\alpha}+s)\\
+    = \sup_{\mathbb{Q}\in\mathcal{P}_{\alpha}}\E^{\mathbb{Q}}L
+\]
+where $\mathcal{P}_{\alpha}=\{\mathbb{Q}:||\frac{d\mathbb{Q}}{d\mathbb{P}}||_{\infty}\leq \frac{1}{1-\alpha}\}$. Moreover, the min is attained by the $\alpha$-quantile $q$ of $L$ and the max by any $\mathbb{Q}$ w $\frac{d\mathbb{Q}}{d\mathbb{P}}=\frac{1}{1-\alpha}1\{L>q\}+\kappa 1\{L=q\},\; \kappa\geq 0.$
+
+\textbf{Conditional Value-at-Risk:} The min term is called CVaR
+
+\textbf{Cor:} AVAR is coherent

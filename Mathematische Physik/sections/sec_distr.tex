@@ -1,0 +1,171 @@
+\chapter{Distributionen}
+
+\section{Temperierte Distributionen}
+
+\begin{namedtheorem}{Definition 2.1 (Temperierte Distribution)}
+  ist eine stetige lineare Abbildung $\omega: \Sr(\R^n)\rightarrow\C,\ \phi\mapsto\omega[\phi]$. Mit anderen Worten erfüllt $\omega$ die Eigenschaften $\omega[\lambda\phi + \mu\psi] = \lambda\omega[\phi]+\mu\omega[\psi]$ für $\lambda,\mu\in\C$ und $\phi_n\overset{\Sr}{\rightarrow}\phi \implies \omega[\phi_n]\rightarrow\omega[\phi]$ bzw. $\phi_n\overset{\Sr}{\rightarrow}0 \implies \omega[\phi_n]\rightarrow0$. Der Raum der temperierten Distributionen wird mit $\Sr'(\R^n)$ bezeichnet und ist der topologische Dualraum zu $\Sr(\R^n)$.
+\end{namedtheorem}
+
+Für $\Sr(\R^n)$ aufgefasst als Unterraum von $\Sr'(\R^n)$ definieren wir für $f\in\Sr(\R^n)$ eine Distribution $\omega_f$ durch $f[\phi] = \int_{\R^n}f(x)\phi(x)\D x$ (reguläre Distributionen). Schwächer reicht $f(x)(1+|x|^2)^{-N}\in L^1$ für ein hinreichend grosses $N$.
+
+\begin{namedtheorem}{Definition (Delta-Funktion)}
+$\delta[\phi]=\phi(0)$, $\delta_a[\phi]=(T_a\delta)[\phi]=\phi(a)$.
+\end{namedtheorem}
+
+\section{Operationen auf Distributionen}
+Seien $f,g\in\Sr(\R^n)$ und $\omega\in\Sr'(\R^n)$ die Distribution von $f$. Die folgenden Operationen sind stetige lineare Abbildungen.
+
+\begin{namedtheorem}{Definition (Translation)}
+  $(T_a\omega)[\phi] = \omega[T_{-a}\phi]$, wob. $(T_af)(x)=f(x-a)$, $a\in\R^n$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 3.1 (Lineare Koordinatentransf.)}
+  $U_A\omega[\phi] = |\det A|\omega[U_{A^{-1}}\phi]$, wobei $(U_Af)(x)=f(A^{-1}x)$, $A\in\mathrm{GL}_n(\R)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 3.2 (Funktion-Multiplikation)}
+  $(g\omega)[\phi]=\omega[g\phi]$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 3.3 (Ableitung)}
+  $(\partial^{\alpha}\omega)[\phi]=(-1)^{|\alpha|}\omega[\partial^{\alpha}\phi]$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 3.4 (FT)}
+  $\hat{\omega}[\phi] = \omega[\hat{\phi}]$, $\check{\omega}[\phi] = \omega[\check{\phi}]$ für alle $\omega\in\Sr'(\R^n)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition (Faltung)}
+  Für $g\in\Sr(\R^n)$, $\omega\in\Sr'(\R^n)$ definieren wir $(g\ast\omega)[\phi]=\omega[\tilde{g}\ast\phi]$ und analog $(\omega\ast g)[\phi]=\omega[\tilde{g}\ast\phi]$, wobei $\tilde{g}(x) = g(-x)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition (Heaviside-Funktion)}
+$\theta(x) = 1$ für $x\geq0$ und $\theta(x)=0$ für $x<0$.
+%   $\theta(x) = \begin{cases}
+%     1 & x\geq0\\
+%     0 & x<0
+%   \end{cases}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 3.1 ($\theta$ und $\delta$)}
+  $\frac{\partial}{\partial x}\theta=\delta$, wobei $\delta[\phi]=\phi(0)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 3.2}
+  $U_A\delta = |\det A|\delta$ für $A\in\mathrm{GL}_n(\R)$, ($\delta(A^{-1}x)=|\det A|\delta(x)$)
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.3}
+  Die FT und die inverse FT sind bijektive lineare Abbildungen $\fhat,\fcheck:\Sr'(\R^n)\rightarrow\Sr'(\R^n)$ und für alle $\omega\in\Sr'(\R^n)$ gilt $\omega\fhat\fcheck = \omega\fcheck\fhat = \omega$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 3.4 (FT von $1,\delta$)}
+  $\hat{1}=(2\pi)^n\delta$ und $\hat{\delta}=1$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 3.5 (Faltung mit $\delta$)}
+  Für alle $g\in\Sr(\R^n)$ gilt $g\ast\delta=g$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 3.6 (Faltung und Ableitung)}
+  Seien $f,g\in\Sr(\R^n)$, $\omega\in\Sr'(\R^n)$. Dann gilt für alle $\alpha\in\N^n$
+  \begin{enumerate}[(i)]
+    \item $\partial^{\alpha}(f\ast g) = (\partial^{\alpha}f)\ast g = f\ast\partial^{\alpha} g$,
+    \item $\partial^{\alpha}(\omega\ast g) = (\partial^{\alpha}\omega)\ast g = \omega \ast \partial^{\alpha}g = \partial^{\alpha}(g\ast \omega)$.
+  \end{enumerate}
+\end{namedtheorem}
+
+\section{Rechnungen}
+
+Reihenfolge $x^2\delta'(3x)[\phi]=\left(U_{1/3}\delta'\right)[x^2\phi(x)]=\delta[\partial_x U_{1/3}(x^2\phi(x))]$.
+
+$\widehat{\sin} (k) = \frac{\pi}{i}(\delta(k-1) - \delta(k+1))$, \quad\quad $\widehat{\cos} (k) = \frac1{2}(\delta(k-1) + \delta(k+1))$
+
+$x\delta = x\delta[\phi] = \delta[x\phi] = 0$, \quad\quad $\widehat{e^{iax}}[\phi]=\int\hat{\phi}e^{iax}\Dx=2\pi\check{\hat{\phi}}(a)=2\pi \phi(a)=2\pi\delta_a[\phi]$
+
+$\hat{x}[\phi]=\int x\hat{\phi}(x)\Dx=-i\int(\phi')\fhat(x)e^{i0x}\Dx=-2\pi i(\phi')\fhat\fcheck(0)=-2\pi i\delta[\phi']=2\pi i\delta'[\phi]$
+
+Ableitung Betragsfunktion $\partial_x |x| = \theta - U_{-1}\theta, \quad \partial_x^n |x| = 2\partial_x^{n-2}\delta,\ n\geq 2$
+
+% $\frac{\mathrm{d}^n}{\mathrm{d}x^n}\vert x \vert = \begin{cases}
+% 	\left(2\frac{\mathrm{d}^{n-2}}{\mathrm{d}x^{n-2}}\delta\right) & n \geq 2\\
+%     \left(\theta - (U_{-1}\theta)\right) & n = 1
+% \end{cases}$
+
+\section{Konvergenz in $\Sr'(\R^n)$}
+
+\begin{namedtheorem}{Definition 4.1 (Konvergenz)}
+  Eine Folge $(\omega_j)_{j=1}^{\infty}$ in $\Sr'$ konvergiert gegen $\omega\in\Sr'(\R^n)$, falls für alle $\phi\in\Sr(\R^n)$ gilt $\omega_j[\phi] \rightarrow \omega[\phi]$ für $j\rightarrow\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 4.1 (Folge gegen $\delta$)}
+  Sei $f\in L^1(\R^n)$, $\int_{\R^n}f(x)\D x = 1$ und sei $f_j(x) = f(jx)j^n$ für $j=1,2,3,\ldots$. Dann konvergiert die Folge $f_j$ (als Folge von Distributionen) gegen $\delta$.
+\end{namedtheorem}
+
+$P(1/x)[\phi]=\lim_{\epsilon\rightarrow0^{+}}\int_{-\infty}^{-\epsilon}\frac1x\phi(x)\Dx +\int^{+\infty}_{\epsilon}\frac1x\phi(x)\Dx$ und $\frac1{x\pm i0}[\phi]=\lim_{\epsilon\rightarrow0^{+}}\int_{\R}\frac1{x+i\epsilon}\phi(x)\Dx$.
+
+\begin{namedtheorem}{Satz 4.2}
+  $\frac1{x\pm i0} = P(1/x)\mp i\pi\delta$ ist eine temperierte Distribution.
+\end{namedtheorem}
+
+\section{Fundamentallösungen für den Laplace-Operator}
+
+\begin{align*}
+  \tag{Poisson-Gleichung}
+  \triangle u(x)=f(x), \quad x\in\R^n
+\end{align*}
+Gesucht ist $u\in C^2(\R^n)$ mit $u(x)\rightarrow0$ für $|x|\rightarrow\infty$. Im Distributionensinne ist $(\triangle u)[\phi]=u[\triangle \phi]=f[\phi]$.
+
+\begin{namedtheorem}{Definition 5.1 (Fundamentallösung)} 
+  für einen Differentialoperator $L=\sum\limits_{\alpha\in\N^n , |\alpha|\leq N} a_{\alpha} \partial^{\alpha}$ mit konstanten Koeffizienten $a_{\alpha}$ ist eine Distribution $E\in\Sr'(\R^n)$, die die Gleichung $LE=\delta$ erfüllt. Eine Lösung des Problems $Lu(x)=f(x)$ ist dann gegeben durch $u=E\ast f$, weil $Lu=L(E\ast f) = (LE)\ast f = \delta\ast f = f$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 5.1 (Green'sche Identität)}
+  Sei $D$ ein beschränktes Gebiet in $\R^n$ mit glattem Rand $\partial D$ und nach aussen weisendem Einheitsvektoren $n(x)$, $x\in\partial D$. Für alle $u,v,\in C^2(D\cup\partial D)$ gilt dann $\int_D (\triangle uv - u\triangle v)\D x = \int_{\partial D} \left(\frac{\partial u}{\partial n} v - u\frac{\partial v}{\partial n} \right) \D \Omega(x)$, wobei $\frac{\partial}{\partial n} = \sum_{i=1}^n n_i(x)\frac{\partial}{\partial x_i}$ die Ableitung in normaler Richtung bezeichnet und $\D \Omega(x)$ das Oberflächenmass auf $\partial D$ ist.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 5.2 (Fundamentallösung für $\triangle$)}
+  Sei $n\geq2$. Die Funktion 
+  \begin{align*}
+    E(x) = \begin{cases}
+      \frac{\Gamma(n/2)}{2\pi^{n/2}(2-n)}|x|^{-n+2} = \frac1{|S^{n-1}|} \frac{|x|^{2-n}}{2-n}, & n\geq3 \\
+      \frac1{2\pi} \ln |x|, & n=2
+    \end{cases}
+  \end{align*}
+  ist Fundamentallösung für den $n$-dimensionalen Laplace-Operator, d.h. sie erfüllt (als Distribution) die Gleichung $\triangle E = \delta$. Eine Lösung der Poisson-Gleichung ist gegeben durch $u=E\ast f$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiel 5.1}
+  $n=3$: $E(x)=-\frac1{4\pi|x|}$, $n=4$: $E(x)=-\frac1{4\pi^2|x|^2}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition (Glatte Distributionen)}
+  Eine Distribution $\omega\in\Sr'(\R^n)$ heisst \textbf{glatt} auf einer offenen Menge $U\subset\R^n$, falls es eine glatte Funktion $f:U\rightarrow\C$ gibt mit $\omega[\phi]=\int f\phi\Dx$ für alle $\phi\in\Sr(\R^n)$, die ausserhalb $U$ verschwinden. $\delta$ und $E$ sind glatt auf $\R^n\setminus\{0\}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition}
+  Ein Differenzialoperator der Ordnung $N$ heisst $\textbf{elliptisch}$, wenn $\sum_{|\alpha|=N}a_{\alpha}p^{\alpha}\neq0$ für alle $p\in\R^n\setminus\{0\}$. $\triangle$ ist elliptisch, $\Box$ nicht.
+\end{namedtheorem}
+
+Die elliptische Regularität besagt, dass jede Lösung $u\in\Sr'(\R^n)$ von $Lu=f$ für einen elliptischen Differentialoperator $L$ und einer auf $U$ glatten Funktion $f\in\Sr'(\R^n)$ ebenfalls glatt ist.
+
+\section{Fundamentallösungen und Fouriertransformationen}
+
+Die Fouriertransformierte von $LE(x)=\delta(x)$ ergibt $P(k)\hat{E}(k)=1$, wobei $P(k)=\sum_{\alpha}a_{\alpha}(ik)^{\alpha}$ ein Polynom in $k_1,\ldots,k_n$ ist. Hat $P(k)$ keine reellen Nullstellen (bzw. integrierbare Singularitäten), definiert $1/P(k)$ eine Distribution und $E=(1/P(k))\fcheck$ Lösung des Problems. $P(k)=|k|^2$ für $L=-\triangle$.
+
+\begin{namedtheorem}{Beispiel (Fundamentallösung)}
+Für Distribution $E[\phi(x_1,x_2)]=\int_0^{\infty}\phi(t,t)e^{-t}\D t$ und Operator $L=\partial_{x_1}+\partial_{x_2}+1$ ist $\widehat{LE}[\phi(x_1,x_2)] =
+(\partial_{x_1}+\partial_{x_2}+1)E[\hat{\phi}(k_1,k_2)]=
+E[(-\partial_{k_1}-\partial_{k_2}+1)\int_{\R^2}\phi(x_1,x_2)e^{-ik_1x_1 - ik_2x_2}\Dx] = 
+E[\int_{\R^2}(-\partial_{k_1}-\partial_{k_2}+1)\phi(x_1,x_2)e^{-ik_1x_1 - ik_2x_2} \Dx]= 
+E[\int_{\R^2}(ix_1+ix_2+1)\phi(x_1,x_2)e^{-ik_1x_1 - ik_2x_2} \Dx]=
+\int_0^{\infty}\int_{\R^2}(ix_1+ix_2+1)\phi(x_1,x_2)e^{-t(ix_1+ix_2+1)} \Dx\D t =
+\int_{\R^2}\phi(x_1,x_2) \int_0^{\infty}(ix_1+ix_2+1)e^{-t(ix_1+ix_2+1)}\D t \Dx = 
+-\int_{\R^2}\phi(x_1,x_2) [e^{-t(ix_1+ix_2+1)}]\vert^{\infty}_0 \Dx = 1[\phi(x_1,x_2)]$.
+\end{namedtheorem}
+
+\section{Retardierte Fundamentallösung für den d’Alembert-Operator}
+
+Lösungen zur inhomogenen Wellengleichung $\frac1{c^2}\partial_t^2u-\triangle u = f$ führen auf den d'Alembert-Operator $L=\frac{\partial^2}{\partial x_0^2}-\sum_{j=1}^3\frac{\partial^2}{\partial x_j^2}$ mit $x_0=ct$, also $(-k_0^2+|\mathbf{k}|^2)\hat{E}(k)=1$. Eine Lösung ist $u(x_0,\mathbf{x})=(E\ast f)(x_0,\mathbf{x})=\int_{\R^3}\frac1{4\pi|\mathbf{x-x'}|}f(x_0-|\mathbf{x-x'}|,\mathbf{x}')\D \mathbf{x}'$.
+
+

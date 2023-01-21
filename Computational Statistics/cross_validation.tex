@@ -1,0 +1,31 @@
+\section*{Cross Validation}
+For \textit{model assessment} (est. test MSE) or \textit{model selection} (hyperp.s / var.s) but not both simultaneously (use double CV instead). \\
+\textbf{Validation set:} split data once into two parts (most bias + variance).
+\textbf{k-Fold:} same, but with many folds. $K^{-1}\sum_k |\mathcal{B}_k|^{-1}\sum_i l(Y_i,\hat{Y}^{(-\mathcal{B}_k)}_i);$ often $k=5,10$; $\text{Var}(\hat {\theta_k}) = 1/K \cdot \hat {\text{Var}}(MSEs)$ \textbf{LOOCV=n-fold:} $ n^{-1}\sum_i^n l(Y_i,\hat{Y}_i^{(-i)})$ (least bias). If $\hat Y = \mathcal{S}Y$: $\text{LOOCV} = \frac{1}{n}\sum_{i=1}^n\left(\frac{Y_i-\hat m(X_i)}{1-\mathcal{S}_{ii}}\right)^2\approx$
+"Historically" $\approx\text{GCV} = \frac{1}{n}\sum_{i=1}^n\left(\frac{Y_i-\hat m(X_i)}{1-\frac{1}{n}\mathbf{tr}(\mathcal{S})}\right)^2$
+
+\textbf{L$d$OCV:} $nCp^{-1}\sum^{nCp}_k d^{-1}\sum_i l(Y_i,\hat{Y}^{(-\mathcal{C}_k)})_i)$ Too expensive for $k\geq 3$ so alternatively sample $B$ times w.o. replacement ($nCp\rightarrow B$)
+
+\textbf{1-std error rule}: Find $\lambda$ with lowest error, add 1-std to error and find $\lambda'$ that reaches below this new error threshold
+
+\begin{codebox}{r}{Cross validation}
+# Workaround for categorical variables
+predict.regsubsets <- function(reg, new.data, id) {
+  form <- as.formula(reg$call[[2]])
+  mat <- model.matrix(form, new.data)
+  coefi <- coef(reg, id=id)
+  return(mat[,names(coefi)]%*%coefi)}
+n = nrow(data)
+nfolds = 10
+idx=seq(1:n)
+idx <- idx[sample(n, replace=F)] # comment out for non-random
+fold_indicator = cut(idx, breaks=nfolds, labels=F)
+sse = 0
+for(i in 1:nfolds){ 
+  train <- data[i != fold_indicator,]
+  test <- data[i == fold_indicator,]
+  fit <- lm(y~x+I(x^2), data=train)
+  preds <- predict(fit, test)
+  sse = sse + mean((preds-test$y)^2 )}
+mse = sse / nfolds
+\end{codebox}

@@ -1,0 +1,68 @@
+\section*{Non-parametric Reg} Price of arb.ness=inferior est. accuracy
+
+\subsection*{Nadaraya-Watson:} $\; \hat m(x)=\frac{\sum_iK((x-x_i)/h)Y_i}{\sum_iK((x-x_i)/h)}\approx m(x)=:\E[y|x]$
+$=\int yf_{Y|X}=\int yf_{XY}/f_{X}\approx \int y\hat{f}_{XY}/\hat{f}_{X}=(\sum K_x K_y y / nh^2) / (\sum K_x / nh)$
+
+\begin{codebox}{r}{Kernel method}
+ord <- order(x) # Original order lost in ksmooth
+ksmooth(x,y,kernel="normal",bandwidth=0.2,x.points=x)
+ks$x <- ks$x[order(ord)]; ks$y <- ks$y[order(ord)]
+\end{codebox}
+\textbf{Local bandwidth} $h_{opt}(x)=(\frac{\sigma^2_{\epsilon}\int K^2(z)}{n(m''(x)\int z^2K(z))^2})^{1/5}$.
+
+Since $K=K_h$, do iteratively, i.e. $h_0\rightarrow K_0\rightarrow h_1\rightarrow\cdots$: lokern
+\begin{codebox}{r}{Local bandwidth}
+library(lokern)
+lofit <- lokerns(x, y, is.rand=TRUE, hetero=TRUE)
+\end{codebox}
+\textbf{Local polynomial:}
+A piecewise degree $d$ polynomial with continuity in dimensions $0, ..., d-1$. Generally has $(k+1)(d+1)$ parameters and $k\cdot d$ constraints, so $k+d+1$ degrees of freedom. (e.g. \textbf{piecewise cubic} has $4(k+1)$ parameters and $3k$ constraint, so $k+4$ degrees of freedom. Basis functions: $h(x, \xi)=(x-\xi)_+^3$ ($0$ for all values $\leq \xi$). $y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \beta_3 x_i^3 + \gamma_1 h(x_i, \xi_1) + ... + \gamma_k h(x_i, \xi_k) + \epsilon_i$).\
+\begin{codebox}{r}{Local polynomials}
+model <- loess(y ~ x, span = 0.2971339), enp.target =df, surface="direct")# to predict non-train vals 
+# span is the degree of smoothing, enp.target sets the df. Specify span OR enp.target, NOT both!
+y_hat <- predict(model, newdata = x)
+\end{codebox}
+\textbf{Smoothing Splines:} Sobolev=$\{ g:[a,b]\to \mathbb{R}: \exists g'', \int_a^b g''(x)^2 dx < \infty \}$: $\hat g = \text{argmin}_{g\in G} \sum_{i=1}^n (y_i - g(x_i))^2 + \lambda \int_a^b g''(x)^2 dx$. Note: $\lambda \rightarrow 0$: natural spline, $\lambda = 0$: any interpolation, $\lambda=\infty$: LSE. Shrunken version of natural spline with knots at $x_1, ..., x_n$. \\
+Closed form solution: $\hat{\beta} = (B^{\top} B + \lambda \Omega)^{-1}B^{\top}Y$, where $\Omega_{jk} := \int B_j''(z) B_k''(z)dz$, with spline basis functions $B_j, \; j \in \{1, ..., n\}$. Smoother matrix $S=B(B^{\top} B + \lambda \Omega)^{-1}B^{\top}Y$.
+\begin{codebox}{r}{Smoothing splines}
+model <- smooth.spline(x, y, span = 0.2971339, df = 16, cv=T) #either specify span or df, not both!
+y_hat <- predict(model, x = x)$y
+# If no span and no df, complex. will be optimized using cv
+\end{codebox}
+\subsection*{Degrees of freedom}
+$\hat{m}(x)=\sum \omega_i(x)Y_i,\; \omega_i(x)=\frac{K((x-x_i)/h)}{\sum K((x-x_j)/h)}$ thus $\hat Y = \mathcal{S}Y$ w $\omega_s(x_r)=[\mathcal{S}]_{s,r}$; $df = \mathbf{tr}(\mathcal{S})$., $\text{Cov}(\hat{m}(x_i),\hat{m}(x_j))=\sigma^2(\mathcal{S}\mathcal{S}^T)_{ij}$\\
+Under regularity conditions: $\hat{s.e}(m(x_i)) = \hat{\sigma}_\epsilon  \sqrt{(SS^{\top})_{ii}}$ and $\E[\hat{m}(x_i)]\in \hat{m}(x_i)\pm 1.96\cdot \hat{s.e}(m(x_i))$
+\begin{codebox}{r}{Compute hat matrix}
+# Hat matrix "S.nw" to get degrees of freedom:
+Id <- diag(nrow(data))
+S <- matrix(0, nrow(data), nrow(data))
+for (j in 1:nrow(data))
+  S[, j] <- ksmooth(data[,"x"], Id[,j], x.point=data[, "x"], kernel="normal", bandwidth=4)$y
+df <- sum(diag(S)))
+\end{codebox}
+\iffalse
+\begin{codebox}{r}{Backfitting Algorithm for MLR}
+backfit <- function(x, y, n, p, o, eps) {
+  mu.hat <- mean(y) # Compute overall mean
+  g <- matrix(0, nrow=n, ncol=p) # Initialize g
+  converged <- FALSE
+  while(!converged) {
+    old.g <- g
+    beta0.hat <- mu.hat 
+    beta.hat <- numeric(p+1)
+    for(i in o) { # o: order e.g. 1:p
+      r <- y - mu.hat - rowSums(g[,-i])
+      fit <- lm(r~x[,i])
+      g[,i] <- fit$fitted
+      beta0.hat <- beta0.hat + fit$coeff[1]
+      beta.hat[1+i] <- fit$coeff[2]
+    }
+    if(max(colSums((old.g - g)^2)/colSums(old.g^2)) < eps) {
+      converged <- TRUE
+    }
+    beta.hat[1] <- beta0.hat
+  }
+  return(beta.hat)
+}
+\end{codebox}
+\fi

@@ -1,0 +1,42 @@
+\section{Learning Theory}
+\term{Shattering coeff:} $\text{Shatter}(\mathcal{F},s):=\{(f(\bs{x}[1]),\dots,f(\bs{x}[s]))\in \{-1,1\}^s : f\in\mathcal{F})\}$
+
+\term{VC-dim:} $\text{VC-dim}(\mathcal{F}):=\sup \{s:|\text{Shatter}((\mathcal{F},s)|=2^s\}$
+
+\term{VC-ineq:}
+$\mathbb{P}\{\sup_{\mathcal{F}} |\hat{l}(f)- \mathbb{E}l(f)|>\epsilon \}\le 8|\text{Shatter}(\mathcal{F},s)|e^{-s\epsilon^2/32}$
+
+Fit $s$ random labels perfectly $\implies \textbf{VC-dim}\ge s$
+
+%\subsection*{PAC-Bayesian thms}
+%0-1 loss: $e_f(\bs{x},y)=1\{f(\bs{x}\neq y\}=\frac{1-yf(\bs{x})}{2}$; $e^S_f:=\hat{e}_f$
+
+%Generalization gap:
+%$\delta^S_f:=\max(0,e_f-e^S_f)\le |e_f-e^S_f|=:\sqrt{\Delta_f^S}$
+
+%\term{Donsker:} $\forall \mathbb{Q} << \mathbb{P}$, $\mathbb{P}$-measurable $\phi$:
+
+%$\mathbb{E}_{\mathbb{Q}}[\phi]\le KL(\mathbb{Q}||\mathbb{P})+\ln \mathbb{E}_{\mathbb{P}}[e^\phi]$
+
+\term{McAllestor:} $\forall P, Q, \epsilon\in (0,1):$ with prob(S) $\ge\epsilon$:
+$\mathbb{E}_{\mathbb{Q}}[e_f]-\mathbb{E}_{\mathbb{Q}}[e_f^S]\le \sqrt{\frac{2}{s}[KL(Q||P)+\ln (\frac{2\sqrt{s}}{\epsilon})]}.$
+
+$\tilde{O}(1/\sqrt{s})$
+
+\term{Spectral complexity}
+DNN $\mathcal{A}$, each layer $l$ w weight matrix $W^l$ and Lipschitz const $\rho^l$,
+$R(\mathcal{A})=\Big(\prod^L_{l=1}\rho^l||W^l||_2\Big)\Big(\sum^L_{l=1}\frac{||(W^l-M^l)^T||^{2/3}_{2,1}}{||W^l||_2^{2/3}}\Big)^{2/3}.$
+
+\term{Bartlett:} $\forall\mathcal{A},$ margins $\gamma>0:$ w $\text{prob}=1-\delta:$
+
+Test Error($f$)$\le$Empirical $\gamma$-margin Error($f$)
+
+$\tilde{O}\big(\frac{||X||_F R(\mathcal{A}}{\gamma s}\ln(\text{max-width})-\sqrt{\ln\delta/2}\big)$
+
+\includegraphics[width=\textwidth/4
+]{ETH-DS-2020/AML/Resources/double_descent.png}
+
+\term{Thm:} For any $\epsilon>0,\delta\in (0,1/4]$, when $D=\Omega(\max(m\ln\frac{m}{\delta},m\ln\frac{1}{\epsilon})),\gamma\in[0,1]$, the $\mathcal{L}^{(\gamma)}$ loss, $\epsilon_{\text{unif-alg}}(m,\delta)\ge 1-\epsilon_{\text{gen}}(m,\delta)$.
+
+Uniform convergence:
+$\mathbb{P}_{S\sim\mathcal{D}^m}(\sup_{h\in\mathcal{H}}|\mathcal{L}_{\mathcal{D}}(h)-\hat{\mathcal{L}}_S(h)|\le \epsilon_{unif}(m,\delta))\ge 1-\delta$

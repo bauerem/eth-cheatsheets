@@ -1,0 +1,115 @@
+\section{Basics}
+\subsection*{Calculus}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+	%\item Part.: $\int u(x)v'(x) dx = u(x)v(x) - \int v(x)u'(x) dx$\\
+	%\item Chain r.: $\frac{f(y)}{g(x)} = \frac{dz}{dx} \Big|_{x=x_0}= \frac{dz}{dy}\Big|_{z=g(x_0)}\cdot \frac{dy}{dx} \Big|_{x=x_0}$ \\
+	%\item $g_x(1) = g_x(0) + g'_x(0) + \int_{0}^{1} g_x''(s)(1-s) ds$ \\
+	%\item $g(\mathbf{w}+\delta) - g(\mathbf{w}) = %\int_{\mathbf{w}}^{\mathbf{w+\delta}} \nabla g(\mathbf{u}) du = (\int_{0}^{1} \nabla g(\mathbf{w}+t\delta)dt) \cdot \delta$\\
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{x}) = \frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{b}) = \mathbf{b}$ \quad
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$ \\
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{A}\mathbf{x}) = (\mathbf{A}^\top + \mathbf{A})\mathbf{x} \stackrel{\text{\tiny A sym.}}{=} 2\mathbf{A}\mathbf{x}$
+	\item $\frac{\partial}{\partial \mathbf{x}}\mathbf{A}\mathbf{x}=\mathbf{A}$\\
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{A}\mathbf{x}) = \mathbf{A}^\top \mathbf{b}$ \quad
+	\item $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X} \mathbf{b}) = \mathbf{c}\mathbf{b}^\top$ \\
+	\item $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X}^\top \mathbf{b}) = \mathbf{b}\mathbf{c}^\top$ \quad
+	\item $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\mathbf{x}-\mathbf{b}}{\|\mathbf{x}-\mathbf{b}\|_2}$ \\
+	\item $\frac{\partial}{\partial \mathbf{x}}\|\mathbf{x}\|^2_2 = \frac{\partial}{\partial \mathbf{x}} \|\mathbf{x}^\top \mathbf{x}\|_2 = 2\mathbf{x}$ \quad
+	\item $\frac{\partial}{\partial \mathbf{X}}\|\mathbf{X}\|_F^2 = 2\mathbf{X}$ \\
+	\item $x^T A x = Tr(x^T A x) = Tr(x x^T A) = Tr(A x x^T)$ \\
+	\item $\tfrac{\partial}{\partial A} Tr(AB) {=} B^T$ \quad
+	\item $\frac{\partial}{\partial A} log|A| {=} A^{-T}$ \\
+	\item VJP: $\frac{\partial L}{\partial (Wx)}x^T$
+\end{inparaitem}
+
+\term{Rank:} $\text{rank}(\mathbf{D}\mathbf{E}) \leq \text{min}\{ \text{rank}(\mathbf{D}), \text{rank}(\mathbf{E})\}$
+
+\term{S-norm:} $||\bs{A}||_2:=\max_{||\bs{x}||=1}||\bs{A}\bs{x}||=\sigma_{\max}(\bs{A});\; $
+$||\bs{A}\bs{B}||_2\leq ||\bs{A}||_2\cdot||\bs{B}||_2$;
+$||A||_{2,1}:=\sum_{j\le \#\text{cols}} ||Ae_j||_2$
+
+\term{Cover's thm}:
+$C(s, n) = 2 \sum_{i=0}^{n-1} \binom{s-1}{i},$ w
+
+$C(s, n) := max_{|\mathcal{S}| = s}|\{\mathbf{y} \in \{-1, 1\}^s|\exists \theta : y_i \mathbf{x}_i^{\top} \theta \geq 0\}|$
+\term{Subdifferential}: $f:\mathbbm{R}^m\xrightarrow[]{}\mathbbm{R}$ convex, $x_0 \in \mathbbm{R}^m$, then $\partial f(x_0) = \{v \in \mathbbm{R}^m | \forall x \in \mathbbm{R}^m: f(x) - f(x_0) \ge v^T (x - x_0) \}=[f'(x_0^-),f'(x_0^+)],\; f(x_0^{\pm})=\lim_{x\rightarrow x_0^{\pm}}\frac{f(x)-f(x_0)}{x-x_0}$.
+
+Taylor 2D: $f(x+h)\approx f(x)+h^T\nabla f(x)+h^THh$
+
+\subsection*{Activation Functions}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+	\item $\sigma(x) = \frac{1}{1+e^{-x}}$, $\sigma(-x) = 1 - \sigma(x)$
+	\item $\nabla \sigma(x) = \sigma(x)(1-\sigma(x)) = \sigma(x)\sigma(-x)$
+	\item $\sigma^{-1}(x) = ln \left( \frac{x}{1 - x} \right)$
+	\item $\text{tanh}(x) {=} \frac{e^{x}-e^{-x}}{e^{x} + e^{x}} = 2\sigma(2x) - 1$
+	\item $\nabla \text{tanh}(x) = 1-\text{tanh}^2(x)$
+	\item $\text{ReLU(x)} = (x)_+ = \text{max}(0, x)$
+	\item $|x| = 2 \cdot (x)_+  - x$
+	\item $\text{thresh}(x) = \mathbbm{1} \left\{ x \geq 0\right\}$ ("Heavyside")
+	\item $\text{sign}(x)$
+	\item k-Hinge/Maxout: $g(x) = \max_{i=1}^{k}\{\theta_i^T x + b_i\}$
+\end{inparaitem}
+\subsubsection*{(Smooth) ReLU approximations}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+    \item $\text{Softplus}(x,\theta) = \ln({1 + \exp({x^T \theta})})\ \in\ (0,\infty)$\\
+    \item Exp. lin. unit:\\
+    $(x^T \theta)^+ + (\exp(x^T \theta)-1) 1\{x^T \theta < 0\} \in (-1, \infty)$ \\
+    %$(x,\theta) \xrightarrow[]{}$
+    %\begin{cases}
+    %$x^T \theta &\text{if }x^T \theta \ge 0\\
+    %\exp(x^T\theta) - 1 & \text{otherwise}
+    %\end{cases} \in (-1, \infty)$\\
+    \item Leaky Relu: $(x^T \theta)^+ + \epsilon x^T \theta\cdot 1\{x^T \theta<0\}$
+    %$\epsilon$ small, \\$(x,\theta) \xrightarrow[]{}$
+    %\begin{cases}
+    %x^T \theta &\text{if }x^T \theta \ge 0\\
+    %\epsilon \cdot x^T\theta & \text{otherwise}
+    %\end{cases} \in \mathbbm{R}$\\
+\end{inparaitem}
+\subsubsection*{Linear Functions}
+f linear $\iff$ homogeneity \& additivity \\
+$f$ and $g$ are linear $\implies$ $f \circ g$ linear \\
+$f$ linear $\iff$ $\exists \mathbf{A}: \; f(\mathbf{x}) = \mathbf{A}\mathbf{x}, \forall \mathbf{x}$ \\
+\term{Affine Functions} \\
+$f(\alpha \mathbf{x} + \beta \mathbf{y}) = \alpha f(\mathbf{x}) + \beta f(\mathbf{y}), \forall \alpha, \beta: \alpha + \beta = 1 \; \implies \; f \; \text{affine}$
+\subsubsection*{Probability}
+Var identity: $Var[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2$
+MomGenFunc: $M_x(t):=\mathbb{E}\exp[t\cdot x]$
+\term{Props:}
+$\exists M_x=M_y\implies p(x)=p(y)$;
+$M_{x+y}=M_x M_y$;
+
+$E[x_1^{k_1},\dots,x_n^k]=\frac{\partial^k}{\partial t^{k_1}_1,\dots,\partial t^{k_n}_n}M_x\Big|_{t=0}$;
+
+$x\sim\mathcal{N}(\mu,\Sigma)\implies M_x(\bs{t})=\exp(\bs{t}^T \mu + \frac{1}{2}\bs{t}^T\Sigma \bs{t})$
+$p(x)=\frac{\exp[-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)]}{\sqrt{(2\pi)^n\det\Sigma}}$
+\\{\footnotesize$
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix} \sim \mathcal{N}\left(
+\begin{bmatrix}
+\mu_x\\
+\mu_y
+\end{bmatrix},
+\begin{bmatrix}
+A & C\\
+C^T & B
+\end{bmatrix}
+\right) = \mathcal{N}\left(
+\begin{bmatrix}
+\mu_x\\
+\mu_y
+\end{bmatrix},
+\begin{bmatrix}
+\Tilde{A} & \Tilde{C}\\
+\Tilde{C}^T & \Tilde{B}
+\end{bmatrix}^{-1}
+\right)$}\\
+$x \sim \mathcal{N}(\mu_x, A),\ y \sim \mathcal{N}(\mu_y, B),\ x|y \sim \mathcal{N}(\mu_x + CB^{-1}(y-\mu_y), A- CB^{-1}C^T),\text{ or } x|y \sim \mathcal{N}(\mu_x - \Tilde{A}^{-1}\Tilde{C}(y - \mu_y), \Tilde{A}^{-1})$
+Jensen: $\phi(\mathbb{E}[X])\leq \mathbb{E}[\phi(X)]$, if $\phi$ convex
+
+Markov: $P(|X|\ge a)\le \frac{\E\phi(|X|)}{\phi(a)},\phi$ non-decr, $a>0$
+
+ $D_{KL}(p||q)=\int p(x)\log\frac{p(x)}{q(x)}$, $D_f=\int q \cdot f(\frac{q}{p})$,
+ 
+ $D_{JSD}(p||q)=D_{KL}(p||q)/2+D_{KL}(q||p)/2$ 

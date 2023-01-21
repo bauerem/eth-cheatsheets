@@ -1,0 +1,13 @@
+\section{Rectified Networks}
+\term{Dying ReLU}\\ 
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item A ReLU unit $z$ produces $0$ for all inputs ( $z(x^{(j)}) = 0\  \forall j \in [s]$ )\\
+\item Grad. desc. will not change the weights $\theta$ leading to $z$ (bec. $\nabla_\theta z = 0$)\\
+\item $z$ will output 0 for all inputs in next iteration (Repeat)\\
+\end{inparaitem}
+\term{Solutions} \begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Choose (smooth) ReLU approximation whose gradient is $\ne 0$
+\item Do nothing.
+\end{inparaitem}
+\term{Thm:} Networks with one hidden layer of (potentially a tremendous amount of) ReLU units are universal function approximators.
+\term{Thm:} Maxout networks with only \textit{two} maxout units are universal function approximators. (although potentially a tremendous amount of linear units is required)

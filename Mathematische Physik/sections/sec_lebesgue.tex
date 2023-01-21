@@ -1,0 +1,65 @@
+\chapter{Lebesgue-Integrationstheorie}
+
+% \section{Masstheorie}
+
+\section{Das Lebesguesche Integral}
+
+\begin{namedtheorem}{Lemma 2.5}
+  Sei $f:E\rightarrow\C$ messbar. Dann ist $|f|$ messbar und $f$ ist genau dann integrierbar, falls $|f|$ integrierbar ist, d.h. wenn $\int_E|f(x)|\Dx<\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.6}
+  Seien $f,g$ integrierbar, $\alpha,\beta\in\C$. Dann gilt
+  \begin{enumerate}[(i)]
+    \item $\alpha f + \beta g$ ist integrierbar und $\int_E\alpha f(x) + \beta g(x)\D x = \alpha\int_Ef(x)\D x + \beta\int_Eg(x)\D x$,
+    \item $f\leq g\implies \int_Ef(x)\D x\leq\int_Eg(x)\D x$,
+    \item $f(x)=g(x)$ f.ü. $\implies\int_Ef(x)\Dx=\int_Eg(x)\Dx$,
+    \item $\int_E|f(x)|\Dx=0\iff f(x)=0$ f.ü.,
+    \item $|\int_Ef(x)\Dx|\leq\int_E|f(x)|\Dx$,
+    \item ist $F\subset E$ messbar, so ist die Einschränkung von $f$ auf $F$ ebenfalls integrierbar und es gilt $\int_Ef(x)\Dx=\int_Ef(x)\chi_F(x)\Dx$,
+    \item ist $f$ Riemann-integrierbar auf $[a,b]\implies f$ Lebesgue-integrierbar und das Lebesguesche Integral stimmt mit dem Riemannschen überein,
+    \item für alle affinen Transformationen $x\mapsto Ax+b$ von $\R^n$ ist $x\mapsto f(Ax+b)$ integrierbar und es gilt $\int_{\R^n}f(x)\Dx=|\det A|\int_{\R^n}f(Ax+b)\Dx$.
+  \end{enumerate}
+\end{namedtheorem}
+
+\section{Konvergenzsätze}
+
+\begin{namedtheorem}{Satz 3.1 (MCT)}
+  Sei $f_i$ eine Folge integrierbarer Funktionen $0\leq f_i(x)\leq f_{i+1}(x) \rightarrow f(x)$ für $i\rightarrow\infty$ $\forall x\in E$. Ist die Folge $\int_E f_i(x) \D x$ beschränkt, so ist $f$ integrierbar und es gilt $\lim_{i\rightarrow\infty}\int_E f_i(x)\D x = \int_E f(x) \D x$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 3.2 (DCT)}
+  Sei $f_i$ eine Folge integrierbarer Funktionen mit $\lim_{i\rightarrow\infty} f_i(x) = f$ und es existiert eine integrierbarer Funktion $g$ mit $|f_i(x)|\leq g(x)\ \forall i,x$. Dann ist $f$ integrierbar und es gilt $\lim_{i\rightarrow\infty}\int_E f_i(x)\D x = \int_E f(x) \D x$
+\end{namedtheorem}
+
+\section{Der Satz von Fubini}
+
+\begin{namedtheorem}{Satz 4.1 (Fubini)}
+  Seien $E \subset \R^n$ und $F \subset \R^m$ feste messbare Mengen. Sei $f:E\times F \rightarrow\C$ messbar. Ist $f(x,\cdot)$ für alle $x\in E$ (bzw. $f(\cdot,y)$ für alle $y\in F$) integrierbar, so ist die Funktion $y\mapsto\int_Ef(x,y)\Dx$ (bzw. $x\mapsto\int_Ff(x,y)\D y$) messbar. Existiert eins der Integrale $\int_{E\times F}|f(x)|\Dx$, $\int_F\left(\int_E|f(x,y)|\Dx\right)\D y$ oder $\int_E\left(\int_F|f(x,y)|\D y\right)\D x$, so existieren sie alle drei und es gilt $\int_{E\times F}f(x)\Dx=\int_F\left(\int_E f(x,y)\Dx\right)\D y=\int_E\left(\int_F f(x,y) \D y\right)\D x$.
+\end{namedtheorem}
+
+\section{$L^p$-Räume}
+
+\begin{namedtheorem}{Lemma 5.1}
+  $L^p(E)$ ist ein Vektorraum über $\C$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 5.2}
+  $L^p(E)$ mit Norm $\norm{f}_p=\left(\int_E|f(x)|^p\D x\right)^{\frac1p}$ ist ein normierter VR.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 5.3}
+  Eine $(f_i)_{i=1}^{\infty}$ in einem normierten Vektorraum $V$ konvergiert gegen $f\in V$, falls $\lim_{i\in\infty}\norm{f_i-f}=0$. Eine Folge heisst \textbf{Cauchy-Folge}, falls $\forall\epsilon>0$ $\exists N>0$ mit $\norm{f_i-f_j}<\epsilon$ für alle $i,j>N$. Ein normierter Vektorraum $V$ heisst \textbf{Banachraum}, falls alle Cauchy-Folgen in $V$ konvergieren.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 5.3 (Riesz-Fisher)}
+  Für alle $p\geq1$ ist $L^p(E)$ ein Banachraum.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 5.4 (Träger)} 
+  von $f:E\rightarrow\C$ ist $\mathrm{supp}f = \overline{\{x\in E: f(x)\neq0\}}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 5.4 ($C_0$ dicht in $L^p$)}
+  Stetige Funktionen mit kompaktem Träger sind dicht in $L^p(E)$, d.h. $\forall f\in L^p(E)\ \forall\epsilon>0\ \exists g\in C_0(E)$ mit $\norm{f-g}_p <\epsilon$.
+\end{namedtheorem}

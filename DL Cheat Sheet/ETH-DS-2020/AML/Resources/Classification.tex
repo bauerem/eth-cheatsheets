@@ -1,0 +1,18 @@
+\section{Classification}
+\subsection*{Logistic Units}
+$\mathbb{P}(y | \mathbf{x}, \theta) = \sigma(y\mathbf{x}^{\top} \theta)$\\
+\term{Cross-entr. loss $l(\mathbf{x}, y; \theta)$}:  \\
+If $y \in \{ 0, 1\}$: $-y \text{ln}(\sigma(\mathbf{x}^{\top} \theta)) - (1 - y) \text{ln}(1 - \sigma(\mathbf{x}^{\top} \theta))$ \\
+If $y \in \{ -1, 1\}$: $- \text{ln}(\sigma(y\mathbf{x}^{\top}\theta))$ \\
+$\nabla_{\theta}l(\mathbf{x}, y; \theta) = -y \sigma(-y\mathbf{x}^{\top} \theta)\mathbf{x}$
+\subsection*{Multiclass}
+$\sigma^{\text{max}} (z)_i {=} \frac{\text{exp}(z_i)}{\sum_j \text{exp}(z_j)} = \frac{\text{exp}(\mathbf{x}^{\top} \theta_i)}{\sum_j \mathbf{x}^{\top} \theta_j}$ \\
+\term{Multiclass Cross-entr. loss $l(\mathbf{x}, y; \Theta)$}:
+$l(\mathbf{x}, \mathbf{y}, \Theta) = -\mathbf{y} \cdot \text{ln}(\sigma^{\text{max}}(\mathbf{x}, \Theta))$, $\mathbf{y}\in \{ \mathbf{e}_1, \mathbf{e}_2, ...\}$ \\
+$\nabla _{\theta _i} l(\mathbf{x}, \mathbf{y}, \Theta) = (\sigma^{\text{max}}_i - y_i) \mathbf{x}$ \\
+\term{For arbitrary pred. $q$ with target $p$}: \\
+$H(p, q) = H(p) + D_{KL}(p \; || \; q)$ \\
+$H(p) = - \sum_i \text{log}(p_i)p_i$, $H(p, q) = - \sum_i p_i \text{log}(q_i) = - \mathbb{E}_p [l_q]$; $D_{KL}(p || q) = \sum_i p_i \text{log}(\frac{p_i}{q_i}) = H(p, q) - H(p)$, $(l_q)_i = \text{log}(\frac{1}{q_i})$ (code len. of symb. i for distr. $q$)\\
+\term{Obs.}: In general, $H(p, q) \neq H(q, p)$; if $p$ not one-hot enc.: $min_q H(p, q) \neq 0$. If $p$ one-hot: $H(p) = 0$, $H(p, q) = D_{KL}(p, q)$, $\text{min}_q H(p, q) = 0$
+
+

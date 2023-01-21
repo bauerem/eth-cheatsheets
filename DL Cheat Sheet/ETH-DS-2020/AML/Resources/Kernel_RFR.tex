@@ -1,0 +1,26 @@
+\section{Kernel Learning \& Random Feature Regression}
+\subsection*{Kernels (symmetric, p.s.d. $K: \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$)}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item $K(x, x') = K(x', x)$
+\item \term{pos-semidef:} $\forall \{x_1, ..., x_n\} \subset \mathbb{R}^d$, the matrix $K \in \mathbb{R}^{n \times n}$ with entries $K_{ij} = K(x_i, x_j)$ is positive semi-definite\\
+\end{inparaitem}
+\term{Mercer's thm} For every kernel $K$ there is a corres. feat. map $\phi: \mathbb{R}^d \rightarrow M$ such that $K(x,x') = \langle\phi(x), \phi(x')\rangle_N$
+
+\subsection*{Gaussian process} generalizes Gaussian distr. to funcs. $f \sim GP(\mu, \Sigma)$ is a Gauss. proc. with mean func $\mu: \mathbb{R} \rightarrow \mathbb{R}$ and covar. func. $\Sigma: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$ if it holds that:\\
+$\forall n \in \mathbb{N}, \forall t_1, ..., t_n \in \mathbb{R}: (f(t_1), ..., f(t_n) \sim \mathcal{N}(\mu, \Sigma)$ where $\mu_i = \mu(t_i)$ and $\Sigma_{ij} = \Sigma(t_i, t_j)$. Cov matrix $\Sigma$ has to be symmetric and pos. semi-def. $\Rightarrow$ bijection to Kernels
+
+\subsection*{Neural Network Gaussian Process (NNGP)} Define a standard neural net with depth $L \in \mathbb{N}$:\\
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+    \item $f^{(l)}(x) = \frac{1}{\sqrt{m_l}} W^{(l)} \alpha^{(l-1)}(x)\ \ \in \mathbb{R}^{m_{l+1}}$\\
+    \item $\alpha^{(l)}(x) = \sigma(f^{(l)}(x))\ \ \in \mathbb{R}^{m_{l+1}}$
+\end{inparaitem}
+where $l \in [L],\ W^{(l)} \in \mathbb{R}^{m_{l+1} \times m_l}$ such that $W_{ij} \sim \mathcal{N}(0,1)$ and $\sigma: \mathbb{R} \rightarrow \mathbb{R}$ is a non-linearity. Define $m_o = d$ and $m_L = 1$ so that $f_\theta^{(L)}(x) := f^{(L)}(x) \in \mathbb{R}$ and $f^{(0)}(x) = x$. Finally, denote by $f_{\theta_t}^{(L)}$ the neural network at time t and by $f_t^{(L)}$ the network $f_{\theta_t}^{(L)}$ with infinite width layers.\\
+\term{Theorem:} Let $f_{\theta_0}^{(L)}$ and $f_0^{(L)}$ be defined as above. Then it holds that: $f_{\theta_0}^{(L)} \xrightarrow{m_1, ..., m_L \rightarrow \infty}f_0^{(L)} \sim GP(0, \mathbf{\Sigma}^{(L)})$ where $\Sigma^{(L)}: \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is called NNGP kernel defined recursively as:\\
+$\Sigma^{(L)}(x, x') = \mathbb{E}_{z \sim \mathcal{N}(0, \Sigma^{l-1}|_{x,x'})}\left[\sigma(z_1) \cdot \sigma(z_2)\right]$ with base case $\Sigma^{(1)}(x,x') = \frac{1}{\sqrt{d}} x^T x'$ and $\Sigma^{(l-1)}|_{x,x'} \in \mathbb{R}^{2 \times 2}$ is $\Sigma^{(l-1)}$ evaluated on the set $\{x,x'\}$. This means that for given dataset $X,y$ we know the distribution $f_\theta^{(L)}(X)$! Use as prior to compute a posterior with new data: $p\left(f^{(L)}(x^*)\ |\ x^*, X, y\right)$.\\
+\term{Theorem:} Under the above assumptions it holds that:
+$p\left(f^{(L)}(x^*)\ |\ x^*, X, y\right) \sim \mathcal{N}(\mu, \tau^2$ where posterior mean and variance are given by:\\
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+    \item $\mu = (\Sigma_{x^*}^{(L)})^T \cdot (\Sigma^{(L)} + \sigma_{\epsilon}^2 \cdot \mathbf{1}_{n \times m})^{-1} \cdot y$\\
+    \item $\tau^2 = \Sigma^{(L)}(x,x^*) - (\Sigma_{x^*}^{(L)} + \sigma_{\epsilon}^2 \cdot \mathbf{1}_{n \times m})^{-1} \Sigma_{x^*}^{(L)}$\\
+\end{inparaitem}
+with $(\Sigma_{x^*}^{(L)})_i = \Sigma^{(L)}(x_i, x^*)$ and $\Sigma_{ij}^{(L)} = \Sigma^{(L)}(x_i, x_j$

@@ -1,0 +1,30 @@
+\section*{Non-param Density Estimation}
+$\;$Naive: $K(x)=\frac{1}{2}1\{|x|\leq1\}$
+$\hat{f}(x)=\frac{1}{2nh}|\{X_i:X_i\in (x-h,x+h]\}|\approx \lim\frac{1}{2h}P(X\in (x-h,x+h])=f(x)$
+\\
+\textbf{Kernel density}: $\hat{f}(x) = \frac{1}{nh} \sum_{i=1}^n K\left(\frac{x-x_i}{h}\right)$ s.t.\\
+$K(z) \geq 0$, $\int K(z) dz = 1$, $K(z) = K(-z)$.
+\\
+Gaussian: $K(z) = (2\pi)^{-\frac{1}{2}} \text{exp}(-\frac{1}{2}x^2)$; $K(x)=\frac{\pi}{4}\cos(\frac{\pi}{2}x)1\{|x|\leq1\}$\\
+Epanechnikov: $K(x)=\frac{3}{4}(1-|x|^2)\{|x|\leq1\}$ optimal w.r.t. MSE\\
+KNN: $h(x)=\min \{||x-x'||:x'=k-\text{th NN}\}$ but note $\int \hat{f}_{h(x)}\neq 1$\\
+\textbf{BV TO}: $MSE(x)=\E[(\hat{f}(x)-f(x))^2]=(\E[\hat{f}(x)]-f(x))^2+\text{Var}(\hat{f}(x))$\\
+If $nh\rightarrow\infty$ as $h,n\rightarrow0,\infty$ then $\text{Bias}(x)=h^2f''(x)\int z^2K(z)dz/2+o(h^2)$, $\text{Var}(\hat{f}(x))=(nh)^{-1}f(x)\int K^2(z)dz+o((nh)^{-1})$ $\stackrel{\partial MSE=0}{\rightarrow} h_{opt}=(\frac{f(x)\int K^2(z)dz}{nf''(x)^2(\int z^2K(z)dz)^2})^{1/5}$ using $h_{opt}$: Bias, Var $O(n^{-4/5})$
+\textbf{Sheather-Jones}: Global optimal bandwidth selection, but requires $f''$ to be known in advance. Solution: Optimize over $h_{\text{opt}}$ and $h_{\text{init}}$ simultaneously.
+
+\textbf{Out-of-sample $h$}: $\arg\max_h\sum_{i=1}^n \log \hat{f}_h(x_i)$ s.t. $(x_i)_i\perp\hat{f}$
+
+Intuition: $\E[\log \hat{f}_h(x_i)]=\max\iff KL(f|\hat{f}) \iff f=\hat{f}$
+
+\textbf{Higher $d$}:$\hat{f}(x)=\frac{1}{nh^d}\sum K(\frac{x-X_i}{h})$, $\int K =1, \int uK(u)=0, \int uu^TK(u)=I_d$
+
+E.g. $K(u)=\prod_j^d K_j(u_j)$. $K(r)=K(|r|)\Rightarrow K(u)=c_d\exp(-u^Tu/2)$ (Gauss)
+
+Curse: Best possible MSE rate $O(n^{-4/(4+d)})$
+
+\begin{codebox}{r}{Density estimation}
+xpts <- seq(from=-5, to=5, by=0.1) # eval x pts
+data <- rnorm(n) # data from true distr.
+ke <- density(x=data, bw=0.5, kernel='gaussian', from=-5, to=5, n=length(xpts))
+MISE <- sum((ke$y - dnorm(xpts))^2)
+\end{codebox}

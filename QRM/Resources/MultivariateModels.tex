@@ -1,0 +1,207 @@
+\section*{Multivariate Models}
+\textbf{Pushforward:} $\mu=X^\#\mathbb{P}=\mathbb{P}\circ X^{-1}$
+
+\textbf{Multivariate CDF: TODO!!!}
+
+\textbf{Multivariate Moments, corr, cauchy-schwarz arg, cholesky: TODO!!!}
+
+\textbf{Multivariate sample stats, sums/lin combs and margins of multivariate normal: TODO!!!}
+
+\textbf{Characteristic function:} $\phi_X(u)=\E [\exp(iu^\top X)]$
+
+\textbf{Properties:}
+\begin{itemize}
+    \item $X_1,\dots,X_n\perp\iff \phi_{X1+\dots+X_n}(t)=\prod^d_{j=1}\phi_{X_j}(t_j)$
+    \item $X_1,\dots,X_n\perp\implies \phi_{\alpha_1X1+\dots+\alpha_n X_n}(t)=\phi_{X_1}(\alpha_1 t)\cdots\phi_{X_n}(\alpha_n t)$
+    \item $X\sim\mathcal{N}(0,\mathbb{1}_d)\implies \phi_X(u)=\E[\exp(iu^TX)]=\prod^d_{j=1}\E[\exp(i u_j X_j)]=\prod^d_{j=1}\exp(-u^2_j/2 )=\exp(-u^\top u/2)$
+    
+    \item $X\stackrel{(d)}{=}\mu+AZ\sim\mathcal{N}(\mu,\Sigma)\implies \phi_X(u)=\E[\exp(iu^TX)]=\exp(i u^\top\mu)\E[\exp(i u A^\top Z)] =\exp(i u^\top\mu-\frac{1}{2}u^\top\Sigma u)$
+\end{itemize}
+
+\textbf{Normal:} $f_X(x)=\frac{1}{(2\pi)^{d/2}\sqrt{\det\Sigma}}\exp\big(-\frac{1}{2}(x-\mu)^\top\Sigma^{-1}(x-\mu)\big)$
+
+$\Sigma$ ``reg. normal'' iff invertible; $\Sigma$ ``singular normal'' iff not invertible
+
+Contour sets: $(x-\mu)^\top \Sigma(x-\mu)=c$
+
+\textbf{Conditional normals:} $X\sim\mathcal{N}_d(\mu, \Sigma)$, $\Sigma$ pos. def.. $Y_1=(X_1,\dots,X_k)$ and $Y_2=(X_{k+1},\dots,X_d)$, $\mu=(\mu_1^\top,\mu_2^\top)^\top$, $\Sigma=[[\Sigma_{11},\Sigma_{12}],[\Sigma_{21},\Sigma_{22}]]$, $\Sigma_{12}=\Sigma{21}^\top$
+
+$\implies (Y_2|Y_1=y_1)\sim\mathcal{N}_{d-k}(\tilde \mu, \tilde \Sigma)$, $\tilde \mu=\mu_2+\Sigma_{21}\Sigma_{11}^{-1}(y_1-\mu_1)$, 
+
+$\tilde \Sigma=\Sigma_{22}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}$
+
+\textbf{Convolutions:} $X\sim\mathcal{N}_d(\mu,\Sigma)$ $\perp$ $Y\sim\mathcal{N}_d(\tilde \mu, \tilde \Sigma)$\\
+$\implies X+Y\sim\mathcal{N}_d(\mu+\tilde \mu, \Sigma + \tilde \Sigma)$
+
+\textbf{TODO: quadratic form chi-distr., add statistical tests in higher ds, drawbacks of normal distributions}
+
+\subsection*{Multivariate normal variance mixtures}
+
+\textbf{Def:} $X\stackrel{(d)}{=}\mu + \sqrt W A Z$ w. $\mu\in\R^d$ loc. vec., $A\in\R^{d\times k}$, $\Sigma=AA^\top$ scale/dispersion matrix, $Z\sim\mathcal{N}_k(0,I_k)$ and $W\geq 0$.
+
+Shorthand: $X\sim M_d(\mu,\Sigma,\hat F_W)$
+
+$\implies (X|W=w)\stackrel{(d)}{=}\mu+\sqrt w A Z\sim \mathcal{N}_d(\mu, wAA^\top)=\mathcal{N}_d(\mu, w\Sigma)$
+
+\textbf{Lemma (Independence in normal variance mixtures):}
+$X=\mu+\sqrt W Z$ w. $\E[W]<\infty$ (i.e. an uncorrelated normal variance mixture)\\
+Then: $X_i\indep X_j \iff W$ is a.s. const. (i.e. $X\sim\mathcal{N}_d$)
+
+\textbf{Characteristic function:} $\phi_{X=\mu+\sqrt W A Z}(u)=\E[\E[\exp(iu^\top\mu+iu^\top\sqrt W A Z)|W]]=\exp(iu^\top\mu)\E[\exp(-W\frac{1}{2}u^\top\Sigma u)]$
+
+
+\textbf{Laplace-Stieltjes trafo:} $\hat{\cdot}: F_W(\theta)\mapsto \hat F_W(\theta)=\E[e^{-\theta W}]=\int_0^\infty e^{-\theta w}dF_W(w)$
+
+Therefore: $\phi_X(u)=\exp(i u^\top \mu)\hat F_W(\frac{1}{2}u^\top\Sigma u)$
+
+\textbf{Density:} $\Sigma$ pos. def. \& $\mathbb{P}(W=0)$,
+$f_X(x)=\int_0^\infty f_{X|W}(x|w) dF_W(w)=\int_0^\infty \frac{1}{(2\pi)^{d/2}w^{1/2}\Sigma^{1/2}}\exp(-\frac{(x-\mu)^\top\Sigma^{-1}(x-\mu)}{2w}dF_W(w)$ are \textit{elliptical distributions}.
+
+\textbf{Affine trafo:} $X\sim M_d(\mu,\Sigma, \hat F_W)$, $Y=b+BX$, $b\in\R^k$, $B\in\R^{k\times d}$, $Y\sim M_k(b+B\mu, B\Sigma B^T,\hat F_W)$
+
+\begin{itemize}
+    \item $\nu^\top X\sim M_1(v^T\mu, \nu^\top\Sigma\nu,\hat F_W)$
+    \item $X=\mu+\sqrt W A Z \implies b+BX=b+\mu+\sqrt W B A Z$
+\end{itemize}
+
+\textbf{Sampling:} 1) $Z\sim\mathcal{N}_d(0,I_d)$; 2) Gen. $W\sim F_W\perp Z$, e.g. $W=F^{-1}_W(U)$ for $U\sim\text{Unif}(0,1)$; 3) Compute Cholesky decomp $\Sigma=AA^T$;
+4) Return $X=\mu + \sqrt W A Z$
+
+\textbf{E.g.s:}
+\begin{itemize}
+    \item $W=1$: Multivariate normal distr
+    \item $2$-point Mixture: $\mathbb{P}(W=w_1)=1-\mathbb{P}(W=w_2)=p$\\
+    Interpretation: ordinary + stress regime
+    \item $k$-point Mixture: $\mathbb{P}(W=w_j)=p_j$ with $\sum p_j=1$
+    \item Multivar. $t$-distr.: $W=\nu/V$ for $V\sim \chi^2_\nu$ or equiv. $W=1/G$ for $G\sim \Gamma(\nu/2,\nu/2)$\\
+    $f_X(x)=\frac{\Gamma((\nu + d)/2)}{\Gamma(\nu/2)(\nu\pi)^{d/2}|\Sigma|^{1/2}}(1+\frac{(x-\mu)^T\Sigma^{-1}(x-\mu)}{\nu})^{-\frac{\nu+d}{2}}$, $\nu>0$ deg. o. freed., $\Sigma\in\R^{d\times d}$ pos. def..\\
+    Shorthand: $t_d(\nu,\mu,\Sigma)$\\
+    $\nu>2\implies \E[W]=\frac{\nu}{\nu-2},\; \Cov X = \frac{\nu}{\nu-2}\Sigma$
+\end{itemize}
+
+\subsection*{Multivariate normal mean variance mixtures}
+\textbf{Def:} $X\stackrel{(d)}{=}m(W)+\sqrt W A Z$, w. $Z\sim \mathcal{N}_k(0,I_k),\; A\in\R^{d\times k},\; W\geq 0$ r.v. $\indep$ $Z$, $m:\R_+\rightarrow \R^d$ m-able
+
+$\cdot\; \Sigma=AA^\top \rightarrow (X|W=w)\sim \mathcal{N}_d(m(w),w\Sigma)$ (no longer elliptical)
+
+\textbf{E.g.s:}
+\begin{itemize}
+    \item $m(W)=\mu + \gamma W$ for $\mu,\gamma\in\R^d$, $\E[X|W]=\mu+\gamma W$ for $\mu, \gamma \in \R^d$
+    $\E[X|W]=\mu+\gamma W$\\
+    \& $ \Cov(X|W)=W\Sigma$ one has\\ $\E[X]=\E[\E[X|W]]=\E[\mu+\gamma W]=\mu +\gamma \E[W]$,\\
+    $\Cov X = \Cov{\E[X|W]}+\E[\Cov{X|W}]=\Var W \gamma\gamma^\top + \E[W]\Sigma$ if $\E[W^2]<\infty$
+    \item If $W$ has GIG (generalized inverse Gaussian) distr., i.e.
+    $f(x)=\frac{(a/b)^{p/2}}{2K_p\sqrt{ab}}x^{p-1}e^{-(ax+b/x)},\; x>0,$ for parameters $a,b>0$ and $p\in\R$, then $X$ has a generalized hyperbolic distribution ($K_p$ is a modified Bessel func of 2nd kind) 
+\end{itemize}
+
+\subsection*{Spherical and Elliptical Distributions}
+\textbf{Spherical Distr:} of $d$-dim r.v. $Y$: $\forall U\in O(d)=\{U'\in\R^{d\times d}|U^\top U=UU^\top = I_d \}$: $Y\stackrel{(d)}{=}UY$
+(distr. inverse under rot. \& refl.)\\
+Shorthand: $Y\sim S_d(\psi)$
+
+\textbf{Characterizations:}
+\begin{enumerate}
+    \item $Y$ spherical
+    \item $\forall a\in\R^d: a^\top Y \stackrel{(d)}{=}||a||Y_1$
+    \item $\exists $\textbf{characteristic generator} $\psi:\R_+\rightarrow \R: \phi_Y(u)=\psi(|u|_2^2),\; u\in\R^d$
+\end{enumerate}
+
+\textbf{Thm (Stochastic representation):}
+$Y\sim S_d(\psi)\iff Y\stackrel{(d)}{=}RS$\\
+w. $S\sim U(x\in\R^d:||u||=1)$ $\perp R\geq 0$
+
+\textbf{Density generator:} $f_Y(y)=g(||y||^2),\; g:\R_+\rightarrow\R_+$
+
+\textbf{Cor:} $Y\sim S_d(\psi),\; \mathbb{P}(Y=0)=0$\\
+
+$\implies
+\big(||Y||,\frac{Y}{||Y||}\big)\stackrel{(d)}{=}\big(||RS||,\frac{RS}{||RS||}\big)\stackrel{(d)}{=}\big(R,S\big)$
+
+\textbf{E.g.s:}
+\begin{itemize}
+    \item $t$-distribution: $Y\sim t_d(\nu, 0, I_d)$, then $R^2=Y^\top Y=WZ^\top Z$ for $W=\nu / V$, $V\sim\chi_\nu^2$, $Z\sim\mathcal{N}_d(0,I_d)$
+    \item \textbf{TODO!!!}
+\end{itemize}
+
+\textbf{Elliptical Distr.:} $X \stackrel{(d)}{=} \mu + A Y,\; \mu\in\R^d, A\in\R^{d\times k}, Y\in S_k(\psi)$
+
+Shorthand: $E_d(\mu,\Sigma, \psi) \quad \big(=E_d(\mu, c\Sigma, \psi(\cdot/c)) \big)$
+
+\textbf{Thm (stoch. repr.):} $X \stackrel{(d)}{=} \mu + R A S$, $R=||Y||$, $S=\frac{Y}{||Y||}$
+
+\textbf{Char. func.:} $\phi_X(u)=\E[\exp(iu^\top X)]=e^{iu^\top \mu}\E[\exp(iu^\top A Y)]=e^{iu^\top \mu}\E[\exp(i(A^\top u)^\top A Y)]=e^{iu^\top \mu} \psi(iu^\top AA^\top u)=e^{iu^\top \mu} \psi(iu^\top \Sigma u)$
+
+
+
+\textbf{TODO: slides 52-56}
+
+\textbf{Prop (Subadd. of VaR in elliptical models):}
+$L_i=\nu_i^\top X$, $\nu_i\in\R^d$, $i\in[n]$, $X\sim E_d(\mu, \Sigma, \psi)$.
+Then $\forall \alpha\in (1/2, 1)$:\\
+$\VaR (\sum^n_{i=1} L_i)\leq \sum^n_{i=1} \VaR (L_i)$ \& $\VaR(\sum^d_{i=1} X_i)\leq  \sum^d_{i=1} \VaR (X_i)$.
+
+\textbf{Advantages:}
+\begin{itemize}
+    \item elliptical marg.s \& condit.s; quadratic forms available
+    \item lin comb of indep w. $\Sigma$ \& $c\Sigma$ also elliptical
+    \item (S) for $\VaR$; Model flexibility for tails (light and heavy)
+\end{itemize}
+
+\textbf{Disadvantages}
+\begin{itemize}
+    \item Gaussian machinery not available; radially symm.
+\end{itemize}
+
+\subsection*{Dimension reduction techniques}
+
+\subsection*{$p$-factor model}
+\textbf{Def:} $X$ follows a $p$-factor model if $X = a + BF + \epsilon$, where
+\begin{enumerate}
+    \item $a\in\R^d$ and $B\in \R^{d\times p}$ is a matrix of factor loadings.
+    \item $F = (F_1, \dots, F_p)$ is a random vector of underlying factors with $p < d$ and $\Theta:=\Cov(F)$ (systematic risk)
+    \item $\epsilon = (\epsilon, \dots, \epsilon_d)$ is the random vector of idiosyncratic error terms with $\E[\epsilon] = 0$, $\Upsilon:= \Cov(\epsilon)$ is diagonal
+    and $\Cov(F,\epsilon) = 0$ (idiosyncratic risk)
+\end{enumerate}
+
+\textit{Goal:} Identify or estimate $(a,B)$ or $F = (F_1, \dots, F_p)$. \\
+\begin{itemize}
+    \item Factor models imply that $\Sigma := \Cov(X) = B\Theta B^T + \Upsilon$
+    \item $B^{*} = B\Theta^{1/2}$ and $F^{*} = \Theta^{-1/2}(F - \E[F])$ one has $X = \mu + B^{*}F^{*} + \epsilon$ where $\mu = \E[X]$
+    \item One has $\Sigma = B^{*}(B^{*})^T + \Upsilon$ and conversely, if $\Cov(X) = B^{*}(B^{*})^T + \Upsilon$ for $B^{*} \in \R^{d\times p}$ with $rank(B^{*}) = p < d$ and diag. matrix $\Upsilon$, then $X$ has a factormodel representation for a $p$-dimensional $F$ and $d$-dimensional $\epsilon$.
+\end{itemize}
+\subsection*{Statistical estimation strategies}
+Consider $X_t = a + BF_t + \epsilon_t, \quad t=1,\dots,n$. Three types of factor models are commonly used
+
+\textbf{1) Macroeconomic factor models:} It is assumed that $F_t, \ t = 1,\dots, n$ are observable. Estimation of
+$a$ and $B$ is accomplished by time series regression. \\
+\underline{Estimation of Macroeconomic factor models:} (Univariate regression) Consider the (univariate) time series regression model
+$X_{t,j} = a_j + b_j^T F_t + \epsilon_{t,j}, \quad t = 1,\dots,n$.
+\begin{itemize}
+    \item Components $F_{t,1},\dots,F_{t,p}$ are assumed to be observables like interest rates, unemployment rate etc.
+    \item To justify use of ordinary least-squares, assume errors $\epsilon_{1,j},\dots,\epsilon_{n,j}$ form a white noise process (i.e. identically dist. and serially uncorrelated)
+    \item Models can also be estimated simultaneously using multivariate regression.
+\end{itemize}
+
+\textbf{2) Fundamental factor models} It is assumed that $a$ and $B$ are known but the factors $F_t$ are unobserved and have to be estimated from $X_t, \ t = 1,\dots,n$, using cross-sectional regression at each $t$. \\
+\underline{Estimating fundamental factor models} Consider cross-sectional regression model $X_t = BF_t + \epsilon_t$. B is assumed to be konwn, $F_t$ to be estimaed, $\Cov(\epsilon) = \Upsilon$. Note: $a$ can be absorbed into $F_t$. To obtain precision in estimating $F_t$, one needs $p << d$.
+\begin{itemize}
+    \item E.g. it is assumed that stock returns of companies in the same country/industry are affected by a common factor.
+    \item First: Estimate $F_t$ via ordinary least squares (OLS) by $\hat{F}_t^{OLS} = (B^TB)^{-1}B^TX_t$. This is the best linear unbiased estimator if $\Cov(\epsilon_t) = \sigma^2I_d$ for some $\sigma > 0$.
+    \item If $\Cov(\epsilon_t) = \Upsilon$ for general $d\times d$ matrix $\Upsilon$, it is possible to obtain linear unbiased estimates with smaller squared errors via generalized least squares. To do that, estimate $\Upsilon$ by $\hat{\Upsilon}$ via the diagonal of the sample covariance matrix of the residuals $\hat{\epsilon_t} = X_t - B\hat{F}_t^{OLS} , t = 1, \dots ,n$. Then estimate $F_t$ by $\hat{F}_t = (B^T\hat{\Upsilon}^{-1}B)^{-1}B^T\hat{\Upsilon}^{-1}X_t$.
+\end{itemize}
+
+\textbf{3) Statistical factor models} It is assumed that neither $(a,B)$ not the factors $F_t$ are observed (both have to be estimated from $X_t, \ t = 1, \dots , n)$. The factors can be found with \textit{principal component analysis}. \\
+\underline{Estimating statistical factor models with PCA} Goal: Reduce dimensionality of highly correlated data by finding a small number of uncorrelated linear combinations which account for most of the variance in the data. This can be used for finding factors. \\
+Key: Every sym. matrix $M$ has spectral decomp. $M = U \Lambda U^T$ where
+\begin{itemize}
+    \item $\Lambda = \diag(\lambda_1,\dots,\lambda_d)$ is diag. matrix of eigenvalues of $M$ which w.l.o.g. are ordered $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_d$
+    \item $U$ is orthogonal matrix whose columns are eigenvectors of $M$ length 1.
+\end{itemize}
+Let $\Sigma = U \Lambda U^T$ with $\Lambda = \diag(\lambda_1,\dots,\lambda_d)$ s.t. $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_d$ and $Y = U^T(X-\mu)$ the \textit{principle component transform}. \\
+$Y_i = u_j^T(X-\mu)$ is the \textit{$j$-th principle component of X} (where $u_j$ is the $j-th$ column of $U$).
+
+One has $\E[Y] = 0$ and $\Cov(Y) = \E[YY^T] = U^T\Sigma U= \Lambda$ so principal components are uncorrelated and $Var(Y_j) = \lambda_j$. \textit{The principal components are thus ordered by decresing variance}.
+One can show: 1) $Var(u_1^TX) = \max\{Var(u^TX) : u^Tu = 1 \}$. 2) Principal components are orthogonal. \\
+\underline{Principal components as factors:} Inverting the principal component transform $Y = U^T(X - \mu)$, one obtains $X = \mu + UY = \mu + U'Y' + U''Y'' =: \mu + U' Y' + \epsilon$ where $Y' \in \R^k$ contains the first $k$ principal components.
+
+Note: Althought $\epsilon_1, \dots, \epsilon_d$ will thend to have small variances, the assumptions of the factor model are generally violated (since they need not have a diaognal covariance matrix and need not be uncorrelated with $Y'$). Nevertheless, principal components are often interpreted as factors.

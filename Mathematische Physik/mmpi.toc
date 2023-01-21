@@ -1,0 +1,59 @@
+\changetocdepth {2}
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{i}{section*.1}
+\contentsline {chapter}{\numberline {1}Fourierreihen}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Definition, Darstellungssatz}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Riemann\IeC {\textendash }Lebesgue-Lemma, Dirichletkern}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Reellwertige Darstellung der Fourierreihen}{1}{section.1.3}
+\contentsline {section}{\numberline {1.4}Poisson\IeC {\textquoteright }sche Summationsformel}{1}{section.1.4}
+\contentsline {section}{\numberline {1.5}W\IeC {\"a}rmeleitungsgleichung auf einem Ring}{1}{section.1.5}
+\contentsline {section}{\numberline {1.6}Satz von Fej\IeC {\'e}r}{1}{section.1.6}
+\contentsline {section}{\numberline {1.7}Rechnungen}{1}{section.1.7}
+\contentsline {chapter}{\numberline {2}Fouriertransformation}{1}{chapter.2}
+\contentsline {section}{\numberline {2.1}Definition und elementare Eigenschaften}{1}{section.2.1}
+\contentsline {section}{\numberline {2.2}Fouriertransformierte der Gauss-Funktion}{1}{section.2.2}
+\contentsline {section}{\numberline {2.3}Beispiele f\IeC {\"u}r Fouriertransformierte}{2}{section.2.3}
+\contentsline {section}{\numberline {2.4}Umkehrsatz f\IeC {\"u}r $L^1$-Funktionen}{2}{section.2.4}
+\contentsline {section}{\numberline {2.5}Der Schwartzraum $\mathscr {S}(\PazoBB {R}^n)\subset L^p(\PazoBB {R}^n),p\in [1,\infty )$}{2}{section.2.5}
+\contentsline {section}{\numberline {2.6}Fouriertransformation von rotationsinverianten Funktionen}{2}{section.2.6}
+\contentsline {section}{\numberline {2.7}Regularit\IeC {\"a}t und Abfalleigenschaften}{2}{section.2.7}
+\contentsline {section}{\numberline {2.8}Wellengleichung}{2}{section.2.8}
+\contentsline {section}{\numberline {2.9}W\IeC {\"a}rmeleitungsgleichung}{2}{section.2.9}
+\contentsline {section}{\numberline {2.10}Rechnungen}{3}{section.2.10}
+\contentsline {chapter}{\numberline {3}Orthogonale Funktionalsysteme, Hilbertraum}{3}{chapter.3}
+\contentsline {section}{\numberline {3.1}Die schwingende Saite}{3}{section.3.1}
+\contentsline {section}{\numberline {3.2}Orthogonale Systeme, Hilbertr\IeC {\"a}ume}{3}{section.3.2}
+\contentsline {section}{\numberline {3.3}$L^2$-Theorie der Fourierreihen}{3}{section.3.3}
+\contentsline {section}{\numberline {3.4}Hermite-Polynome und harmonischer Oszillator}{3}{section.3.4}
+\contentsline {section}{\numberline {3.5}Orthogonale Polynome, Legendre Polynome}{3}{section.3.5}
+\contentsline {section}{\numberline {3.6}Kugelfunktionen}{4}{section.3.6}
+\contentsline {section}{\numberline {3.7}Schwingungen einer kreisf\IeC {\"o}rmigen Membran}{4}{section.3.7}
+\contentsline {chapter}{\numberline {4}Distributionen}{4}{chapter.4}
+\contentsline {section}{\numberline {4.1}Temperierte Distributionen}{4}{section.4.1}
+\contentsline {section}{\numberline {4.2}Operationen auf Distributionen}{4}{section.4.2}
+\contentsline {section}{\numberline {4.3}Rechnungen}{4}{section.4.3}
+\contentsline {section}{\numberline {4.4}Konvergenz in $\mathscr {S}'(\PazoBB {R}^n)$}{4}{section.4.4}
+\contentsline {section}{\numberline {4.5}Fundamentall\IeC {\"o}sungen f\IeC {\"u}r den Laplace-Operator}{4}{section.4.5}
+\contentsline {section}{\numberline {4.6}Fundamentall\IeC {\"o}sungen und Fouriertransformationen}{5}{section.4.6}
+\contentsline {section}{\numberline {4.7}Retardierte Fundamentall\IeC {\"o}sung f\IeC {\"u}r den d\IeC {\textquoteright }Alembert-Operator}{5}{section.4.7}
+\contentsline {chapter}{\numberline {5}Dirichletproblem}{5}{chapter.5}
+\contentsline {section}{\numberline {5.1}Dirichlet und Neumannrandbedingungen}{5}{section.5.1}
+\contentsline {section}{\numberline {5.2}Greensche Funktionen}{5}{section.5.2}
+\contentsline {section}{\numberline {5.3}Methode der Spiegelbildladung, Poissonformel}{5}{section.5.3}
+\contentsline {chapter}{\numberline {6}Beweisideen}{5}{chapter.6}
+\contentsline {section}{\numberline {6.1}Fourierreihen}{5}{section.6.1}
+\contentsline {chapter}{\numberline {A}Lebesgue-Integrationstheorie}{5}{appendix.A}
+\contentsline {section}{\numberline {A.1}Das Lebesguesche Integral}{5}{section.A.1}
+\contentsline {section}{\numberline {A.2}Konvergenzs\IeC {\"a}tze}{5}{section.A.2}
+\contentsline {section}{\numberline {A.3}Der Satz von Fubini}{5}{section.A.3}
+\contentsline {section}{\numberline {A.4}$L^p$-R\IeC {\"a}ume}{5}{section.A.4}
+\contentsline {chapter}{\numberline {B}Misc}{6}{appendix.B}
+\contentsline {section}{\numberline {B.1}Konvergenz, Mittelwertsatz}{6}{section.B.1}
+\contentsline {section}{\numberline {B.2}Vertauschungss\IeC {\"a}tze}{6}{section.B.2}
+\contentsline {section}{\numberline {B.3}Trigonometrie}{6}{section.B.3}
+\contentsline {section}{\numberline {B.4}Ungleichungen, Absch\IeC {\"a}tzungen und other}{6}{section.B.4}
+\contentsline {section}{\numberline {B.5}Integrale und Reihen}{6}{section.B.5}
+\contentsline {section}{\numberline {B.6}Koordinatensysteme}{6}{section.B.6}
+\contentsline {section}{\numberline {B.7}Ans\IeC {\"a}tze}{6}{section.B.7}
+\contentsline {section}{\numberline {B.8}PDEs}{6}{section.B.8}
+\contentsline {section}{\numberline {B.9}Multiple Choice}{6}{section.B.9}

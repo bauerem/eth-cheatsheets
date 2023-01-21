@@ -1,0 +1,42 @@
+\section{Variational Autoencoder}
+\subsection*{Linear Autoencoder}
+\term{Goal}: $\text{min}_{\mathbf{E}, \mathbf{D}} ||\mathbf{X} - \mathbf{D}\mathbf{E} \mathbf{X}||^2_F$, w $\mathbf{X} (d \times n),\mathbf{D} (h \times d),\mathbf{E} (d \times h), h < d$.
+$\mathbf{E}^{\star} = (\mathbf{A}^{-1})\mathbf{U}_k^{\top}$, $\mathbf{D}^{\star} = \mathbf{U}_k (\mathbf{A}), \forall\mathbf{A}\in\text{GL}(h)$ and $\mathbf{X} = \mathbf{U}\mathbf{\Sigma}\mathbf{V}^{\top}$.
+Only convex in $\mathbf{D}$, $\mathbf{E}$ individ.
+\term{Eck-Yung:} $X_k=\argmin_{\text{rank}Y\leq k}||X-Y||_F=U\Sigma_k V^T$.
+
+\subsection*{Factor Analysis}
+Idea: Assume that (highly) correlated random vec. $x \in \mathbb{R}^n$ can be described by smaller latent vec. $z \in \mathbb{R}^m$ with $m < n$.
+%\subsubsection*{Latent variable Models}
+%Marginal likelihood: $p(x)=\int p(z)p(x|z)\mu(dz)$
+
+\subsubsection*{Linear Factor Analysis}
+Prior: $z\sim \mathcal{N}(0,I)$; Linear observ. model (\term{Decoder: $z \rightarrow x$}): $x=\mu+Wz+\eta,$ w $ \eta\sim\mathcal{N}(0,\Sigma),\Sigma:=\text{diag}(\sigma^2_1,\dots,\sigma^2_n), \eta\perp z; x\in\mathbb{R}^n,\hat{\mu}=\frac{1}{N}\sum^N_{i=1}x_i$
+
+$\implies x\sim\mathcal{N}(\mu,WW^T+\Sigma)$
+\term{Pf:} Mom. gen. funcs
+\term{Corollary:} only identifiable up to orth. transf.
+
+\subsubsection*{Posterior Inference (Encoder: $x \rightarrow z$)}
+Posterior: $\mathcal{N}(\mu_{z|x},\Sigma_{z|x})$; $\mu_{z|x}=W^T(WW^T+\Sigma)^{-1}(x-\mu)$; $\Sigma_{z|x}=I-W^T(WW^T+\Sigma)^{-1}W$
+Assume that $\Sigma = \sigma^2 I$. Then for $\sigma^2 \rightarrow 0$ $W^T(WW^T+\Sigma)^{-1} \rightarrow W^\dagger$ and therefore $\mu_{z|x} \rightarrow W^\dagger(x-\mu),\ \Sigma_{z|x} \rightarrow \textbf{0}$. Easy to compute! Otherwise use MLE.
+\subsection*{Variational Autoencoders}Same as factor analysis but enc., dec. are DNNs. But, using MLE by maximizing $\log(p(x;\theta)$ doesn't work bec. $p(x;\theta)$ is hard to compute! $\Rightarrow$ Maximize lower bound of $\log(p(x;\theta))$!
+\subsubsection*{Decoder $\hat{x}=F^{L:1}(z)$ taking  $z\stackrel{iid}{\sim}\mathcal{N}(\mu,\Sigma)$} 
+\term{ELBO}(Evidence lower bound):
+
+$\log p(x;\theta)=\log\int q(z)[p(x|z;\theta)\frac{p(z)}{q(z)}]dz
+\stackrel{\text{Jensen}}{\ge} \int q(z)\log p(x|z;\theta)dz-KL(q||p)=\mathcal{L}(\theta,q;x)$
+for \term{\textit{any}} distr. $q(z|x)$. Represent $q(z|x)$ as DNN $enc_\phi: x \mapsto (\mu(x), \Sigma(x))$. Then, $z \sim \mathcal{N}(\mu(x), \Sigma(x))$.
+
+\term{Optimizing Var. Autoenc.} Goal, maximize:
+$\mathcal{L}(\theta, \phi;X)$. with $enc_\phi: x \mapsto (\mu(x), \Sigma(x))$, $dec_\theta: z \mapsto x$ where $z \sim \mathcal{N}(\mu(x), \Sigma(x))$.\\
+\term{Optimizing $dec_\theta$: } Sample $z \sim \mathcal{N}(\mu(x), \Sigma(x))$. Perform backprop. with SGD, treating $z$ as const.\\
+\term{Optimizing $enc_\phi$: }Repara. trick: $z \sim \mathcal{N}(\mu(x), \Sigma(x))$ is equiv to $z = \mu(x) + \Sigma(x)^{\frac{1}{2}}\eta$ with $\eta \sim \mathcal{N}(0, I)$. Then, do backprop through $\mu(x), \Sigma(x)$
+%Aim: $\hat{\theta}=\argmax_{\theta} \sum_i \mathcal{L}(\theta,q(\cdot;\bs{x}_i);\bs{x}_i))$
+%\term{Variational Family} $q(z;x)=p(z|x)$ intractible $\implies$ restrict $q$ e.g. $z\sim\mathcal{N}(\mu(x),\text{diag}(\sigma_1^2(x),\dots,\sigma_n^2(x)))$
+%\term{Optimization:} Repara $z=\mu+\Sigma^{1/2}\eta,\eta\sim\mathcal{N}(0,I)$ backprop over $\mu,\Sigma$ for fixed $\eta=\eta(x)$
+%\textcolor{red}{TODO:resolve confusion slide 32 from 17a vs. slides 38-39 from 18a}
+\term{Thm:} $\nabla_{\mu}\mathbb{E}[f(z)]=\mathbb{E}[\nabla_z f(z)],\; \nabla_{\Sigma}\mathbb{E}[f(z)]=0.5\cdot\mathbb{E}[\nabla_z^2 f(z)]$
+%\term{Naïve MC:} $\nabla_{q_{\phi}(z)}\mathbb{E}[f(z)]=\mathbb{E}[f(z)\nabla_{q_{\phi}(z)}q_{\phi}(z)]\approx \frac{1}{L}\sum^L_l$
+
+

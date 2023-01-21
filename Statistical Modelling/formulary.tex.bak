@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+\usepackage[margin=3pt,landscape]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[nopar]{lipsum}%just to generate text for the example
+
+% redefinition of \normalsize to use \footnotesize and decrease the values for
+% \abovedisplyskip, \belowdisplayskip, and the "short" variants
+\makeatletter
+\renewcommand\normalsize{%
+  \@setfontsize\footnotesize\@viiipt{15}%
+   \abovedisplayskip 1\p@ \@plus\p@ \@minus\p@
+   \belowdisplayskip 1\p@ \@plus\p@ \@minus\p@
+   \abovedisplayshortskip \z@ \@plus\p@
+   \belowdisplayshortskip \z@ \@plus\p@ \@minus\p@
+   \let\@listi\@listI}
+\makeatother
+
+\pagestyle{empty}
+
+% multicol parameters
+\setlength\premulticols{1pt}
+\setlength\postmulticols{1pt}
+\setlength\multicolsep{1pt}
+\setlength\columnsep{2pt}
+\raggedright
+
+\newcommand\TestText{% just to generate text for the example
+\lipsum[4]
+\begin{gather*}
+E = mc^2.
+\end{gather*}
+\lipsum[4]
+\begin{align*}
+a &= b \\
+&= c \\
+&= d.
+\end{align*}
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{listings}
+\newcommand{\bv}[1]{\mathbf{#1}}
+\newcommand{\est}[1]{\mathbf{\hat{#1}}}
+\newcommand{\tv}[1]{\mathbf{\tilde{#1}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\med}{arg\,median}
+\DeclareMathOperator*{\sgn}{sgn}
+\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator*{\V}{Var}
+\DeclareMathOperator*{\cov}{Cov}
+
+
+\begin{document}
+
+\begin{multicols}{4}
+
+Goal: $E[y|x_1,...,x_n]=f(x_1,...,x_n)$
+Additive noise implies: $y~\mathcal{N}(\bv{X\theta},\sigma^2*\bv{I})$\\
+\textbf{Residual}: $\est{\epsilon}_i=y_i-x_i^T\est{\theta}$;\\
+\textbf{Partial Residual}: $\est{\epsilon}_{x_j,i}=y_i-\bv{x}_i^T\theta+\bv{\theta}_j x_{ij}$\\
+Normal equations: $\bv{X}^T\bv{X}\est{\theta}=\bv{X}^Ty$\\
+\textbf{Thm}: $A\in\R^{m\times n}, b\in\R^m$. TFAE:\\
+i) Col($A$) is lin. indep., ii) $\bv{A}^T\bv{A}$ invertible\\
+In this case the LS solution is: $\est{\theta}=(\bv{X}^T \bv{X})^{-1}\bv{X}^T\bv{y}$\\
+$\est{y}=\bv{X}\est{\theta}=\bv{X}(\bv{X}^T\bv{X})^{-1}\bv{X}\bv{y}=:\bv{P}\bv{y}\Rightarrow P^2=P=P^T,$ $Tr(P)=p$; $r=(Id-P)y=:Qy\Rightarrow Q^T=Q^2=Q,PQ=QP=0,Tr(Q)=n-p$\\
+
+$\epsilon|X\sim\mathcal{N}(0,\sigma^2Id)\Rightarrow f(y_1,...,y_n|X)=L_{y,X}(\theta,\sigma^2)=\prod^n_{i=1}\frac{1}{\sigma}\phi(\frac{(y_i-x_i^T\theta)}{\sigma})? \Rightarrow \hat{\sigma}^2_{MLE}=\frac{\sum^n_{i=1}(y_i-\hat{y}_i)^2}{n}$ but $\hat{\sigma}^2=\frac{\sum^n_{i=1}(y_i-\hat{y}_i)^2}{n-p}$ unbiased\\
+
+\textbf{Props:} Ass. $Y=X\theta+\epsilon$, $\E[\epsilon]=0$, $\cov(\epsilon)=\E[\epsilon\epsilon^T]=\sigma^2I_n$.
+i) $\E[\hat{\theta}]=\theta$, ii) $\E[\hat{\epsilon}]=0,\E[\hat{y}]=\E[y]=X\theta$, iii) $\cov(\hat{\theta})=\sigma^2(X^TX)^{-1}$, iv) $\cov(\hat{y})=\cov(Py)=\sigma^2 PP^T=\sigma P$, v) $\cov(\hat{\epsilon})=\sigma^2Q$, vi) $\cov(\hat{\epsilon},\hat{y})=0$, vii) $E[\sum^n_{i=1} r_i^2]=\sigma^2(n-p)\Rightarrow\hat{\sigma}=\frac{||X\hat{\theta}-y||^2}{n-p}$ still unbiased.\\
+\textbf{Props:} Ass. $Y=X\theta+\epsilon$, $\epsilon\sim\mathcal{N}(0,\sigma^2I_n)$.\\ i) $\hat{\theta}\sim\mathcal{N}_p(\theta,\sigma^2(X^TX)^{-1})$, ii) $\hat{y}\sim\mathcal{N}_n(X\theta,\sigma^2P)$, $\hat{\epsilon}\sim \mathcal{N}(0,\sigma^2Q)$, iii) $\hat{y}\independent \hat{\epsilon}$, iv) $(\sum^n_{i=1}r_i^2)/\sigma^2\sim\chi^2_{n-p}$, v) $\hat{\sigma}^2\independent \hat{\theta}_{LSE}$\\
+
+\textbf{Props:} Ass. $Y=X\theta+\epsilon$, $\epsilon\sim\mathcal{N}(0,\sigma^2I_n)$.\\ i) $\frac{\hat{\theta}-\theta}{\hat{\sigma}\sqrt{(X^TX)^{-1}_{ii}}}\sim t_{n-p}$, ii) $\frac{(\hat{\theta}-\theta)^T(X^TX)(\hat{\theta}-\theta)}{p\hat{\sigma}^2}\sim F_{p,n-p}$, iii) $\vartheta=B\theta$, $B\in\R^{q\times p}$, $V=B(X^TX)^{-1}B^T\Rightarrow\frac{(\hat{\vartheta}-\vartheta)^T V^{-1}(\hat{\vartheta}-\vartheta)}{q\hat{\sigma}^2}\sim F_{p, n-p}$, iv) $\frac{(\hat{y}_i-\E[y_i])}{\hat{\sigma}\sqrt{P_{ii}}}\sim t_{n-p}$, v) $\frac{\hat{y}_0-\E[y_0]}{\hat{\sigma}\sqrt{x_0^T(X^T X)^{-1}x_0}}\sim t_{n-p}$, vi) $\frac{y_0-\hat{y_0}}{\hat{\sigma}\sqrt{1+x_0^T(X^TX)^{-1}x_0}}\sim t_{n-p}$\\
+
+\textbf{Thm:} If $(\epsilon_i)_i$ iid, $\E[\epsilon_i]=0$, $\V (\epsilon_i)=\sigma^2$, $\lambda_{min,n}=\min \{ \sigma(X^TX)\}\rightarrow\infty$ and $\max_j P_{jj}\max_j x_j^T(\sum^n_{i=1}X_iX_i^T)^{-1}x_j\rightarrow 0$, then $\hat{\theta}_{LSE}$ is consistent (for $\theta$), and $(X^TX)^{1/2}(\hat{\theta}-\theta)\rightarrow \mathcal{N}_p(0,\sigma^2 I_n)$.\\
+
+\textbf{R-output:} $H_{0,j}:\theta_j=0\Rightarrow T_j\frac{\hat{\theta}_j}{\hat{\sigma}\sqrt{(X^TX)^{-1}_{jj}}}\sim t_{n-p}, p_j=P(|T_j|\geq |\hat{T}_j|)$\\
+$H_{0,\texttt{global}}:\theta_1=\cdots=\theta_k=0\Rightarrow T=\frac{||\hat{y}-\bar{y}||^2/(p-1)}{||y-\hat{y}||^2/(n-p)}\sim F_{p-1,n-p}, p=P(|T|\geq |\hat{T}|)$, $R^2=\frac{||\hat{y}-\bar{y}}{y-\bar{y}}$\\
+
+\textbf{Partial F-test:} $H_{0,B}:B\theta=b\in\R^p$ $\Rightarrow$ $\frac{(B\hat{\theta}-b)^T(B(X^TX)^{-1}B^T)^{-1}(B\hat{\theta}-b)}{(p-q)\hat{\sigma}^2}\sim F_{p-q,n-p}$\\
+
+\textbf{E.g.:} $H_{0,B}:B\theta=0\in\R^p,$ $B=(I_{p-q}|0_q)\in\R^{(p-q)\times p}$ (first $p-q$ coeffs $=0$) $\Rightarrow$ $\frac{(SSE_0-SSE)/(p-q)}{SSE/(n-p)}=\frac{||\hat{y}-\hat{y}^{(0)}||^2/(p-q)}{||y-\hat{y}||^2/(n-p)}\sim F_{p-q,n-p}$\\
+
+\textbf{E.g.:} $H_{0,B}:B\theta=0\in\R^p,$ $B=(0|I_{p-1})\in\R^{(p-1)\times p}$ ($H_{0,\texttt{global}}:\theta_1=\cdots=\theta_k=0$), $\hat{\theta}_{(0)}=(\bar{y},0,.,0)^T$, $\hat{y}_{(0)}=\bar{y}$ $\Rightarrow$ $F=\frac{||\hat{y}-\bar{y}||^2/(p-1)}{||y-\hat{y}||^2/(n-p)}\sim F_{p-1,n-p}$\\
+
+\textbf{ANOVA:}$||y-\hat{y}^{(0)}||^2=||y-\hat{y}||^2+||\hat{y}-\hat{y}^{(0)}||^2$\\
+.\\
+.\\
+.\\
+
+\textbf{Corr.:} $\hat{\rho}=\frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{(x_i-\bar{x})^2}\sqrt{(y_i-\bar{y})^2}}$. $\rho\approx0\Rightarrow\V(\rho)$ high. $\rho\approx\pm1\Rightarrow\V(\rho)$ low. Stabilize by $z:=\tanh^{-1}(\hat{\rho})\sim\mathcal{N}(\tanh^{-1}(\rho),\frac{1}{n-3}$. Test $H_0:\rho=0$ by z-trafo, t-/F-test of $\beta=0$.\\
+\textbf{Sp.'s Rank:} $r_S=1-\frac{6\sum^n_{i=1} D_i^2}{n(n^2-1)}$, $D_i:=Rg(X_i)-Rg(Y_i)$.\\
+\textbf{Kend.'s Rank:} $r_K=2\frac{T_k-T_d}{n(n-1)},$ $T_k=|\{(i,j):(x_i-x_j)(y_i-y_j)>0\}|$, $T_d=|\{(i,j):(x_i-x_j)(y_i-y_j)<0\}|$\\
+$\rho_{XY.Z}:=\frac{\rho_{XY}-\rho_{XZ}\rho_{YZ}}{\sqrt{(1-\rho_{XZ}^2)(1-\rho_{YZ}^2)}}$=corr. of x and y after accounting for z\\
+\textbf{Reg2mean:}$y-\bar{y}=\hat{\rho}\frac{\hat{\sigma}_Y}{\hat{\sigma}_X}(x-\bar{x})$\\
+\textbf{Norm. Plot:}$\hat{F}_n(x):=|\{X_i\leq x\}|$. $H_0:X_1,...,X_n\sim\mathcal{N}(\mu,\sigma^2)\Rightarrow \hat{F}_n(x)\approx \Phi(\frac{x-\mu}{\sigma}$ $\Rightarrow$ $z:=\Phi^{-1}(\hat{F}_n(x))$ $\Rightarrow$ $z\approx \frac{x-\mu}{\sigma}$ $\hat{F}_n(X_{(i)}=i/n.$\\
+\textbf{Tukey-Anscombe:} $\sum r_i\hat{y}_i=0$. Plot non-linear $\Rightarrow$ model ass. broken.\\
+
+\textbf{TS plot:} $\epsilon\sim\mathcal{N}_n(0,\Sigma)$ $\Rightarrow$ $\hat{\theta}\sim\mathcal{N}_p(\theta,(X^TX)^{-1}(X^T\Sigma X)(X^TX)^{-1})$\\
+
+\textbf{Durbin-Watson:} $T=\frac{\sum^{n-1}_{i=1}(r_{i+1}-r_i)^2}{\sum^n_{i=1}r_i^2}\approx 2 (1-\frac{\sum^{n-1}_{i=1}r_ir_{i+1}}{\sum^n_{i=1}r_i^2})\stackrel{\epsilon_i\independent\epsilon_{i+1}}{\approx}2 $\\
+
+\textbf{GLS:}$Y=X\theta+\epsilon$, $\epsilon\sim\mathcal{N}(0,\sigma^2)$, $\Sigma=AA^T$ known and pos. def., $A$ reg. $\Rightarrow$ $\tilde{y}:=A^{-1}y=A^{-1}(X\theta+\epsilon)=\tilde{X}\theta+\tilde{\epsilon}$, $||\tilde{y}-\tilde{X}\theta||^2=(y-X\theta)^T\Sigma^{-1}(y-X\theta)$ $\Rightarrow$ $\hat{\theta}=(X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}y$ $\hat{\theta}\sim \mathcal{N}_p(\theta,\sigma^2(X^T\Sigma^{-1}X)^{-1})$
+
+\textbf{Alg:} \texttt{1.LS}$\rightarrow\hat{\theta}^{(1)},r^{(1)}$ \texttt{2.}$\hat{\Sigma}^{(i+1)}(\hat{\theta}^{(i)},r^{(i)})$ \texttt{3.GLS}$(\hat{\Sigma})\rightarrow\hat{\theta}^{(i+1)},r^{(i+1)}$ \texttt{4.Repeat 2.and 3. until conv}\\
+
+\textbf{E.g.:}$\Sigma=\rm{diag}(v_1,...,v_n)\Rightarrow ||y-X\theta||^2=\sum_i r_i^2/v_i$,
+%$\hat{\sigma}^2=\exp(\nu+\sum^p_{j=2}\gamma_j\log|x_{i,j}|$
+\\
+
+\textbf{Forward greedy:} \texttt{1.}$X^{(1)}=(1,..,1)^T$ \texttt{2.}$X^{(i+1)}=(X^{(i)}|X_j)$, $X_j=$ \texttt{most significant F-value of models w. remaining covars (or "which is most significant t-test for new var in new model with that var")} \texttt{3.Repeat until no F-vals are significant}\\
+
+\textbf{Backward greedy:} \texttt{1.}$X^{(1)}=X$ \texttt{2.Def} $X^{(i+1)}$ \texttt{as} $X^{(i)}$ \texttt{without the covar "whose F-value in the comparative test is smallest" (or has highest p-value in t-test} \texttt{3.Repeat until all F-(or t-)stats are significant}\\
+
+\textbf{Model quality:}$M$ correct$\Rightarrow$ $\E[\hat{y}^M]=X^M((X^M)^TX^M)^{-1}(X^M)^T\mu$, $\cov(\hat{y}^M)=\sigma^2X^M((X^M)^TX^M)^{-1}(X^M)^T$, $\sum^n_{i=1}\V(\hat{y}^M_i)=Tr(\cov(\hat{y}^M))=|M|\sigma^2$.\\
+$SMSE=SMSE(M)=\E[||\hat{y}^M-\mu||^2]=\sum^n_{i=1}\E[\hat{y}^M_i-\mu_i)^2]=\sum^n_{i=1}\V(\hat{y}^M_i)+\sum^n_{i=1}(\E[\hat{y}^M_i]-\mu_i)^2=|M|\sigma^2+\sum^n_{i=1}(\E[\hat{y}^M_i-\mu_i)^2$\\
+$\Gamma_p(M)=\frac{SMSE}{\sigma^2}\geq|M|$ and $=|M|$ if unbiased\\
+$SPSE=\sum^n_{i=1}\E[(Y_{n+i}-\hat{y}^M_i)^2]=\sum^n_{i=1}\E[(Y_{n+i}-\mu_i)^2]+\sum^n_{i=1}\E[(\hat{y}^M_i-\mu_i)^2]=n\sigma^2+SMSE$\\
+$SSE(M)=||y-\hat{y}^M||^2=\sum^n_{i=1}(y_i-\hat{y}^M_i)^2$\\
+$\E[||y-\hat{y}^M||^2]=\sum^n_{i=1}\V(y_i-\hat{y}^M_i)+\sum^n_{i=1}(\E[y_i]-\E[\hat{y}^M_i])^2=(n-|M|)\sigma^2+\sum^n_{i=1}(\E[y_i]-\mu_i)^2=SPSE-2|M|\sigma^2$
+$\hat{SPSE}=SSE+2|M|\sigma^2$\\
+$C_p(M):=\frac{SSE(M)}{\hat{\sigma}^2}-n+2|M|=\hat{\Gamma}_p$\\
+$AIC(\alpha)=-2\hat{l}_{|M|}+\alpha|M|$\\
+Model select by min. AIC.\\
+\textbf{Gauss-Markov:}$Y=X\theta+\epsilon$, $\E[\epsilon]=0$, $\cov[\epsilon]=\sigma^2I_n$,$rank[X]=p$, $c\in\R^p$ arb.. Then $c^T\hat{\theta}_{MLE}$ has minimal variance among all \textbf{linear} unbiased estimators of $c^T\theta$.\\
+\textbf{Cor:}Let furthermore $\epsilon$ be normally distributed. Then $c^T\hat{\theta}$ has minimal variance amongst all unbiased estimators of $c^T\theta$.\\
+\textbf{Cramer-Rao:?}\\
+$\theta^{(-i)}:=$LSE without i-th obsv.\\
+$\hat{\theta}^{(-i)}-\hat{\theta}=-\frac{r_i}{1-P_{ii}}(X^TX)^{-1}x_i$\\
+\textbf{Cook's d:} $D_i:=\frac{(\hat{\theta}^{(-i)}-\hat{\theta})^T(X^TX)(\hat{\theta}^{(-i)}-\hat{\theta})}{p\sigma^2}=\frac{1}{p}\frac{r_i^2}{\hat{\sigma}^2(1-P_{ii})}\frac{P_{ii}}{1-P_{ii})}$\\
+$(x,y)$ new, then $\Delta\hat{\theta}_{LSE}=\frac{(X^TX)^{-1}x(y-x^T\hat{\theta})}{1+x^T(X^TX)^{-1}x}$\\
+$\Rightarrow\Delta\hat{\theta}_{LSE}\sim\frac{1}{n}(\E[x_ix_i^T])^{-1}x(y-x^T\theta)$ (as $n\rightarrow\infty$).\\
+
+\textbf{Huber reg:} $\hat{\theta}=\argmin_\theta\sum^n_{i=1}\rho_c(y_i-x_i^T\theta),$ $\rho_c(u)=\frac{1}{2}u^2 1\{|u|\leq c\}+c(|u|-\frac{c}{2})1\{|u|\geq c\}$\\
+$\stackrel{d/d\theta=0}{\Rightarrow}\sum^n_{i=1}\psi_c(y_i-x_i^T\theta)x_i=0,$ where $\psi_c(u)=\rho_c(u)'=\sgn(u)\min(|u|,c)$.\\
+\textbf{H's proposal 2:} $\psi_c(u)=\rho_c(u)^2-\beta$\\
+Set $\sum^n_{i=1}\psi_c(\frac{y_i-x_i^T\hat{\theta}}{\hat{\sigma}})x_i=0$ $\rightarrow$ $\sum^n_{i=1}\chi(y_i-x_i^T\theta)x_i=0$ with $\chi(u)=$Huber's proposal 2 or $=\sgn(|u|-\beta)$ s.t. $\int\chi(u)\exp(-u^2/2)du=0$ $\Rightarrow \hat{\sigma}$ consistent.\\
+No closed form for Huber and L1.
+\textbf{Alg. Huber:}Iterate diag WLS $\frac{1}{v_i}=w_i\propto\frac{\psi_c((y_i-x_i^T\hat{\theta})/\hat{\sigma})}{y_i-x_i^T\hat{\theta}}\propto\min(1,\frac{c\hat{\sigma}}{|y_i-x_i^T\hat{\theta}|}$ until stabilizes.$\Rightarrow\sqrt{n}(\hat{\theta}_{GLS}-\theta)\stackrel{d}{\rightarrow}\mathcal{N}(0,\frac{\E[\psi_c(\epsilon/\sigma)^2}{P(|\epsilon_i|\leq c\sigma)^2}\sigma^2\E[x_ix_i^T]^{-1}$\\
+$\Delta\hat{\theta}\sim\frac{(\E[x_ix_i^T])^{-1}x\psi_c((y-x^T\theta)/\sigma)\sigma}{nP(|\epsilon_i|\leq c\sigma)}$\\
+\textbf{Alts:}$\sum^n_{i=1}\eta(x_i,\frac{y_i-x_i^T\hat{theta}}{\hat{\sigma}})x_i=0$\\
+Mallows:$\eta(x,r)=\min(1,\frac{a}{||Ax||}\psi_c(r)$ (lower $w_i$'s 4 deviant $x$)\\
+Schweppe:$\eta(x,r)=\frac{1}{||Ax||}\psi_c(||Ax||r)$ (lowers corner in $\psi_c$, lets $w_i$ 4 deviant $x$ be large if $r\approx 0$)\\
+$A$ chosen s.t. $||Ax||^2=C\cdot x^T(X^TX)^{-1})x$\\
+$\Delta\hat{\theta}\sim\frac{1}{n}(\E[\frac{\partial}{\partial r}\eta(x_i,\frac{\epsilon_i}{\sigma})x_ix_i^T])^{-1}x\eta(x,\frac{y-x^T\theta}{\sigma})\sigma$\\
+$\argmin_\theta\med((y_i-x_i^T\theta)^2)$ sandwiches $50\%$ of $D$ (beakdown?), less eff. than H. \& S.\\
+\textbf{Nonlin:}Sps. $f(x_i,\theta)\approx f(x_i,\theta_0)+a(\theta_0)^T_i(\theta-\theta_0)$ w. $a(\theta)_i=(\frac{\partial}{\partial\theta_j}f(x_i,\theta);j=1,..,p)^T$\\
+$\hat{\theta}\stackrel{d}{\rightarrow}\mathcal{N}(\theta_0,\sigma^2(A(\theta_0)^T A(\theta_0))^{-1})$, where $A(\theta)=(a(\theta)_1,..,a(\theta)_p)^T$\\
+\textbf{Conf Int:} $\hat{\theta}_k\pm F^{-1}_{t_{n-p}}(1-\alpha/2)se(\hat{\theta}_k)$ w. $se(\hat{\theta}_k)=\hat{\sigma}\sqrt{((A(\hat{\theta})^TA(\hat{\theta}))^{-1})_{kk}}
+$.\\
+$\hat{\theta}_0=\argmin_{\theta;B\theta=b}S(\theta)$ $T=\frac{(S(\hat{\theta}_0)-S(\hat{\theta}))/q}{S(\hat{\theta})/(n-p)}\stackrel{\sim}{\approx}F_{q,n-p}$
+\textbf{E.g.:}$T_k(\theta^*_k)=\frac{S(\hat{\theta}^{(-k)})-S(\hat{\theta})}{S(\hat{\theta})/(n-p)}=\frac{S(\hat{\theta}^{(-k)})-S(\hat{\theta})}{\hat{\sigma}^2}$, where $\hat{\theta}^{(-k)}:=\argmin_{\theta;\theta_k=\theta_k^*}S(\theta).$
+\textbf{skipped somin here}\\
+
+\textbf{GLM:} $p_{\beta_i}(y_i)=\exp(y_i\beta_i+c(\beta_i))h(y_i)\rightarrow \E[y_i]=-c'(\beta_i)=\mu(\beta_i)$ $\rightarrow$ $g(\mu(\beta_i))=x_i^T\theta$, $g:D\rightarrow\R$ w. $D$ suitable and $g$ bij\\
+\textbf{Eg:} Gauss $p(y)=\exp(y\frac{\mu}{\sigma^2}-\frac{\mu^2}{2\sigma^2}-\frac{y^2}{2\sigma^2})$. If $\sigma$ known, then $\beta=\frac{\mu}{\sigma^2}$, $c(\beta)=-\frac{1}{2}\sigma^2\beta^2$\\
+\textbf{Eg:} Binom $p(y)=\binom{n}{y}p^y(1-p)^{n-y}$ w. $\beta=\log\frac{p}{1-p}$, $c(\beta)=-n\log(1+\exp(\beta))$\\
+\textbf{Eg:} Poisson $p(y)=\frac{\exp(y\log\lambda-\lambda)}{y!}$ w. $\beta=\log\lambda$, $c(\beta)=-\exp(\beta)$\\
+\textbf{E.g.:}log reg: $\log(\frac{P_\theta(Y_i=1)}{P_\theta(Y_i=0)})=\sum^p_{j=1}x_{ij}\theta_j=x_i^T\theta$ $\Rightarrow$ $P_\theta(Y_i=1)=\frac{\exp(x_i^T\theta)}{1+\exp(x_i^T\theta)}=P(U\geq-x_i^T\theta)$ w. log. distr. $P(U\leq u)=P(U\geq -u)=\frac{\exp(u)}{1+\exp(u)}=\int^u_{-\infty}\frac{\exp(t)}{(1+\exp(t))^2}dt$.\\
+$Z_i=x_i^T\theta+\epsilon_i$, $Y_i=1\{Z_i\geq\}$\\
+$P_\theta(y)=p^y(1-p)^{1-y}=\exp(yx_i^T\theta-\log(1+\exp(x_i^T\theta))$\\
+$l(\theta)=\sum P_\theta(Y_i=y_i)\stackrel{d/d\theta}{\Rightarrow}\sum_i(y_i-P_{\hat{\theta}}(Y_i=1))x_i=0$\\
+$\hat{\theta}\stackrel{d}{\rightarrow}\mathcal{N}(\theta,V(\theta))$ w. $V(\theta)^{-1}=I(\theta)=\sum_i x_ix_i^T \E[(y_i-P_\theta(Y_i=1))^2=\sum_i x_ix_i^T\frac{\exp(x_i^T\theta)}{1+\exp(x_i^T\theta)}$\\
+$2(l(\hat{\theta}^{(p)})-l(\hat{\theta}^{(q)}))\stackrel{d}{\rightarrow}\chi^2_{p-q}$\\
+
+\textbf{Alg:}\texttt{1. Initialize} $\hat{p}_i=0.99\cdot 1\{y_i=1\}+0.01\cdot 1\{y_i=0\}$\\
+\texttt{2. Taylor exp. of logit:} $Z_i:=logit(\hat{p}_i)+logit'(\hat{p}_i)(Y_i-\hat{p}_i)\approx x_i^T\hat{\theta}+\frac{1}{\hat{p}_i(1-\hat{p}_i)}(Y_i-\hat{p}_i)$\\
+\texttt{3. Do weighted least squares } ($\min\sum\frac{1}{v_i}(y_i-f(x_i))^2$)\texttt{ of Z versus X with weights} $w_i=1/v_i=\hat{p}_i(1-\hat{p}_i)$\texttt{ to get new }$\hat{\theta}$\\
+\texttt{4. Compute }$\hat{p}_i=logit^{-1}(x_i^T\hat{\theta})$\\
+\texttt{
+
+\textbf{Cox reg:} Let $T_i$ be the failure time with pdf $f$ and cdf $F$.\\
+$\lambda(t)=\lim_{h\rightarrow0}\frac{1}{h}P(t\leq T\leq t+h|T\geq t)=\frac{f(t)}{1-F(t)}=-\frac{d}{dt}\log(1-F(t))$=failure rate w. $F(t)=1-\exp(-\int^t_0\lambda(u)du)$\\
+
+$\lambda_i(t)=\exp(x_i^T\theta)\lambda_0(t)$=failure rate of i-th covar.\\
+
+\textbf{Partial likelihood:} $\partial l(\theta)=\prod_i\frac{\exp(x_i^T\theta}{\sum_{j\in \Lambda_i}\exp(x_j^T\theta)}$, where $\Lambda_i=\{j:t_j\geq t_i\}$ and the i-th factor is the conditional probability of failure of the i-th observed unit in the interval $[t_i,t_i+dt)$.\\
+
+\textbf{Censored data}: Let $T_i$ be unknown but $1\{T_i>C_i\}$ known, $C_i$=censoring time.\\
+\textbf{Partial likelihood:} $\partial l(\theta)=\prod_i\frac{\exp(x_i^T\theta)}{\sum_{j\in \Lambda^1_i}\exp(x_j^T\theta)+\sum_{j\in \Lambda^2_i}\exp(x_j^T\theta)}$, where $\Lambda^1_i=\{j:t_j\geq t_i\textrm{, j uncen.}\}$ and $\Lambda^2_i=\{j:c_j\geq t_i\textrm{, j cen.}\}$.\\
+
+$\hat{\lambda}_i(t)=\exp(x_i^T\theta)\hat{\lambda}_0(t)$, $\frac{\lambda_i(t)}{\lambda_j(t)}=\exp((x_i-x_j)^T\theta)$, $\hat{\theta}=\argmax_\theta \partial l(\theta)$\\
+
+\textbf{Pearson residual:} $R_i=\frac{Y_i-\hat{p}_i}{\sqrt{\hat{p}_i(1-\hat{p}_i)}}$\\
+\textbf{Deviance residual:} $D_i=s_i\sqrt{-2(Y_i\log\hat{p}_i+(1-Y_i)\log(1-\hat{p}_i)}=\sqrt{\textrm{i-th summand in } -2l(\cdot)}$, $s_i=1\{Y_i=1\}-1\{Y_i=0\}$\\
+Interpretation: $\sum_{i=1}^nD_i^2=-2l(\hat{\theta})=$goodness of fit\\
+\textbf{Non-parametric reg:} Let $K$ be a symmetric probability density with $\supp(K)=[-1,1]$ or $K$ decays very rapidly, $h>0$ bandwidth.\\
+\textbf{Nadaraya-Watson:} $\hat{f}(x)=\frac{\sum_iy_iK((x-x_i)/h)}{\sum_i K((x-x_i)/h)}$\\
+\textbf{Gasser-Müller:}(Ass. $0\leq x_1\leq \cdots \leq x_n\leq 1$)\\
+$s_0=-\infty$, $s_i=(x_i+x_{i+1})/2$ for $0<i<n$ and $s_n=\infty$\\
+$\hat{f}(x)=\sum^n_{i=1}y_i\int^{s_i}_{s_{i-1}}\frac{1}{h}K((x-u)/h)du$.\\
+\textbf{Local poly:} $\hat{f}(x)=\hat{\theta}_0(x)$, with $\hat{\theta}(x)=\argmin_\theta\sum^n_{i=1}K((x-x_i)/h)(y_i-\sum^p_{j=0}\theta_j(x_i-x)^j)^2$.\\
+$p=1$ and $p=3$ often chosen. R-func=loess: chooses variable $h$ nearest neighbor to ensure fixed number of obsv. in $[x-h,x+h]$\\
+
+\textbf{Smoothing spline:} $\hat{f}=\argmin_f \sum^n_{i=1}(y_i-f(x_i))^2+\lambda\int^1_0 f''(x)^2dx$\\
+Linear on $[0,x_1]$ and $[x_n,1]$. $\lambda\rightarrow 0$: interpolates data, $\lambda\rightarrow \infty$: least squares.\\
+\textbf{Bias-Variance tradeoff:}\\
+$\E[\hat{f}(x)]-f(x)\sim C(K,p)h^{p+1}f^{(p+1)}(x)$ and $\V[\hat{f}(x)]\sim C(K,p)\frac{\sigma_\epsilon^2}{nh}(\frac{1}{nh}\sum K((x-x_i)/h))^{-1}$, assuming $h_n\rightarrow 0$ and $h_nn\rightarrow \infty$.\\
+$h$ small $\rightarrow$ small (absolute) bias\\
+$h$ large $\rightarrow$ small variance\\
+$\E[(\hat{f}(x)-f(x))^2]=\V[\hat{f}(x)]+(\E[\hat{f}(x)]-f(x))^2=O((nh)^{-1})+O(h^{2(p+1)})$.\\
+Above is min. when both summands have same order, i.e. $h=O(n^{-1/(2p+3)})$, thus $O(n^{-(2p+2)/(2p+3)})$\\
+
+\textbf{High-dimensional stuff:}\\
+
+\textbf{Smoothing spline:} Let $x_1<\cdots<x_n$. Chose SS s.t. $f(x)=\sum^n_{j=1} N_j(x)\theta_j$ w. $N_1(x)=1$, $N_2(x)=x$, $N_{k+1}=d_k(x)-x_{k-1}(x)$ w. $d_k(x)=\frac{(x-x_k)^3_+ -(x-x_n)^3_+}{x_n-x_k}$\\
+$\hat{\theta}=\argmin_\theta||Y-N\theta||^2+\lambda\theta^T\Omega\theta$, $N=[N_j(x_i)]_{i,j=1}^n$, $\Omega_{jk}=\int_j N_j''(x)N_k''(x)dx$ $\Rightarrow$ $\hat{\theta}_\lambda=(N^TN+\lambda\Omega)^{-1}N^TY$\\
+
+\textbf{Ridge Reg:} $\hat{\theta}=\argmin_\theta||Y-X\theta||_2^2+\lambda||\theta||_2^2=(X^TX+\lambda I_p)^{-1}X^TY$ w. SVD:\\
+If $p<n$: $X=UDV^T$ $((n\times p)\times(p\times p)\times(p\times p))$, $U^TU=I_n$, $V^TV=VV^T=I_p$\\
+If $p\geq n$: $X=UDV^T$ $((n\times n)\times(n\times n)\times(n\times p))$, $U^TU=UU^T=I_n$, $V^TV=I_p$\\
+$col(U)=col(X)$, $col(V)=row(X)$\\
+$\hat{\theta}=(VD^TDU^TUDV^T+\lambda I)^{-1}VDU^TY=V\Lambda U^TY$ w. $\Lambda=diag(\frac{D_{ii}}{D_{ii}^2+\lambda}:i=1,..,\min(n,p))$ ($D_{11}\geq D_{\min(n,p)}>0$)\\
+$\E[\hat{\theta}=VD\Lambda V^T\theta\rightarrow VV^T\theta=$ projection of $\theta$ onto row space of $X$\\
+If $\min(n,p)=p$: $VV^T\theta=\theta$\\
+If $p>n$: $\hat{\theta}$ has bias $(VV^T-I)\theta$\\
+
+\textbf{Identities:} $\cov[AY+b]=A\cov[Y]A^T$ $\Rightarrow$ $a^T\cov[Y]a\leq 0$.\\
+$\phi(x):=\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2})$,
+$\Phi(x)=\int^x_{-\infty}\phi(y)dy$\\
+$X\sim\mathcal{N}(0,1)\Rightarrow\E[X^3]=0,\E[X^4]=3$\\
+$X\sim\mathcal{N}(\mu,\Sigma)\Rightarrow f_X(x)=(2\pi)^{-n/2}(|\det \Sigma|)^{-1/2}\exp[(x-\mu)^T\Sigma^{-1}(x-\mu)]$, $\Sigma=AA^T$
+
+\end{multicols}
+
+
+\end{document}

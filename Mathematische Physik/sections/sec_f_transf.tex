@@ -1,0 +1,339 @@
+\chapter{Fouriertransformation}
+% \hspace*{\fill} \\
+% \begin{adjustbox}{angle=0}
+% %\begin{table}[!htb]
+%   \fontsize{8}{10}\selectfont
+%   \centering
+%   \begin{tabular}{lll}
+% %     &&\\
+% %     \hline
+%      FT & $\hat{f}(k) = \int_{\R^n} f(x) e^{-ik\cdot x} \D x, \quad \check{f}(x) = \frac1{(2\pi)^n} \int_{\R^n} f(k) e^{ik\cdot x} \D k$ \\
+%   \end{tabular}
+% %\end{table}
+% \end{adjustbox}
+
+\section{Definition und elementare Eigenschaften}
+
+\begin{namedtheorem}{Fouriertransformation}
+%   Sei $f\in L^1(\R^n)$. Die Fouriertransformierte von $f$ ist die Funktion auf $\R^n$ $\hat{f}(k) = \int_{\R^n} f(x) e^{-ik\cdot x} \D x$. Die inverse Fouriertransformierte von $f$ ist $\check{f}(x) = \frac1{(2\pi)^n} \int_{\R^n} f(k) e^{ik\cdot x} \D k$. 
+% \end{namedtheorem}
+  Sei $f\in L^1(\R^n)$. Die Fouriertransformierte von $f$ und die inverse Fouriertransformierte sind gegeben durch die Funktionen auf $\R^n$
+  \begin{align*}
+  	\hat{f}(k) = \int_{\R^n} f(x) e^{-ik\cdot x} \D x, \quad \check{f}(x) = \frac1{(2\pi)^n} \int_{\R^n} f(k) e^{ik\cdot x} \D k.
+  \end{align*}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 1.1}
+  Sei $f\in L^1(\R^n)$. Dann sind die Funktionen $\hat{f}, \check{f}$ gleichmässig stetig und für alle $x,k\in\R^n$ gilt $|\hat{f}(k)|\leq \norm{f}_1$, $|\check{f}(x)|\leq(2\pi)^{-n}\norm{f}_1$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Elementare Eigenschaften}
+  Seien $f,g,h\in L^1$, $h\in C^1_0(\R^n)$, $\alpha,\beta \in \C$, $\lambda \in \R \setminus \{0\}$ und bezeichne $f_y(x) = f(x-y)$.
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{2}
+  \begin{enumerate}[(i)]
+    \item $\widehat{\alpha f + \beta g} = \alpha\hat{f} + \beta\hat{g}$
+    \item $\widehat{f(\lambda \cdot)}(k) = |\lambda|^{-n} \hat{f}(k/\lambda)$
+    \item $\hat{f}_y(k) = \hat{f}(k)e^{-iky}$.
+    \item $f\hat{g}, \hat{f}g \in L^1$
+    \item $\int_{\R^n}\hat{f}g \D x = \int_{\R^n} f \hat{g} \D x$
+    \item $\overline{\hat{f}(k)} = \hat{\overline{f}}(-k)$
+    \item $\widehat{\partial_jh}(k)=ik_j\hat{h}(k)$
+  \end{enumerate}
+  \end{multicols}}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.1 (Vertauschen von Ableitung und Integral)}
+  Sei $f: (a,b) \times \R^n \rightarrow \C$ eine Funktion, so dass 
+  \begin{enumerate}[(i)]
+    \item die Funktion $x\mapsto f(t,x)$ integrierbar für alle $t\in(a,b)$ ist,
+    \item die partielle Ableitung $f_t(t,x)$ existiert für alle $(t,x)\in(a,b)\times\R^n$,
+    \item es eine integrierbare Funktion $g$ auf $\R^n$, sodass $|f_t(t,x)|\leq g(x)$ für alle $(t,x)\in(a,b)\times\R^n$ gibt.
+  \end{enumerate}
+  Dann ist $I(t) = \int_{\R^n}f(t,x)\D x$ differenzierbar für $t\in(a,b)$ und es gilt $\frac{\partial I(t)}{\partial t} = \int_{\R^n} f_t(t,x)\D x$.
+\end{namedtheorem}
+
+\section{Fouriertransformierte der Gauss-Funktion}
+
+\begin{namedtheorem}{Beispiel (Gauss-Funktion)}
+  Sei $f(x)=e^{-\frac12\scalprod{Ax,x}}$, $A=A^T$ positiv definit. Dann ist $f\in L^1$ und $\hat{f}(k) = \frac{(2\pi)^{n/2}}{(\det A)^{1/2}} e^{-\frac12\scalprod{A^{-1}k,k}}$. Im eindimensionalen Fall $f(x) = e^{-|x|^2/2}$ ist $\hat{f}(k) = \sqrt{2\pi}e^{-k^2/2}$.\\
+  Allgemein ist $(e^{-\frac{x^2}{a}})\fhat(k) = \sqrt{a\pi}e^{-\frac{ak^2}{4}}$ und $(e^{-\frac{k^2}{a}})\fcheck(x) = \frac{1}{2}\sqrt{\frac{a}{\pi}}e^{-\frac{ax^2}{4}}$
+\end{namedtheorem}
+
+\section{Beispiele für Fouriertransformierte}
+
+\begin{namedtheorem}{Beispiel (Charakteristische Funktion)}
+  $\hat{\chi}_{[-1,1]}(k)=\frac{2\sin k}{k}$.
+\end{namedtheorem}
+
+%\begin{namedtheorem}{Beispiel}
+%  $\left(e^{-x^2/(4t)}\right)\fhat(k) = \sqrt{4\pi t} e^{-k^2 t}$.
+%\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiel (Eigenvektoren der FT, Hermite-Funktionen)}
+  Die Hermite-Funktionen $h_n(x)=(-1)^ne^{x^2/2}\partial_x^ne^{-x^2}=H_n(x)e^{-x^2/2}$, $n=0,1,2,
+  \ldots$ sind Eigenvektoren der Fouriertransformation $\hat{h}_m(k)=(-i)^m\sqrt{2\pi}h_m(k)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiel (Invariante der FT)}
+	$\left(\frac1{\sqrt{|x|}}\right)\fhat(k) = \frac1{\sqrt{|k|}}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiel (Schranke)}
+  $\left(e^{-m|x|}\right)\fhat(k)=\frac{2m}{m^2+k^2}\in L^1(\R)$.
+\end{namedtheorem}
+
+\section{Umkehrsatz für $L^1$-Funktionen}
+
+\begin{namedtheorem}{Satz 4.1}
+  $f,\hat{f}\in L^1 \implies f\fhat\fcheck = f$ und $f,\check{f}\in L^1 \implies f\fcheck\fhat = f$ (f.ü.).
+\end{namedtheorem}
+
+Gleichheit in $L^1$, also fast überall. Für stetige Funktionen Gleichheit.
+
+\begin{namedtheorem}{Korollar 4.2 ($\fhat,\fcheck$ injektiv)}
+  $\fhat,\fcheck:L^1(\R^n)\rightarrow C(\R^n)$ sind injektiv,
+  $f\in L^1(\R^n), \hat{f} = 0 \implies f = 0$ (f.ü.),
+  $f\in L^1(\R^n), \check{f} = 0 \implies f = 0$ (f.ü.).
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 4.3}
+  $f,\hat{f}\in L^1(\R^n) \implies f\fhat\fhat(x) = (2\pi)^nf(-x)$ (f.ü.).
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 4.4)}
+  $f,\hat{f}\in L^1(\R^n) \implies \check{f}\in L^1(\R^n)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 4.5 (Plancherel-Formel)}
+  $f,\hat{f}\in L^1(\R^n) \implies f,\hat{f}\in L^2(\R^n)$ und es gilt 
+%   $\norm{f}_2 = (2\pi)^{-n/2}\norm{\hat{f}}_2$.
+\begin{align*}
+	\norm{f}_2 = (2\pi)^{-n/2}\norm{\hat{f}}_2.
+\end{align*}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition (Faltung)}
+  $(f\ast g)(x)=\int_{\R^n}f(y)g(x-y)\D y = (g\ast f)(x)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz (Faltungssatz)}
+  $f,g\in L^1$. Dann gilt $(f\ast g)\fhat(k)=\hat{f}(k)\hat{g}(k)$.
+\end{namedtheorem}
+
+\section{Der Schwartzraum $\Sr(\R^n)\subset L^p(\R^n),p\in [1,\infty)$}
+
+\begin{namedtheorem}{Definition 5.1 (Multiindex)}
+  ist ein Element $\alpha = (\alpha_1, \ldots, \alpha_n)\in\N^n_0$. $x^{\alpha} = x_1^{\alpha_1} \ldots x_n^{\alpha_n}$, $|\alpha| = \alpha_1 + \ldots + \alpha_n$, $\alpha! = \alpha_1! \ldots \alpha_n!$, $\partial^{\alpha} = \partial_1^{\alpha_1} \ldots \partial_n^{\alpha_n}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition ($C^k$-Raum)}
+  Für $X=\R^n$ setze $C(X) = \{f: X \rightarrow \C\ \text{stetig}\}$. Für $\Omega\subset\R^n$ offen definiere $C^k(\Omega) = \{f:\Omega\rightarrow\C:\partial^{\alpha}f \in C(\Omega), \forall\alpha\in\N^n,|\alpha|\leq k\}$, $C^{\infty} = \cap_{k=0}^{\infty} C^k(\Omega)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 5.2 ($\Sr$)}
+  Für $\varphi\in C^{\infty}(\R^n)$ und $\alpha,\beta\in\N^n$ definieren wir $\norm{\varphi}_{\alpha,\beta} = \sup_{x\in\R^n} |x^{\alpha} \partial^{\beta} \varphi(x)|$. Der \textbf{Schwartzraum} ist der komplexe Vektorraum $\Sr(\R^n) = \{\varphi\in C^{\infty}(\R^n): \norm{\varphi}_{\alpha,\beta} < \infty\ \forall \alpha, \beta \in \N^n\}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 5.1 (Norm auf $\Sr$)}
+  Für alle $k,l\in\N$ ist $\norm{\varphi}_{k,l} = \max\limits_{|\alpha|\leq k, |\beta|\leq l} \norm{\varphi}_{\alpha,\beta}$ ist eine Norm auf dem Vektorraum $\Sr(\R^n)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiele und Eigenschaften}
+  \hfill
+  \begin{itemize}
+    \item Beispiele von Schwartz-Funktionen sind glatte Funktionen mit kompaktem Träger $C^{\infty}_0(\R^n)$, $e^{-a|x|^2}\ \forall a>0,\ e^{-\sqrt{1+|x|^2}}, x^{\alpha}\partial^{\beta}\phi,\ h_n\in\Sr(\R^n)$.
+    \item Keine Schwartz-Funktionen sind nicht glatte Funktionen, $e^{-a|x|},\ (1+|x|^2)^{-s},\ \frac{\phi(x)}{x},\ \int_{-\infty}^x\phi(x)\Dx\notin\Sr(\R^n)$. 
+    \item Polynome erhalten $\Sr$, also für $\phi\in\Sr(\R^n)$ ist auch $P(x)Q(x)\phi\in\Sr(\R^n)$ für alle Polynome $P,Q$. $lim_{|x|\rightarrow\infty}|P(x)Q(\partial)\phi(x)|=0$.
+    \item Für $\phi,\psi\in\Sr(\R^n)$ ist auch das punktweise Produkt $\phi\psi\in\Sr(\R^n)$ im Schwartzraum (Leibnitz-Formel).
+  \end{itemize}
+\end{namedtheorem}
+
+
+\begin{namedtheorem}{Lemma 5.2 (Majorante in $\Sr$)}
+  Seien $\varphi\in\Sr(\R^n)$, $\beta\in\N^n$, $k\in\N$. Dann existiert eine Konstante $c_{\beta,k} = c_{\beta,k}(\varphi)$, so dass $|\partial^{\beta} \varphi(x)| \leq \frac{c_{\beta,k}}{(1+|x|^2)^k}$.
+\end{namedtheorem}
+
+
+\begin{namedtheorem}{Definition 5.3 (Konvergenz in $\Sr$)}
+  Eine Folge $\varphi_j$ in $\Sr(\R^n)$ konvergiert gegen $\varphi\in\Sr(\R^n)$, falls $\lim_{j\rightarrow\infty} \norm{\varphi_j-\varphi}_{k,l} = 0$ für alle $k,l\in\N$. Man schreibt $\varphi_j \overset{\Sr}{\rightarrow}\varphi$ für $j\rightarrow\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 5.4 (Stetigkeit in $\Sr$)}
+  Eine lineare Abbildung $F:\Sr(\R^n)\rightarrow\Sr(\R^n)$ ist stetig, falls für alle konvergenten Folgen gilt $\varphi_j \overset{\Sr}{\rightarrow} \varphi \implies F(\varphi_j) \overset{\Sr}{\rightarrow} F(\varphi)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 5.4 (Fourier-Eigenschaften)}
+  Sei $\varphi\in\Sr(\R^n)$. Dann gilt
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{2}
+    \begin{enumerate}[(i)]
+      \item $(\partial_j\varphi)\fhat(k) = ik_j\hat{\varphi}(k)$,
+      \item $\partial_j\hat{\varphi}(k) = (-ix_j\varphi)\fhat(k)$,
+      \item $(\partial_j\varphi)\fcheck(k) = -ik_j\check{\varphi}(k)$,
+      \item $\partial_j\check{\varphi}(k) = (ix_j\varphi)\fcheck(k)$.
+    \end{enumerate}
+  \end{multicols}}
+\end{namedtheorem}
+
+\begin{namedtheorem}{S3A4}a) Sei $f\in L^1$ und $k\in\N_0$ s.d. $\forall\alpha\in\N^n_0$ mit $|\alpha|\leq k$ gilt $x\mapsto x^\alpha f(x)\in L^1$. Dann ist $\hat{f}\in C^k$ und:\\
+$\partial^\alpha \hat{f}=\hat{(-ix)^\alpha f}$ und $sup_{k\in\R^n}|\partial^\alpha\hat{f}(k)|<\infty$\\
+b) Sei $f\in C^k(R^n)$ und $k\in\N_0$ s.d. $\forall \alpha\in\N^n_0$ mit $|\alpha|\leq k$ gilt $f,\partial^\alpha f\in L^1$. Dann gilt\\
+$\hat{\partial^\alpha f}=(ik)^\alpha\hat{f}$ und $sup_{k\in\R^n}|k^\alpha \hat{f}(k)|<\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 5.5 (Abgeschlossenheit)}
+  $\varphi\in\Sr(\R^n) \implies \hat{\varphi}, \check{\varphi} \in \Sr(\R^n)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 5.6 (FT als Isomorphismus)}
+  Die lineare Abbildung $F:\Sr(\R^n)\rightarrow\Sr(\R^n): \varphi\mapsto\check{\varphi}$ ist bijektiv und stetig. Ihre Inverse $F^{-1}:\Sr(\R^n) \rightarrow \Sr(\R^n): \varphi\mapsto\check{\varphi}$ ist ebenfalls stetig.
+\end{namedtheorem}
+
+
+
+\section{Fouriertransformation von rotationsinverianten Funktionen}
+
+\begin{namedtheorem}{Definition (Rotationsinvariante Funktion)}
+  $g:\R^n\rightarrow\C$ ist eine Funktion, sodass $g(Rx)=g(x)$ für alle $R$ orthogonal ($R^TR=1$).
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 6.1 (Rotationsinvarianz)}
+  Eine Funktion $g$ ist genau dann rotationsinv., wenn sie die Form $g(x) = f(|x|)$, $|x| = \sqrt{x_1^2+\ldots+x_n^2}$ hat.
+\end{namedtheorem}
+
+Wir führen als neue Koordinaten ein $x_1 = \pm r\sqrt{1-y_2^2-\ldots-y_n^2}$, $x_2=ry_2$, $\ldots$, $x_n=ry_n$, wobei $x=ry$. Das Volumenelement ergibt sich als $\D x_1 \ldots = \D x_n = r^{n-1}\D r\frac{\D y_2 \ldots \D y_n}{\sqrt{1-y_2^2-\ldots-y_n^2}}\equiv r^{n-1}\D r \D\Omega(y)$.
+
+\begin{namedtheorem}{Lemma 6.2 ($|S^{n-1}|$)}
+  Die "Oberfläche" der $(n-1)$-dimensionale Einheitssphäre $S^{n-1} = \{y\in\R^n: |y| = 1\}$ ist gegeben durch
+  \begin{align*}
+    |S^{n-1}| = \int_{S^{n-1}} \D \Omega(y) = \frac{2\pi^{n/2}}{\Gamma(n/2)} = \begin{cases}
+      \frac{2\pi^k}{(k-1)!} & n=2k \quad \text{gerade} \\
+      \frac{2^{2k+1}\pi^kk!}{(2k)!} & n = 2k+1 \quad \text{ungerade}
+    \end{cases}.
+  \end{align*}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiel}
+  $|S^1|=\frac{2\pi}{\Gamma(1)}=2\pi$, $|S^2|=\frac{2\pi^{3/2}}{\Gamma(3/2)}=4\pi$, $|S^3|=\frac{2\pi^2}{\Gamma(2)}=2\pi^2$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition (Gamma-Funktion)}
+  $\Gamma(s)=\int_0^{\infty}t^{s-1}e^{-t}\D t$, $\Gamma(s+1)=s\Gamma(s)$, $\Gamma(n+1)=n!$ für $n\in\N$, $\Gamma(\frac12)=\sqrt{\pi}$, $\Gamma(x) \Gamma(1 - x) = \frac{\pi}{\sin(\pi x)}$
+\end{namedtheorem}
+
+$g\in L^1$ rotationsinvariant $\implies \hat{g}$ rotationsinvariant, da
+$\hat{g}(k)=\int_{\R^n}g(|x|)e^{-ik\cdot x}\Dx = \int_0^{\infty}g(r)\left(\int_{S^{n-1}} e^{-ik\cdot yr}\D \Omega(y)\right)r^{n-1}\D r = \int_0^{\infty}g(r)G_n(|k|r)r^{n-1}\D r$, da $\hat{g}(k) = \hat{g}(|k|,0,\ldots,0)$.
+
+\begin{namedtheorem}{Lemma 6.3 ($G_n$-Funktion)}
+  $G_n(\rho) = \int_{S^{n-1}} e^{-i\rho y_1} \D \Omega(y)$ ist die Einschränkung auf $\R_{+} \subset \C$ einer ganzen holomorphen Funktion. Für alle $k\in\R^n$ gilt $\int_{S^{n-1}} e^{-ik\cdot y} \D \Omega(y) = G_n(|k|)$ (Insbesondere $G_n(0) = \vert S^{n - 1} \vert$).
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 6.1 (Besselfunktion)}
+  Sei $\alpha\in\C\setminus\{-1,-2,\ldots\}$. Die Besselfunktion (erster Gattung) der Ordnung $\alpha$ ist die durch die konvergente Potenzreihe $J_{\alpha}(z) = \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(k+\alpha+1)} \left(\frac{z}2\right)^{\alpha+2k}$ definierte Funktion der komplexen Variable $z$. Es sind $J_{1/2}(z)=\sqrt{\frac2{\pi z}}\sin(z)$ und $J_{-1/2}(z)=\sqrt{\frac2{\pi z}}\cos(z)$. Weiters gilt $\frac{d}{dz}(z^nJ_n(z)) = z^nJ_{n - 1}(z)$
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 6.4 (FT für rotationsinvarianten Funktionen)}
+  Sei $n\geq 2$. Dann gilt $G_n(\rho) = (2\pi)^{n/2} \rho^{1-n/2} J_{n/2-1}(\rho)$. Für integrierbare rotationsinvariant Funktionen $g$ gilt $\hat{g}(k) = (2\pi)^{n/2}|k|^{1-n/2}\int_0^{\infty} g(r) J_{n/2 -1}(|k|r)r^{n/2} \D r$ und $\hat{g}(0) = \vert S^{n - 1}\vert \int_0^\infty g(r)r^{n - 1}\mathrm{d}r$. In drei Dimensionen gilt insbesondere $\hat{g}(k) = \frac{4\pi}{|k|} \int_0^{\infty} g(r) r\sin(|k|r)\D r$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Bessel DGL}
+  Die allgemeine Lösung der Bessel-Diffentialgleichung $J_{\alpha}''(x) + \frac1xJ'_{\alpha}(x) + (1-\frac{\alpha^2}{x^2})J_{\alpha}(x) = 0$ lautet $C_1J_{\alpha}(x) + C_2J_{-\alpha}(x)$ für $\alpha\notin\Z$. Für $\alpha\notin\Z$ sind $J_{\alpha}$ und $J_{-\alpha}$ linear unabhängig, für $-n\in\Z_{<0}$ linear abhängig, da $J_{-n}(x)=(-1)^nJ_n(x)$. Die Neumann-Funktion $N_{\alpha}=\frac{\cos(\pi \alpha)J_{\alpha}(x)-J_{-\alpha}(x)}{\sin(\pi\alpha)}$ ist für alle $\alpha$ definiert. Die Funktionen $J_{\alpha}$, $N_{\alpha}$ bilden somit eine allgemeine Basis des Lösungsraums für alle $\alpha\in\C$.
+\end{namedtheorem}
+
+
+\section{Regularität und Abfalleigenschaften}
+\hspace*{\fill} \\
+Regularität beinhaltet Stetigkeit, Differenzierbarkeit, Analytizität.
+
+\begin{namedtheorem}{Satz 7.1 (Majorante mit kompakten Träger)}
+  Sei $f\in C^s_0(\R^n)$. Dann existiert eine Konstante $c$ mit $|\hat{f}(k)| \leq \frac{c}{(1+|k|)^s}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 7.2 (Riemann-Lebesgue)}
+  $f\in L^1(\R^n) \implies \lim_{k\rightarrow\infty} \hat{f}(k) = 0$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 7.3}
+  \begin{enumerate}[(i)]
+    \item Sei $f:\R\rightarrow\C$ messbar, $C,m>0$, sodass $|f(x)|\leq C e^{-m|x|}$ für alle $x\in\R$. Dann hat $\hat{f}$ eine holomorphe Fortsetzung auf dem Streifen $\{|\mathrm{Im}k|<m\}$, ebenso $\check{f}$.
+    \item Sei $m>0$, $f:\{z: |\mathrm{Im}z| <m\} \rightarrow\C$ holomorph und es gelte für alle $|\eta|<m$ sowohl $f(\cdot+i\eta) \in L^1$ als auch $\max_{|\eta'|\leq|\eta|} |f(x+i\eta')| \overset{|x|\rightarrow\infty}{\rightarrow} 0$. Dann existiert zu jedem $m'<m$ eine Konstante $C'$, sodass $|\hat{f}(k)|\leq C'e^{-m'|k|}$. Dasselbe gilt für $\check{f}$.
+  \end{enumerate}
+\end{namedtheorem}
+
+\section{Wellengleichung}
+\begin{align*}
+  \tag{Wellengleichung}
+  \begin{cases}
+    \frac1{c^2}\frac{\partial^2 u}{\partial t^2} - \triangle u = 0 &  x\in\R^n,\ t \geq 0, \\
+    u(x,0) = f(x),\\
+    \partial_t u(x,0)=g(x).
+  \end{cases}
+\end{align*}
+Die Lösung $u(t,x)$ ist für $n=2,3$ gegeben durch $u(t,x)=$ 
+\begin{align*}
+  \frac1{2\pi c}\left(\frac{\partial}{\partial t} \left(\frac1t\int_{|y|\leq ct}\frac{f(x+y)\D y_1 \D y_2}{\sqrt{c^2t^2-|y|^2}}\right) + \int_{|y|\leq ct}\frac{g(x+y)\D y_1 \D y_2}{\sqrt{c^2t^2-|y|^2}}\right),\\
+  \frac1{4\pi c^2}\left(\frac{\partial}{\partial t} \left(\frac1t\int_{|y|=ct}f(x+y)\D\Omega(y)\right) + \frac1t\int_{|y|=ct}g(x+y)\D\Omega(y)\right).
+\end{align*}
+
+\section{Wärmeleitungsgleichung}
+\begin{align*}
+  \tag{Wärmeleitungsgleichung}
+  \begin{cases}
+    \frac{\partial u}{\partial t} - \triangle u = 0 &  x\in\R^n,\ t > 0, \\
+    u(x,0) = f(x).
+  \end{cases}
+\end{align*}
+
+\begin{namedtheorem}{Definition (Wärmeleitungskern)}
+  $K_t(x) = (e^{-k^2t})\fcheck(x) = \frac{1}{(4\pi t)^{n/2}}e^{-|x|^2/(4t)}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 9.1 (Lösung)}
+  Sei $f$ stetig und beschränkt auf $\R^n$. Dann ist $u(x,t) = \int_{\R^n}K_t(x-y)f(y)\D y \; (=K \ast f)$ eine Lösung der Wärmeleitungsgleichung in $C^{\infty}(\R^n\times(0,\infty))$ und für alle $x\in\R^n$ gilt $\lim_{t\rightarrow0^{+}} u(x,t) = f(x)$.
+\end{namedtheorem}
+
+\section{Rechnungen}
+
+% $\left(e^{-x^2/(4t)}\right)\fhat(k) = \sqrt{4\pi t} e^{-k^2 t}, \quad \left(\frac1{\sqrt{|x|}}\right)\fhat(k) = \frac1{\sqrt{|k|}}$
+
+$f$ gerade $\Rightarrow$ $\hat{f}\in \R$, $f$ ungerade $\Rightarrow$ $\hat{f}\in i\R$,\  $f \in \R \Rightarrow \mathrm{Re}(\hat{f})$ gerade und $\mathrm{Im}(\hat{f})$ ungerade. 
+
+\begin{namedtheorem}{Fouriertransformierte mit Residuensatz}
+Für reellwertige $f$ ist $\hat{f}(-x)=\overline{\hat{f}(k)}$, deswegen genügt es $\hat{f}(-k)$ für $k\geq0$ zu berechnen. Dann ist $\hat{f}(-k)=\lim_{R\rightarrow\infty}\int_{-R}^R f(x)e^{ikx}\Dx = 2\pi i\sum_{\mathrm{Im}p>0} \mathrm{Res}(f,p) - \lim_{R\rightarrow\infty}\int_{\Gamma_R}f(x)e^{ikx}\Dx = 2\pi i\sum_{\mathrm{Im}p>0} \mathrm{Res}(f,p)$. $\Gamma_R$ in der positiven oder negativen imaginären Ebene wählen, so dass $|\int_{\Gamma_R}f(x)e^{ikx}\Dx|\leq\pi R\sup_{|x|=R}|f(x)e^{ikx}|\rightarrow0$, wobei $e^{ikx}=e^{ik(a+ib)}=e^{k(ia-b)}$ mit $|a+ib|=R$. Für $\Gamma_R$ in der positiven imaginären Ebene ist $b>0$, also muss $k>0$, für $\Gamma_R$ in der negativen imaginären Ebene ist $b<0$, also muss $k<0$. Ist $\Gamma_R$ negativ orientiert (Uhrzeigersinn, negative imaginäre Halbebene), hat $\mathrm{Res}(f,p)$ ein zusätzliches Minus.
+\end{namedtheorem}
+
+
+\begin{namedtheorem}{Lemma (Berechnung von Residuen)} \hspace*{\fill}
+  \begin{enumerate}[(i)]
+    \item $\mathrm{ord}(f,p)\geq -1$, dann $\mathrm{Res}(f,p)=\lim_{z\rightarrow p} (z-p)f(z)$,
+    \item $\mathrm{ord}(f,p) = -k$, dann $\mathrm{Res}(f,p)=\frac1{(k-1)!}\partial^{k-1}_z ( (z-p)^kf(z) ) \arrowvert_{z=p}$,
+    \item $f$ holomorph an $p$, $g$ hat eine einfache Nullstelle in $p$, dann ist $\mathrm{Res}(f,p)=\frac{f(p)}{g'(p)}$, insbesondere für $f\equiv1$,
+    \item $\mathrm{ord}(f,p)=-1$, $g$ holomorph auf $B_{\epsilon}(p)$, dann ist $\mathrm{Res}(f,p)=g(p)\mathrm{Res}(f,p)$.
+  \end{enumerate}
+\end{namedtheorem}
+
+\begin{namedtheorem}{PDE mit Fouriertransformation}
+  Gesucht wird eine Lösung $u\in C^2(\R^n\times\R_{+})$. Nehmen wir an, dass $u\overset{x\rightarrow\infty}{\rightarrow}0$ folgt mit $\hat{u}(k,t)=\int_{\R^n}u(x,t)e^{-ik\cdot x}\Dx$ bzw. über die Fouriertransformation der PDE die DGL $\frac1{c^2}\partial_t^2\hat{u}(k,t)=-k^2\hat{u}(k,t)$ mit allgemeiner Lösung $\hat{u}(k,t)=A(k)\cos(|k|ct)+B(k)\sin(|k|ct)$ bei festem $k$. Aus den Anfangsbedingungen folgt $\hat{u}(k,t)=\hat{f}(k)\cos(|k|ct)+\frac{\hat{g}(k)}{|k|c}\sin(|k|ct)$. Die Rücktransformation liefert $u(x,t)=\int_{\R^n} \left( \hat{f}(k)\cos(|k|ct)+\frac{\hat{g}(k)}{|k|c}\sin(|k|ct)\right) e^{ik\cdot x} \D k$. Für $f,g\in C^s_0(\R^n)$ ist $\hat{f}(k),\hat{g}(k)\leq C (1+|k|)^{-s}$ und für $s$ gross genug (z.B. $\geq n+2$) kann man unter dem Integral ableiten, also ist $u$ eine $C^2$-Lösung.
+\end{namedtheorem}
+
+Für $f\notin L^1(\R^n)$ kann ein \textbf{konvergenzerzeugender Faktor} eingeführt werden, d.h. $K_{\delta}(x)=f(x)e^{-\delta|x|^2/2}\in L^1(\R^n)$, sodass z.B. $\hat{f}(k)=\int_{\R^n}\lim_{\delta\rightarrow0}K_{\delta}(x)e^{-ikx}\Dx=\lim_{\delta\rightarrow0}\int_{\R^n}K_{\delta}(x)e^{-ikx}\Dx=\lim_{\delta\rightarrow0}\hat{K}_{\delta}(k)$.
+
+\begin{namedtheorem}{Beispiel (Konvergenzerzeugender Faktor)}
+  Für $\hat{\psi}(t,k)=\hat{\phi}(k)\hat{K}_{\delta}(k,t)$, $K_0\notin L^1(\R^n)$ ist $\psi(x,t)=\frac1{2\pi}\int_{\R^n}\lim_{\delta\rightarrow0}\hat{K}_{\delta}(k,t)\hat{\phi}(k)e^{ikx}\D k =$
+  $\lim_{\delta\rightarrow0} \frac1{2\pi}\int_{\R^n}\hat{K}_{\delta}(k,t)\hat{\phi}(k)e^{ikx}\D k =$
+  $\lim_{\delta\rightarrow0} \frac1{2\pi}\int_{\R^n}(K_{\delta}(\cdot,t)\ast\phi)\fhat(k)e^{ikx}\D k =$
+  $\lim_{\delta\rightarrow0} (K_{\delta}(\cdot,t)\ast\phi)\fhat\fcheck(x)=$
+  $\lim_{\delta\rightarrow0} \int_{\R^n}K_{\delta}(y,t)\phi(x-y)\D y =$
+  $\int_{\R^n}\lim_{\delta\rightarrow0}K_{\delta}(y,t)\phi(x-y)\D y = (K_0(\cdot,t)\ast\phi)(x)$.
+\end{namedtheorem}
+
+Integrale von \textbf{Fouriertransformationen} mit cos und sin kann man zu neuen Funktionen umschreiben und erhält mit \textbf{partieller Integration} eine algebraische Gleichung für das Integral.
+\begin{namedtheorem}{Beispiel (FT p.I)}
+Für $f(x) = e^{-\vert x \vert}\cos(x): \hat{f}(k) =$ $ \int_0^\infty e^{-x}\cos(x)e^{-ikx}dx + \int_{-\infty}^0 e^x\cos(x)e^{-ikx}\Dx = g(k) + g(-k)$ und $g(k) \overset{p.I}{=}... \overset{p.I}{=}\frac{1}{1 + ik} - \frac{1}{(1 + ik)^2}g(k)$ 
+\end{namedtheorem}
+
+%\begin{namedtheorem}{PDE mit Fouriertransformation}
+%  Gesucht wird eine Lösung $u\in C^2(\R^n\times(0,\infty))\cap C(\R^n\times[0,\infty))$. Wir nehmen zunächst an, dass $f\in\Sr(\R^n)$. Mit $\hat{u}(k,t)=\int_{\R^n}u(x,t)e^{-ik\cdot x}\Dx$ folgt dann $\partial_t\hat{u}(k,t)=-k^2\hat{u}(k,t)$, $\hat{u}(k,0)=\hat{f}(k)$, also $\hat{u}(k,t)=e^{-k^2t}\hat{f}(k)$. Die Rücktransformation liefert $u(x,t)=\int_{\R^n}K_t(x-y)f(y)\D y$. 
+%\end{namedtheorem}
+

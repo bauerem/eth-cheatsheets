@@ -1,0 +1,300 @@
+\section*{\textcolor{magenta}{Examples: Old Exams}}
+
+%
+% EXAM SUMMER 2021
+%
+\section*{Exam: Summer 2021}
+Let $L$ be a random loss of the form $L=YZ$, where $Y$ is a Bernoulli random variable with mean $p\in(0,1)$ and $Z$ an independent random variable with CDF
+\[
+    F_Z(x) =
+    \begin{cases}
+        1 - x^{-\beta} &x \geq 1\\
+        0 & x < 1
+    \end{cases}
+\]
+
+a)-e): TODO
+
+f) For which $\alpha \in(0,1)$ is $\text{AVaR}_\alpha(L)$ equal to $ES_\alpha(L)$.
+
+\textbf{Solution f)} We know from the lecture notes that $$\text{AVaR}_\alpha(L) = ES_\alpha(L)$$ if and only if $\bbP[L \geq \VaR(L)] = 1 - \alpha$.
+Since
+\[
+    \bbP[L \geq \VaR(L)] =
+    \begin{cases}
+        1 - \alpha & \alpha \in (1-p, 1) \\
+        1 & \alpha \in (0, 1-p]
+    \end{cases}
+\]
+we have $\text{AVaR}_\alpha(L) = ES_\alpha(L)$ if and only if $\alpha \in (1-p, 1)$.
+
+%
+% Problem 1
+%
+\subsection*{1) TODO}
+
+%
+% Problem 2
+%
+\subsection*{2) TODO}
+
+%
+% Problem 3
+%
+\subsection*{3) TODO}
+
+%
+% Problem 4
+%
+\subsection*{4) Copulas \& Tail Dependence}
+Let $(X,Y)$ be a 2D random vector with CDF
+\[
+    F_{X,Y}(x,y) = \frac{(\sqrt{1 + 2x} - 1)(1 - e^{-4y^2})}
+    {\sqrt{1+2x} - \frac{1}{2}e^{-4y^2}} \quad x,y\geq 0
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item What are the marginal dist. of $X$ and $Y$?
+    \item Compute a copula $C$ of $(X,Y)$. Is it unique?
+    \item Calculate the coeff. of upper tail dependence $\lambda_u$ between $X$ and $Y$.
+    \item Calculate the coeff. of lower tail dependence $\lambda_l$ between $X$ and $Y$.
+\end{enumerate}
+
+\textbf{Solution a)} Since we were given the CDF already, we just have to take the limits.
+\[
+    F_X(x) = \lim_{y\to\infty} F_{X,Y}(x,y) = \dots = 1 - \frac{1}{\sqrt{1 + 2x}} \quad x \geq 0
+\]
+and by using l'Hopitals rule
+\[
+    F_{Y}(y) = \lim_{x\to \infty} F_{X,Y}(x,y) = \dots = 1 - e^{-4y^2} \quad y \geq 0
+\]
+
+\textbf{Solution b)} Since the marginals are \underline{continuous}, Sklar's theorem ensures that the copula of $(X,Y)$ is unique and given by
+\[
+    C(u,v) = F_{X,Y}(q_X(u), q_Y(v)) \quad \text{for} \quad u,v \in(0,1)^2
+\]
+By inverting $F_X$ and $F_Y$ we obtain the quantile functions as
+\[
+    q_X(u) = \frac{u(2-u)}{2(1-u)^2} \quad q_Y(v) = \frac{1}{2}\bigg(\log\bigg(\frac{1}{1-v}\bigg)\bigg)^{1/2}
+\]
+Therefore, one deduces
+\begin{align*}
+    C(u,v) &= F_{X,Y}\bigg(\frac{u(2-u)}{2(1-u)^2}, \ \frac{1}{2}\bigg(\log\bigg(\frac{1}{1-v}\bigg)\bigg)^{1/2}\bigg) \\
+    &= \frac{uv}{1 - 1/2(1-u)(1-v)} \quad \text{for} \quad u,v\in(0,1)^2
+\end{align*}
+
+\textbf{Solution c)} We have seen in the lecture, that the coefficient of the upper tail dependence can be computed as
+\[
+    \lambda_u = \lim_{\alpha \uparrow 1} \frac{1 - 2\alpha + C(\alpha, \alpha)}{1-\alpha}
+\]
+Using $C(\alpha,\alpha)$ from b) and just multiplying everything out we get
+\[
+    \lambda_u = \lim_{\alpha\uparrow 1}\frac{1-2\alpha + \frac{\alpha^2}{1+\frac{1}{2}(1-\alpha)^2}}{1-\alpha} = \dots = 0
+\]
+
+\underline{Alternatively} $\lambda_u$ can be computed as
+\[
+    \lambda_u = 2 - \lim_{\textcolor{red}{\alpha\uparrow 1}}\frac{1 - C(\alpha, \alpha)}{1-\alpha}
+\]
+we use l'hopitals rule and get $\lim_{\alpha\uparrow 1}\frac{1 - C(\alpha, \alpha)}{1-\alpha} = 2$ thus $\lambda_u = 0$.
+
+\textbf{Solution d)} We know from the lecture, that
+\[
+    \lambda_l =  \lim_{\textcolor{red}{\alpha \downarrow 0}}\frac{C(\alpha, \alpha)}{\alpha}
+\]
+Using $C(\alpha, \alpha)$ from b) we get 
+\[
+    \lambda_l = \lim_{\alpha\downarrow 0} \frac{\alpha}{1 - \frac{1}{2}(1 - \alpha)^2} = 0
+\]
+
+\subsection*{5)}
+\textbf{Q:}
+Why is subadditivity a desirable property of a risk measure
+\textbf{A:}
+1) consistent with diversification, 2) concentration of risk detectable, 3) decentralized risk measurement
+
+\textbf{Q:}
+Why do we ass. stationarity?
+\textbf{A:} We can't do statistics w only one realization of many unique variables. Take a step in the iid direction.
+
+
+
+%
+% EXAM SUMMER 2020
+%
+\section*{Exam: Summer 2021}
+
+%
+% Problem 1
+%
+\subsection*{1) $\VaR, \text{AVaR}, \text{ES}$ \& Coherent Risk Measure}
+\begin{enumerate}[label=(\alph*)]
+    \item Let $X$ be a random variable with a standard Laplace distribution; that is, the CDF of $X$ is
+    \[
+        F(x) =
+            \begin{cases}
+                \frac{1}{2}\exp(x) \quad &, x\leq 0\\
+                1 - \frac{1}{2}\exp(-x) &, x \geq 0
+            \end{cases}
+    \]
+    Calculate $\VaR(X)$ and $\text{AVaR}_\alpha(X)$ for $\alpha \in [1/2, 1)$
+    \item Let $X$ be a random variable such that $\E[|X|] < \infty$. Show that
+    \[
+        \text{AVaR}_\alpha(X) = \text{VaR}_\alpha(X)
+        + \frac{1}{1-\alpha} \E[(X - \VaR(X))_+]
+    \]
+    for all $\alpha \in (0, 1)$.
+    \item Name one advantage of $\VaR$ over $\text{AVar}$ and one advantage of $\text{AVar}$ over $\VaR$.
+    \item Let $(\Omega, \mathcal{F}, \bbP)$ be a probability space and consider the risk measure $\rho: L^1(\Omega, \mathcal{F}, \bbP) \to \mathbb \R$ given by
+    \[
+        \rho(X) = \max\{\text{AVaR}_{0.75}, \text{VaR}_{0.95}(X)\}
+    \]
+    Which properties of a coherent risk measure does $\rho$ have? Please, justify your answers.
+\end{enumerate}
+
+\textbf{Solution a)} $\VaR(X), \alpha \geq 1/2$ can be obtained by inverting $F|_{\R_+}$. This gives
+\[
+    \VaR(X) = -\log(2(1-\alpha))
+\]
+for all $\alpha \geq \frac{1}{2}$. Hence, using a simple change of variable we obtain
+\begin{align*}
+    \text{AVaR}_\alpha(X) &= \frac{1}{1-\alpha}\int_\alpha^1 \text{VaR}_u(X) du \\
+    &= -\frac{1}{1-\alpha}\int_\alpha^1 \log(2(1-u))du \\
+    &= - \frac{1}{2(1-\alpha)}\int_0^{2(1-\alpha)} \log(s) ds
+\end{align*}
+for all $\alpha\in[1/2,1)$.
+
+Since $\lim_{x\to 0} x\log(x) = 0$ we obtain
+\begin{align*}
+    \text{AVar}_\alpha(X) &= -\frac{1}{2(1-\alpha)}\int_0^{2(1-\alpha)}\log(s) ds \\
+    &= -\frac{1}{2(1-\alpha)}(2(1-\alpha)\log(2(1-\alpha)) - 2(1-\alpha)) \\
+    &= 1 - \log(2(1-\alpha))
+\end{align*}
+for all $\alpha \in [1/2, 1)$.
+
+\textbf{Solution b)}
+The stated identity follows by direct computation. In fact, we have
+\begin{align*}
+    \text{AVaR}_\alpha(X) &= \frac{1}{1-\alpha}\int_\alpha^1 \text{VaR}_u(X) du \\
+    &= \VaR + \frac{1}{1-\alpha}\int_\alpha^1 ( \text{VaR}_u(X) - \VaR(X)) du \\
+    &= \VaR(X) + \frac{1}{1-\alpha}\int_0^1 ( \text{VaR}_u(X) - \VaR(X) )_+ 1_{(\alpha, 1)}(u)du \\
+    &= \VaR(X) + \frac{1}{1-\alpha}\E_U\bigg[(q_U^{-}(X) - \VaR(X))_+\bigg]
+\end{align*}
+where $U \sim \text{Unif}(0,1), \alpha \in (0,1)$. Using the quantile transformation theorem, we obtain
+\[
+    \text{AVaR}_\alpha(X) = \text{VaR}_\alpha(X) + \frac{1}{1-\alpha} \E[(X - \VaR(X))_+]
+\]
+for all $\alpha\in (0,1)$.
+
+\textbf{Solution c)}
+\begin{itemize}
+    \item $\text{VaR}$ is defined on $L^0(\bbP)$ but $\text{AVaR}$ only on $L^1(\bbP)$.
+    \item $\text{VaR}$ is in general not subadditive as an example showed in the lecture, but due to a representation theorem proved in class, $\text{AVaR}$ is a coherent risk measure.
+    \item $\text{VaR}$ is a frequency measure, i.e. it does not see what happens in the tails, whereas $\text{AVaR}$ is a severity measure and therefore incorporates the behaviour in the tails.
+    \item $\text{AVaR}$ is much more difficult to estimate and backtest than $\text{VaR}$.
+\end{itemize}
+
+\textbf{Solution d)}
+First recall that a risk measure is called coherent if it satisfies the axioms (M), (P), (S), (T) [see theory part]. Moreover, we have seen in the lecture that $\text{VaR}$ satisfies (M), (T), (P) but in general not (S) and that $\text{AVaR}$ is a coherent risk measure. Since the maximum has the following properties
+\begin{enumerate}
+    \item $\max\{x + a, y + a\} = \max\{x,y\} + a \quad \forall x,y,a\in\R$
+    \item $\max\{\lambda x, \lambda y\} = \lambda\max\{x,y\} \quad \forall x,y\in \R, \ \lambda > 0$
+    \item $\max\{x+y, z+ w\} \leq \max\{x,y\} + \max\{y,w\} \quad \forall x,y,z,w\in\R$
+\end{enumerate}
+
+$\rho$ satisfies (M), (P) and (T) but (S) does not hold. To see this, it suffices to find a pair of random variable $(X_1, X_2)$ such that
+\begin{align*}
+    \rho(X_i) &= \text{AVaR}_{0.75}(X_i) \\
+    \text{VaR}_{0.95}(X_1 + X_2) &> \text{AVaR}_{0.75}(X_1) + \text{AVaR}_{0.75}(X_2)
+\end{align*}
+In fact, in this ecase we obtain
+\begin{align*}
+    \rho(X_1 + X_2) & \geq \text{VaR}_\beta(X_1 + X_2) > \text{AVaR}_\alpha(X_1) + \text{AVaR}_\alpha(X_2) \\
+    &= \rho(X_1) + \rho(X_2)
+\end{align*}
+
+Next we give a simple example of this failure. Pick two independent $Ber(p)$distributed random variables $X_1, X_2$ with success probability $p\in(0,1)$. That is, their common CDF is given by
+\[
+    F(x) =
+    \begin{cases}
+        0 & x < 0\\
+        1 - p & 0 < x < 1 \\
+        1 & x \geq 1
+    \end{cases}
+\]
+Since $\VaR(X_i) = \inf\{x : F(x) \geq \alpha\}, \ i=1,2$ we obtain
+\[
+    \VaR(X_i) =
+    \begin{cases}
+            -\infty & \alpha = 0\\
+            0 & 0 < \alpha \leq 1-p \\
+            1 & 1-p < \alpha \leq 1
+    \end{cases}
+\]
+and
+\[
+    \text{AVaR}_\alpha(X_i) =
+    \begin{cases}
+        \frac{p}{1-\alpha} & \alpha \in (0, 1-p] \\
+        1 & \alpha \in (1-p, 1]
+    \end{cases}
+\]
+for $i = 1,2$. On the other hand, the independence of $X_1$ and $X_2$ shows
+\[
+    X_1 + X_2 =
+    \begin{cases}
+        0 & \text{with} \bbP[X_1 + X_2 = 0] = (1-p)^2 \\
+        1 & \text{with} \bbP[X_1 + X_2 = 1] = 2p(1-p)^2 \\
+        2 & \text{with} \bbP[X_1 + X_2 = 2] = p^2 \\
+    \end{cases}
+\]
+and therefore
+\[
+    F_{X_1+X_2}(x) =
+    \begin{cases}
+        0 & x<0 \\
+        (1-p)^2 & 0 \leq x < 1 \\
+        1 - p^2 & 1 \leq x < 2 \\
+        1 & x \geq 2
+    \end{cases}
+\]
+As above, this shows
+\[
+    \VaR(X_1+X_2) =
+    \begin{cases}
+        -\infty & \alpha = 0 \\
+        0 & 0 < \alpha \leq (1-p)^2 \\
+        1 & (1-p)^2 < \alpha \leq 1-p^2 \\
+        2 & 1-p^2 < \alpha \leq 1
+    \end{cases}
+\]
+If we choose $p=0.24$ then $p^2 = (6/25)^2 = 36/625$ which implies $0.75 < 1-p = 0.76$, $1-p^2 < 0.95$. Hence, we obtain
+\begin{align*}
+    \rho(X_1) + \rho(X_2) &= 2 \text{AVaR}_{0.75}(X_1) \\
+    &= 2 \frac{24}{25} < 2 = \text{VaR}_{0.95}(X_1 + X_2) \leq \rho(X_1 + X_2)
+\end{align*}
+
+
+%
+% EXAM SUMMER 2020
+%
+\section*{Exam: Summer 2019}
+\subsection*{Question 5: Copula \& PCA}
+\begin{enumerate}[label=(\alph*)]
+    \item a) TODO
+    \item b) Name three methods for estimating a copula $C$ from data.
+    \item Explain what PCA is.
+\end{enumerate}
+
+\textbf{Solution b)} Method of momens using rank correlation, maximum likelihood estimation, interference functions fro margins estimator, maximum pseudo-likelihood estimator, non-parameteric estimator by forming ap seudo-sample from the copula.
+
+\textbf{Solution c)} The goal of PCA is dim. reduction. The main idea is that if $X_1, \dots, X_n \in \R^d$ almost lie in a lower dim. subspace $A$ with $dim(A) = p < d$ then the projections of $X_1 , \dots , X_n$ onto $A$ constitute a good approx. of the original observ. $X_1 , \dots, X_n$ and we can effectively work in a $p$-dim. setting without losing much information.
+
+PCA works as follows. Ket $X\in\R^d$ be a random vector with $\E[X^2] < \infty$ and denote $\mu = \E[X]$ and $\Sigma = \Cov(x)$. $\Sigma$ is sym. and pos. semidef. We can write $\Sigma = U \Lambda U^T$ where $\Lambda = \diag(\lambda_1,\dots,\lambda_d)$ is the diag matrix of EV of $\Sigma$ that are without loss of generality ordered so that $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_d \geq 0$ and $U$ is an orthogonal  matrix whose columns are given by the EV of $\Sigma$ in the order corresponding the order of $\lambda_1, \dots, \lambda_d$ in the matirx $\Lambda$. One then defines the \textbf{principal component transform} $Y = U^T(X  - \mu)$ We have 
+\[
+\E[Y] = U^T\E[X] - U^T\mu = 0
+\]
+and
+\[
+\Cov[Y] = U^T\Cov(X-\mu)U = U^T\Sigma U = U^TU\Lambda U^TU = \Lambda U
+\]
+where the last inequality follows from the orthogonality of $U$. The above means that the components $Y_1, \dots ,Y_d$ of $Y$ are uncorrelated and $Var(Y_i) = \lambda_i$. If we therefore have that $\lambda_i$ is low for some $i \in \{1,\dots,d\}$ it means that if "drop them", we can reduce the dimension of $X$ without much loss of information.

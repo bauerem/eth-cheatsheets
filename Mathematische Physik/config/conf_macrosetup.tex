@@ -1,0 +1,52 @@
+%% Custom commands
+%% ===============
+
+%% Special characters for number sets, e.g. real or complex numbers.
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\X}{\mathbb{X}}
+
+%% Fixed/scaling delimiter examples (see mathtools documentation)
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+%% Use the alternative epsilon per default and define the old one as \oldepsilon
+\let\oldepsilon\epsilon
+\renewcommand{\epsilon}{\ensuremath\varepsilon}
+
+%% Also set the alternate phi as default.
+\let\oldphi\phi
+\renewcommand{\phi}{\ensuremath{\varphi}}
+
+
+
+% Own macros
+
+
+\newcommand{\scalprod}[1]{\langle #1 \rangle}
+
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\nnz}{\mathbf{nnz}}
+
+\newcommand{\argmin}{\mathrm{argmin}}
+
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\lsq}{\mathrm{lsq}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\Ker}{\mathrm{Ker}}
+
+
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\Dx}{\mathrm{d}x}
+\newcommand{\Dt}{\mathrm{d}t}
+\newcommand{\Sr}{\mathscr{S}}
+
+\newcommand{\fhat}{{}^{\wedge}}
+\newcommand{\fcheck}{{}^{\vee}}

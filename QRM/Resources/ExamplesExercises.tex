@@ -1,0 +1,1091 @@
+\section*{\textcolor{orange}{Examples: Problem Sheets}}
+%
+% PROBLEM SHEET 1
+%
+\section*{Problem Sheet 1}
+
+%
+% Subproblem 1
+%
+\subsection*{1) 3 Pillars of Financial Regulations} See Concepts
+
+%
+% Subproblem 2
+%
+\subsection*{2) Model Uncertainity} See Concepts
+
+%
+% Subproblem 3
+%
+\subsection*{3) Poission Distribution}
+Let $N \sim \text{Pois}(\lambda)$. Compute its expectation value and variance.
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate $\E[N]$
+    \item Calculate $\text{Var}[N]$
+\end{enumerate}
+\textbf{Solution a)} TODO
+\textbf{Solution b)} TODO
+
+%
+% Subproblem 4
+%
+\subsection*{4) Exponential Distribution}
+Let $X \sim \text{Var}(\lambda)$.
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate $\E[X]$
+    \item Calculate $\text{Var}[X]$
+    \item What is the distribution of $exp(X)$?
+\end{enumerate}
+\textbf{Solution a)} TODO \\
+\textbf{Solution b)} TODO \\
+\textbf{Solution c)}
+Denote $Y = \exp(X)$ and $F_Y(y) =
+\mathbb{P}[Y \leq y]$. Since $x \geq 0 \ \Leftrightarrow \ y = \exp(x) \geq 1$,
+one has $F_Y(y) = 0$ for $y < 1$, whereas
+\begin{align*}
+  F_Y(y) &= \mathbb{P}[\exp(X) \leq y] = \mathbb{P}[X \leq \log{y}] \\
+  &= \int_0^{\log{y}} \lambda e^{-\lambda x}dx = 1 - y^{-\lambda}
+\end{align*}
+for $y \geq 1$. Computing $f(x) = \frac{d}{dy} F_Y(y)$ we get the density
+\[
+  f(y) = \begin{cases}
+           \lambda y^{-y - 1} = \frac{\lambda}{y^{y+1}} & y \geq 1 \\
+           0 & y < 1
+         \end{cases}
+\]
+Hence, $Y$ has a Pareto distribution with scale parameter 1 and shape parameter
+$\lambda$.
+
+%
+% Subproblem 5
+%
+\subsection*{5) What is EDF?} See definition.
+
+%
+% Subproblem 6
+%
+\subsection*{6) Show the 3 Properties of a CDF} TODO
+
+%
+% Problem Sheet 2
+%
+\section*{Problem Sheet 2}
+%
+% Subproblem 1
+%
+\subsection*{1) Compute $\E[X]$, $\text{Var}[X]$, $\E[X]$, $\E[X | X \geq \mu]$ for $X\sim N(\mu, \sigma^2)$}
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate $\E[X]$ and $\text{Var}[X]$.
+    \item Calculate $\E[e^X]$.
+    \item Calculate cond. exp. $\E[X | X \geq \mu]$
+\end{enumerate}
+\textbf{Solution a)}
+\textit{Expectation Value}: Since any density integrates to 1, one has
+\[
+    \E[X] = \int_{-\infty}^\infty xf(x) dx
+          = \int_{-\infty}^\infty (x-\mu) f(x) dx + \mu
+\]
+Using the substitution $y=x-\mu$ we get
+\begin{align*}
+    \int_{-\infty}^\infty(x - \mu)f(x) dx
+    &= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty(x-\mu)^2
+    e^{\frac{-(x-\mu)^2}{2\sigma^2}} dx \\
+    &= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty y^2
+    e^{y-^2}{2\sigma^2} dx = 0
+\end{align*}
+where the last equality follows since $ye^{-y^2 / (2\sigma^2)}$ is odd function.
+We get $\E[X] = \mu$
+
+\textit{Variance:} Use the sub $z = (x-\mu)/\sigma$ and $\text{Var(X)} = \E[(X - \mu)^2]$. Integrate by parts once and use the Gauss integral to get $\text{Var}(X) = \sigma^2$.
+
+TODO: Add explicit math to Variance?
+
+\textbf{Solution b)}
+Using the density and completion of the square, one obtains
+\begin{align*}
+    E[e^X] &= \int_{-\infty}^\infty e^x f(x)dx \\
+           &= \frac{1}{\sqrt{2\pi\sigma^2}}\int_{-\infty}^\infty
+              e^{-\frac{(x-\mu)^2}{2\sigma^2} + x} dx \\
+           &= \frac{1}{\sqrt{2\pi\sigma^2}}\int_{-\infty}^\infty
+              e^{-\frac{x^2-2x\mu+\mu^2-2x\sigma^2}{2\sigma^2}}dx \\
+           &= \frac{1}{\sqrt{2\pi\sigma^2}}\int_{-\infty}^\infty
+              e^{-\frac{(x-(\mu+\sigma^2))^2}{2\sigma^2}}dx
+              e^{\frac{-\mu^2}{2\sigma^2}}e^{\frac{(\mu + \sigma^2)^2}{2\sigma^2}} \\
+           &= e^\frac{-\mu^2 + \mu^2 + 2\mu\omega^2 + \omega^4}{2\omega^2}
+            = e^{\mu+\sigma^2/2}
+\end{align*}
+where the second to last inequality follows since $\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-(\mu+\sigma^2))^2}{2\sigma^2}}$ is the
+density of a normally dist. random variable with mean $\mu + \sigma^2$ and variance
+$\sigma^2$ and therefore integrates to 1. 
+
+TODO: Maybe explain completion of the square? ... haha
+
+\textbf{Solution c)}
+One has
+\[
+    \E[X|X\geq\mu] = \frac{\int_\mu^\infty x f(x) dx}{\mathbb{P}[X\geq\mu]}
+\]
+We know $\mathbb{P}[X\geq\mu] = \int_\mu^\infty f(x) = \frac{1}{2}$ since $f(x)$ is symmetric
+around $\mu$.
+
+Using $z = (x-\mu)/\sigma$, integration by parts, $\int f(x) dx = 1$ and direct
+integration, we get
+\begin{align*}
+    \int_\mu^\infty xf(x) dx &= \frac{1}{\sqrt{2\pi\sigma^2}}\int_\mu^\infty
+    (x - \mu)e^{-\frac{(x-\mu)^2}{2\sigma^2}} dx + \frac{\mu}{2} \\
+    &= \frac{\sigma}{\sqrt{2\pi}}\int_0^\infty ze^{-\frac{z^2}{2}} + \frac{\mu}{2} \\
+    &= \frac{\sigma}{\sqrt{2\pi}}\big(-e^{-\frac{z^2}{2}}\big)\big|_0^\infty \\
+    &= \frac{\sigma}{\sqrt{2\pi}} + \frac{\mu}{2}
+\end{align*}
+
+So we get $\E[X|X\geq \mu] = \mu + \sigma\sqrt{\frac{2}{\pi}}$
+
+%
+% Subproblem 2
+%
+\subsection*{2) Quantile Funtion "properties"} TODO (Might be important!)
+
+%
+% PROBLEM SHEET 3
+%
+\section*{Problem Sheet 3}
+%
+% Subproblem 1
+%
+\subsection*{1) Mixture Distribution}
+Let $L$ be of the form $L=YZ$ where $Y\sim \text{Bernoulli(p)}$ with $\E[Y]=p\in(0,1)$ and
+$Z\sim \text(Exp(\lambda)){\lambda}$ with $\E[X] = m > 0$
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate $\E[L]$ and $\text{Var}[L]$
+    \item Derive the CDF of $L$.
+    \item Does $L$ have a density?
+    \item Calculate $\VaR(L)$.
+    \item Calculate $\text{ES}_\alpha(L)$.
+\end{enumerate}
+
+\textbf{Solution a)} Since $Y$ and $Z$ are independent, we have
+\[
+    \E[L] = \E[YZ] = \E[Y]\E[Z]
+\]
+and
+\[
+    \text{Var}(YZ) = \E[Y^2]\E[Z^2] - \E[Y]^2\E[Z]^2
+\]
+Therefore, we only need to
+calculate $\E[Y^2]$ and $\E[Z^2]$. By using the definition of expectation we
+immediately get
+\[
+    \E[Y^2] = 1^2 \cdot \mathbb{P}[Y==1] + 0^2\cdot\mathbb{P}[Y==0] = p
+\]
+From Question 4 in problem set 1 (also see distributions), we know
+\[
+    \E[Z^2] = 2\E[Z]^2 = 2m^2
+\]
+So we get
+\[
+    \E[L] = pm \quad \text{\&} \quad \text{Var}(L) = p\cdot 2m^2 - p^2\cdot m^2
+          = (2-p)pm^2
+\]
+
+\textbf{Solution b)}
+First we see that
+\[
+    L = YZ =
+    \begin{cases}
+        Z & Y = 1 \\
+        0 & Y = 0
+    \end{cases}
+\]
+Now we compute the CDF of $Z$. Using $\E[Z] = m = 1/\lambda$ we get
+\[
+    F_Z(z) =
+    \begin{cases}
+        1 - e^{-z/m} & z\geq 0 \\
+        0 & z < 0
+    \end{cases}
+\]
+To compute the CDF of $L$ we do:
+\begin{align*}
+    F_L(x) &= \bbP[L \leq x] = \bbP[YZ \leq x] \\
+          &= \bbP[YZ \leq x | Y = 1]\bbP[Y = 1] \\
+          & \quad+ \bbP[YZ \leq x | Y = 0]\bbP[Y = 0] \\
+          &= \bbP[Z\leq x]\bbP[Y=1] + \bbP[0 \leq x]\bbP[Y=0] \\
+          &= p\cdot\bbP[Z\leq x] + (1-p)\cdot\bbP[0\leq x] \\
+          &= \begin{cases}
+              p\cdot\bbP[Z \leq x] + (1-p) & x\geq 0 \\
+              0 & x < 0
+             \end{cases} \\
+          &= \begin{cases}
+              p(1-e^{-x/m}) + ( 1 - p ) & x \geq 0 \\
+              0 & x < 0
+             \end{cases} \\
+          &= \begin{cases}
+              1 - p e^{-x/m} & x \geq 0 \\
+              0 & x < 0
+             \end{cases}
+\end{align*}
+
+where we used $F_Z(z)$ at the end.
+
+\textbf{Solution c)}
+$L$ cannot have a density because its CDF $F_L$ jumps at 0.
+Note: Jump size $1-p$ equalts the probability that $L$ is equal to $0$.
+
+\textbf{Solution d)}
+We have a jump at $x=0$ of $1-p$.\\
+For $\alpha > 1 - p$, $\text{VaR}_\alpha(L)$ is equal to the unique $x>0$ satisfying $1-pe^{-x/m} = \alpha$. \\
+For $\alpha \leq 1-p$ one has $\text{VaR}_\alpha(L) = 0$.
+We get 
+\[
+    \text{VaR}_\alpha(L) =
+    \begin{cases}
+        m(\log p - \log(1-\alpha)) &, \alpha \in (1-p, 1) \\
+        0 &, \alpha \in (0, 1-p]
+    \end{cases}
+\]
+
+\textbf{Solution e)} 
+
+\underline{Case 1:} $\alpha > 1 - p$.
+
+If $\alpha > 1-p$, then $\VaR(L) = m(\log(p)-\log(1-\alpha))$ is positive and thus the density of $Z$ is $1_{\{x\geq 0\}}\frac{1}{m}e^{-x/m}$ and $\E[Z] = m$. Using the sub $y = x - \VaR(L)$ we get
+\begin{align*}
+    \text{ES}_\alpha(L) &= \frac{1}{\bbP[L \geq \VaR(L)]}\int_{\VaR(L)}^\infty
+    x dF_L(x) \\
+    &= \frac{1}{1-\alpha}\int_{\VaR(L)}^\infty x \frac{p}{m} e^{-x/m} dx \\
+    &= \frac{p}{1-\alpha} \int_0^\infty (y + \VaR(L))\frac{1}{m}e^{-y/m}dy e^{-\VaR(L)/m} \\
+    &= \frac{p}{1-\alpha}\bigg(\E[Z] + \VaR(L)\bigg) e^{-\VaR(L)/m} \\
+    &= \frac{pm}{1-\alpha}\bigg( 1 + \log(p) - \log(1-\alpha)\bigg)\frac{1-\alpha}{p} \\
+    &= m(1 + \log(p) - \log(1 - \alpha)
+\end{align*}
+
+\underline{Alternative way:} We can also use the Expected Shortfall Lemma (see definition). Since $\bbP[L \geq \VaR(L)] = 1 - \alpha$ we get
+\[
+    \text{ES}_\alpha (L) = \VaR(L) + \frac{1}{1-\alpha}\int_{\VaR(L)}^\infty \bbP[L > u]du
+\]
+We compute the integral:
+\begin{align*}
+    \int_{\VaR(L)}^\infty \bbP[L > x]dx &= p\int_{\VaR(L)}^\infty e^{-x/m}dx \\
+    &= -pme^{-x/m}\bigg|_{\VaR(L)}^\infty = pm\frac{1-\alpha}{p}
+\end{align*}
+
+Therefore
+\[
+    \text{ES}_\alpha(L) = m(\log(p) - \log(1-\alpha)) + m = m(1 + \log(p) - \log(1-\alpha))
+\]
+\underline{Case 2:} $\alpha \leq 1 - p$.
+
+If $\alpha \leq 1 - p$, we know $\VaR(L) = 0$. Thus $\bbP[L \geq \VaR(L) = 0] = 1$. We get
+\[
+    \text{ES}_\alpha(L) = \E[L] = pm
+\]
+We end up with
+\[
+    \text{ES}_\alpha(L) =
+    \begin{cases}
+            m(1 + \log(p) - \log(1-\alpha)) & \alpha \in (1-p,1) \\
+            pm & \alpha \in (0, 1-p]
+    \end{cases}
+\]
+
+%
+% Subproblem 2
+%
+\subsection*{2) Proof the $\VaR$-Lemma}
+\textbf{Solution} Since $f$ is \underline{strictly increasing and continuous}, we have
+\begin{align*}
+    \VaR(f(L)) &= \min\{ y \in \R : \bbP[f(L) \leq y] \geq \alpha\} \\
+              &= \min\{f(x) : x\in\R, \ \bbP[f(L) \leq f(x)] \geq \alpha\} \\
+              &= \min\{f(x) : x\in\R, \ \bbP[L \leq x] \geq \alpha\} \\
+              &= f\bigg(\min\{x\in\R : \bbP[L \leq x] \geq \alpha\}\bigg) \\
+              &= f(\VaR(L))
+\end{align*}
+
+%
+% Subproblem 3
+%
+\subsection*{3) Usage of $\VaR$-Lemma}
+Let L be a random variable with CDF
+\[
+    \F_L(x) = 1 - x^{-\lambda} \quad x \geq 1, \lambda > 0
+\]
+Calculate $\VaR(L + \log(L))$. \\
+\textbf{Solution} We see $F_L(x) = \bbP[L \leq x] = 0$ for $x=1$ i.e. $\bbP[L \leq 1] = 0$. Therefore $L$ takes values in $I = (1, \infty)$. Notice that the function $f : I \to \R$ given by $f(x) = x + \log(x)$ is \textit{strictly increasing and continuous}. Moreover we compute $\VaR(L) = F_L^{-1} = (1 - \alpha)^{-1/\lambda}$. Using the $\VaR$-Lemma (see subproblem 2. above) we get
+\begin{align*}
+    \VaR(L + \log(L)) &= \VaR(L) + \log \VaR(L) \\
+    &= (1 - \alpha)^{-1/\lambda} - \frac{1}{\lambda}\log( 1 - \alpha )
+\end{align*}
+
+%
+% Subproblem 4
+%
+\subsection*{4) $\VaR$ and $\text{ES}_\alpha$ of Student-t like RV}
+Let $L = \mu + \sigma t_\nu$, where $t_\nu$ is a Student-t RV with $\nu>1$ degrees of freedom. Calculate $\VaR(L)$ and $\text{ES}_\alpha(L)$. \\
+\textbf{Solution} $\VaR$ and $\text{ES}_\alpha$ both satisfy the translation property (T) and positive homogeneity (P). By a sligh abuse of notation, let us denote the CDF of $t_\nu$ again by $t_\nu$. Since it is continuous, we have
+\[
+    \VaR(L) = \mu + \sigma\VaR(t_\nu) = \mu + \sigma t_\nu^{-1}(\alpha)
+\]
+Moreover, $\text{ES}_\alpha(L) = \mu + \sigma\text{ES}_\alpha(t\nu)$ and
+\begin{align*}
+    \text{ES}_\alpha(t_\nu) 
+    &= \E[t_\nu | t_\nu \geq \VaR(t_\nu)]
+    = \frac{\int_{\VaR(t_\nu)}^\infty x f_\nu(x) dx}{\bbP[t_\nu \geq \VaR(t_\nu)]} \\
+    &= \frac{1}{1 - \alpha} \int_{t^{-1}_\nu(\alpha)}^\infty x f_\nu(x) dx
+\end{align*}
+where $\textcolor{red}{f_\nu}$ is the PDF of $t_\nu$ (see distributions section).
+A straightforward integration gives
+\begin{align*}
+    \int_{t^{-1}_\nu(\alpha)}^\infty x f_\nu(x) dx &= \frac{c\nu}{2(1 - \lambda)}
+    \bigg(1 + \frac{x^2}{\nu}\bigg)^{1-\lambda}\bigg|_{t_\nu^{-1}(\alpha)}^\infty \\
+    &= \frac{c\nu}{2(\lambda - 1)}\bigg(1 + \frac{t_\nu^{-1}(\alpha)^2}{\nu}\bigg)^{1-\lambda} \\
+    &= c\bigg(1 + \frac{t_\nu^{-1}(\alpha)^2}{\nu}\bigg)^{-\lambda}\frac{1}{\nu-1}
+    \big(\nu + t^{-1}_{\nu}(\alpha)^2\big)
+\end{align*}
+Therefor $\text{ES}_\alpha(L) = \mu + \sigma\frac{\textcolor{red}{f_\nu(} t^{-1}_\nu(\alpha)\textcolor{red}{)}(\nu + t^{-1}_\nu(\alpha)^2)}{(1-\alpha)(\nu - 1)}$
+
+%
+% Subproblem 5
+%
+\subsection*{5) Proof the $\text{ES}_\alpha$-Lemma} TODO
+
+
+%
+% PROBLEM SHEET 4
+%
+\section*{Problem Sheet 4}
+\subsection*{1) Multivariate Dice} TODO
+\subsection*{2) $\VaR$ and $\text{ES}_\alpha$ "Lemmas"} TODO: What's important? Partly integrated into the theory section already.
+\subsection*{3) Stylized Facts of Univariate Financial Return Series} See theory section
+\subsection*{4) Stylized Facts of UMultivariate Financial Return Series} See theory section
+
+%
+% PROBLEM SHEET 5
+%
+\section*{Problem Sheet 5}
+%
+% Subproblem 1
+%
+\subsection*{1) What is an ARCH Model?} See Theory section
+
+%
+% Subproblem 2
+%
+\subsection*{2) What is a GARCH Model?} See Theory section
+
+%
+% Subproblem 3
+%
+\subsection*{3) What are typical innovations used in an ARCH or GARCH Model?}
+The two most common choices are ...
+\begin{itemize}
+    \item Standard normal innovations i.e. $(Z_t)_{t\in\Z}$ are i.i.d standard normal
+    \item normalized $t-$innovations i.e. $(Z_t)_{t\in\Z}$ are i.i.d with $Z_t \sim t_\nu / \sqrt{\nu/(\nu-2)}$ for some $\nu > 2$ (so that the variance exists and is equal to 1).
+\end{itemize}
+
+TODO: Do we need this subproblem?
+
+%
+% Subproblem 4
+%
+\subsection*{4) Why is a GARCH Model a Popular Model in Financial Log-Returns?}
+GARCH models, esp. the GARCH(1,1) model, are widely used in finance to model volatility. Despite their sparsity, they provide a good fit to time series of log-returns and are able to reproduce several stylized facts like U1, U2, U3, U4, U5, U6.
+
+TODO: Do we need this subproblem?
+
+%
+% Subproblem 5
+%
+\subsection*{5) Kurtosis of GARCH$(p,q)$-Process}
+TODO: Do we need this?
+%If $(X_t)_{t\in\Z}$ is a GARCH$(p,q)$-process, is the kurtosis of $X_t$ smaller, equal or %larger than 3? \\
+%\textbf{Solution} 
+
+%
+% Subproblem 6
+%
+\subsection*{Do there exist generalizations of GARCH models?}
+Yes, e.g. NGARCH, NAGARCH, IGARCH, EGARCh and many more.
+
+TODO: Just added a bunch in case they ever ask anything like that. DO WE REALLY NEED THIS?
+
+%
+% PROBLEM SHEET 6
+%
+\section*{Problem Sheet 6}
+%
+% Subproblem 1
+%
+\subsection*{1) Density of std. GEV dist. $H_\xi$}
+Just take the derivative
+
+%
+% Subproblem 2
+%
+\subsection*{2) Calculate the inverse of a GEV CDF $H_{\xi, \mu, \sigma}$}
+From the theory section you see $H_{\xi,\mu,\sigma} = H_\xi(\frac{x-\mu}{\sigma})$. Now solve for x.
+
+%
+% Subproblem 3
+%
+\subsection*{3) Limit of $1 - H_\xi(x)$}
+For each case, divide LHS by RHS and apply l'hopital.
+
+TODO: Do we really need this? What is this used for?
+
+%
+% Subproblem 4
+%
+\subsection*{4) Show $\forall \theta\in(0,1)$, $H_\xi^\theta$ is of the same type as $H_\xi$}
+\underline{Case 1: $\xi=0$}
+\begin{align*}
+    H_0^\theta(x) &= (\exp(-e^{-x}))^\theta = \exp(-e^{-x}\theta) \\
+    &= \exp\bigg(-e^{-(x-\log\theta)}\bigg) = H_0(x - \log(\theta))
+\end{align*}
+so $H_0^\theta$ is of same type as $H_0$. \\
+
+\underline{Case 2: $\xi \neq 0$}
+\begin{align*}
+    H_\xi^\theta(x) &= (\exp( -(1+\xi x)^{-1/\xi}) ))^\theta = \exp(-(1+\xi x)^{-1/\xi}\theta) \\
+    &= \exp\bigg( -\bigg(1 + \xi \frac{x - \frac{\theta^\xi - 1}{\xi}}{\theta^\xi}\bigg)^{-1/\xi} \bigg) = H_0(x - \log(\theta))
+    = H_{\xi,\mu,\sigma}(x)
+\end{align*}
+for $\mu = \frac{\theta^\xi - 1}{\xi}$ and $\sigma = \theta^\xi$ showing that $H_\xi^\theta$ is of same type as $H_\xi$.
+
+%
+% Subproblem 5
+%
+\subsection*{5) Density, $\E[|X|^k]$, MDA($H_\xi$) for $F_X(x) = x / (x+1), \ x\geq 0$}
+Let $X$ be a non-negative random variable with CDF
+\[
+    F_X(x) = \frac{x}{x+1} \quad \textcolor{red}{x\geq 0}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item DOes $X$ have a density? If yes, derive it.
+    \item Find all $k\in\N = \{1,2,\dots\}$ s.t. $\E[|X|^k] < \infty$.
+    \item Does $F_X$ belong to MDA$(H_\xi)$ for a std. GEV dist. $H_\xi$? If yes, what is $\xi$ and what are the \textbf{normalizing sequences}?
+\end{enumerate}
+\textbf{Solution a)} Yes
+$
+    f_X(x) =
+    \begin{cases}
+        \frac{d}{ðx}\frac{x}{x+1} = \frac{1}{(x+1)^2} & x\geq 0 \\
+        0 & x < 0
+    \end{cases}
+$
+
+\textbf{Solution b)}
+Since the integral $\int_0^\infty \frac{x}{(x+1)^2} dx$ does not converge, there is no $k\in\N = \{1,2,\dots\}$ for which $\E[|X|^k] < \infty$.
+
+\textbf{Solution c)}
+Using
+\[
+    x_F = \sup\{x\in\R : F(x) < 1\} \leq \infty
+\]
+we see that $X_f = \infty$, which excludes \textit{Reverse Weibull case}. Since we don't care about \textit{Gumbel case} we only have to check the \textit{Frechet case}.
+We now define the tail function and factor out $1/x$:
+\begin{align*}
+    \bar{F}_X(x) &= 1 - F_X(x)  = 1 - \frac{x}{x+1} \\
+                 &= \frac{1}{x+1} \\
+                 &= \textcolor{red}{\frac{1}{x}}\frac{x}{x+1}
+                  \overset{!}{=} x^{-1/\xi}L(x)
+\end{align*}
+We find
+\[
+    L(x) = \frac{x}{x+1}
+\]
+which is s.v. (to see s.v. apply l'hopital) and $\textcolor{red}{\xi = 1}$ which implies 
+$F_X \in \text{MDA}(H_{\textcolor{red}{1}})$ for $H_1$ given by
+\[
+    H_1(x) =
+    \begin{cases}
+        \exp\big(-\frac{1}{1+x}\big) &x > -1 \\
+        0 & x \leq -1
+    \end{cases}
+\]
+Now we gonna determine $c_n$ and $d_n$ s.t. $F_X^n(c_n x + d_n) \to H_1$. Since the RHS of
+$H_1$ is an exp. function we use
+\[
+    \lim_{n\to\infty}(1 + \frac{x}{n})^n = e^x, \quad
+\forall x \in \R
+\]
+and
+\[
+    F(x) = 1 - \frac{1}{1+x}
+\]
+By starring at it long enough we find
+\[
+    c_n = n \qquad d_n = n - 1
+\]
+and obtain
+\[
+\lim_{n\to\infty} F_X^n(c_n x + d_n) = \lim_{n\to\infty}\big(1 -
+\frac{1}{n(1+x)}\big)^n = H_1(x) \quad x > -1
+\]
+and (from the definition of $F_X$)
+\[
+    \lim_{n\to\infty} F_X^n(c_nx+d_n) = 0 = H_1(x) \qquad x \leq -1
+\]
+
+TODO: Make the "starring at it" part better, see other problem where I wrote it nicely.
+
+
+%
+% PROBLEM SHEET 7
+%
+\section*{Problem Sheet 7}
+%
+% Subproblem 1
+%
+\subsection*{1) Calculate density of generalized Pareto Dist. $G_{\xi,\beta}$}
+Just take the derivative
+
+%
+% Subproblem 2
+%
+\subsection*{Excess Dist. Func and GPD of $F_X(x) = x / (x+1), \ x\geq 0$}
+Let $X$ be a non-negative random variable with CDF
+\[
+    F_X(x) = \frac{x}{x+1} \quad x\geq 0
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate excess distribution function. \\
+    \item Does there exist a parameter $\xi\in\R$ and a function $\beta$ s.t.
+    \[
+        \lim_{u\to\infty}\sup_{x > 0} | F_u(x) - G_{\xi,\beta(u)}| = 0 \tag{1}
+    \]
+    where $G_{\xi, \beta}$ denotes the CDF of a GPD? If yes, for which $\xi$ and $\beta$ does this hold?
+\end{enumerate}
+\textbf{Solution a)}
+Using the definition of the excess distribution function:
+\begin{align*}
+    F_u(x) &= \bbP[X - u \leq x | X > u] \qquad (\text{for} \ x \geq 0 \\
+          &= \frac{F(x+u) - F(u)}{1 - F(u)}
+\end{align*}
+and rewriting $F_X(x) = 1 - \frac{1}{x+1}$ we get for $x\geq 0$
+\[
+    F_X(x) = \frac{-{1}{x+u+1} + \frac{1}{u+1}}{\frac{1}{u+1}} = 1 - \frac{u+1}{x+u+1}
+\]
+
+\textbf{Solution b)}
+We know from problem sheet 6 that $F_X \in \text{MDA}(H_1)$. Therefore (1) above must hold for $\xi = 1$ and $\beta > 0$ (from the def. of GPD). Plugging in $F_u(x)$ and $G_{\xi = 1, \beta(u)}$ into the limit, we find $\beta(u) = u + 1$.
+
+%
+% Subproblem 3
+%
+\subsection*{3) Analysis of $F_X(x) = 1 - x^{-4}, \ x\geq 1$}
+Let $X$ be a non-negative RV with CDF
+\[
+F_X(x) = 1 - x^{-4}, \quad \textcolor{red}{x \geq 1}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Does $X$ have a density?
+    \item Find all $k\in\N = \{1,2,\dots\}$ s.t. $\E[|X|^k] < \infty$.
+    \item Does $F_X$ belgone to $\text{MDA}(H_\xi)$ for a standard GEV distribution $H_\xi$?
+    If yes, what is $\xi$ and what are the normalizing sequences?
+    \item Calculate the excess distribution function $F_u(x)$. (See definition)
+    \item Does there exist a parameter $\xi\in\R$ and a function $\beta$ s.t.
+    \[
+    \lim_{u\to\infty} \sup_{x>0} \big|F_u(x) - G_{\xi, \beta}(x)\big| = 0 \tag{1}
+    \]
+    where $G_{\xi,\beta}$ denotes the CDF of a GPD? If yes, for which $\xi$ and $\beta$ does this hold?
+\end{enumerate}
+
+\textbf{Solution a)}
+\[
+    f_X(x) = \frac{d}{dx}F_x = \begin{cases} 4x^{-5} &, x\geq 1 \\ 0 &, x < 1\end{cases}
+\]
+
+\textbf{Solution b)} Since $X \geq 1$, the support of the distribution is $[1,\infty)$. We get
+\[
+    \E[|X|^k] = \int_{\textcolor{red}{1}}^\infty 4x^{k-5} dx
+\]
+which converges for $k=1,2,3$ and diverges for $k\geq 4$.
+
+\textbf{Solution c)} We see that $x_F = \infty$, which excludes the \textit{Reverse Weibull Case}. We don't care about the 
+\textit{Gumbel Case}, so we investigate the \textit{Frechet Case}. For that we have
+\[
+    \bar{F}_X(x) = 1 - F(x) = x^{-4}
+\]
+To determine $\xi$ we make multiply $F_X$ with $1 = x^{-1/\xi}x^{1/\xi}$ and get\\
+\[
+    F_X(x) = x^{-1/\xi}x^{1/\xi}x^{-4} = x^{-1/\xi}L(x)
+\]
+Since $L(x) = x^{1/\xi - 4}$ is slowly varying. it holds by definition:\\
+\[
+    \frac{L(tx)}{L(x)} = \frac{(xt)^{1/\xi - 4}}{x^{1/\xi - 4}}
+    = t^{1/\xi - 4} \overset{!}{=} 1 \quad \text{for} \quad x \to \infty
+\]
+We get $\textcolor{red}{\xi = 1/4}$ and thus we conclude $F_X(x) \in MDA(H_{1/4})$ whereas \\
+\[
+    H_{1/4} =
+    \begin{cases}
+        \exp\bigg(\textcolor{blue}{-\frac{1}{(1+x/4)^4}}\bigg) &, x > -4 \\
+        0 &, x \leq -4
+    \end{cases}
+\]
+To find the \textbf{normalizing sequences} we use the limit
+\[
+    \lim_{n\to\infty}\bigg(1 + \frac{\textcolor{blue}{x}}{\textcolor{purple}{n}}\bigg)^{\textcolor{red}{n}} = e^{\textcolor{blue}{x}}, \quad x\in\R
+\]
+\textit{Note: We use the exp. limit here because we want to make a comparison to $H_{1/4}$ which uses an exp. function.}
+
+and the fact that
+\[
+    F_X^{\textcolor{red}{n}}(c_n x + d_n) \to H_{1/4}(x)
+\]
+There are two steps:
+\begin{enumerate}
+    \item Bring $F_X(c_n x + d_n)$ into the form $(1 + \frac{\tilde{x}}{n})$
+    \item Compare $\tilde{x}$ with the \textcolor{blue}{argument} of $\exp()$ of $H_{1/4}$
+\end{enumerate}
+
+\underline{Step 1:}
+\begin{align*}
+    F_X (c_n x + d_n) &= 1 - \frac{1}{(c_n x + d_n)^4} \\
+    &= 1 - \frac{1}{\textcolor{purple}{n}\big( \frac{c_n}{n^{1/4}}x + \frac{d_n}{n^{1/4}}\big)^4} \\
+    &= 1 + \frac{\tilde{x}}{n}
+\end{align*}
+
+\underline{Step 2:}
+\[
+    \tilde{x} = - \big(\frac{c_n}{n^{1/4}}x + \frac{d_n}{n^{1/4}}\big)^{-4}
+    \overset{!}{=}  \textcolor{blue}{- \frac{1}{(1+x/4)^4}}
+\]
+We get
+\[
+    c_n = \frac{n^{1/4}}{4} \qquad d_n = n^{1/4}
+\]
+s.t.
+\begin{align*}
+    \lim_{n\to\infty}F^n_X(c_n x + d_n) &= \lim_{n\to\infty}\bigg(1 - \frac{1}{n(x/4 + 1)^4}\bigg)^n \\
+    &= H_{1/4}(x) \quad \text{for} \quad x > -4
+\end{align*}
+and
+\[
+    \lim_{n\to\infty}F^n_X(c_n x + d_n) = 0 = H_{1/4}(x) \quad \text{for} \quad x \leq -4
+\]
+
+\textbf{Solution d)} We use the definition of the excess distribution function and compute. For $x \geq 0$ we have
+
+\begin{align*}
+    F_u(x) &= \frac{F_X(x+u) - F_X(u)}{1 - F_X(u)} \\
+           &= \frac{-(x+u)^{-4} + u^{-4}}{u^{-4}} \\
+           &= 1 - \bigg(\frac{u}{x+u}\bigg)^4
+\end{align*}
+
+\textbf{Solution e)}
+We know $\xi$ already from solution 3), it is $\xi = 1/4$. To determine $\beta(u)$ we use (1) and compare $F_u(x) \overset{!}{=} G_{\xi = 1/4, \beta(u)}$ i.e.
+
+\begin{align*}
+    1 - \bigg(\frac{u}{x+u}\bigg)^4 &= 1 - \bigg(1 + \frac{x}{4\beta(u)}\bigg)^{-4} \\
+    &= 1 - \bigg(\frac{4\beta(u) + x}{4\beta(u)}\bigg)^{-4} \\
+    &= 1 - \bigg(\frac{4\beta(u)}{4\beta(u) + x}\bigg)^{4}
+\end{align*}
+We get
+\[
+    \beta(u) = u/4
+\]
+So (1) holds for $\xi = 1/4$ and $\beta(u) = u/4$
+
+%
+% PROBLEM SHEET 8
+%
+\section*{Problem Sheet 8}
+%
+% Subproblem 1
+%
+\subsection*{1) Multi-Variate Density}
+Consider a 2D random vector $(X,Y)$ with density
+\[
+    f_{X,Y}(x,y) = c\frac{y}{x^3}1_{\{0 < x \leq 1\}}1_{\{0 < y \leq x^2\}}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate $c$.
+    \item Calculate the density $f_X$ of $X$.
+    \item Calculate $\bbP[X \leq 1/2]$.
+    \item Calculate $\E[X/Y]$.
+    \item Calculate $\E[Y | X = 1/2]$.
+    \item Are $X$ and $Y$ independent?
+\end{enumerate}
+\textbf{Solution a)} $\int_{-\infty}^\infty \int_{-\infty}^\infty f_{X,Y}(x,y) dx dy = c/4 = 1$ which gives $c = 4$.
+
+\textbf{Solution b)} The marginal density of $X$ is obtained by integrating out $y$ in the join density: $f_X(x) = \int_0^{x^2} 4 \frac{y}{x^3}dy = 2x$ for $0 < x \leq 1$.
+
+\textbf{Solution c)} Using the marginal density obtained in b), we have $\bbP[X \leq 1/2] = \int_0^{1/2}f_X(x) dx = \int_0^{1/2} 2x dx = 1/4$
+
+\textbf{Solution d)} One has
+$\E[\textcolor{red}{X/Y}] = 4\int_0^1\int_0^{x^2}\textcolor{red}{\frac{x}{y}}\frac{y}{x^3}dydx = 4$
+
+\textbf{Solution e)} The marginal density of $Y$ given $X = x\in(0,1]$ is
+$f_{Y|X}(y,x) = \frac{f_{X,Y}(x,y)}{f_X(x)} = \frac{2y}{x^4}$ for $y \in (0,x^2]$. Thus
+$\E[Y | X = 1/2] = \int_0^{1/4} y f_{Y|X}(y|1/2)dy = 32\int_0^{1/4}y^2dy = 1/6$
+
+\textbf{Solution f)} Since the conditional density (marginal density given in e)) of $Y$ given $X=x$ depends on $x$, $Y$ is not independent of $X$.
+
+%
+% Subproblem 2
+%
+\subsection*{2) TODO}
+
+%
+% Subproblem 3
+%
+\subsection*{3) Show $X \sim N_d(\mu,\Sigma) \Leftrightarrow v^TX\sim N(v^T\mu,v^T\Sigma v) \ \forall v \in\R^d$}
+Show that for a d-dim. random vector $X$, one has
+\[
+    X \sim N_d(\mu,\Sigma) \quad \Leftrightarrow \quad v^TX\sim N(v^T\mu,v^T\Sigma v) \quad \forall v \in\R^d
+\]
+
+\textbf{Solution:} $\Rightarrow:$ It was shown in the lecture that any affine transformation of a normal random vector is again normal. In particular, $v^TX$ is, for every $v\in\R^d$, a normal random variable. Since $v^TX$ has mean $v^T\mu$ and variance $v^T\Sigma v$, one obtains $X\sim N(v^T\mu, v^T\Sigma v)$.\\
+$\Leftrightarrow:$ If $X$ is a d-dim. random vector s.t. $v^TX \sim N(v^T\mu, v^T\sum v)$ for all $v\in \R^d$, one has
+\[
+    \phi_X(u) = \E\bigg[e^{iu^TX}\bigg] = \exp\bigg(iu^T\mu -\frac{1}{2} u^T\Sigma u\bigg) \quad \forall u\in\R^d
+\]
+which shows that $X\sim N_d(\mu,\Sigma)$.
+
+%
+% Subproblem 4
+%
+\subsection*{4) Bivariate Normal}
+Give an example of a two-dimensional random vector $(X,Y)$ s.t. $X$ and $Y$ are normal but $(X,Y)$ is not bivariate normal.
+
+\textbf{Solution:} Let $Y = \xi X$ for two independent random variables $\Xi$ and $X$ s.t. $\xi = \pm 1$ with probability 1/2 each and $X$ is standard normal.
+
+TODO: skipped proof. ok?
+
+%
+% Subproblem 5
+%
+\subsection*{Density of $X_1 + \dots + \X_k$}
+Let $X_1, \dots, X_k$ be iid exponential random variables. Calculate the density of $X_1 + \dots + X_k$.
+
+\textbf{Solution:} The Gamma distribution $\Gamma(\alpha, \beta)$ with parameters $\alpha, \beta > 0$ has density
+\[
+    f_{\alpha, \beta}(x) = \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha - 1}e^{-\beta x} \quad x \geq 0
+\]
+where the Gamma function is given by $\Gamma(\alpha) = \int_0^\infty x^{\alpha -1}e^{-x} dx$. \\
+Note that if $Y$ is $\Gamma(\alpha, \beta)$-random variable and $Z$ an independent $\Gamma(\alpha',\beta)$-random variable, $Y+Z$ has density
+\begin{align*}
+    &f_{\alpha,\beta}*f_{\alpha', \beta}(x) = \\
+    &= \frac{\beta^\alpha}{\Gamma(\alpha)}\frac{\beta^{\alpha'}}{\Gamma(\alpha')}\int_0^x y^{\alpha -1}e^{-\beta y}(x - y)^{\alpha'-1}e^{-\beta(x-y)}dy \\
+    &= \frac{\beta^\alpha}{\Gamma(\alpha)}\frac{\beta^{\alpha'}}{\Gamma(\alpha')}x^{\alpha + \alpha' -2}e^{-\beta x}\int_0^x \bigg(\frac{y}{x}\bigg)^{\alpha -1}\bigg(1 - \frac{y}{x}\bigg)^{\alpha' - 1}dy \\
+    &= \frac{\beta^\alpha}{\Gamma(\alpha)}\frac{\beta^{\alpha'}}{\Gamma(\alpha')} \int_0^1 u^{\alpha -1}(1 - u)^{\alpha'-1}du x^{\alpha + \alpha' - 1}e^{-\beta x} \quad \text{for} \quad x \geq 0
+\end{align*}
+Since $f_{\alpha,\beta}*f_{\alpha', \beta}$ is a density, one must have
+\[
+    \frac{\beta^\alpha}{\Gamma(\alpha)}\frac{\beta^{\alpha'}}{\Gamma(\alpha')}\int_0^1 u^{\alpha -1}(1-u)^{\alpha'-1}du = \frac{\beta^{\alpha + \alpha'}}{\Gamma(\alpha + \alpha')}
+\]
+and therefore
+\[
+    f_{\alpha,\beta}*f_{\alpha', \beta} = f_{\alpha + \alpha',\beta} \tag{2}
+\]
+Now assume $X_1$ has density $\lambda e^{-\lambda x}, \ x \geq 0$ for a parameter $\lambda > 0$. Then the distribution of $X_1$ is $\Gamma(1,\lambda)$ and it follows from (2) that $X_1 + \dots + X_k \sim \Gamma(k,\lambda)$, which, since $\Gamma(k) = (k-1)!$ has density
+\[
+    \frac{\lambda^k}{(k-1)!}x^{k-1}e^{-\lambda x}
+\]
+
+%
+% Subproblem 6
+%
+\subsection*{6) Density of $Z_1^2 + \dots + Z_k^2$}
+Let $Z_1, \dots, Z_k$ be independent standard normal random variabes. Calculate the density of $Z_1^2 + \dots + Z_k^2$.
+
+\textbf{Solution:} First, note that the CDF of $Z_1^2$ is given by
+\begin{align*}
+    \bbP[Z_1^2 \leq x] = \bbP[-\sqrt{x} \leq Z_1 \leq \sqrt{x}]
+    = 2\Phi(\sqrt{x}) - 1 \quad \text{for} \quad x \geq 0
+\end{align*}
+Therefor, its density is
+\[
+    f(x) = \frac{d}{dx}2 \Phi(\sqrt{x}) = \frac{1}{\sqrt{x}}\varphi(\sqrt{x}) \\
+    = \frac{1}{\sqrt{2\pi x}}e^{-x/2} \quad \text{for} \quad x\geq 0
+\]
+In particular, $Z^2_1\sim\Gamma(1/2, 1/2)$, from which we deduce that $Z_1^2 + \dots + Z_k^2 \sim \Gamma(k/2, 1/2)$. So the density of  $Z_1^2 + \dots + Z_k^2$ is
+\[
+    \frac{1}{2^{k/2}\Gamma(k/2)}x^{k/2 - 1}e^{-x/2} \quad \text{for} \quad x \geq 0
+\]
+which is the density of a chi-squared distribution $\chi_k^2$ with $k$ degrees of freedom.
+
+%
+% PROBLEM SHEET 9
+%
+\section*{Problem Sheet 9}
+%
+% Subproblem 1
+%
+\subsection*{1) TODO}
+%
+% Subproblem 2
+%
+\subsection*{2) TODO}
+%
+% Subproblem 3
+%
+\subsection*{3) Elliptical Distribution}
+Give a two-dimensional elliptical distribution that is not a normal or a t-distribution.
+
+\textbf{Solution:} Let $Z\sim N_2(0, I_2)$ and $W$ an independent non-negative random variable. Then the distribution of $X = \sqrt{W}Z$ is spherical and, as a consequence, also elliptical. If $W$ is constant, then $X$ is normal and if $W = 1 / G$ for $G \sim \Gamma(\nu/2, \nu/2)$, $X$ has a 2-dimensional $t$ distribution with $\nu$ degrees of freedom. In all other cases, $X$ is neither normal not $t$-distributed.
+
+E.g. if $W$ takes $k\geq 2$ different values with positive probabilities, $X$ has $k$ point normal variance mixture distribution, which is neither normal nor a $t$-distribution.
+
+
+%
+% PROBLEM SHEET 10
+%
+\section*{Problem Sheet 10}
+%
+% Subproblem 1
+%
+\subsection*{1) Frechet-Hoeffding Bounds}
+Let $W, M: [0,1]^2 \to [0,1]$ be the lower and upper Frechet-Hoeffding bounds. Is
+\[
+    C(u) = \lambda W(u) + (1-\lambda)M(u)
+\]
+for all $\lambda \in [0,1]$ a copula?
+
+\textbf{Solution:}
+From the lecture we know that the lower and upper Frechet-Hoeffding bounds $W, M:[0,1]^d \to [0,1]$
+are both copulas in $d=2$ dimensions. This directly covers the cases $\lambda=0$ and $\lambda=1$.
+
+For $0 < \lambda < 1$ one checks that $\lambda W + (1-\lambda)M$ has the three properties: \\
+1) grounded 2)std. uniform marginals 3) d-monotonicity \\
+from which it follows, that it is a coupla.
+
+\textit{Alternatively}, let $U = (U_1, U_2)$ and $V = (V_1, V_2)$ be two independent random vectors
+with CDFs $W$ and $M$. If $\xi$ is an independent Bernoulli RV s.t. $\bbP[\xi=1] = \lambda = 1 - \bbP[\xi = 0]$, then the CDF of $\xi U + (1-\xi) V$ is
+\begin{align*}
+    & \ \bbP[\xi U_1 + (1-\xi)V_1 \leq u_1, \xi U_2 + (1-\xi)V_2 \leq u_2] \\
+    &= \lambda\bbP[U_1 \leq u_1, U_2\leq u_2 | \xi = 1] + (1-\lambda)\bbP[V_1 \leq u_1, V_2 \leq u_2 | \xi = 0] \\
+    &= \lambda W(u_1, u_2) + ( 1 - \lambda ) M(u_1, u_2)
+\end{align*}
+Since the random vector $\xi U + ( 1 - \xi )V$ has Unif(0,1) marginals, $\lambda W + ( 1 - \lambda) M$ is a copula.
+
+%
+% Subproblem 2
+%
+\subsection*{2) Copula Density, 2D CDF, 2D Density}
+Let $(X,Y)$ be a two-dimensional random vector with Exp(1)-marginals and copula
+\[
+    \textcolor{red}{C}(u,v) = uv + (1-u)(1-v)uv
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Does $C$ have a density? If yes, compute it.
+    \item Calculate the CDF of $(X, Y)$.
+    \item Does $(X,Y)$ have a density? If yes, compute it.
+\end{enumerate}
+
+\textbf{Solution a)} Yes, it is given by
+\begin{align*}
+    c(u,v) &= \frac{\partial^2 \textcolor{red}{C}(u,v)}{\partial u \partial v} = \frac{\partial^2}{\partial u \partial v}\big(uv + (1-u)(1-v)uv\big) \\
+    &= \frac{\partial}{\partial v}\big( v - (1-v)uv + (1-u)(1-v)v\big) \\
+    &= 4uv - 2(u+v) + 2, \quad u,v\in[0,1]^2
+\end{align*}
+
+\textbf{Solution b)} The CDF's of $X$ and $Y$ are $1-e^{-x}$ and $1-e^{-y}$. So, one obtains from \textit{Sklar's theorem}:
+\begin{align*}
+    F_{X,Y}(x,y) &= \textcolor{red}{C}(F_X(x), F_Y(y)) = \textcolor{red}{C}(1 - e^{-x}, 1 - e^{-y}) \\
+    &= (1 - e^{-x})(1 - e^{-y}) + e^{-x}e^{-y}(1 - e^{-x})(1 - e^{-y}) \\
+    &= (1 - e^{-x})(1 - e^{-y})(1 + e^{-x-y}), \quad x,y\geq 0
+\end{align*}
+
+\textbf{Solution c)} Yes, by differentiating $F_{X,Y}(x,y)$ one obtains
+\begin{align*}
+    f_{X,Y}(x,y) &= \frac{\partial^2 F_{X,Y}(x,y)}{\partial x\partial y} = \frac{\partial^2}{\partial x\partial y}\big((1-e^{-x})(1-e^{-y})(1 + e^{-x-y})\big) \\
+    &= \frac{\partial}{\partial x} \big((1-e^{-x})e^{-y}(1 - e^{-x} + 2e^{-x-y})\big) \\
+    &= 2e^{-2(x+y)}(e^{x+y} - e^x - e^y + 2) \\
+    &= 2e^{-x-y} - 2e^{-x-2y} - 2e^{-2x-y} + 4 e^{-2x-2y}, \quad x,y\geq 0
+\end{align*}
+
+%
+% Subproblem 3
+%
+\subsection*{3) (Clayton) Copula \& Marginal Dist.}
+Let $(X,Y)$ be a two-dimensional random vector with CDF
+\[
+    \frac{1-e^{-x}-e^{-y}+e^{-x-y}}{1-e^{-x-y}}, \quad x,y\geq 0
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Does $(X,Y)$ have a density? If yes, compute it.
+    \item What are the distributions of $X$ and $Y$?
+    \item Do $X$ and $Y$ have densities? If yes, compute it.
+    \item Compute a copula $C$ of $(X,Y)$. Is it unique?
+    \item Does $C$ have a density? If yes, compute it.
+\end{enumerate}
+
+\textbf{Solution a)} Yes, by differentiating $F_{X,Y}(x,y)$ one obtains
+\begin{align*}
+    f_{X,Y}(x,y) &= \frac{\partial^2 F_{X,Y}(x,y)}{\partial x\partial y} \\
+    &= \frac{\partial}{\partial y} \bigg\{\frac{e^x(e^y-1)^2}{(e^{x+y}-1)^2}\bigg\} \\
+    &= 2\frac{e^{x+y}(e^x - 1)(e^y-1)}{(e^{x+y} - 1)^3}, \quad x,y\geq 0
+\end{align*}
+
+\textbf{Solution b)} Taking the limits of $F_{X,Y}(x,y)$ for $x\to\infty$ and $y \to\infty$, we obtain
+\begin{align*}
+    F_{\textcolor{red}{X}}(x) &= \lim_{\textcolor{red}{y}\to\infty}F_{X,Y}(x,y) \\
+    &= \lim_{\textcolor{red}{y}\to\infty} \frac{1-e^{-x}-e^{-y}+e^{-x-y}}{1-e^{-x-y}} = 1 - e^{-x}, \quad x\geq 0
+\end{align*}
+and
+\begin{align*}
+    F_{\textcolor{red}{Y}}(y) &= \lim_{\textcolor{red}{x}\to\infty}F_{X,Y}(x,y) \\
+    &= \lim_{\textcolor{red}{x}\to\infty} \frac{1-e^{-x}-e^{-y}+e^{-x-y}}{1-e^{-x-y}} = 1 - e^{-y}, \quad y\geq 0
+\end{align*}
+
+Hence, $X$ and $Y$ are both $Exp(1)$-distributed.
+
+\textbf{Solution c)} Yes, as both $X$ and $Y$ are $Exp(1)$-distributed, their densities are
+\begin{align*}
+    f_X(x) &= e^{-x}, \quad x\geq 0 \\
+    f_Y(y) &= e^{-y}, \quad y\geq 0
+\end{align*}
+
+\textbf{Solution d)} Since the marginals $F_X$ and $F_Y$ are \underline{continuous}, Sklar's theorem ensures that the copula of $(X,Y)$ is unique and given by
+\[
+    C(u,v) = F_{X,Y}(q_X(u), q_Y(v)) \quad \text{for} \quad u,v\in(0,1)^2
+\]
+
+TODO: Is it really $(0,1)^2$ and not $(0,1)$? Typo in solution?
+
+where $q_X$ and $q_Y$ are quantile function of $F_X$ and $F_Y$. By inverting $F_X$ and $F_Y$, we obtain the quantile functions
+\begin{align*}
+    q_X(u) &= -\log(1-u) \\
+    q_Y(v) &= -\log(1-v)
+\end{align*}
+and therefore
+\begin{align*}
+    C(u,v) &= F_{X,Y}(-\log(1-u), -\log(1-v)) \\
+    &= \frac{1-e^{\log(1-u)}-e^{\log(1-v)}+e^{\log(1-u) + \log(1-v)}}{1 - e^{\log(1-u) + \log(1-v)}} \\
+    &= \frac{1-(1-u)-(1-v)+(1-u)(1-v)}{1-(1-u)(1-v)} \\
+    &= \frac{1}{u^{-1} + v^{-1} - 1}, \quad u,v\in(0,1)
+\end{align*}
+which is a Clayton copula with parameter $\theta = 1$.
+
+\textbf{Solution e)} Yes, by differentiating the copula, we obtain
+\begin{align*}
+    c(u,v) &= \frac{\partial^2 C(u,v)}{\partial u \partial v} \\
+    &= \frac{\partial}{\partial v}\bigg(\frac{1}{(1 + u/v - u)^2}\bigg) \\
+    &= \frac{2uv}{(v+u-uv)^3}, \quad u,v\in(0,1)
+\end{align*}
+
+%
+% PROBLEM SHEET 11
+%
+\section*{Problem Sheet 11}
+%
+% Subproblem 1
+%
+\subsection*{1) Covariance \& Correlation}
+Consider a bivariate random vector $X = (X_1, X_2)$ with components
+\[
+    X_1 = \sqrt{W}(Z_1 + Z_2) \ \text{and} \ X_2 = \sqrt{W}(Z_1 - Z_2)
+\]
+where $Z_1$ and $Z_2$ are independent $N(0,1)$-distributed and $W$ is a non-negative random variable with CDF
+\[
+    F(X) = 1 - x^{-\beta}, \quad x\geq 1, \ \beta > 0
+\]
+independent of $(Z_1, Z_2)$.
+\begin{enumerate}[label=(\alph*)]
+    \item Show that $X$ has a normal variance mixture distribution.
+    \item Calculate the covariance matrix of $X$.
+    \item Calculate the correlation matrix of $X$
+\end{enumerate}
+
+\textbf{Solution a)}
+One can write $X = \sqrt{W} AZ$ for $A = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$ and $Z = \begin{pmatrix} Z_1 \\ Z_2 \end{pmatrix}$.  This shows that $X$ has a normal variance mixture distribution.
+
+\textbf{Solution b)} $W$ has the density $F'(x) = \beta x^{-\beta-1}, \ x\geq 1$. So its expectation can be calculated as
+\[
+    \E[W] = \int_1^\infty xF'(x) dx = \beta \int_1^\infty x^{-\beta} dx = \begin{cases} \frac{\beta}{\beta-1} & \beta > 1 \\ \infty & 0 < \beta \leq 1 \end{cases}
+\]
+Therefore
+\[
+    Cov(X) = \E[W]\Sigma = \frac{\beta}{\beta -1}A A^T = \frac{2\beta}{\beta -1}I_2 \quad \text{if} \ \beta > 1
+\]
+whereas $Cov(x)$ is undefined if $0 < \beta \leq 1$.
+
+\textbf{Solution c)} We know from the lecture that, for any normal mixture distribution $X \overset{(d)}{=} \mu + \sqrt{W}AZ$ and $corr(X) = corr(\mu + AZ)$. Therefor if $\beta > 1$ we have
+\[
+    corr(X) = corr(Z_1 + Z_2, Z_1 - Z_2) = I_2
+\]
+and again $corr(X)$ is undefined if $0 < \beta \leq 1$.
+
+
+%
+% Subproblem 2
+%
+\subsection*{2) Archimedean/Clayton Copula}
+Let $C$ be an Archimedean copula with generator $\psi(x) = \E[e^{-xV}]$ where $V \sim Exp(\lambda)$ and $\E[V] = 1$. Calculate the probability $\bbP[U_1 > 1/2, U_2 > 1/2]$ for $(U_1, U_2) \sim C$.
+
+\textbf{Solution:} First, we calculate $\Psi(x)$. Note that $E[V] = 1 \quad \Rightarrow \quad \lambda = 1$ and thus, $V$ has the density $f_V(v) = e^{-v}$ for $v \geq 0$. Therefore, we have
+\begin{align*}
+    \psi(x) &= \E[e^{-xV}] = \int_0^\infty e^{-xv}f_V(v)dv \\
+            &= \int_0^\infty e^{-xv}e^{-v} dv = \int_0^\infty e^{-(x+1)v}dv \\
+            &= \frac{1}{x+1}
+\end{align*}
+
+So, we know from the lecture notes that $C$ is a 2D-Clayton copula with parameter $\theta$ (compare to definition). From that we get (compare to definition)
+\[
+    C(u_1, u_2) = (u_1^{-1} + u_2^{-1} - 1)^{-1}, \quad 0\leq u_1, u_2 \leq 1
+\]
+Alternatively, just compute $\psi(x)^{-1}$ and use the def. of Archimedean coupla.
+We now can compute the probability:
+\begin{align*}
+    \bbP[U_1 > 1/2, U_2 > 1/2] &= 1 - \bbP[U_1 \leq 1/2] - \bbP[U_2 \leq 1/2] \\
+    &\quad \ \ \ + \bbP[U_1 \leq 1/2, U_2 \leq 1/2] \\
+    &= 1 - C(1/2, 1) - C(1, 1/2) + C(1/2, 1/2) \\
+    &= 1 - 1/2 - 1/2 + 1/3 = 1/3
+\end{align*}
+
+%
+% Subproblem 3
+%
+\subsection*{3) Tail Dependence}
+Calculate the lower and upper tail dependence coefficients $\lambda_l$ and $\lambda_u$ of a 2D-Copula $C$ if ...
+\begin{enumerate}[label=(\alph*)]
+    \item $C$ is a Clayton copula
+    \item $C$ is a Gumbel copula.
+\end{enumerate}
+
+\textbf{Solution a)} The generator of a Clayton copula is $\psi(x) = (1+x)^{-1/\theta} > 0$ for a parameter $\theta \in (0, \infty)$. Since it is strict, we can directly use teh results from the lecture notes:
+\begin{align*}
+    \lambda_l &= 2 \lim_{x\to\infty} \frac{\psi'(2x)}{\psi'(x)} = 2\lim_{x\to\infty}
+    \frac{-1/\theta(1+2x)^{-1/\theta-1}}{-1/\theta(1+x)^{-1/\theta-1}} \\
+    &= 2 \lim_{x\to\infty}\bigg(\frac{1+2x}{1+x}\bigg)^{-1/\theta-1} = 2\cdot 2^{-1/\theta-1} = 2^{-1/\theta}
+\end{align*}
+and
+\begin{align*}
+    \lambda_u = 2 - 2\lim_{x\to 0}\frac{\psi'(2x)}{\psi'(x)} 
+    = 2 - 2\lim_{x\to 0}\bigg(\frac{1+2x}{1+x}\bigg)^{-1/\theta -1} = 2 - 2 = 0
+\end{align*}
+
+\textbf{Solution b)} The generator of a Gumbel copula is $\psi(x) = \exp(-x^{1/\theta}) > 0$ for a parameter $\theta\in[1,\infty)$. Since it is strict, we obtain the lower and upper tail coefficients as follows:
+\begin{align*}
+    \lambda_l &= 2\lim_{x\to\infty}\frac{\psi'(2x)}{\psi'(x)} = 2\lim_{x\to\infty}
+    \frac{(-1/\theta)(2x)^{1/\theta -1} \exp(-(2x)^{1/\theta})}{(-1/\theta)x^{1/\theta-1}\exp(-x^{1/\theta})} \\
+    &= 2\lim_{x\to\infty} 2^{1/\theta-1}\exp\bigg((1-2^{1/\theta})x^{1/\theta}\bigg) = 0
+\end{align*}
+because $1-2^\frac{1}{\theta} < 0$ as $\theta \in [1, \infty)$, and
+\begin{align*}
+    \lambda_u &= 2 - 2\lim_{x\to 0}\frac{\psi'(2x)}{\psi'(x)} \\
+    &= 2 - 2\lim_{x\to 0}2^{1/\theta -1}\exp\bigg((1-2^{1/\theta})x^{1/\theta}\bigg) = 2 - 2^{1/\theta}
+\end{align*}
+
+%
+% Subproblem 4
+%
+\subsection*{4) "Operational Risk" \& Law of Total Expectation}
+Total annual operational loss in a unit of measure is usually modeled with a random variable of the form $L = \sum_{j=1}^N X_j$ for an $\N$-valued random variable $N$ and a sequence $X_1, X_2, \dots$ of i.i.d. $R_+$-valued random variables that are independent of $N$.
+
+Assume $N$ has a Poisson dist. with parameter $\lambda > 0$ (that is $\bbP[N=n] = e^{-\lambda}\lambda^n/n!$) and all $X_j$ are exponentially dist. with parameter $\mu > 0$ (that is, $\bbP[X_j > x] = e^{-\mu x}$). Calculate the expectation of $L$.
+
+\textbf{Solution:} Since $X_1, X_2, \dots$ are independent of $N$, we obtain from the law of total expectation (we can't just use linearity because we have two RV here)
+\begin{align*}
+    \E[L] &= \E\bigg[\sum_{j=1}^N X_j\bigg] = \E\bigg[\E\bigg[\sum_{j=1}^N X_j \bigg| N \bigg]\bigg] \\
+    &= \sum_{n=0}^\infty \bbP[N=n]\cdot \E \bigg[\sum_{j=1}^N X_j \bigg| N=n\bigg]
+     = \sum_{n=0}^\infty \bbP[N=n]\cdot\E\bigg[\sum_{j=1}^n X_j\bigg] \\
+    &= \sum_{n=0}^\infty \bbP[N=n]\cdot\sum_{j=1}^n\E[X_j]
+\end{align*}
+Moreover, we know that $\E[N] = \lambda$ and $\E[X_j] = 1/\mu$ for all $j=1,2,\dots$. Therefore
+\begin{align*}
+    \sum_{n=0}^\infty\bbP[N=n]\cdot\sum_{j=1}^n \E[X_j] = \sum_{n=0}^\infty \bbP[N=n]\cdot n \cdot \frac{1}{\mu} = \frac{\E[N]}{\mu} = \frac{\lambda}{\mu}
+\end{align*}

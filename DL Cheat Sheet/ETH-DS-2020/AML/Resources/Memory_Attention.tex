@@ -1,0 +1,62 @@
+\section{Memory and Attention}
+\term{Memory Networks}
+Recursive associative recall: find best memory cell $i$ for query $q$, use content $m_i$ and $x$ to generate next query 
+\subsection*{Self-Gated Attention}
+\term{Softmax Gating Function:}
+$f_{\phi}(\bs{\xi},\bs{h}^1_e,\dots,\bs{h}^s_e)=\frac{1}{\sum_j \exp [\phi(\bs{\xi},\bs{h}^j_e)] }(\bs{h}^1_e,\dots,\bs{h}^s_e)^T,$ query vector $\bs{\xi}\in\mathbb{R}^n$, similarity $\phi:\mathbb{R}^n\times\mathbb{R}^m\rightarrow\mathbb{R}$ (e.g. $n=m$: $\bs{\xi}\cdot \bs{h}_e$)
+
+\term{Transfer-Func:} $F(\bs{\xi},\bs{h}^{1:s}_e)=[\bs{h}^1_e\cdot\cdot\bs{h}^s_e]\cdot f_{\phi}(\bs{\xi},\bs{h}^{1:s}_e)$
+
+Hidden encoding/attending RNN: $(h_e^1,\dots,h^s_e)$
+
+Query from decoding RNN: $(\xi^1,\dots,\xi^s)$
+
+Self-gated attention read-outs: $(\bs{z}^1,\dots,\bs{z}^t)$
+
+Decoding RNN: $(\bs{h}^r_d,\bs{z}^r)\mapsto \bs{h}^{r+1}_d$
+
+\subsection*{Transformers $(d:=d_{\text{model}},h:=\#\text{heads})$}
+
+\term{Self-Attent:}
+$W^Q,W^K\in \mathbb{R}^{d\times d_k},W^V\in \mathbb{R}^{d \times d_v}$
+
+$\{Q,K\}=XW^{\{K,Q\}}\in \mathbb{R}^{T\times d_k},V=XW^V\in \mathbb{R}^{T\times d_v}$ 
+
+$\textbf{Att}(Q,K,V)=\text{softmax}(QK^T/\sqrt{d_k})V$
+
+$\term{MultiHead}(Q,K,V):=[\text{head}_1,\dots,\text{head}_h]W^O$,
+$\text{head}:=\text{Att}(QW^Q_i,KW^K_i,VW^V_i),W^O\in \mathbb{R}^{hd_v\times d}$
+
+\term{Ex/Alt:} $W^{\{Q,K,V\}}\in\mathbb{R}^{d\times h d_{\{k,v\}}}$, MH=sm$(QK^T)V$
+
+\includegraphics[width=\textwidth/5]{ETH-DS-2020/AML/Resources/transformer2.png}
+
+$\text{FFN}(x_i)=\max(0,x_i W_1+b_1)W_2+b_2$
+
+
+
+
+
+
+
+
+
+
+\iffalse
+
+\term{Key-Value Atten.:}
+Item $i$, key $\bs{x}^i$ + value $\bs{z}^i$ embedding:
+$F(\bs{\xi},\bs{x}^{1:s},\bs{z}^{1:s})=[\bs{z}^1,\dots,\bs{z}^s]\cdot f(\bs{\xi},\bs{x}^{1:s})$
+
+\term{Scaled Dot-Product Attention} As above w
+$f(\bs{\xi})=\frac{\bs{\xi}\cdot\bs{x}}{\sqrt{n}},\; \bs{\xi},\bs{x}\in\mathbb{R}^n$ (or: $\softmax(\frac{QK^T}{\sqrt{d_k}})V$)
+
+\term{Multi-Headed Attention}
+$G(\bs{\xi},(\bs{x}^t,\bs{z}^t)^s_{t=1})=\bs{W}[F_1(\bs{\xi},\bs{x}^t,\bs{z}^t),\dots F_h(\bs{\xi},\bs{x}^t,\bs{z}^t)]^T,$
+w $F_j(\bs{\xi},\bs{x}^t,\bs{z}^t)=F(\bs{W}^q_j\bs{\xi},\bs{W}^x_j\bs{x}^t,\bs{W}^z_j\bs{z}^t)$ for $j\leq r$ are key-value attention maps (dot-prod)
+
+($\text{Concat}(\text{head}_1,\dots,\text{head}_h)W^O$ w $\text{head}_i=\text{Attention}(QW^Q_i,KW^K_i,VW^V_i)$ and $W^Q_i,W^K_i\in\mathbb{R}^{d_{\text{model}}\times d_k},W^V_i\in\mathbb{R}^{d_{\text{model}}\times d_v}$)
+
+%\includegraphics[width=\textwidth/4]{ETH-DS-2020/AML/Resources/transformer.jpg}
+ 
+\fi

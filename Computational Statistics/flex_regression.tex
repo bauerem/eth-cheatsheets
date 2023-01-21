@@ -1,0 +1,71 @@
+\section*{Flexible regression}$g(x)=\mathbb{E}[Y\mid x]$ regr.;
+$=\text{logit}(\pi(x))$ for class.
+
+\subsection*{Additive model} (no curse of $dim$)
+$g(x)=\mu +\sum_jg_j(x_j)$, $\E[g_j(x_j)]=0\; \forall j$\\
+Prop: $g_j\in C^2\Rightarrow \text{MSE}=O(n^{-4/5})$; Std no interact. but in \texttt{mgcv, gam}\\
+To find $\hat g_j$, use \textbf{backfitting}:
+Let $s_j: (u_1,...,u_n)^T \to (\hat u_1,...,\hat u_n)^T$ be a smoother (e.g. multiple linear regression). Order influences \#iterations\\
+Initialize $\hat \mu = \frac 1 n \sum_{i=1}^n y_i$, \quad $\hat g_j = 0 \quad \forall j$\\
+Do until convergence:\\
+$\quad \text{for each } j=1,...p$:\\
+$\quad \quad \hat g_j \gets s_j(y - \hat \mu \mathbb{1} - \sum_{k \neq j} \hat g_k)$\\
+$\quad \quad \hat g_j \gets \hat g_j - \frac 1 n \sum_{i=1}^n \hat g_j(x_{ij}) $\\
+\begin{codebox}{r}{GAM (generalized additive model)}
+library(mgcv)
+fitA <- gam(y ~ s(x_1)+ s(x_2) + x_3, data = mydata)
+predicted_y <- predict(fitA, testdata)
+plot(fitA, pages = 1, shade = TRUE)
+\end{codebox}
+
+\subsection*{MARS (Multivariate Adaptive Regression Splines)}
+Make a regression with functions in $\mathcal{M}$. Start with $\mathcal{M}=\{h_0(\cdot)=1\}$. For every $r$ search for best pair: $(h_{2r-1}(\cdot),h_{2r}(\cdot))=(h_l(\cdot)\cdot(x_j-d)^+,h_l(\cdot)\cdot(d-x_j)^+)$ s.t.
+$h_l(x)\nmid(d-x_j)^+,(x_j-d)^+$ and $\mathcal{M}\leftarrow \mathcal{M}_{old}\cup\{h_{2r-1},h_{2r}\}$ thus $\hat g(x)=\mu + \sum^{2r}_m \beta_m h_m(x)$.
+Go backward: delete one in pair s.t. MSE increases less and stop when GCV optimal
+
+
+Where $h_l$ is in $\mathcal{M}$. Then prune off single (not in pairs!) $h_j$'s.
+\begin{codebox}{r}{MARS (Multivariate Adaptive Regression Splines)}
+library(earth)
+Mfit <- earth(y ~ ., data = mydata, degree = 3)
+\end{codebox}
+
+\subsection*{Neural networks} $\; $
+\begin{codebox}{r}{Neural nets in R}
+library(nnet)
+Nfit <- nnet(log.O3 ~ ., data = sc.ozone,
+  size = 3,# n hidden layer
+  decay = 4e-4,# regularization parameter
+  skip=T)#add direct lin. params from input to output
+  # other useful params: linout, softmax
+\end{codebox}
+\textbf{GANs}: Objective \\ $\text{max}_{D} \text{min}_G \; \mathbb{E}_{X \sim P}\left[\text{log}(D(X))\right] + \mathbb{E}_{Z \sim \mathcal{N}(0, \mathbb{1})}\left[\text{log}(1 - D(G(Z)))\right]$
+
+\subsection*{Project. Pursuit} $g(x)=\mu+\sum^q_k f_k(\sum^p_j \alpha_{jk}x_j),\; \sum_j\alpha^2_{jk}=1,\; \E[f_k(\sum)]=0$
+
+$f_k$'s non-para, training: backfitting, $q$ smaller vs NN
+
+\texttt{fit=ppr(log(O3)$\sim$.,df,nterms = q)} \# add. Var$(f_k(\sum)$=1
+
+\subsection*{CART (Class. and regr. trees)}
+The tree devides the domain in rectangles, piece-wise constant function.
+$g_{\text{tree}}(x)=\sum_{r=1}^M\beta_r \mathbb{1}[x\in\mathcal{R}_m]$\\
+Given $\mathcal{P}$: Regr: $\beta_m=\frac{\sum Y_i\mathbb{1}[x_i\in\mathcal{R}_m]}{\sum\mathbb{1}[x_i\in\mathcal{R}_m]}$ Class: $\pi^j_m=\frac{\sum \mathbb{1}[Y_i=j]\mathbb{1}[x_i\in\mathcal{R}_m]}{\sum\mathbb{1}[x_i\in\mathcal{R}_m]}$ 
+\\
+Alg: 1. $\mathcal{P}=\{\mathbb{R}^p\}$ 2. Split each $\mathcal{R}\in\mathcal{P}$ along each axis at $d$ and replace best scoring $\mathcal{R}^*$ with its split along best axis 3. Stop at $M_{\max}$ partitions 5. Backward deletion until best (CV/$C_p$) size.
+
+\texttt{cp} = $\alpha/\mathcal{L}(\mathcal{T}_{\empty})$= cost-complex. pruning: $\mathcal{L}_{\alpha}(\mathcal{T})=\mathcal{L}(\mathcal{T})+\alpha\cdot \#\text{leaves}(\mathcal{T})$
+
+Penalize larger tree to reduce variance. Choose the simplest model which is within standard error to the best one in cross-validation.
+Fit greedily. \textbf{Pros} and \textbf{cons}:\\
+$\bigcdot$ Highly flexible and interpretable\\
+$\bigcdot$ Too simplistic, only piece-wise constant\\
+$\bigcdot$ Prone to overfitting 
+\begin{codebox}{r}{CART in R}
+library(rpart) #library(rpart.plot)
+rpart(y ~ ., data = data, control = rpart.control(cp = 0.0, minsplit = 30)) #minsplit: min no. of datapoints in a node to attempt a split
+#cp = complexity factor, the R^2 must increase at least of a factor cp after split 
+#for no regular. at all: cp=0, minsplit=minbucket=1
+plotcp(tree) or printcp(tree) #estimate the best cp
+prune.rpart(tree, cp=cp.opt) #to prune the tree
+\end{codebox}

@@ -1,0 +1,29 @@
+\section{Deep Gradients}
+\term{Short Connectivity}\\ 
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Residual layer (add): Init $f=0$, for $x\in\mathbb{R}^n$ let $g(x):=
+\begin{cases}
+    x+f(x,\theta) &, n=m\\
+    Wx+f(x,\theta)&, n\neq m
+\end{cases}
+\ \ \in\mathbb{R}^m$\\
+Thus, $J_q=I+J_f\approx I$, resp. $J_q=W+J_f\approx W$\\
+\item Dense Connectivity/Skip connections (concat.): $\phi(W\lbrack x,f(x,\theta)\rbrack)$
+\item DenseNet Block: Layers concatenated with all downstream\\
+\term{Batch Normalization}\\
+Idea: normalize act. layers and backprop thru\\
+Alg: \item Fix layer $l$ \& batch $I\subset [1:s]$
+\item $\bs{\mu}^l:=\frac{1}{|I|}\sum_{t\in I}\bs{z}^l[t],$ $\bs{z}^l[t]:=(F^l\circ\cdots\circ F^1)(\bs[t]),$ $\sigma_i^l:=\sqrt{\delta + \frac{1}{|I|}\sum_{t\in I}(z^l_i[t]-\mu_i^l)^2}$,
+\item $\bs{\mu}$ and $\bs{\sigma}$ are diffable functions of weights
+
+\item Normalized activities: $\tilde{z}_i^l:=(z_i^l-\mu_i^l)/\sigma_i^l$
+
+\item Regain representational power: $\hat{z}_i^l:=\alpha_i^l\tilde{z}_i^l+\beta_i^l$
+(+) esp. effective in vision
+(-) depends on batch size, not suitable $\forall$ architectures
+
+
+\term{Layer Normalization}
+\item $\mu^l[t]:=\frac{1}{m^l}\sum^{m^l}_{i=1}z_i^l[t],$ i.e. population average $\sigma_i^l[t]:=\sqrt{\delta + \frac{1}{m^l}\sum^{m^l}_{t=1}(z^l_i[t]-\mu_i^l[t])^2}$
+(+) esp. effective in NLP (-) no consistent benefits
+\end{inparaitem}

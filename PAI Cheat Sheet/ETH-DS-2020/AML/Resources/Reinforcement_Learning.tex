@@ -1,0 +1,155 @@
+\section{Reinforcement Learning}
+
+ Agent actions change state. State change $\sim$ unknown MDP.
+
+- \textcolor{blue}{On}-policy: agent has full control (actions)
+
+- \textcolor{blue}{Off}-policy: no control, only observational data 
+
+
+\vspace*{1mm}
+\subsection*{Model-free RL} {\fontsize{9.5}{6}\selectfont Directly estimate value function}
+
+\textbf{TD-Learning:} {\fontsize{9}{6}\selectfont \textcolor{blue}{(On)}} Follow $\pi$, get $(x,a,r,x')$. 
+
+Update: \mhl{$\hat{V}^\pi(x) \leftarrow (1 - \alpha_t) \hat{V}^\pi(x) + \alpha_t (r + \gamma \hat{V}^\pi(x'))$}
+
+Thm: $\alpha_t \vDash RM$ and all $(x,a)$ pairs chosen $\infty$ often, then $\hat{V}$ converges to $V^\pi$ w.p. 1.
+
+
+\textbf{\textcolor{darkgreen}{Optimistic} Q-learning} {\fontsize{9}{6}\selectfont \textcolor{blue}{(Off)}} Estimate $Q^*(x,a)$
+%, $V^*(x), \pi^*(x)$ can be derived.
+
+1) Init estimate / $\textcolor{darkgreen}{Q(x,a) = \frac{R_{max}}{1 - \gamma} \prod_{t=1}^{T_{init}} (1 - \alpha_t)^{-1}}$
+
+2) Pick $a$ (e.g. $\epsilon_t$ greedy), get $(x,a,r,x')$, update: \mhl{$Q(x,a) \leftarrow (1 - \alpha_t) Q(x,a) + \alpha_t (r + \gamma \max_{a'} Q(x', a'))$}
+
+Test time: greedy $\pi_G(x) = \arg\max_a Q(x,a)$
+
+Thm: $\alpha_t \vDash RM$, all $(x,a)$ pairs chosen $\infty$ often, then $Q$ converges to $Q^*$ w.p. 1. \textcolor{violet}{Thm(*)} holds.
+
+Computation time: $\mathcal{O}(|A|)$, Memory: $\mathcal{O}(|X||A|)$
+
+%\textbf{SARSA} {\fontsize{9}{6}\selectfont \textcolor{blue}{(On)}}-policy version of Q-learning
+
+\subsection*{RL via Function Approx} {\fontsize{9.5}{6}\selectfont Learn parametric approx. of (action) value function $V(x; \theta), Q(x,a;\theta)$}
+
+\vspace*{1mm}
+\textbf{TD-learning as SGD} {\fontsize{9}{6}\selectfont \textcolor{blue}{(On)}}: Tabular TD update rule can be viewed as SGD on loss $l_2(\theta; x, x', r) = \frac{1}{2}(V(x;\theta) - r - \gamma V(x'; \theta_{old})^2$. Then, $V \leftarrow V - \alpha_t \nabla_{V(x;\theta)} l_2$ is equiv. to TD update.
+
+\textbf{Function Approx Q-learning} {\fontsize{9}{6}\selectfont \textcolor{blue}{(Off)}} \textcolor{red}{slow}
+
+Loss $l_2(\theta;x,a,r,x') = \frac{1}{2}\delta^2$ where
+\mhl{$\delta = Q(x,a;\theta) -$} \mhl{$r - \gamma \max_{a'}Q(x',a';\theta)$}. Alg: Until converged:
+
+State $x$, pick action $a$, observe $r,x'$. Update: $\theta \leftarrow \theta - \alpha_t \nabla_\theta l_2$
+$\Leftrightarrow$ \mhl{$\theta \leftarrow \theta - \alpha_t \delta \nabla_\theta Q(x,a;\theta)$}
+
+\textbf{DQN} {\fontsize{9}{6}\selectfont \textcolor{blue}{(Off)}}: Q-learning with NN as func. approx. Use experience replay data $D$, cloned network to maintain constant NN across episode.
+
+\mhl{$L(\theta) = \hspace*{-4mm} \sum\limits_{(x,a,r,x') \in D} \hspace*{-4mm} (r + \gamma \textcolor{red}{\max_{a'} Q(x', a'; \theta^{old})} - Q(x,a;\theta))^2$}
+
+\textbf{Double DQN} {\fontsize{9}{6}\selectfont \textcolor{blue}{(Off)}}: Current NN to evaluate
+
+action $\arg\max$; prevents maximization bias.
+
+$L^{{\scaleobj{.55}{ DDQN}}} (\theta) = \hspace*{0mm} \sum_{(x,a,r,x') \in D} \hspace*{0mm} [r + \gamma \max_{a'} Q(x', a^*(\theta); \theta^{old})$
+
+$ - Q(x,a;\theta) ]^2$,
+$a^*(\theta) = \arg\max_{a'} Q(x', a'; \theta)$
+
+\textcolor{red}{$\textcolor{red}{a_t = \arg\max_a Q(x_t,a;\theta)}$ intractable for $\textcolor{red}{|A|}$ large}
+
+
+\subsection*{Policy Gradient Methods} Parametric policy $\pi_\theta$
+
+Maximize $J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [r(\tau)]$ ($\tau = x_{0:T}, y_{0:T}$), $r(\tau) = \sum_{t=0}^{T} \gamma^t r(x_t, a_t)$); via $\nabla_\theta$ {\fontsize{9}{6}\selectfont \textcolor{blue}{(On)}}. Theorem:
+
+\mhl{$\nabla_\theta J(\theta) = \nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta} r(\tau) = \mathbb{E}_{\tau \sim \pi_\theta} [r(\tau) \nabla_\theta \log \pi_\theta(\tau)]$}
+
+MDP: \mhl{$\pi_\theta(\tau) = p(x_0) \prod_{t=0}^{T} \pi(a_t | x_t; \theta) p(x_{t+1} | x_t, a_t)$}
+
+Thus: \mhl{$\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [r(\tau) \sum_{t=0}^{T} \nabla_\theta \log \pi(a_t | x_t; \theta)]$}
+
+Reducing variance via baselines:
+
+\mbox{\fontsize{9.4}{6}\selectfont $\mathbb{E}_{\tau \sim \pi_\theta} [r(\tau) \nabla \log \pi_\theta(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta} [\textcolor{red}{(r(\tau) - b)} \nabla \log \pi_\theta(\tau)]$}
+
+\textbf{Rew2Go:} \mbox{$G_t = \sum_{t' = t}^{T} \gamma^{t' - t} r_{t'}$; $b_t(x_t) = \nicefrac{1}{T} \sum_{t=0}^{T-1} G_t$}
+
+% Basic REINFORCE gradient estimate
+\mhl{$\nabla J_T(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [\sum_{t=0}^T \gamma^t \textcolor{darkgreen}{G_t} \nabla_\theta \log \pi(a_t | x_t; \theta)]$}
+
+Mean over returns: \textcolor{darkgreen}{replace $\textcolor{darkgreen}{G_t}$ with $(G_t - b_t(x_t))$}
+
+
+
+\textbf{REINFORCE} \textcolor{blue}{(On)}: Input $\pi(a | x; \theta)$, init $\theta$
+
+Repeat: generate episode $(x_i, a_i, r_i), i=0:T$;
+
+for $t=0:T$: set $\textcolor{darkgreen}{G_t}$, update $\theta$:
+
+\mhl{$\theta = \theta + \eta \gamma^t \textcolor{darkgreen}{G_t} \nabla_\theta \log \pi(A_t | X_t; \theta)$}
+
+
+
+
+\textbf{Advantage Func:} {\fontsize{9.8}{6}\selectfont $A^\pi(x,a) = Q^\pi(x,a) - V^\pi(x)$}
+
+$\forall x,a: A^{\textcolor{red}{\pi^*}}(x,a) \leq 0$; $\forall \pi,x: \max_a A^\pi(x,a) \geq 0$
+
+
+
+\subsection*{Actor-Critic} \textcolor{blue}{(On)} Approx both $V^\pi$ \textit{and} policy $\pi_\theta$ (e.g. 2 NNs). Reinterpret score gradient:
+
+\mhl{$\nabla J(\theta_\pi)$}$= \hspace*{-2mm} \underset{\tau \sim \pi_\theta}{\mathbb{E}} \hspace*{-1mm} [\sum_{t=0}^\infty \gamma^t Q(x_t, a_t; \theta_Q) \nabla \log \pi(a_t | x_t; \theta_\pi)]$
+
+%$ = \mathbb{E}_{x \sim \rho^\theta, a \sim \pi_\theta(x)} [Q(x,a;\theta_Q) \nabla \log \pi(a | x; \theta_\pi)] = $
+
+\mhl{$ =: \mathbb{E}_{(x,a) \sim \pi_\theta} [Q(x,a;\theta_Q) \nabla_{\theta_\pi} \log \pi(a | x; \theta_\pi)]$}
+
+Allows online updates:
+
+$\theta_\pi \leftarrow \theta_\pi + \eta_t \textcolor{darkgreen}{Q(x,a;\theta_Q)} \nabla \log \pi(a | x; \theta_\pi)$
+
+$\theta_Q \leftarrow \theta_Q  - \eta_t \delta \nabla Q(x,a;\theta_Q)$ (FA Q-learning)
+
+Variance redution: \textcolor{darkgreen}{replace with} $Q(x,a;\theta_Q) - V(x; \theta_V)$: advantage func. estimate $\rightarrow$ A2C
+
+\subsection*{Off-policy Actor Critic \textcolor{blue}{\textnormal{(Off)}}}
+
+Replace $\textcolor{red}{\max_{a'} Q(x', a'; \theta^{old})}$ in DQN $L(\theta)$ by $\textcolor{blue}{\pi(x'; \theta_\pi)}$, where $\pi$ should follow the greedy policy to model $\textcolor{red}{\max_{a'}}$. This is equivalent to:
+
+\mhl{$\theta_\pi^* \in \arg\max_\theta \textcolor{violet}{\mathbb{E}_{x \sim \mu} [Q(x,\pi(x;\theta); \theta_Q)]}$},
+where $\mu(x) > 0$ 'explores all states'. If $Q(\cdot; \theta_Q), \pi(\cdot; \theta_\pi)$ diff'able, use backprop to get stoch. gradients.
+
+$\nabla_\theta \textcolor{violet}{J(\theta)} = \mathbb{E}_{x \sim \mu} [\nabla_\theta Q(x,\pi(x;\theta); \theta_Q)]$
+
+$\nabla_{\theta} Q(x,\pi(x;\theta) = \nabla_a Q(x,a)|_{a = \pi(x;\theta)} \cdot \nabla_{\theta} \pi(x; \theta)$
+
+Needs \textit{deterministic} $\pi$. Inject additional action noise (e.g. $\epsilon_t$ greedy) to ensure exploration.
+
+{\fontsize{9.5}{6}\selectfont \textbf{Deep Deterministic Policy Gradient (DDPG)}}
+
+1) init $\theta_Q, \theta_\pi$ 2) repeat: observe $x$, execute $a = \pi(x; \theta_\pi) + \epsilon$, observe $r,x'$, store in $D$. If time to update: for ITER: sample $B$ from $D$, compute targets
+$y = r+ \gamma Q(x', \pi(x', \theta_\pi^{old}), \theta_Q^{old})$, update
+\iffalse
+do GD ($\theta_Q$)/ GA ($\theta_\pi$), update $\theta^{old} \leftarrow (1 - \rho) \theta^{old} + \rho \theta$
+\fi
+
+\iftrue
+Critic: $\theta_Q \leftarrow \theta_Q - \eta \nabla \nicefrac{1}{|B|} \sum_B (Q(x,a;\theta_Q) - y)^2$,
+
+Actor: $\theta_\pi  \leftarrow \theta_\pi + \eta \nabla \nicefrac{1}{|B|} \sum_B Q(x, \pi(x; \theta_\pi); \theta_Q)$,
+
+Params: $\theta_j^{old} \leftarrow (1 - \rho) \theta_j^{old} + \rho \theta_j$ for $j \in \{\pi, Q \}$
+\fi
+
+
+\textbf{Randomized policy DDPG:} For Critic: sample $a' \sim \pi(x'; \theta_\pi^{old})$ to get unbiased $y$ estimates. For Actor: consider $\nabla_{\textcolor{red}{\theta_\pi}} \mathbb{E}_{a \sim \pi(x; \textcolor{red}{\theta_\pi})} Q(x,a;\theta_Q)$
+
+Reparametrization trick: $a = \psi(x; \theta_\pi, \epsilon)$
+
+$\nabla_{\theta_\pi} \mathbb{E}_{a \sim \pi_{\theta_\pi}} Q(x,a;\theta_Q) = \mathbb{E}_\epsilon \nabla_{\theta_\pi} Q(x, \psi(x; \theta_\pi, \epsilon); \theta_Q)$
+

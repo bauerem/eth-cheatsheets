@@ -1,0 +1,33 @@
+\section*{Confidence Intervals}
+$\; \; \hat{se}(\hat{\beta}_j)=\sqrt{\hat{\sigma}^2(X^{\top}X)^{-1}_{jj}}=\hat{\sigma}/\sqrt{X^{(j)\top}X^{(j)}}$
+
+$P(\beta_j \in [\hat \beta_j \pm \hat{se}(\hat \beta_j) \cdot t_{1- \alpha / 2, n-p}])=1-\alpha$\\
+Alternatively for BS CI use $\hat{se}(\hat \beta_j)\approx sapply(rbind(\theta^1,\dots,\theta^B),2,sd)$\\
+\textbf{Expected value}: $\mathbb{E}[y\mid x] \in \left[x^T\hat{\beta} \pm \hat \sigma \sqrt{x^\top (X^\top X)^{-1} x} \cdot t_{1- \alpha / 2, n-p}\right]$\\
+\textbf{Prediction interval}: $\hat y\mid x \in \left[x^T\hat{\beta} \pm \hat \sigma \sqrt{1 + x^\top (X^\top X)^{-1}x} \cdot t_{1-\alpha / 2, n-p}\right]$\\
+
+\begin{codebox}{r}{Confidence Intervals}
+
+confint(fit, level=0.95) # Automatic CI
+# Manual CI (for intercept)
+se.intercept <- summary(fit)$coef[1,2]
+coef(fit)[1] - qt(.975, n-p)*se.intercept
+coef(fit)[1] + qt(.975, n-p)*se.intercept
+# Auto. Prediction CI (interval="c" for confidence)
+predict(fit,data.frame(name=5),level=.95,interval="p")
+# Manual Prediction CI
+fitted <- predict(fit, x0)
+quant <- qt(.975,n-p) # Quantile of t distribution
+sigma.hat <- sqrt(sum((fit$resid)^2/(n-p)))
+X <- as.matrix(cbind(1,thuesen[,1]))
+XtXi <- solve(t(X) %*% X)
+X00 <- as.matrix(c(1,x0), nrow=2)
+se <- sigma.hat * sqrt(t(X00) %*% XtXi %*% x00)
+lower <- fitted - quant * se
+upper <- fitted + quant * se
+\end{codebox}
+
+\begin{codebox}{r}{Bias Variance Trade-Off of a Method}
+Bias <- mean(EstimateUsingCV) - TrueValueSimulated
+MSE <- Bias^2 + var(EstimateUsingCV)
+\end{codebox}

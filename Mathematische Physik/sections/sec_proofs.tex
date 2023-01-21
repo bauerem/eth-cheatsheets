@@ -1,0 +1,18 @@
+\chapter{Beweisideen}
+
+\section{Fourierreihen}
+
+% \begin{namedtheorem}{Lemma 1.1}
+% 	\begin{itemize}
+% 		\item Einsetzen und ausrechnen
+% 	\end{itemize}
+% \end{namedtheorem}
+
+\begin{namedtheorem}{Satz 1.2}
+$|f_ne^{\frac{2\pi in}{L}x}|=|f_n| \Rightarrow$ absolute Konvergenz, $|f(x) - \sum_{|n|\leq N}f_n e^{\frac{2\pi in}{L}x}| \leq \sum_{|n|\geq N}|f_n|\Rightarrow$ glm. Konv (nicht abh. von x), glm. Konvergenz stetiger Funktionen $\Rightarrow$ f ist stetig. Periodizität einfach durch Einsetzen in die Reihendarstellung. Wir setzen die Reihendarstellung von f in die Formel des Koeffizienten ein, tauschen Reihe und Integral (wegen glm. Konv.) und erhalten mit L1.1 genau den Fourierkoeffizienten.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.1}
+Mit Verschiebung der Integrationsgrenzen und Variablensubst. erhalte
+$f_n = -\frac{1}{L} \int_{0}^{L}e^{\frac{-2\pi in}{L}x}f(x+\frac{L}{2n})\Dx$. Schreibe $f_n = \frac{1}{2}(f_n + f_n)$ mit der normalen und der verschobenen Darst. f ist stetig auf einem ausreichend großen kompakten Intervall $\Rightarrow$ glm. st. Also wird $\forall x\in [0,L] \forall \epsilon: |f(x)-f(x+\frac{L}{2n})|<\epsilon$ und somit $|f_n| < \frac{\epsilon}{2}$. 
+\end{namedtheorem}

@@ -1,0 +1,22 @@
+\section{Connectionism}
+\subsection*{Perceptron}
+\term{Classification}: $\text{sign}(\mathbf{x}^{\top}\theta)$ \\
+\term{Learning}: $\theta \leftarrow \theta + \Delta \theta$, where \\
+$\Delta \theta  \xleftarrow[]{}$
+    $\begin{cases}
+    y\mathbf{x} &\text{if } y \; \text{sign}(\mathbf{x}^{\top}\theta) < 0\\
+    0 & \text{otherwise}
+    \end{cases}$\\
+Corresponds to SGD w loss $|\text{min}\{0, y\mathbf{x}^{\top} \theta \}|$. \\
+Always converges if linear dich. exists with max. step count $s \leq \left \lfloor{\gamma^{-2}}\right \rfloor $, where data separable with $\gamma$-margin. Not guaranteed to always converge to same solution.
+
+\subsection*{Hopfield Networks}
+$\Theta = \sum_i \left[ \mathbf{x}_i \mathbf{x}_i^{\top} - \mathbb{I} \right]$, $\mathbf{x}_i \in \{ -1, 1\}^n$ \\
+\term{Asynch. upd. dyn.}: $x_i \leftarrow \text{sign}( \sum_{j \neq i} \theta_{ij} x_j + \theta_{i0})$
+\term{Synch. upd. dyn}: $\mathbf{x} \leftarrow \Theta \mathbf{x} + \theta_{\cdot 0}$\\
+$\theta_{\cdot 0}$ often ignored.\\
+\term{Obs.}: For single stored pattern $\mathbf{x}$: Let $\text{hamm}(\mathbf{x}, \mathbf{\tilde{x}}) = k$, then synch. upd. yields: if $2k + 1 < n$ then $\mathbf{x}$, if $2k - 1 > n$ then $-\mathbf{x}$. \\
+\term{Ising Energy}: $\mathcal{E} = - \sum_{i,j = 1}^n \theta_{ij}x_ix_j - \sum_{i = 1}^n \theta_{i0}x_i$ 
+If asynch. updat.: decreases $\rightarrow$ convergence \\
+\term{Tricks}: $\mathbf{x}_i^{\top} \mathbf{x}_i = n$; $\quad \mathbf{x}_i^{\top} \mathbf{x}_j = n - 2 \cdot \text{hamm}(\mathbf{x}_i, \mathbf{x}_j)$
+

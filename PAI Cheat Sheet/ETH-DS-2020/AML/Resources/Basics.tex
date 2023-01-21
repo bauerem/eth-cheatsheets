@@ -1,0 +1,53 @@
+\section{Basics}
+\subsection*{Calculus}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+	%\item Part.: $\int u(x)v'(x) dx = u(x)v(x) - \int v(x)u'(x) dx$\\
+	%\item Chain r.: $\frac{f(y)}{g(x)} = \frac{dz}{dx} \Big|_{x=x_0}= \frac{dz}{dy}\Big|_{z=g(x_0)}\cdot \frac{dy}{dx} \Big|_{x=x_0}$ \\
+	%\item $g_x(1) = g_x(0) + g'_x(0) + \int_{0}^{1} g_x''(s)(1-s) ds$ \\
+	%\item $g(\mathbf{w}+\delta) - g(\mathbf{w}) = %\int_{\mathbf{w}}^{\mathbf{w+\delta}} \nabla g(\mathbf{u}) du = (\int_{0}^{1} \nabla g(\mathbf{w}+t\delta)dt) \cdot \delta$\\
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{x}) = \frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{b}) = \mathbf{b}$ \quad
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$ \\
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{A}\mathbf{x}) = (\mathbf{A}^\top + \mathbf{A})\mathbf{x} \stackrel{\text{\tiny A sym.}}{=} 2\mathbf{A}\mathbf{x}$ \\
+	\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{A}\mathbf{x}) = \mathbf{A}^\top \mathbf{b}$ \quad
+	\item $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X} \mathbf{b}) = \mathbf{c}\mathbf{b}^\top$ \\
+	\item $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X}^\top \mathbf{b}) = \mathbf{b}\mathbf{c}^\top$ \quad
+	\item $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\mathbf{x}-\mathbf{b}}{\|\mathbf{x}-\mathbf{b}\|_2}$ \\
+	\item $\frac{\partial}{\partial \mathbf{x}}\|\mathbf{x}\|^2_2 = \frac{\partial}{\partial \mathbf{x}} \|\mathbf{x}^\top \mathbf{x}\|_2 = 2\mathbf{x}$ \quad
+	\item $\frac{\partial}{\partial \mathbf{X}}\|\mathbf{X}\|_F^2 = 2\mathbf{X}$ \\
+	\item $x^T A x = Tr(x^T A x) = Tr(x x^T A) = Tr(A x x^T)$ \\
+	\item $\tfrac{\partial}{\partial A} Tr(AB) {=} B^T$ \quad
+	\item $\frac{\partial}{\partial A} log|A| {=} A^{-T}$ \\
+\end{inparaitem}
+\subsection*{Probability}
+\term{Gauss:} $p(x)=\frac{1}{\sqrt{2\pi\sigma ^2}}\exp(-\frac{(x-\mu)^2}{2\sigma^2})$
+
+$p(x)=\frac{1}{(2\pi)^{n/2}\sqrt{|\Sigma|}}\exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))$
+
+\term{$\prod$Rule:} $P(A,B)=P(A|B)P(B)$
+
+$P(X_{1:n})=P(X_1)P(X_2|X_1)P(X_3|X_{1:2})\cdots P(X_n|X_{1:n-1})$
+
+\term{$\sum$Rule:} $P(X_{1:i-1},X_{i+1:n})=\sum_{x_i}P(X_{1:i-1},x_i,X_{i+1:n})$
+
+$P(X_i)=\sum_{x_1,\dots,x_{i-1}}\sum_{x_{i+1},\dots,x_n}P(x_{1:i-1},X_i,x_{i+1:n})$
+\subsection*{Posterior Inference}
+\term{Prior:} $P(x)$
+\term{Likelih.:} $P(x|y)$
+\term{Posterior:} $P(y|x)$
+
+\term{Bayes':} $P(X|Y)=\frac{P(X,Y)}{P(X)}=\frac{P(X)P(Y|X)}{\sum_x P(X=x)P(Y|X=x)}$
+
+\subsection*{GPs:}
+% ying: gaussian random vector .  A, B disjoint set. Gaussian random vector (GRV) iff any linear combination of its coordinates is normally distributed. any affine transformation of a GRV is GRV
+$X_A\sim\mathcal{N}(\mu_A,\Sigma_{AB})$, $X_B\sim\mathcal{N}(\mu_B,\Sigma_{BB})$
+
+$A=\lbrack i_1,\dots,i_k \rbrack$, $B=\lbrack j_1,\dots,j_m \rbrack$
+
+\term{Cond. distr.:}
+$p(X_A|X_B=x_B)=\mathcal{N}(\mu_{A|B},\Sigma_{A|B})$, w.
+$\mu_{A|B}=\mu_A + \Sigma_{AB}\Sigma_{BB}^{-1}(x_B-\mu_B)$ and 
+
+$\Sigma_{A|B}=\Sigma_{AA}-\Sigma_{AB}\Sigma_{BB}^{-1}\Sigma_{BA}$, w. $[\Sigma_{AB}]_{kl}=\sigma_{i_k,j_l}$
+%  ying...
+\term{Multi.:} $Y = MX$, then  $ \mathcal{N}(Y; M\mu_{V},M\Sigma_{VV}M^{T})$
+% ...

@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+\usepackage[margin=3pt,landscape]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[nopar]{lipsum}%just to generate text for the example
+
+% redefinition of \normalsize to use \footnotesize and decrease the values for
+% \abovedisplyskip, \belowdisplayskip, and the "short" variants
+\makeatletter
+\renewcommand\normalsize{%
+  \@setfontsize\footnotesize\@viiipt{11}%
+   \abovedisplayskip 1\p@ \@plus\p@ \@minus\p@
+   \belowdisplayskip 1\p@ \@plus\p@ \@minus\p@
+   \abovedisplayshortskip \z@ \@plus\p@
+   \belowdisplayshortskip \z@ \@plus\p@ \@minus\p@
+   \let\@listi\@listI}
+\makeatother
+
+\pagestyle{empty}
+
+% multicol parameters
+\setlength\premulticols{1pt}
+\setlength\postmulticols{1pt}
+\setlength\multicolsep{1pt}
+\setlength\columnsep{2pt}
+\raggedright
+
+\newcommand\TestText{% just to generate text for the example
+\lipsum[4]
+\begin{gather*}
+E = mc^2.
+\end{gather*}
+\lipsum[4]
+\begin{align*}
+a &= b \\
+&= c \\
+&= d.
+\end{align*}
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{listings}
+\newcommand{\bv}[1]{\mathbf{#1}}
+\newcommand{\est}[1]{\mathbf{\hat{#1}}}
+\newcommand{\tv}[1]{\mathbf{\tilde{#1}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\sgn}{sgn}
+\DeclareMathOperator*{\Layer}{Layer}
+\DeclareMathOperator*{\V}{Var}
+
+
+\begin{document}
+
+\begin{multicols}{4}
+\textbf{Idea}:$\bv{w}^T \bv{x}+w_0 = \tv{w}^T\tv{x}$, where $\tv{w}:=[w_1,...,w_d,w_0]^T;\ \tv{x}=[x_1,...,x_d,1]^T$\\
+
+\textbf{Def}: Residual: $r_i=y_i-f(y_i)$; Loss function $l$;\\
+$l^p$-loss: $l(r)=|r|^p$; Emp. risk: $\hat{R}(\bv{w})=\frac{1}{n}\sum^n_{i=1}l(r_i)$\\
+
+\textbf{LSR problem}: $\est{w}=\argmin_{\bv{w}}\sum^n_{i=1}(y_i-\bv{w}^T\bv{x}_i)^2$\\
+\textbf{LSR expl. sol.}: $\est{w}=(\bv{X}^T \bv{X})^{-1}\bv{X}^T\bv{y}$; $O(nd^2+d^3)$\\
+\textbf{Gradient Descent (G.D.)} $\nabla\hat{R}\Rightarrow O(nd)\log(\frac{1}{\epsilon})$:\\
+\verb|1. Start at an arbitrary| $\bv{w}_0 \in \R,$\\
+\verb|2. For t=0,1,2,... do:| $\bv{w}_{t+1}=\bv{w}-\eta_t \nabla \hat{R}(\bv{w}_t).$\\
+$\cdot$ $R$ convex $\Rightarrow$ G.S. converges; $l=l^2, \eta_t=\frac{1}{2} \Rightarrow  O(t)$\\
+\textbf{Adaptive step size:} (Add step \verb|3.| in G.D. above)
+1.Line search: \verb|3.| $\eta^*_{t}=\argmin_{\eta\in[0,\infty)}\hat{R}(\bv{w}_t-\eta g_t)$.\\
+2.Bold driver: \verb|3.If| $\hat{R}(\bv{w}_t)<\hat{R}(\bv{w}_t):$ $\eta_t:=c_{acc}\eta_{t-1}$, \verb|else| $\eta_t:=c_{dec}\eta_{t-1}.$\\
+\textbf{Non-lin. reg.}: $f(x)=\sum^d_{i=1}w_i\phi_i(\bv{x}),$ $\mathcal{B}_H=(\phi_i)_i$\\
+\textbf{ERM}:$\cdot$ LoLN $\Rightarrow \hat{R}(\bv{w})\xrightarrow{|D|\rightarrow\infty} R(\bv{w})$ a.s..\\
+$\cdot$ $l=l^2$, supp(D)$<\infty$ $\Rightarrow$ $||R-\hat{R}||\rightarrow 0$ (in $C^0$)\\
+$\cdot$ $\E_D[\hat{R}_D(\est{w}_D)]\leq\E_D[R(\est{w}_D)]$ (Pf: Jensen's (swap))\\
+\textbf{Idea}: Use train/val./test sets, reduce general. error\\
+$\cdot$Optimize $\est{w}_{D_{train}}=\argmin\limits_{\bv{w}}\hat{R}_{train}(\bv{w})$, but evaluate $\hat{R}_{test}(\est{w})=\frac{1}{|D_{test}|}\sum\limits_{(\bv{x},y)\in D_{test}}(y-\est{w}^T\bv{x})^2.$\\
+$\cdot$ $\E_{D_{tr.},D_{test}}[\hat{R}_{D_{test}}(\est{w}_{D_{tr.}})]=\E_{D_{tr.}}[R(\est{w}_{D_{tr.}})]$(iid)\\ %alt. use \stackrel{(i.i.d.)}{=}
+MC/k-fold cross validation (only when $D$ idd):
+\verb|1. For candidate model m and i=1,...,k:|\\
+\verb| a) Split (train) data:| $D=D^{(i)}_{train}\sqcup D^{(i)}_{val}$
+\verb| b) Train model:| $\est{w}_{i,m}=\argmin_{\bv{w}}\hat{R}^{(i)}_{train}(\bv{w})$\\
+\verb| c) Estimate error:| $\hat{R}^{(i)}_{m}=\hat{R}^{(i)}_{val}(\est{w}_i)$\\
+\verb|2. Select model:| $\hat{m}=\argmin_m\frac{1}{k}\sum^k_{i=1}\hat{R}^{(i)}_m$\\
+\textbf{k large}: Risk overfitting to $D_{val}$, underfitting to $D_{train}$ and having too little data for training\\
+\textbf{k small}: Higher $O(\cdot)$ but better performance\\
+k=n: LOOCV; in practice often k=5 or k=10\\
+\textbf{RR prob.}: $\min_{\bv{w}}\frac{1}{n}\sum^n_{i=1}(y_i-\bv{w}^T\bv{x}_i)^2+\lambda||\bv{w}||^2_2$
+\textbf{RR expl. sol.}: $\est{w}=(\bv{X}^T\bv{X}+\lambda\bv{I})^{-1}\bv{X}^T\bv{y}$ (std $\bv{X}$!),\\
+$x_{ij}=\frac{x_{ij}-\hat{\mu}_j}{\hat{\sigma}_j}$|$\hat{\mu}_j=\frac{1}{n}\sum_i^n x_{ij}$|$\hat{\sigma}_j=\frac{1}{n}\sum_i^n (x_{ij}-\hat{\mu}_{j})^2$\\
+\textbf{RRGD}:\verb|2.For t:| $\bv{w}_{t+1}=(1-2\lambda \eta_t)\bv{w}_t-\eta_t \nabla \hat{R}(\bv{w}_t)$\\
+\textbf{General regularizatoin}: $\min_{\bv{w}}\hat{R}(\bv{w})+\lambda C(\bv{w})$\\
+$\cdot$ Tradeoff: g.o.f. vs. simplicity ($\lambda\gg0$ higher $O(\cdot)$)\\
+\textbf{$\lambda$ choice}: CV w. e.g. $m(\lambda),\lambda\in\{10^{-6},10^{-5},..,10^6\}$\\
+\textbf{Bin. lin. classifiers:} $f(\bv{x})=f_{\bv{w}}(\bv{x})=\sgn(\bv{w}^T\bv{x}),$\\
+$l=l_{0/1}(\bv{w};\bv{x}_i,y_i):=1[y_i\neq f_{\bv{w}}(\bv{x}_i)]$ (a.e. $\nabla_{\bv{w}}=0$!)\\
+\textbf{Surrogate losses}: $l_P(\bv{w};\bv{x},y)=max(0,-y\bv{w}^T\bv{x}),$
+$l_H(\bv{w};\bv{x},y)=max(0,1-y\bv{w}^T\bv{x})$\\
+\textbf{GD:} \verb|2.For t:| $\bv{w}_{t+1}=\bv{w}_t-\eta_t \sum_{i\in\mathcal{I}_{\bv{w}_t}}y_i\bv{x_i},$ where $\mathcal{I}_\bv{w}=\{i:(\bv{x}_i,y_i) \textrm{ incorrectly classified by } \bv{w}\}$ (inef.!)\\
+\textbf{Idea:} Evaluate only a $k$ pts in $\mathcal{I}_\bv{w}$ ($k=1\Rightarrow$ SGD)\\
+\textbf{SGD}:\verb|1.Start with arbitrary| $\bv{w}_0\in\R^d$\\
+\verb|2. For t=0,1,2,.. do:|\\
+\verb| a) Pick| $(\bv{x}',y')\in D_{train}$ $U$-randomly\\
+\verb| b) Set| $\bv{w}_{t+1}=\bv{w}_t-\eta_t\nabla l(\bv{w}_t;\bv{x}',y')$\\
+\textbf{Convergence:} Guaranteed if $\sum_t\eta_t=\infty$ and $\sum_t\eta_t^2<\infty.$ E.g.: $\eta_t=\frac{1}{1+t}$ or $\min(c,\frac{c'}{1+t}).$\\
+\textbf{Minibatch SGD}: \verb|a)| $k>1$ and in \verb|b)| take $\nabla l$ avg\\
+"Mini-batches exploit parallelism, reduce variance"\\
+\textbf{Perceptron alg (PA)}: SGD with $l=l_P$ and $\eta_t=1$\\
+\textbf{Thm}: If data lin. seperable, PA finds lin. separator\\
+\textbf{SVM}: $\min_\bv{w}\frac{1}{n}\sum l_H(\bv{w};\bv{x}_i,y_i)+\lambda||\bv{w}||^2_2$; ip:$\eta_t=\frac{1}{\lambda t}$\\
+\textbf{SGD}:\verb|b)|$\bv{w}_{t+1}=(1-\frac{2\lambda}{n}\eta_t)\bv{w}+1[y_i\bv{w}^T\bv{x}_i<1]\eta_t y_i\bv{x}_i$\\
+\textbf{Greedy forward selection}: Feat.s $V=\{1,..,d\},$ feat. selection $S\subseteq V$, CV-Loss $\hat{L}(S)$:\\
+\verb|1. Start with| $S=\emptyset$ \verb|and| $E_0=\infty$\\
+\verb|2. For i=1,..,d, do:|\\
+\verb|a)Find best feature:|$s_i=\argmin_{j\in V\setminus S}\hat{L}(S\cup\{j\})$\\
+\verb| b)Compute error:| $E_i=\hat{L}(S\cup \{s_i\})$\\
+\verb| c)If| $E_i>E_{i-1}$ \verb|break, else set| $S=S\cup\{s_i\}$
+
+\textbf{Greedy backward selection}:(-slower,+dep. feats)\\
+\verb|1. Start with| $S=V$ \verb|and| $E_{d+1}=\infty$\\
+\verb|2. For i=d,..,1, do:|\\
+\verb| a)Find best feature:|$s_i=\argmin_{j\in S}\hat{L}(S\setminus\{j\})$\\
+\verb| b)Compute error:| $E_i=\hat{L}(S\setminus \{s_i\})$\\
+\verb| c)If| $E_i>E_{i+1}$ \verb|break, else set| $S=S\setminus\{s_i\}$
+\textbf{Alt:} $\est{w}=\argmin\sum l(\bv{w};\bv{x}_i,y_i)+\lambda ||\bv{w}||_0,$ where $||\bv{w}||_0=|\{i:w_i\neq0\}|$; "Sparsity trick": use $||\bv{w}||_1$\\
+\textbf{Lasso}:$\min\frac{1}{n}\sum^n_{i=1} (y_i-\bv{w}^T\bv{x}_i)^2+\lambda ||\bv{w}||_1$(inclds FS)\\
+\textbf{L1-SVM}: $\min_\bv{w}\frac{1}{n}\sum l_H(\bv{w};\bv{x}_i,y_i)+\lambda||\bv{w}||_1$\\
+Greedy: +any method, -slower (train many models); L0/L1-regul.: +faster, -only lin models\\
+\textbf{Reprsnt.r Thm}: $\est{w}=\sum_i\alpha_i(y_i)\bv{x}_i\in <\bv{x}_1,..,\bv{x}_n>$\\
+$\Rightarrow$\textbf{Perc.}: $\min_\alpha\sum_i max(0,-y_i\sum_j\alpha_j y_j(\bv{x}_j^T\bv{x}_i))$\\
+\textbf{Idea}: 1. Use $\bv{w}$ in Thm as ansatz, replacing $\bv{w}$ with $\bv{\alpha}$; 2. $k(\bv{x},\bv{x}')=\bv{x}^T\bv{x}'\mapsto\phi(\bv{x})^T\phi(\bv{x}')=:k_\phi(\bv{x},\bv{x}')$
+\textbf{SHOULD I ADD KERNELIZED PERCEPTRON/MERCER/POS DEF DEF n CHAR n DECOMP (L7) HERE?}\\
+\textbf{Def}: $k$ kernel iff $K$ sym. \& pos. semi-def. iff SP/IP\\
+$\cdot$ Poly: $(\bv{x}^T\bv{x}+1)^d$, Gaussian/RBF: $e^{1||\bv{x}-\bv{x}'||^2_2/h^2)}$, Laplacian: $e^{-||\bv{x}-\bv{x}'||_1/h}$\\
+$\cdot$ $k_1+k_2$, $k_1 k_2$, $ck_1$ for $c>0$ and $f(k_1)$ for $f$ poly with pos. coeffs or exponential are also kernels\\
+$\cdot$ $(k_i)^d_i$ kernels $\Rightarrow$ $k(\bv{x},\bv{x}')=\sum^d_{j=1} k_j(x_j,x_j')$ kernel\\
+$\cdot$ $k((x,y),(x',y')):= k_1(x,y)k_2(x',y')$ kernel\\
+$\cdot$ $k((x,y),(x',y')):=k_1(x,y)+k_2(x',y')$ kernel\\
+\textbf{Kernel reg. pred.}: $\hat{y}=\sum^n_{j=1}\alpha_j k(x_j,x)$\\
+\textbf{Kernel bin. cl. pred.}: $\hat{y}=\sgn\big(\sum\alpha_j y_j k(x_j,x)\big)$\\
+\textbf{k-NN}: $\hat{y}(\bv{x})=\sgn(\sum y_i 1[\bv{x}_i\ kNN\ of\ \bv{x}])$ ($k$?CV!)\\
++No training necessary, -depends on all data/ineff.\\
+\textbf{k-P}: +Optim. weights improve perf., +Some k capture "global trends", +Depends only on wrongly classified ex.s, -Training requires optimization\\
+\textbf{Sum}: Can derive non-para. m.s from para. w. $k$'s\\
+\textbf{SHOULD I ADD KERNELIZED SVM \& LR (L8/9) HERE??}\\
+\textbf{Prob}: Paramatric models "rigid", non-param. fail to extrapolate:
+\textbf{Sol}: (Semi-param. m.) Add. comb. of lin. \& non-lin. kernels\\
+$\cdot$ E.g. $k(\bv{x},\bv{x}')=c_1 exp(-||\bv{x}-\bv{x}'||^2_2/h^2)+c_2\bv{x}^T\bv{x}'$\\
+$\ \ \Rightarrow f(\bv{x})=\sum\alpha_i k(\bv{x}_i,\bv{x})=f_\bv{\alpha}(\bv{x})+\bv{w}_\bv{\alpha}^T\bv{x}$\\
+\textbf{Downsmplng:}+Smaller/faster,-Wasteful/info-loss;
+\textbf{Upsmplng:}+Uses $\forall(x,y)$,-slow,-adds artificial info;\\
+\textbf{Cost-sens. loss:} $l_{CS}(\bv{w};\bv{x},y)=c_y l(\bv{w};\bv{x},y)$,$c_y>0.$\\
+\textbf{Alt}: Vary threshold $\tau$ in $\sgn(\bv{w}^T\bv{x}-\tau)$\\
+Acc.=$\frac{TP+TN}{n}$; Prec.=$\frac{TP}{TP+FP}$;
+Rec.=$\frac{TP}{TP+FN}$; F1-Score=$\frac{2TP}{2TP+FP+FN}=\frac{2}{Precision^{-1}+Recall^{-1}}$; TPR=$\frac{TP}{TP+FN}$; FPR=$\frac{FP}{TN+FP}$; $\rightarrow\E[\cdot PR]=p$\\
+\textbf{Thm}: $A1\geq A2$ $ROC=\frac{TPR}{FPR}$ iff $A1\geq A2$  $\frac{Prec.}{Rec.}$
+\textbf{Multi lin. class.}: $\hat{y}=\argmax_j\bv{w}_j^T\bv{x}$, $||\bv{w}_j||=^!1$.\\
+\textbf{Alt (1v1)}: $\hat{y}=\argmax_{i\leq c}|\{j:0<\sgn(\bv{w}_{ij}^T\bv{x}) \}|$\\
+\textbf{Encode}:$1\mapsto [0,...,1]$,$2\mapsto [0,...,1,0]$,$c\mapsto [1,...,1,1]$\\
+$\cdot$reduces $c$ or $c(c-1)/2$ req. bin. clas.rs to $O(\log_2 c)$\\
+\textbf{MCSVM}: $\nabla l = x(1-2\cdot 1[\neg(*)\wedge i=y])1[(*)> 0]$ $l_{MC-H}(\bv{W};\bv{x},y)=\max(0,1+\max\limits_{j\in[c]\setminus y} \bv{w}^T_j-\bv{w}_y^T\bv{x})$\\
+\textbf{Idea}: Instead of cust. feats $\min\sum l(y_i;\sum w_j\phi_j(\bv{x}_i))$
+learn feat param.s: $\min_{\bv{w},\theta}\sum l(y_i;\sum w_j\phi(\bv{x}_i,\theta_j))$\\
+$\cdot$ $\phi(\bv{x},\bv{\theta})=\varphi(\bv{\theta}^T\bv{x})$; $\varphi=$ act. fun. e.g. $Sigm(z)=\frac{1}{1+exp(-z)}$,$\tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}$,ReLU=$\max(z,0)$\\
+\textbf{ANN}:nest.d comp (var) lin f.s comp w (fxd) nonlins\\
+\textbf{Forward propagation/ANN prediction}:
+\verb|1.For |$j\in \Layer_1$\verb|, set |$v_j=x_j$\\
+\verb|2.For each layer |$l=1:L-1$
+\verb|   For |$j\in \Layer_l$\verb|, set:|$v_j=\varphi(\sum_{i\in\Layer_{l-1}}w_{j,i}v_i)$
+\verb|3.For |$j\in\Layer_L:\ f_j=\sum_{i\in\Layer_{L-1}}w_{j,i}v_i$\\
+\verb|4.Predict |$y_j=f_j$ / $y_i=\sgn(f_j)$ / $y_j=\argmax_i f_i$
+\textbf{Or Alt}:
+\verb|1.For |$\bv{v}^{(0)}:=\bv{x}$\\
+\verb|2.For |$l=1:L-1:\ \bv{v}^{(l)}:=\varphi(\bv{W}^{(l)}\bv{v}^{(l-1)})$\\
+\verb|3.| $\bv{f}:=\bv{W}^{(L)}\bv{v}^{(L-1)}$\\
+\verb|4.Predict |$\bv{y}=\bv{f}$ / $\bv{y}=\sgn(\bv{f})$ / $\bv{y}=\argmax_i \bv{f}$
+\textbf{Thm (UAT)}: Let $\sigma$ be a contin. sigm. func.. Then $\{G(x)=\sum^N_{j=1}\alpha_j\sigma(y_j^T x+\theta_j)\}\subset^{dense}C^0([0,1]^n)$.\\
+\textbf{Prob}: $\bv{W}^*=\argmin_\bv{W}\sum l(\bv{W};\bv{y}_i,\bv{x}_i)$ not convex.\\
+\textbf{Multi-loss}: $l(\bv{W};\bv{y},\bv{x})=\sum l_i(\bv{W},y_i,\bv{x})$\\
+\textbf{SGD for ANNs}: \verb|1. Initialize weights| $\bv{W}$\\
+\verb|2. For |$t=1,2,..:$\\	
+\verb|  Pick |$(\bv{x},\bv{y})\in D$\verb| U-randomly|\\
+\verb|  Take step: |$\bv{W}:=\bv{W}-\eta_t\nabla_\bv{W}l(\bv{W};\bv{y},\bv{x})$\\
+\textbf{Backpropagation}:\\
+\verb|1.For |$j\in\Layer_{L+1}$:\\
+\verb|  a) Compute error signal| $\delta_j=l_j' (f_j)$\\
+\verb|  b) For each unit | $i\in \Layer_L: \frac{\partial}{\partial w_{j,i}}=\delta_jv_i$\\
+\verb|2.For | $l=L-1:1$\verb| and |$j\in\Layer_l:$\\
+\verb|  a) Error signal: |$\delta_j=\varphi'(z_j)\sum_{i\in\Layer_{l+1}}w_{i,j}\delta_i$\\
+\verb|  b) For |$i\in \Layer_{l-1}:\frac{\partial}{\partial w_{j,i}}=\delta_jv_i$\\
+\textbf{Backpropagation (Matrix version)}:\\
+\verb|1.For |$j\in\Layer_{L+1}$:\\
+\verb|  a) Compute error| $\delta^{(L)}=\bv{l}'(\bv{f}):=[l'(f_1),..,l'(f_p)]$\\
+\verb|  b) Gradient | $\nabla_{\bv{W^{(L)}}}l(\bv{W};\bv{y},\bv{x})=\delta^{(L)}\bv{v}^{(L-1)T}$\\
+\verb|2.For | $l=L-1:1:$\\
+\verb|  a) Error: | $\delta^{(l)}=\varphi'(\bv{z}^{(l)})\cdot_{pw}(\bv{W}^{(l+1)T}\delta^{(l+1)})$\\
+\verb|  b) Gradient |$\nabla_{\bv{W}^{(l)}}l(\bv{W};\bv{y},\bv{x})=\delta^{(l)}\bv{v}^{(l-1)T}$\\
+\textbf{Init}.:Keep $\V[W]$ cnst acr. layers, avoid exp/van $\nabla$\\
+Glorot (tanh): $w_{i,j}\sim\mathcal{N}(0,\frac{1}{n_{in}})/\mathcal{N}(0,\frac{2}{n_{in}+n_{out}})$
+He (ReLU): $w_{i,j}\sim\mathcal{N}(0,\frac{2}{n_{in}})$; \textbf{LR}: start fixed/small then decrease, e.g. $\eta_t=min(0.1,100/t)$ or decreasing step function; \textbf{Momentum}: (Escape loc. min.) $\bv{W}:=\bv{W}-m\cdot a-\eta_t\nabla_{\bv{W}}l(\bv{W};\bv{y},\bv{x})$\\
+\textbf{Overfit.}: Early stopping (if $\partial$Err.($D_{val}$)>0), regul: $\frac{\min}{\bv{W}}\sum l(\bv{W};D_i)+\lambda||\bv{W}||^2_F$, Dropout $p($unit$,t)=\frac{1}{2}$\\
+\textbf{Batch norm.}:(mini-batch $\mathcal{B}=(x_i)^m_i$) Learn $\gamma,\beta$.\\
+\verb|For each layer:| ($\varphi(wx)=\varphi(w$BN$_{\gamma,\beta}(x))$)\\
+\verb|  a) Normalize:| $\hat{x_i}=\frac{1}{m}\sum(x_i-\mu_\mathcal{B})^2$\\
+\verb|  b) Scale & shift:| $y=\gamma\hat{x}_i+\beta=:$BN$_{\gamma,\beta}(x_i)$\\
+\textbf{CLs}: Apply $m$ diff. $f\times f$ filters to an $n\times n$ im. yields an $m\times l\times l$ to get, s.t. $l=\frac{n+2\cdot\textrm{padding}-f}{\textrm{stride}}+1$\\
+\textbf{Past}:sigmoid/tanh(difbl),\textbf{Now}:ReLu(fast,stable $\nabla$s)\\
+\textbf{Kernels}:+Convex,+noise robust,$\pm O(D)$,-1 layer;
+\textbf{ANNs}:+flexible,nonlin,+layers(abstr),-may params and choices,-noise sensitive
+
+
+\TestText\TestText
+\end{multicols}
+
+
+\end{document}

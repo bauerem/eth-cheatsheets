@@ -1,0 +1,12 @@
+\section{Multilayer perceptron}
+\term{Key idea}: Functional composition (nesting) $\rightarrow$ representations: $\mathbf{z}_l := F_{l:1}(\mathbf{x})$; $F = F_k \circ ... \circ F_1$\\
+\term{With loss $l$}: $f(\mathbf{x}) = (l \circ F)$\\
+\term{Three layer ref. version (regression)}: $n$ input, $m$ hidden, $1$ output:\\
+$f(\mathbf{x}; \beta, \theta) = \sum_{j=1}^m \frac{\beta_j}{1 + \text{exp}(-\theta_j^{\top} \mathbf{x})}$
+\subsection*{Backpropagation}
+\term{Chain rule in DNNs}: $\partial F = \prod_{l=k}^1 \partial F_l \circ F_{l-1:1}$ \\
+\term{Dir. of steepest descent}: \\
+$\text{lim}_{\eta \rightarrow 0} \; \text{argmin}_{\theta:||\theta||=1} f(\mathbf{x}; \theta + \eta \theta) = - \frac{\nabla_{\theta}f(\mathbf{x}; \theta)}{||\nabla_{\theta}f(\mathbf{x}; \theta)||}$
+\term{Gradient}: $\nabla_{\theta_l}f(\mathbf{x}) = \partial (l \circ F_{k:l+1})(\mathbf{z}_l) \cdot F'_l(\mathbf{z}_{l-1})$
+
+

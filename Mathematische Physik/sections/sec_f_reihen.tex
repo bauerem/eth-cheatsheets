@@ -1,0 +1,178 @@
+\chapter{Fourierreihen}
+\begin{adjustbox}{angle=0}
+  \fontsize{8}{10}\selectfont
+  \centering
+  {\setlength{\extrarowheight}{7pt}
+  \begin{tabular}{l}
+     $f(x) = \sum_{n\in\Z} f_n \exp(\frac{2\pi i n}{L}x)=\frac12 a_0 + \sum_{n=1}^{\infty}a_n\cos(\frac{2\pi n}{L}x) + b_n\sin(\frac{2\pi n}{L}x)$ \\
+     $f_n=\frac1{L} \int_0^L f(x) \exp(-\frac{2\pi in}{L}x) \D x$ \\
+     $\quad a_n = 2 \mathrm{Re} f_n=\frac{2}{L}\int_0^L f(x)\cos(\frac{2\pi n}{L}x)\D x$, $b_n = -2 \mathrm{Im} f_n = \frac{2}{L}\int_0^L f(x)\sin(\frac{2\pi n}{L}x)\D x$ \\
+%      DK & $D_N(t)=\sum_{n=-N}^N \exp(2\pi int)$ \\
+  \end{tabular}}
+\end{adjustbox}
+
+% Fourierrei $f(x) = \sum_{n\in\Z} f_n \exp(\frac{2\pi i n}{L}x)=\frac12 a_0 + \sum_{n=1}^{\infty}a_n\cos(\frac{2\pi n}{L}x) + b_n\sin(\frac{2\pi n}{L}x)$
+
+% Koeffizienten $f_n=\frac1{L} \int_0^L f(x) \exp(-\frac{2\pi in}{L}x) \D x, \quad a_n = 2 \mathrm{Re} f_n,\ b_n = -2 \mathrm{Im} f_n$
+
+\section{Definition, Darstellungssatz}
+
+\begin{namedtheorem}{Lemma 1.1}
+%   $\frac1L\int_0^Le^{\frac{2\pi in}Lx}\D x = \begin{cases}
+%     1 & n=0,\\
+%     0 & n\in\Z\setminus\{0\}.
+%   \end{cases}$
+  $\frac1L\int_0^Le^{\frac{2\pi in}Lx}\D x = 0$ für $n\in\Z\setminus\{0\}$ und $=1$ für $n=0$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 1.2}
+  Sei $\{f_n\}_{n\in\Z}$ so, dass $\sum_{n\in\Z}|f_n| < \infty$. Dann konvergiert die Fourierreihe $f(x) = \sum_{n\in\Z} f_n \exp(\frac{2\pi i n}{L}x)$ absolut und gleichmässig für alle $x\in\R$ gegen eine periodische, stetige Funktion $f$ der Periode $L$. Weiter gilt $f_n=\frac1{L} \int_0^L f(x) \exp(-\frac{2\pi in}{L}x) \D x$.
+\end{namedtheorem}
+
+\section{Riemann–Lebesgue-Lemma, Dirichletkern}
+
+\begin{namedtheorem}{Satz 2.1 (Riemann-Lebesgue)}
+  Sei $f:\R\rightarrow\C$ stetig und $L$-periodisch (bzw. Lebesgue-integrierbar auf $[0,1]$). Dann gilt $f_n \rightarrow 0$ für $|n|\rightarrow\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 2.2}
+  Sei $f\in C^k(\R/L\Z)$. Dann gilt $|n|^k|f_n|\rightarrow0$ für $|n|\rightarrow\infty$ und somit $\sum_{n\in\Z}|f_n|\leq C\sum_{n\in\Z}\frac1{|n|^k}<\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 2.1 (Dirichlet-Kern)}
+  $D_N(t)=\sum_{n=-N}^N \exp(2\pi int)$. Es gilt
+%  $D_N(t+1) = D_N(t) = D_N(-t)$, $\int_0^1D_N(t)\D t = 1$ und $D_N = \begin{cases}
+%      \frac{\sin(\pi(2N+1)t)}{\sin(\pi t)} & t\in\R \setminus \Z \\
+%      2N+1 & t\in\Z
+%    \end{cases}$, $\int_0^1|D_N(t)|\D t\geq \frac4{\pi^2}\log(2(n+1))$.
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{2}
+  \begin{enumerate}[(i)]
+    \item $D_N = \begin{cases}
+      \frac{\sin(\pi(2N+1)t)}{\sin(\pi t)} & t\in\R \setminus \Z \\
+      2N+1 & t\in\Z
+    \end{cases}$
+    \item $D_N(t+1) = D_N(t)=D_N(-t)$, 
+    \item $\int_0^1D_N(t)\D t = 1$
+    \item $\int_0^1|D_N(t)|\D t\geq \frac4{\pi^2}\log(2(n+1))$
+  \end{enumerate}
+  \end{multicols}}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.3 (Darstellungssatz I)}
+  Sei $f\in C^1(\R/L\Z)$. Dann gilt $f(x) = \lim_{N\rightarrow\infty} \sum_{n=-N}^N f_n \exp(\frac{2\pi in}{L}x) = \lim_{N\rightarrow\infty}(s_Nf)(x)$ punktweise $\forall x\in\R$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition (Beschränkte Variation)}
+  Eine Funktion $[a,b]\rightarrow\C$ heisst von \textbf{beschränkter Variation}, falls es eine Konstante $V$ gibt, so dass $\sum_{i=0}^{n-1}|f(x_{i+1}) - f(x_i)| \leq V$ für alle Einteilungen $a=x_0<x_1<\ldots<x_n=b$. Wir schreiben $f(a\pm0) = \lim_{x\rightarrow a^{\pm}} f(x)$. Stückweise stetig differenzierbare Funktionen sind von beschränkter Variation.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.4 (Darstellungssatz II)}
+  Sei $f$ $L$-periodisch und von beschränkter Variation auf $[0,L]$ und $s_Nf(x) = \sum_{n=-N}^N f_n \exp(\frac{2\pi in}{L}x)$ die N-te Partialsumme ihrer Fourierreihe. Dann gilt
+  \begin{itemize}
+    \item $\lim_{N\rightarrow\infty}s_N f(x) = \frac12(f(x+0) + f(x-0))$. Insbesondere konvergiert die Fourierreihe gegen $f(x)$ in allen ihren Punkten $x$, wo $f$ stetig ist.
+    \item Die Konvergenz ist gleichmässig auf jedem abgeschlossenen Intervall $I\subset\R$, auf welchem $f$ stetig ist. 
+  \end{itemize}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz v. Parseval}
+$(f,g)=\int^L_0\bar{f}g\D x=\sum_{n\in\Z}\bar{f_n}g_n.$\\
+Falls $f=g\rightarrow \int^L_0|f|^2dx=\sum_{n\in\Z}|f_n|^2$
+\end{namedtheorem}
+
+\section{Reellwertige Darstellung der Fourierreihen}
+Für $f$ reellwertig mit $f_n=\frac12(a_n-ib_n)$, $f_{-n}=\overline{f}_n=\frac12(a_n+ib_n)$ gilt $f(x) = \frac12 a_0 + \sum_{n=1}^{\infty}a_n\cos(\frac{2\pi n}{L}x) + b_n\sin(\frac{2\pi n}{L}x)$, wobei $a_n = 2 \mathrm{Re} f_n = \frac2{L} \int_0^L f(x)\cos\left(\frac{2\pi n}{L}x\right)$, $b_n = -2 \mathrm{Im} f_n = \frac2{L} \int_0^L f(x)\sin\left(\frac{2\pi n}{L}x\right)$. Es gilt $f_{-n}=\overline{f}_n$ für $n\geq 0$.
+
+
+Sei $F(x)=\int_0^xf(y)\D y$ für $f\in C^2(\R/2\pi\Z)$ mit $\int_0^{2\pi}f(x)\Dx=0$. Dann ist $F_n=\frac{f_n}{in}$, falls $n\neq0$, und $F_n=-\sum_{m\neq0}\frac{f_m}{im}$, falls $n=0$.
+
+\section{Poisson’sche Summationsformel}
+Sei $f\in C^1(\R)$, $|f|,|f'|\leq \frac{C}{1+x^2}$ für ein $C>0$ und $g(x) = \sum_{k\in\Z}f(x+kL)$, $g\in C^1(\R\backslash\Z)$, $g(x+L) = g(x)$. Dann konvergiert diese Reihe gleichmässig auf $[0,L]$, also $g\in C^1(\R\setminus\Z)$ und es gilt $g(x) = \sum_{n\in\Z}f(x+nL) = \sum_{n\in\Z} g_n \exp(\frac{2\pi i n}{L}x) = \sum_{n\in\Z}\frac1L \hat{f}(2\pi n/L) \exp(\frac{2\pi i n}{L}x)$. Insbesondere folgt für $x=0$ die Poisson'sche Summationsformel $\sum_{n\in\Z}f(nL) = \frac1L \sum_{n\in\Z} \hat{f} \left(\frac{2\pi n}{L}\right)$. Gilt allgemein für $f$ integrierbar, stetig und von beschränkter Variation.
+
+\section{Wärmeleitungsgleichung auf einem Ring}
+\begin{align*}
+  \tag{Wärmeleitungsgleichung}
+  \begin{cases}
+    \frac{\partial}{\partial t}u(x,t) = D \frac{\partial^2}{\partial x^2} u(x,t) &  x\in\R,\ t > 0, \\
+    u(x,0) = f(x).
+  \end{cases}
+\end{align*}
+Periode $L>0$ und Konstante $D>0$ können durch passende Substitution von $x,t$ als $2\pi$ bzw. $1$ angenommen werden.
+
+\begin{namedtheorem}{Satz 5.1 (Wärmeleitungsgleichung)}
+  Sei $f\in C^{\infty}(\R/2\pi\Z)$ und $K(x,t) = \sum_{n\in\Z}\exp(-n^2t+inx)$ (Jacobische Theta-Funktion) für $x\in\R$, $t>0$. Dann ist $u(x,t)=\frac1{2\pi} \int_0^{2\pi} K(x-y,t)f(y)\D y$ eine $C^{\infty}(\R/2\pi\Z \times (0,\infty))$ Lösung der Wärmeleitungsgleichung die gleichmässig gegen $f$ für $t\downarrow0$ konvergiert, d.h. $\lim_{t\downarrow0} u(x,t)=f(x)$. Da $u\in C^{\infty}$, ist $u$ eindeutig.
+\end{namedtheorem}
+
+Bew: Ansatz: $u(x,t)=\sum_{n\in\Z}u_n(t)e^{inx}$,$u_n(0)=f_n$
+Mit der Poisson-Formel ist $K(x,t)=\sum_{n\in\Z}\sqrt{\frac{\pi}t}\exp(-\frac{(x-2\pi n)^2}{4t})>0$.
+
+%\begin{namedtheorem}{Lemma 5.2 (Gauss)}
+%  Für $f(x) = \exp(\frac{-x^2}{4t})$ gilt $\hat{f}(k) = \int_{-\infty}^{\infty} \exp(x\frac{x^2}{4t}-ikx) = \sqrt{4\pi t} e^{-k^2 t}$. 
+%\end{namedtheorem}
+
+\section{Satz von Fejér}
+
+\begin{namedtheorem}{Definition 6.1 (Fejerschen-Summen)}
+  sind arithmetische Mittel von Fourier-Partialsummen $(\sigma_Nf)(x) = \frac1N \sum_{n=0}^{N-1} (s_nf)(x)$. Also ist $\sigma_Nf(x) = \int_0^1 f(y)K_N(x-y)\D y$, wobei der \textbf{Fejérsche Kern} $K_N$ durch $K_N(t)=\frac1N \sum_{n=0}^{N-1}D_n(t)$ gegeben ist. 
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz (Eigenschaften des Fejérsche Kern)}
+  Es gilt
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{2}
+    \begin{enumerate}[(i)]
+      \item $K_N(t) = K_N(-t) = K_N(t+1)$,
+      \item $\int_0^1 K_N(t)\D t = 1$,
+    \end{enumerate}
+  \end{multicols}}
+  \begin{enumerate}[(i)]
+    \setcounter{enumi}{2}
+    \item $K_N(t) = \frac1N \left(\frac{\sin(N\pi t)}{\sin(\pi t)}\right)^2, falls t\in\R\setminus\Z,
+        K_N(t) = N , falls t\in \Z$.
+  \end{enumerate}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 6.1 (Fejér, Darstellungssatz III)}
+  Sei $f:\R\rightarrow\C$ stetig, $L$-periodisch. Sei $\sigma_Nf$ die N-te Fejérsche Summe $\sigma_Nf(x) = \frac1N \sum_{n=0}^{N-1}\sum_{m=-n}^{n} f_m \exp(\frac{2\pi im}{L} x)$. Dann gilt $\lim_{N\rightarrow\infty} (\sigma_Nf)(x) = f(x)$ mit gleichmässiger Konvergenz.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 6.2 (Trigonometrische Polynome)}
+  sind endliche Linearkombinationen $\sum_{n=-N}^N c_n \exp(\frac{2\pi i n}L x)$
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 6.2}
+  Jede stetige periodische Funktion $f$ kann gleichmässig durch trigonometrische Polynome beliebig gut approximiert werden.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 6.3}
+  Seien $f,g$ stetig, $L$-periodiodisch. Dann gilt $f_n=g_n \implies f=g$ und $\sum_{n\in\Z} |f_n| < \infty \implies f(x) = \sum_{n\in\Z}f_n \exp(\frac{2\pi in}L x)$.
+\end{namedtheorem}
+
+\section{Rechnungen}
+
+$f$ gerade $\Rightarrow f_n=f_{-n}$, $f$ ungerade $\Rightarrow f_n=-f_{-n}$
+
+
+\begin{namedtheorem}{Fourierkoeffizienten}
+Zuerst direkt. Falls Funktion zu hässlich zum Integrieren, $e$-Darstellungen von $\sin,\cos$ einsetzen, $\exp$ durch Taylorreihe ersetzen
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiele} $\exp(e^{ix}) = \sum_{n=0}^{\infty} \frac{e^{inx}}{n!}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Fourierkoeffizienten mit Residuensatz}
+Sei $f=\frac1{3-\cos x}$ $2\pi$-periodisch und reellwertig, deshalb $f_{-n}=\overline{f_n}$. Wir berechnen $f_{-n}$ für $n\geq0$. Mit der Substitution $z=e^{ix}$, $\Dx=\frac{\D z}{iz}$ gilt $f_{-n}=\frac1{2\pi}\int_0^{2\pi}\frac{e^{inx}}{3-\frac12(e^{ix}+e^{-ix})}\Dx=-\frac1{\pi i}\int_{|z|=1}\frac{z^n}{z^2-6z+1}\D z$. Finde Nullstellen des Nenners, die innerhalb des Einheitskreises liegen, um mit dem Residuensatz $f_{-n}$ auszurechnen. $f_n$ ergibt sich dann aus $f_{-n}$, wobei $n$-Abhängigkeiten in den Absolutbetrag gesetzt werden.
+\end{namedtheorem}
+
+\begin{namedtheorem}{PDE mit Fourierreihen (Wärmeleitungsgl.)}
+  % Nehme an, dass $f\in C^{\infty}(\R/2\pi\Z)$ und sei $u$ $C^{\infty}$-Lösung mit $u(x,t)=\sum_{n\in\Z}u_n(t)e^{inx}$ und $u_n(t)=\frac1{2\pi}\int_0^{2\pi}u(x,t)e^{-inx}\Dx$. Falls $u(x,t)\rightarrow f$ gleichmässig für $t\rightarrow0$, ist $u_n(0)=f_n$. Dann ist $\partial_t u_n(t)=\frac1{2\pi}\int_0^{2\pi}\partial_tu(x,t)e^{-inx}\Dx = \frac1{2\pi}\int_0^{2\pi}\partial^2_xu(x,t)e^{-inx}\Dx = \frac1{2\pi}\int_0^{2\pi}u(x,t)(-in)^2e^{-inx}\Dx=-n^2u_n(t)$, also $u_n(t)=e^{-n^2}f_n$ und $u(x,t)=\sum_{n\in\Z}e^{-n^2t+inx}f_n$. Dann zeige: $u\in C^{\infty}$, $\partial_tu = \partial^2_xu$, Anfangsbedingungen $|u(x,t)-f(x)|\leq\sum_{n\in\Z}|e^{-n^2t}-1||f_n|\rightarrow0$ für $t\rightarrow0$, Beschränktheit und absolute Konvergenz.
+  Nehme an, dass $f\in C^{\infty}(\R/2\pi\Z)$ und sei $u$ $C^{\infty}$-Lösung mit $u(x,t)=\sum_{n\in\Z}u_n(t)e^{inx}$ und $u_n(t)=\frac1{2\pi}\int_0^{2\pi}u(x,t)e^{-inx}\Dx$. 
+  \begin{itemize}
+  \item Berechne $u_n(0) = \lim_{t\rightarrow0} \frac1{2\pi}\int_0^{2\pi} u(x,t) e^{-inx}\Dx = \frac1{2\pi}\int_0^{2\pi} f(x) e^{-inx}\Dx = f_n$. Falls also $u(x,t)\rightarrow f$ gleichmässig für $t\rightarrow0$, ist $u_n(0)=f_n$. 
+  \item DGL in $u_n$ über $\partial_t u_n(t)=\frac1{2\pi}\int_0^{2\pi}\partial_tu(x,t)e^{-inx}\Dx \overset{DGL}{=} \frac1{2\pi}\int_0^{2\pi}\partial^2_xu(x,t)e^{-inx}\Dx = \frac1{2\pi}\int_0^{2\pi}u(x,t)(-in)^2e^{-inx}\Dx=-n^2u_n(t)$.
+  \item Lösung der DGL ist $u_n(t)=e^{-n^2}f_n$, woraus $u(x,t)=\sum_{n\in\Z}f_ne^{-n^2t+inx}$ folgt. 
+  \item Zeige: 1) $\sum_{n\in\Z}|\partial_t f_ne^{-n^2t+inx}|,\ \sum_{n\in\Z}|\partial_x^2 f_ne^{-n^2t+inx}| < \infty \Rightarrow$ Ableitung und Summe können vertauscht werden,
+  Alternativ: In $\lim_{h\rightarrow 0}\sum_{n\in\Z}\frac{e^{-n^2h}-1}h(-n^2)^j(in)^ke^{-n^2t+inx}f_n$ können limes und Summe vertauscht werden, da wegen $|e^{-n^2h}-1| \leq n^2|h|e^{n^2t/2}$ für $|h| \leq t/2$ die Partialsummen nicht mehr von h abhängen und damit glm. in h konvergieren. $\Rightarrow$ per Induktion beliebig oft nach t diffbar; analog für x, 2) $u\in C^{\infty}$, 3) $\partial_tu = \partial^2_xu$, 4) Anfangsbedingungen $|u(x,t)-f(x)|\leq\sum_{n\in\Z}|e^{-n^2t}-1||f_n|\rightarrow0$ für $t\rightarrow0$.
+  \end{itemize}
+\end{namedtheorem}
+

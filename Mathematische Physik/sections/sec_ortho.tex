@@ -1,0 +1,276 @@
+\chapter{Orthogonale Funktionalsysteme, Hilbertraum}
+
+\section{Die schwingende Saite}
+
+ist das lineare Problem $\frac1{c^2}\partial_t^2u(x,t)=\partial^2_xu(x,t)$, $x\in[0,L]$, $t\geq0$, $u(t,0)=u(t,L)=0$ mit Anfangsbedingungen $u(x,0)=v(x)$, $\partial_tu(x,0)=w(x)$.
+
+\begin{namedtheorem}{PDE über Separation}
+  Wir suchen Lösungen der Form $u(x,t)=f(t)g(x)$. Einsetzen und Separieren nach $x,t$ ergibt $\frac1{c^2}\frac{f''(t)}{f(t)}=\frac{g''(x)}{g(x)}=\lambda$.
+  \begin{itemize}
+    \item $\partial_x^2g(x)=\lambda g(x)$, $x\in[0,L]$, $g(0)=g(L)=0$ wird gelöst durch $g_n(x)=\sin\left(\frac{\pi n}{L}x\right)$, $\lambda_n=-\left(\frac{\pi n}L\right)^2$, $n=1,2,3\ldots$,
+    \item $f''=\lambda c^2f$ durch $f(t)=a\cos\omega t + b\sin \omega t$ mit $\omega=\sqrt{-c^2\lambda}$.
+  \end{itemize}
+  Allgemein also $u(x,t)=(a_n\cos\omega_nt + b_n\sin\omega_nt)\sin\left(\frac{\omega_n}cx\right)$, wobei $\omega_n=\frac{\pi n c}L$, $n=1,2,\ldots$. Da das Problem linear ist, ist auch jede Superposition $\sum_{n=1}^{\infty}(a_n\cos\omega_nt + b_n\sin\omega_nt)\sin\left(\frac{\omega_n}cx\right)$ eine Lösungs (falls $a_n,b_n$ schnell genug abfallen für $n\rightarrow\infty$). Die Koeffizienten werden aus den Anfangsbedingungen $\sum_{n=1}^{\infty}a_n\sin\left(\frac{\omega_n}cx\right)=v(x)$ und $\sum_{n=1}^{\infty}\omega_n a_n\sin\left(\frac{\omega_n}cx\right)=w(x)$ als $a_n=\frac2L\int_0^L v(x)\sin\left(\frac{\pi n}{L}x\right)\Dx$, $b_n=\frac2{\omega_nL}\int_0^L w(x)\sin\left(\frac{\pi n}{L}x\right)\Dx$. Die Eigenfrequenzen sind gegebnen durch $\nu_n=\omega_n/2\pi$.
+
+Bei linearen DGLs ist die Superposition zweier Lösungen wieder eine Lösung. Insbesondere kann man dann bei einem EW-Problem mit mehreren $\lambda_i$s ansetzen.
+\end{namedtheorem}
+
+\section{Orthogonale Systeme, Hilberträume}
+
+\begin{namedtheorem}{$l^2$-Raum}
+  $l^2=\{\text{Folgen } (\xi_i)_{i\in\N}\text{ in }\C\text{ mit }\sum_{i}|\xi_i|^2<\infty\}$, $\scalprod{\xi,\nu}=\sum_i\overline{\xi_i}\nu_i$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 2.1 (Schwarzsche Ungleichung)}
+  Sei $V$ ein Vektorraum mit Skalarprodukt $\scalprod{\cdot}$ und $f,g\in V$. Dann gilt $|\scalprod{f,g}|\leq\norm{f}\norm{g}$ mit Gleichheit genau dann, wenn $f$ und $g$ linear unabhängig sind.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 2.1 (Konvergenz)}
+  Eine Folge $(f_n)_{n=1}^{\infty}$ in einem VR mit Skalarprodukt $V$ konvergiert gegen $f\in V$, falls $\norm{f_n-f}\rightarrow0$ für $n\rightarrow\infty$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 2.2 (Stetigkeit von Norm und Skalarprodukt)}
+  Sei $(f_n)_{n=1}^{\infty}\subset V$ eine Folge, welche gegen $f\in V$ konvergiert. Dann gilt für alle $g\in V$ $\scalprod{f_n,g}\rightarrow\scalprod{f,g}$, $\scalprod{g,f_n}\rightarrow\scalprod{g,f}$ und $\norm{f_n}\rightarrow\norm{f}$. 
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 2.2}
+  Eine (endliche oder unendliche) Familie $(\varphi_j)_{j\in\ I}$ von nicht-verschwindenden Vektoren in $V$ heisst \textbf{orthogonal} (oder \textbf{orthogonales System}), falls $\scalprod{\varphi_j,\varphi_k}=0$ für alle $j\neq k$, \textbf{orthonormiert}, falls zusätzlich $\scalprod{\varphi_j,\varphi_j}=1$ für alle $j\in I$. Ein orthogonales System $(\varphi_j)_{j \in I}$ heisst \textbf{vollständig} (oder \textbf{maximal}), falls $\scalprod{\varphi_j,f}=0\ \forall j \implies f=0$ für alle $f\in V$. Bei uns ist $I$ meist $\{1,\ldots,n\}$, $\{(0),1,2,3,\ldots\}$ oder $\Z$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Beispiel}
+
+  \begin{enumerate}[(i)]
+    \item $V=L^2([0,1])$, $\phi_j=e^{2\pi ijx}$, $\scalprod{\phi_j,\phi_k}=\int_0^1\overline{\phi_j}\phi_k\Dx = \delta_{jk}$
+  \end{enumerate}
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{2}
+  \begin{enumerate}[(i)]
+    \setcounter{enumi}{1}
+    \item $V=\C^n$, $\phi_j=(\delta_{1j},\ldots,\delta_{nj})$
+    \item $V=l^2$, $\phi_j=(\delta_{ij})_{i\in\N}$
+  \end{enumerate}
+  \end{multicols}}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.3}
+  Sei $V$ ein Vektorraum mit Skalarprodukt und $(\varphi_j)_{j=1}^{\infty}$ ein orthogonales System.
+  \begin{enumerate}[(i)]
+    \item (\textbf{Pythagoras}) $\norm{\varphi_1+\ldots+\varphi_n}^2=\norm{\varphi_1}^2+\ldots+\norm{\varphi_n}^2$ $\forall n\in\N$
+    \item (\textbf{Bessel Ungleichung}) Ist $(\varphi_j)$ orthonormiert, so gilt für alle $n\in\N$ die Besselsche Ungleichung $\sum_{j=1}^n |\scalprod{\varphi,\varphi_j}|^2 \leq \norm{\varphi}^2$ mit Gleichheit genau dann, wenn $\varphi$ im vom $\varphi_1, \ldots, \varphi_n$ aufgespannten Unterraum liegt.
+    \item (\textbf{Funktionsapproximation}) Sei $(\varphi_j)$ orthonormiert, $\varphi\in V$, $n\in\N$. Die Funktion von $\lambda_1, \ldots, \lambda_n\in\C$ $\norm{\varphi-\sum_{j=1}^n\lambda_j\varphi_j}^2$ nimmt ihr Minimum für $\lambda_j=\scalprod{\varphi_j,\varphi}$ für $j=1,\ldots,n$ an. 
+  \end{enumerate}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Definition 2.3 (Hilbertraum)}
+  Ein $\C,\R$-Vektorraum $H$ mit Skalarprodukt heisst \textbf{Hilbertraum}, wenn er bezüglich der Norm $f\mapsto\norm{f}=\sqrt{\scalprod{f,f}}$ ein Banachraum ist, d.h. wenn alle Cauchy-Folgen bezüglich $\norm{\cdot}$ in $H$ konv.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.4 (Vollständigkeit)}
+  Sei $H$ ein Hilbertraum und $(\varphi_j)_{j=1}^{\infty}$ ein orthonormiertes System. Dann sind folgende Aussagen äquivalent
+  \begin{enumerate}[(i)]
+    \item $(\varphi_j)_{j=1}^{\infty}$ ist vollständig,
+    \item $\varphi=\sum_{j=1}^{\infty}\scalprod{\varphi_j,\varphi}\varphi_j\quad \forall\varphi\in H$ \hfill (Konvergenz in $H$),
+    \item $\norm{\varphi}^2 = \sum_{j=1}^{\infty} |\scalprod{\varphi_j,\varphi}|^2\quad \forall\varphi\in H$, \hfill (\textbf{Parseval Identität}).
+  \end{enumerate}
+\end{namedtheorem}
+
+Für $(\phi_n)_{n=1}^{\infty}$ vollständig $\phi=\sum_{n=1}^{\infty}\frac{\scalprod{\phi_n,\phi}}{\scalprod{\phi_n,\phi_n}}\phi_n,\quad \norm{\phi}^2=\sum_{n=1}^{\infty}\frac{|\scalprod{\phi_n,\phi}|^2}{\scalprod{\phi_n,\phi_n}}$.
+
+\begin{namedtheorem}{Definition 2.5}
+  Ein Hilbertraum heisst \textbf{separabel}, falls er eine abzählbare orthonormierte Basis hat.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 2.5}
+  Sei $(\varphi_j)_{j=1}^{\infty}$ eine orthonormierte Basis eines Hilbertraums $H$. Dann existiert ein linearer Isomorphismus $i:l^2\rightarrow H,c=(c_j)_{j=1}^{\infty}\mapsto\sum_{j=1}^{\infty}c_j\varphi_j$ und es gilt $\scalprod{i(c),i(d)}=\scalprod{c,d}$ für alle $c,d\in l^2$. 
+\end{namedtheorem}
+
+\begin{namedtheorem}{Korollar 2.6}
+  Sei $(\varphi_j)_{j=1}^{\infty}$ eine orthonormierte Basis eines HR $H$. Dann konv. $\sum_{j=1}^{\infty}c_j\varphi_j=\lim_{n\rightarrow\infty}\sum_{j=1}^nc_j\varphi_j$ in $H$ genau dann, wenn $\sum_{j=1}^{\infty}|c_j|^2<\infty$.
+\end{namedtheorem}
+
+\section{$L^2$-Theorie der Fourierreihen}
+
+\begin{namedtheorem}{Satz 3.1 (Parseval)}
+  Sei $f\in L^2([0,1])$, $\varphi_j(x) = e^{2\pi ijx}$ ($j\in\Z$) und $c_j=\scalprod{\varphi_j,f}$ der j-te Fourierkoeffizient von $f$. Dann gilt $f=\sum_{j\in\Z}c_j\varphi_j$ und $\int_0^1|f|^2\D x = \sum_{j\in\Z}|c_j|^2$.
+\end{namedtheorem}
+
+Für allgemeine Perioden $L$ ist $c_j=\frac{\scalprod{\varphi_j,f}}{\norm{\varphi_j}}$ und die Parseval-Identität $\frac1L\int_{0}^{L}|f|^2\D x = \sum_{j\in\Z}|c_j|^2$. Für $\varphi_j(x)=\exp(\frac{2\pi i j}{L}x)$ ist $c_j=f_j$ der j-te Fourierkoeffizient.
+
+\section{Hermite-Polynome und harmonischer Oszillator}
+
+\begin{namedtheorem}{Definition 4.1 (Hermite-Polynom)}
+  $H_n(x) = (-1)^ne^{x^2}\frac{\partial^n}{\partial x^n} e^{-x^2}$ für $n=0,1,2,\ldots$. Die \textbf{Vernichtungs-} und \textbf{Erzeugungsoperatoren} sind definiert als $A=\frac1{\sqrt2}(x+\frac{\partial}{\partial x})$ und $A^{\ast}\frac1{\sqrt2}(x-\frac{\partial}{\partial x})$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 4.2}
+  Sei $\phi_n = 2^{-n/2}H_n(x)e^{-x^2/2}$. Dann gilt
+  \begin{enumerate}[(i)]
+    \item $\varphi,\psi\in\Sr(\R) \implies \scalprod{A^{\ast}\varphi,\psi} = \scalprod{\varphi,A\psi}$,
+  \end{enumerate}
+  {\setlength\multicolsep{4pt}%
+  \begin{multicols}{3}
+  \begin{enumerate}[(i)]
+    \setcounter{enumi}{1}
+    \item $AA^{\ast} - A^{\ast}A = 1$
+    \item $A\oldphi_0=0$
+    \item $A^{\ast}\oldphi_n = \oldphi_{n+1}$.
+  \end{enumerate}
+  \end{multicols}}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 4.1 ($H_n$-Basis)}
+  $\Psi_n(x) = \pi^{-1/4}2^{-n/2}(n!)^{-1/2}H_n(x)e^{-x^2/2}$, $n=0,1,2,\ldots$, bilden ein vollständiges orthonormiertes System in $L^2(\R)$.
+\end{namedtheorem}
+
+Der Hermitesche-Operator ist $H=A^{\ast}A+\frac12 = -\frac12\frac{\partial^2}{\partial x^2} + \frac12x^2$. Die zeitunabhängige Schrödingergleichung $H\psi_n=E_n\psi_n$ wird mit $\Psi_n$ wie oben zum Eigenwert $E_n=n+\frac12$ gelöst.
+
+\begin{namedtheorem}{Korollar 4.3 ($\Sr$ dicht in $L^2$)}
+  $\Sr(\R)$ ist dicht in $L^2(\R)$, d.h. zu jedem $\epsilon>0$ und $f\in L^2(\R)$ existiert ein $\phi\in\Sr(\R)$ mit $\norm{f-\phi}_2<\epsilon$. 
+\end{namedtheorem}
+
+\section{Orthogonale Polynome, Legendre Polynome}
+\hspace*{\fill} \\
+Sei $E\subset\R$ ein Intervall und $\rho:E\rightarrow\R$, sodass $\rho(x)\geq0$ für fast alle $x\in E$ und $\int_E |x|^n \rho(x)\D x < \infty$ für alle $n=0,1,2,\ldots$. Dann definiert $\scalprod{f,g}=\int_E\overline{f}(x)g(x)\rho(x)\D x$, $f,g\in\C[x]$ ein Skalarprodukt auf dem VR $\C[x]$ der Polynome in einer Variable mit komplexen Koeffizienten. Zum Paar $(E,\rho)$ gehört eine Familie eindeutiger orthogon. Polynome.
+
+\begin{namedtheorem}{Definition 5.1 (Legendre Polynom)}
+  $P_l(x) = \frac1{2^ll!}\frac{\partial^l}{\partial x^l} (x^2-1)^l$, $l\in\N_0$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma 5.1}
+  $P_l$ hat Grad $l$, $\int_{-1}^1 P_l(x)P_{l'}(x)\D x=\frac2{2l+1}\delta_{ll'}$ und $P_l(1)=1$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Lemma}
+  Der Differentialoperator $L$ mit $u\mapsto L=\frac{\partial}{\partial x}\left((x^2-1)\frac{\partial}{\partial x}\right) u$ ist ein Hermitescher Operator, d.h. $\scalprod{Lu,v} = \scalprod{u,Lv}$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 5.2}
+  Die Legendre Polynome $P_l$ sind Eigenvektoren von $L$ zu den Eigenwerten $l(l+1)$, d.h. sie erfüllen die (spezielle) Legendre-DGl $\frac{\partial}{\partial x}\left((x^2-1)\frac{\partial}{\partial x}\right) P_l(x) = l(l+1)P_l(x)$. Die orthonormierten Polynome $\sqrt{\frac{2l+1}2}P_l$ bilden ein vollständiges orthonormiertes System in $L^2([-1,1])$.
+\end{namedtheorem}
+
+$(\sqrt{\frac{2l+1}2}P_l)^N_{l=0}$ ist eine vollständige orthonormierte Basis für den Vektorraum der Polynome vom Grad $\leq N$. Nach 2.3 ist $P=\sum_{l=0}^N\frac{2l+1}2\scalprod{P_l,u}P_l(x)$ die beste Approximation von $u$ in $L^2([-1,1])$.
+
+\begin{namedtheorem}{Hermite-Polynome $H_n$}
+  $H_{n+2}(x)-2xH_{n+1}(x)+2(n+1)H_n(x)=0$, 
+  $H_n'(x)-2nH_{n-1}(x)=0$, 
+  $H_n''(x)-2xH_n'(x)+2nH_n(x)=0$ $\forall n\in\N$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Legendre-Polynome $P_l$}
+  $\sum_{l=0}^{\infty}P_l(t)z^l=(1-2tz+z^2)^{-1/2}$ für $t\in[-1,1]$, $z\in\C$, $|z|<1$,
+  $\frac1{|x-y|}=\sum_{l=0}^{\infty}\frac{|x|^l}{|y|^{l+1}}P_l\left(\frac{x\cdot y}{|x||y|}\right)$ für $x,y\in\R^3$, $|x|<|y|$,
+  $P_l(\cos\theta)=\frac1{2\pi}\int_0^{2\pi}(i\sin\theta\cos\phi+\cos\theta)^l\D \phi$. $P_{2l}$ sind gerade, $P_{2l+1}$ ungerade.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Laguerre-Polynome $L_n$}
+  $L_n=\frac{e^x}{n!}\partial_x^n(e^{-x}x^n)=\sum_{k=0}^n\binom{n}{k}\frac{(-1)^k}{k!}x^k$
+\end{namedtheorem}
+
+\begin{namedtheorem}{Tschebychev-Polynome $T_l$}
+  $T_{l+1}(x)=2xT_l(x)-T_{l-1}(x)$, $T_1(x)=x$, $l\in\N$, $T_0(x)=1$, $T_l$ Grad $l$ und Leitkoeffizient $2^{l-1}$, $T_l(\cos\theta)=\cos(l\theta)$.
+\end{namedtheorem}
+
+
+
+
+\begin{adjustbox}{angle=0}
+%\begin{table}[!htb]
+  \fontsize{7}{9}\selectfont
+  \centering
+  \begin{tabular}{llccll}
+    Polynom & $$ & $E$, $\rho$ & Leitk & Differentialgleichung \\
+    \hline
+    Hermite & $H_n$ & $\R$ & $2^n$ & $y''-xy' = 2ny$ \\
+     &  & $e^{-x^2}$ & & $H_n(x) = (-1)^ne^{x^2}\frac{\partial^n}{\partial x^n} e^{-x^2}$ \\
+    \hline
+    Legendre & $P_l$ & $[-1,1]$ & & $\left((x^2-1)y'\right)' = l(l+1)y$  \\
+    & & $1$ & & $P_l(x) = \frac1{2^ll!}\frac{\partial^l}{\partial x^l} (x^2-1)^l$  \\
+     & $P_{l,m}$ & $[-1,1]$ & & $\left((x^2-1)y'\right)' = (l(l+1)-\frac{m^2}{1-x^2})y$  \\
+     &  & $1$ & & $(1-x^2)^{m/2}\partial^m_xP_l(x)=\frac{(1-x^2)^{m/2}}{2^ll!}\partial^{l+m}_x(x^2-1)^l$  \\
+    \hline
+    Laguerre & $L_n$ & $[0,\infty)$  & & $xy''+(1-x)y'+ny=0$ \\
+     & & $e^{-x}$ & & $L_n=\frac{e^x}{n!}\partial_x^n(e^{-x}x^n)=\sum_{k=0}^n\binom{n}{k}\frac{(-1)^k}{k!}x^k$ \\
+    \hline
+    Bessel & $J_{\alpha}$ & & & $y'' + \frac1xy' + (1-\frac{\alpha^2}{x^2})y = 0$  \\
+     &  & & & $J_{\alpha}(z) = \sum_{k=0}^{\infty}\frac{(-1)^k}{k!\Gamma(j+\alpha+1)} \left(\frac{z}2\right)^{\alpha+2k}$ \\
+    \hline
+    Chebychev & $T_l$ & $[-1,1]$ & $2^{l-1}$ \\
+     & &  $\frac1{\sqrt{1-x^2}}$ &  \\
+    \hline
+    Jacobi & & $[-1,1]$ \\
+     & & $\frac{(1-x)^a}{(1-x)^{-b}}$ & \\
+  \end{tabular}
+%\end{table}
+\end{adjustbox}
+
+% \begin{adjustbox}{angle=90}
+% %\begin{table}[!htb]
+%   \fontsize{7}{9}\selectfont
+%   \centering
+%   \begin{tabular}{ccccccccc}
+%   	& Hermite & Legendre & Legendre & & Laguerre & Bessel & Chebychev & Jacobi \\
+% %     Polynom & $$ & $E$ & $\rho$ & Leitk & Differentialgleichung \\
+% %     \hline
+% %     Hermite & $H_n$ & $\R$ & $e^{-x^2}$ & $2^n$ & $y''-xy' = 2ny$ \\
+% %     Legendre & $P_l$ & $[-1,1]$ & $1$ & & $\left((x^2-1)y'\right)' = l(l+1)y$  \\
+% %      & $P_{l,m}$ & $[-1,1]$ & $1$ & & $\left((x^2-1)y'\right)' = (l(l+1)-\frac{m^2}{1-x^2})y$  \\
+% %     Laguerre & $L_n$ & $[0,\infty)$ & $e^{-x}$ & & $xy''+(1-x)y'+ny=0$ \\
+% %     Bessel & $J_{\alpha}$ & & & & $y'' + \frac1xy' + (1-\frac{\alpha^2}{x^2})y = 0$  \\
+% %     Chebychev & $T_l$ & $[-1,1]$ & $\frac1{\sqrt{1-x^2}}$ & $2^{l-1}$ \\
+% %     Jacobi & & $[-1,1]$ & $\frac{(1-x)^a}{(1-x)^{-b}}$ & \\
+%   \end{tabular}
+% %\end{table}
+% \end{adjustbox}
+
+\section{Kugelfunktionen}
+
+Der Laplace-Operator in 3D lautet $\triangle = \frac{\partial^2}{\partial r^2} + \frac2r\frac{\partial}{\partial r} + \frac1{r^2}\triangle_{S^2}$, wobei $\triangle_{S^2} u = \frac{\partial^2 u}{\partial\theta^2} + \cot \theta\frac{\partial u}{\partial\theta} + \frac1{\sin^2\theta}\frac{\partial^2u}{\partial\varphi^2} = \frac1{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial u}{\partial\theta}\right) + \frac1{\sin^2\theta}\frac{\partial^2u}{\partial\phi^2}$. Der Gradient in Kugelkoordinaten ist $\mathrm{grad} = \partial_r\hat{e}_r + \frac{1}{r}\partial_\vartheta \hat{e}_\vartheta + \frac{1}{r\sin\vartheta}\partial_\phi\hat{e}_\phi$
+
+\begin{namedtheorem}{Definition (Kugelfunktion)}
+  ist eine auf der Einheitssphäre definierte glatte Funktion $Y(\theta,\phi)$, welche ein Eigenvektor zum Laplace Operator $\triangle_{S^2}$ ist, d.h. $\triangle_{S^2}Y = -\lambda Y$.
+\end{namedtheorem}
+
+Lösungen der Form $\triangle u(x)=0$ für $|x|\leq R$ und $u(x)=f(x)$ für $|x|=R$ können durch die Separation $u(x)=U(r)Y(\theta,\phi)$ und $Y(\theta,\phi)=P(\cos\theta)V(\phi)$ mit $U(r)=ar^l$ und $V(\phi)=e^{\pm im\phi}$ gelöst werden. Die DGL für $P$ führt auf die zugeordneten Legendre-Polynome. Dann sind $P_{l,m}(\cos\theta)e^{\pm im\phi}$ mit $l=0,1,\ldots$, $m=0,
+\ldots,l$ Eigenvektoren von $\triangle_{S^2}$ zum Eigenwert $-l(l+1)$.
+
+\begin{namedtheorem}{Definition}
+  Die \textbf{zugeordneten} (oder \textbf{assozierten}) \textbf{Legendre-Funktionen} sind $P_{l,m}(x)=(1-x^2)^{m/2}\partial^m_xP_l(x)=\frac{(1-x^2)^{m/2}}{2^ll!}\partial^{l+m}_x(x^2-1)^l$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 7.1}
+  \begin{enumerate}[(i)]
+    \item (\textbf{Legendresche DGL}) Die zugeordneten Legendre-Funktionen $P_{l,m}$ erfüllen $\frac{\partial}{\partial x}\left((1-x^2)\frac{\partial}{\partial x}P_{l,m}(x)\right) + \left(l(l+1) + \frac{m^2}{1-x^2}\right)P_{l,m}(x) = 0$.
+%       \begin{align*}
+%         \frac{\partial}{\partial x}\left((1-x^2)\frac{\partial}{\partial x}P_{l,m}(x)\right) + \left(l(l+1) + \frac{m^2}{1-x^2}\right)P_{l,m}(x) = 0
+%       \end{align*}
+    \item (\textbf{Orthogonalität}) Für alle $m=0,1,2,\ldots,m\leq l,l'\in\Z$ gilt $\int_{-1}^1P_{l,m}(x)P_{l',m}(x)\D x = \frac{(l+m)!}{(l-m)!}\frac2{2l+1}\delta_{l,l'}$.
+    \item (\textbf{Basis}) $\left((1-x^2)^{-m/2}P_{l,m}\right)_{l=m,m+1,\ldots,m+N}$ ist für alle $m,N\in\{0,1,2,\ldots\}$ eine Basis des Raums der Polynome vom Grad $\leq N$.
+  \end{enumerate}
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz 7.2 (Kugelfunktionen)}
+  Die Kugelfunktionen $Y_{l,m}(\theta,\phi)=c_{l,m}P_{l,|m|}(\cos\theta)e^{im\phi}$ mit $l=0,1,2\ldots,\ m=-l,\ldots,l-1,l$, wobei $c_{l,m} = \frac{(-1)^m}{\sqrt{2\pi}} \sqrt{\frac{2l+1}2\frac{(l-m)!}{(l+m)!}} $ für $m\geq 0,\quad c_{l,-m}=(-1)^mc_{l,m}$ bilden eine orthonormierte Basis des Hilbertraums $L^2(S^2)$, die aus EV von $\triangle_{S^2}$ besteht. Es gilt $(Y_{l, m}, Y_{l', m'}) = \delta_{l, l'} \delta_{m, m'}$
+\end{namedtheorem}
+
+\begin{namedtheorem}{Laplace}
+Gegeben eine Laplacegleichung und Hinweise auf Kugelfunktionen, mache den Ansatz $u(r, \theta, \phi) = \sum_{l=0}^{\infty} \sum_{m=-l}^l (a_{l, m}r^l + b_{l, m}r^{-l - 1})Y_{l, m}(\theta, \phi)$ bzw. $u(r,\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^la_{l,m}r^lY(\theta,\phi)$, schreibe die Randbedingungen als Linearkombination der Kugelfunktionen und erhalte $a_{k, m}, b_{k, m}$ durch das Skalarprodukt von $v$ und $Y_{k, m}$.
+\end{namedtheorem}
+
+Für $u(r,\theta,\phi)=\sum_{l=0}^N\sum_{m=-l}^la_{l,m}r^lY(\theta,\phi)$ gilt: $\triangle u=0$; $\int_{\R^3}|u(x)|^2\Dx=\sum_{l=0}^N\sum_{m=-l}^l|a_{l,m}|^2$; $a_{l,m}=\int_0^{2\pi}\int_0^{\pi}\overline{Y_{l,m}(\theta,\phi)}u(1,\theta,\phi)\sin\theta\D\theta\D\phi$; wenn $a_{l,m}=0$ für $m\neq0$, dann ist $u$ invariant unter Rotationen um die z-Achse.
+
+\section{Schwingungen einer kreisförmigen Membran}
+\hspace*{\fill} \\
+% \begin{align*}
+%   \begin{cases}
+%     \frac1{c^2}\partial^2_t v(t,x) - \triangle v(t,x) = 0 &  |x|<R \\
+%     v(t,x)=0 & |x|=R
+%   \end{cases}
+% \end{align*}
+Das Problem $\frac1{c^2}\partial^2_t v(t,x) - \triangle v(t,x) = 0$ für $|x|<R$ und $v(t,x)=0$ für $|x|=R$ wird mit $v(t,x)=e^{i\omega t}u(x)$ reduziert auf $\triangle u = -\frac{\omega^2}{c^2}u$ für $|x|<R$ und $u(x)=0$ für $|x|=R$. In Polarkoordinaten $(\partial^2_r + \frac1r\partial_r+\frac1{r^2}\partial_{\phi}^2)u(r,\phi)=-\frac{\omega^2}{c^2}u(r,\phi)$ für $r<R$. Reelle Lösungen sind von der Form $u - J_m(\omega r/c)(A\cos(m\phi)+B\sin(m\phi))=u - J_m(\omega r/c)A\cos(m(\phi-\phi_0))$, wobei $J_m(\omega R/c)=0$.
+
+
+
+
+
+
+

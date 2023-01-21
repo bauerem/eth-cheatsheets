@@ -1,0 +1,57 @@
+\BOOKMARK [0][-]{section*.1}{Contents}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Fourierreihen}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Definition, Darstellungssatz}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Riemann\205Lebesgue-Lemma, Dirichletkern}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Reellwertige Darstellung der Fourierreihen}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.4}{Poisson\220sche Summationsformel}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.5}{W\344rmeleitungsgleichung auf einem Ring}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.6}{Satz von Fej\351r}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.7}{Rechnungen}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{Fouriertransformation}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Definition und elementare Eigenschaften}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.2}{Fouriertransformierte der Gauss-Funktion}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Beispiele f\374r Fouriertransformierte}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Umkehrsatz f\374r L1-Funktionen}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.5}{Der Schwartzraum S\(Rn\)Lp\(Rn\),p[1,\)}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.6}{Fouriertransformation von rotationsinverianten Funktionen}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.7}{Regularit\344t und Abfalleigenschaften}{chapter.2}% 17
+\BOOKMARK [1][-]{section.2.8}{Wellengleichung}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.9}{W\344rmeleitungsgleichung}{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.10}{Rechnungen}{chapter.2}% 20
+\BOOKMARK [0][-]{chapter.3}{Orthogonale Funktionalsysteme, Hilbertraum}{}% 21
+\BOOKMARK [1][-]{section.3.1}{Die schwingende Saite}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.2}{Orthogonale Systeme, Hilbertr\344ume}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.3}{L2-Theorie der Fourierreihen}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.4}{Hermite-Polynome und harmonischer Oszillator}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.5}{Orthogonale Polynome, Legendre Polynome}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.6}{Kugelfunktionen}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.7}{Schwingungen einer kreisf\366rmigen Membran}{chapter.3}% 28
+\BOOKMARK [0][-]{chapter.4}{Distributionen}{}% 29
+\BOOKMARK [1][-]{section.4.1}{Temperierte Distributionen}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.2}{Operationen auf Distributionen}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.3}{Rechnungen}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.4}{Konvergenz in S'\(Rn\)}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.5}{Fundamentall\366sungen f\374r den Laplace-Operator}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.6}{Fundamentall\366sungen und Fouriertransformationen}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.7}{Retardierte Fundamentall\366sung f\374r den d\220Alembert-Operator}{chapter.4}% 36
+\BOOKMARK [0][-]{chapter.5}{Dirichletproblem}{}% 37
+\BOOKMARK [1][-]{section.5.1}{Dirichlet und Neumannrandbedingungen}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.2}{Greensche Funktionen}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.3}{Methode der Spiegelbildladung, Poissonformel}{chapter.5}% 40
+\BOOKMARK [0][-]{chapter.6}{Beweisideen}{}% 41
+\BOOKMARK [1][-]{section.6.1}{Fourierreihen}{chapter.6}% 42
+\BOOKMARK [0][-]{appendix.A}{Lebesgue-Integrationstheorie}{}% 43
+\BOOKMARK [1][-]{section.A.1}{Das Lebesguesche Integral}{appendix.A}% 44
+\BOOKMARK [1][-]{section.A.2}{Konvergenzs\344tze}{appendix.A}% 45
+\BOOKMARK [1][-]{section.A.3}{Der Satz von Fubini}{appendix.A}% 46
+\BOOKMARK [1][-]{section.A.4}{Lp-R\344ume}{appendix.A}% 47
+\BOOKMARK [0][-]{appendix.B}{Misc}{}% 48
+\BOOKMARK [1][-]{section.B.1}{Konvergenz, Mittelwertsatz}{appendix.B}% 49
+\BOOKMARK [1][-]{section.B.2}{Vertauschungss\344tze}{appendix.B}% 50
+\BOOKMARK [1][-]{section.B.3}{Trigonometrie}{appendix.B}% 51
+\BOOKMARK [1][-]{section.B.4}{Ungleichungen, Absch\344tzungen und other}{appendix.B}% 52
+\BOOKMARK [1][-]{section.B.5}{Integrale und Reihen}{appendix.B}% 53
+\BOOKMARK [1][-]{section.B.6}{Koordinatensysteme}{appendix.B}% 54
+\BOOKMARK [1][-]{section.B.7}{Ans\344tze}{appendix.B}% 55
+\BOOKMARK [1][-]{section.B.8}{PDEs}{appendix.B}% 56
+\BOOKMARK [1][-]{section.B.9}{Multiple Choice}{appendix.B}% 57

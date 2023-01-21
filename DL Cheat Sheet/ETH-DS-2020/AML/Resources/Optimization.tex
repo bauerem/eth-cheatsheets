@@ -1,0 +1,85 @@
+\section{Optimization}
+\subsection*{Loss functions} Data $x_i$, labels $y_i$, neural network $NN_\theta$ and $z_i = NN_\theta(x_i)$. Assume that $y_i$ is sampled from a distribution $p(y_i | z_i)$. Define the loss w.r.t. to $z$ as the log-likelihood: $l_y(z) = \log\left(\prod_{i=1}^n p(y_i | z_i\right)$. Find $\theta^* = \arg\min_\theta -l_y(z_\theta)$\\
+\term{Examples}\\
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item $p(y|z) = \mathcal{N}(z,1)\ \Rightarrow\ l_y(\nu) = \frac{1}{2}||y - \nu||^2$ + c\\
+%\item $p(y|z) = h(y)\cdot \exp(y^T\nu - \psi(\nu))\ \Rightarrow\ l_y(\nu) = -y^T \nu + \psi(\nu) + c$ ($\psi$ log partition func)\\
+\item $p(y|z) = \nu^y \cdot \frac{e^{-\nu}}{y!}\ \Rightarrow\ l_y(\nu) = \nu - y \cdot \log(\nu) + c$\\
+\end{inparaitem}
+
+\term{End-to-end loss:} $l_y(\hat{y}=\bs{\theta}\cdot\bs{z}_{L})=e^{\hat{y}}-y\cdot\hat{y}$
+
+\term{Expected Risk} $\mathcal{R}(\bs{\theta}) = \mathbb{E}_{\mathbb{P}}[l_{\bs{y}}(NN_{\bs{\theta}}(\bs{x}))]$\\ \term{Empirical Risk} $\mathcal{R_S}(\bs{\theta}) = \frac{1}{s}\sum_{i=1}^s l_{\bs{y}_i}(NN_{\bs{\theta}}(\bs{x}_i))$
+
+Backprop:$O(N(V+E))$,Forward:$O(M(V+E))$
+Backprop:$O(\text{outputs})$,Forward:$O(\text{params})$
+
+\subsection*{Gradient descent (minimize $f:\mathbb{R}^n \rightarrow \mathbb{R}$)}
+%\subsubsection*{Definition}
+%\textbf{Goal}: Minimize $f:\mathbb{R}^n \rightarrow \mathbb{R}$.\\
+\textbf{Iteration:} $x^{(k+1)} := x^{(k)} - \eta \nabla f(x^{(k)}),$ fixed $\eta>0$
+\subsubsection*{Function $f$ properties}
+\term{$L$-smooth function}: $f$ is $L$-smooth if: $\norm{\nabla f(x) - \nabla f(x + \Delta x)}\ \le\ L \cdot \norm{\Delta x}\quad \forall x \in X$. If $f$ is also differentiable: $f(x+\Delta x) \le f(x) + \nabla f(x)^T \Delta x + \frac{L}{2}\norm{\Delta x}^2 \forall x \in X$\\
+\term{$\mu$-strongly convex:} $f$ s.t. if $f(x+\Delta x) \ge f(x) + \nabla f(x)^T \Delta x + \frac{\mu}{2}\norm{\Delta x}^2 \forall x \in X$\\
+\term{PŁ cond:} $\forall x$: $\frac{1}{2}\norm{\nabla f(x)}^2 \ge \mu (f(x) - \min f)$\\
+\term{L-smooth Lemma} If $f$ is diff. and $L$-smooth. Then: $f(x) - \min f \ge \frac{1}{2L}\norm{\nabla f(x)}^2$
+\subsubsection*{Convergence}
+For $f$ $\mu$-stronlgy convex, $L$-smooth, GD w step size $ \eta \in (0,\frac{1}{L}]:\; \exists!\bs{x}^*=\argmin f$ s.t. $\bs{x}^{(k)}\rightarrow \bs{x}^*$ and
+$\norm{\bs{x}^{(k)} - \bs{x}^*}^2 \le (1- \eta \mu )^k \norm{\bs{x}^{(0)} - \bs{x}^*}^2$
+and $f(x^{(k)}) - f(x^*) \le \frac{1}{2 \eta k} \norm{x^{(0)} - x^*}^2$.
+
+\term{General case:} $f$ $L$-smooth, $\eta \le \frac{1}{L}$, $f^*:=\min f$ $\implies \min_{i=0}^k\norm{\nabla f(x^{(i)}}^2 \le \frac{2(f(x^{(0)}) - f^*}{\eta (k+1)}$.
+
+\term{PL convergence thm:} $f$ $L$-smooth and PL-condition w $\mu > 0$, step size $\eta \le \frac{1}{L}$ then:
+
+$f(x^{(k)}) - f^* \le \left(1 - \frac{\mu}{L}\right)^k (f(x^{(0)}) - f^*)$.
+
+\subsection*{SGD (minimize $f:\mathbb{R}^n \rightarrow \mathbb{R}$)}
+$f(x) = \frac{1}{n}\sum_{i=1}^{n}f_i(x)\implies \nabla f(x) = \frac{1}{n} \sum_{i=1}^{n}\nabla f_i(x)$
+
+\textbf{Def:} $x^{(k+1)} = x^{(k)} - \eta_k \nabla f_{I_k}(x^{(k)})$, w $I_k\sim \text{U}[n]$.
+
+$\nabla f_{I(k)}(x)$ is an \textbf{unbiased} estimator of $\nabla f(x)$
+
+\subsubsection*{Variance reduction} For $SGD$ to converge, variance $V(\nabla f_{I(k)})$ needs to be reduced by one of:
+
+\term{Averaging iterates} Eg:
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+    \item Polyak-Rupert averages, update: $\ \Bar{x}^{(k+1)} = \frac{k}{k+1}\Bar{x}^{(k)} + \frac{1}{k+1}x^{(k+1)}$\\
+    \item Minibatch SGD: Sample+average several $f_i$.
+\end{inparaitem}
+
+\term{Reduce learning rate} Theoretically, $\eta_k$ s.t. $\sum_{k=1}^{\infty}\eta_k = \infty$ and $\sum_{k=1}^{\infty}\eta_k^2 < \infty$. But impractically slow! If $f$ is strongly convex and each $f_i$ is $L_i$-smooth, SGD w constant step size conv.
+\term{Direct variance reduction} Occasionally compute full gradient at $\Bar{x}$. Use update rule:\\ $x^{(k+1)} = x^{(k)} - \eta[\nabla f_i(x^{(k)}) - \nabla f_i(\Bar{x}) + \nabla f(\Bar{x})]$.
+
+\subsubsection*{Momentum}
+%SGD can be optimized using techniques resembling momentum in physics. Examples are:\\
+\term{Nesterov's accelerated method:}
+
+ $y^{(k+1)} = x^{(k)} + \beta (x^{(k)} - x^{(k-1)}$\\
+ $x^{(k+1)} = y^{(k+1)} - \eta \nabla f(y^{(k+1)})$\\
+ $\beta \ge 0$ is the momentum parameter
+ 
+ \term{Thm:} For $f$ L-smooth \& $\mu$-str convex, $\kappa=\frac{L}{\mu}$, $\beta=\frac{\sqrt{\kappa}-1}{\sqrt{\kappa}+1}$:
+$f(\bs{x}^k)-f(\bs{x}^*)\le L(\frac{\sqrt{\kappa}-1}{\sqrt{\kappa}})^k ||\bs{x}^0-\bs{x}^*||^2$
+
+ \term{Polyak's heavy ball method}
+ 
+ $x^{(k+1)} = x^{(k)} - \eta \nabla f(x^{(k)}) + \beta (x^{(k)} - x^{(k-1)}), \beta \in (0,1)$; $\lim_k(\bs{x}^k-\bs{x}^{k-1})=\eta\nabla f\frac{1}{1-\beta}$
+ \subsubsection*{Adaptive learning rate}
+ Instead of a scalar, use a different learning rate for each parameter. Learning rate adapts to previous gradients:\\
+ \term{AdaGrad:}
+ $\gamma^{(k)} = \gamma^{(k-1)} + \nabla f(x^{(k)}) \odot \nabla f(x^{(k)})$.
+ 
+ $x^{(k+1)} = x^{(k)} - \eta \Lambda^{(k)} \nabla f(x^{(k)})$ Pre-condition with $\lambda^{(k)} = \frac{1}{\sqrt{\gamma^{(k)}} + \delta}$, $\Lambda^{(k)} = \text{diag}(\lambda^{(k)})$.
+ 
+ \term{Adam (momentum+adaptivity):}
+ First,
+ $\bs{m}^{(k)} = \beta^{(k)} \bs{m}^{(k-1)} + (1 - \beta^{(k)}) \nabla f(x^{(k)}), \beta^{(k)} \in [0;1], \bs{m}^{(0)} = 0$. Next, update the adaptive learning rate: $\gamma^{(k)} = \alpha^{(k)}\gamma^{(k-1)} + (1 - \alpha^{(k)})(\nabla f(x^{(k)}) \odot \nabla f(^{(k)}))$. Then,
+ $x^k+1=x^k-\frac{\eta}{1-\beta^k}\bs{\Lambda}^k\bs{m}^k$ w.
+ $\bs{\Lambda}^{k} = \text{diag}(\lambda^{(k)})$ and $\frac{1}{\lambda^{(k)}} = \sqrt{\frac{\gamma^{(k)}}{1 - \alpha^{(k)}}} + \delta$.
+ 
+ In practice: $\beta=0.9$, $\alpha=0.999$, $\hat{\gamma}^{k+1}= (\hat{\gamma}^k\wedge \gamma^k)$
+ 
+ \term{Compressed stochastic gradient} Reduce comp. complexity by choosing, e.g. $signSGD$:
+ $x^{(k+1)} = x^{(k)} - \eta_k \cdot sign(\nabla f_{I(k)}(x^{(k)}))$

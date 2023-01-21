@@ -1,0 +1,240 @@
+\section*{Extreme Value Theory}
+\textbf{Notation:}
+Block maximum: $M_n=\max\{X_1,\dots,X_n\}$, $X_1,\dots,X_n\perp$
+
+$F_{M_n}(x)=\mathbb{P}(M_n\leq x)=\mathbb{P}(X_1\leq x,\dots,X_n\leq x)=F^n(x)$
+
+\textbf{Thm:} $M_n\rightarrow x_F$ a.s., where 
+$x_F := \sup \{x\in\R:F(x)<1\}\leq \infty$ (similar to SLLN)
+
+\textbf{Maximum Domain of Attraction:}
+If there exist normalizing sequences of real numbers $(c_n)_n>0$ and $(d_n)_n$ s.t. $((M_n - d_n)/c_n)_n$ converges in distribution; i.e.
+
+$\mathbb{P}((M_n - d_n)/c_n\leq x)=\mathbb{P}(M_n \leq c_n x + d_n)=F^n(c_n x + d_n)\rightarrow H(x)$ for all continuity points x of a non-degenerate cdf $H$ (not a unit jump),
+then $F$ is said to be in the maximum domain of attraction of $H$ ($F\in \text{MDA}(H)$).
+
+\textbf{Same Types:} $H$ and $\tilde{H}$ are of the same type if $H(x)=\tilde{H}(cx+d)$ for $c>0, d\in\R$.
+
+\textcolor{red}{\textbf{Convergence to types Thm:}}\\
+If $\mathbb{P}((M_n-d_n)/c_n\leq x)\rightarrow H(x)$ for all continuity points of $H$ and $\mathbb{P}((M_n-\tilde d_n)/\tilde c_n \leq x)\rightarrow \tilde H(x)$ for all continuity points of $\tilde H$, then $H$ and $\tilde H$ are same type. 
+
+\textbf{(Standard) Generalized Extreme Value (GEV) Distribution:}\\
+The \textit{standard generalized extreme value distribution} is given by\\
+$\textcolor{red}{H_{\xi}(x)}=
+\begin{cases}
+\exp(-(1+\xi x)^{-1/\xi})\cdot 1\{\xi x> -1\},\text{ if }\xi\neq 0,\\
+\exp(-e^x),\text{ if }\xi= 0,
+\end{cases}$,\\$\xi$ is the shape parameter.\\
+A \textit{generalized extreme value distribution} with \textit{shape parameter }$\xi\in\R$, \textit{location paramter} $\mu\in\R$ and \textit{scale parameter} $\sigma>0$ is of the form $\textcolor{red}{H_{\xi,\mu,\sigma}}(x)=H_{\xi}((x-\mu)/\sigma)$.
+
+The \text{Shape parameter $\xi$} determines tail of distribution:
+\begin{itemize}
+    \item $\xi < 0$ gives \textcolor{red}{\textit{Reverse Weibull distribution}}: short-tailed $x_{H_{\xi}}=-1/\xi<\infty$
+    \item $\xi = 0$ gives \textcolor{red}{\textit{Gumbel distribution}}: $x_{H_{\xi}}=\infty$, $\bar H_{\xi}(x) = 1-H_{\xi}(x)\approx e^{-x}$
+    \item $\xi > 0$ gives \textcolor{red}{\textit{Fréchet distribution}}: $x_{H_\xi}=\infty$, heavy-tailed,
+    $\bar H_\xi (x) = 1- H_\xi(x)\approx (\xi x)^{-1/\xi}$,
+    $\E[X^k]=\infty \iff k\geq 1/\xi$ (large $\xi\rightarrow$ heavy tail)
+\end{itemize}
+
+\textbf{Fisher-Tippett Thm:} If $F\in\text{MDA}(H)$, then $H$ has $H_{\xi,\mu,\sigma}$ form.
+
+\textbf{Slowly varying:} $L:[a,\infty)\rightarrow (0,\infty)$ is \textit{slowly varying} if $\lim _{x\rightarrow \infty} \frac{L(tx)}{L(x)}=1$ for all $t>0$.
+
+\textbf{E.g.} $L(x)=c, L(x)=\log(cx)$ for $c>0$
+
+\textbf{Maximum Domain of Attraction:}
+\begin{enumerate}
+    \item \textcolor{red}{Reverse Weibull} ($\epsilon<0$): $F\in\text{MDA}(H_\xi)\iff x_F<\infty$ \text{ and } $\bar F (x_F-1/x)=1-F(x_F-1/x)=x^{1/\xi}L(x),\; x>0$ for some sv function $L$\\
+    E.g. Uniform and Beta
+    \item \textcolor{red}{Gumbel case} ($\epsilon=0$): complicated, tails decay exponentially, all moments exist e.g. normal (non-trivial), log-normal, exponential, gamma
+    \item \textcolor{red}{Fréchet case} ($\epsilon>0$): $F\in\text{MDA}(H_\xi)\iff \bar F(x)=1-F(x)=x^{-1/\xi}L(x),\; x>0$ w. $L$ s.v.\\
+    E.g. student-$t$, Pareto, log-gamma, inverse gamma, Cauchy, $\alpha$-stable ($\alpha\in(0,2)$\\
+    Pareto: $\bar F(x) = (\frac{\kappa}{\kappa + x})^\theta,\; \kappa,\theta>0,\; x\geq 0$\\
+    
+\end{enumerate}
+
+\textbf{Maxima of stationary time series}
+\begin{itemize}
+    \item $(X_t)_t$ stat., $X_t\sim F$ and $\tilde X_t\stackrel{\text{i.i.d.}}{\sim} F$.\\
+    ``For many processes one can show'':\\
+    $\exists \theta\in(0,1]: \lim_{n\rightarrow\infty}
+    \mathbb{P}((M_n-d_n)/c_n \leq x)=H^\theta (x)
+    \iff \lim_{n\rightarrow\infty}\mathbb{P}(\tilde M_n-d_n)/c_n\leq x)=H(x)$ (non-degenerate)\\
+    $\theta$ is known as \textbf{\textit{extremal index}}
+    \item $F\in\text{MDA}(H_\xi)\implies(M_n-d_n)/c_n\stackrel{d}{\rightarrow} H^\theta_\xi$.\\
+    Since $H^\theta_\xi$ same type as $H_\xi$, the limiting distribution of the block maxima of the dependent series is the same as in the iid case (only location and scale may change)
+    \item For large $n$: $\mathbb{P}((M_n-d_n)/c_n\leq x)\approx H^\theta (x)\approx F^{\theta_n}(c_nx+d_n)$.\\
+    Thus, $F_{M_n}$ of TS with extremal index $\theta$ can be approximated by the distribution $\tilde M_{\theta_n}$ of maximum of $\theta_n<n$ observations from the associated i.i.d. series.\\
+    $\rightarrow \theta_n$ counts the number of roughly independent clusters in $n$ observations\\
+    $\theta$ is often interpreted as 1/mean cluster size
+    \item If $\theta=1$, large sample maxima behave as in iid case\\
+    If $\theta\in(0,1)$ large sample maxima tend to cluster
+    \item Strict white noise: $\theta=1$
+    \item GARCH processes: $\theta\in(0,1)$
+    \item Assume $n$ is so large that $\mathbb{P}((M_n-d_n)/c_n\leq x)\approx H_\xi(x)$ is so good approximation
+    \item For $y=c_n+d_n$, $\mathbb{P}(M_n\leq y)\approx H_\xi((y-d_n)/c_n)=H_{\xi,d_n,c_n}(y)$
+\end{itemize}
+
+
+\subsection*{Block Maxima Method}
+We collect data on block maxima and fit the three-parameter form of the GEV;
+that is, we wish to estimate $\xi, \mu=d_n, \sigma=c_n$. (This method requires a lot of data).
+We assume:
+\begin{itemize}
+    \item $n$ large s.t. $\mathbb{P}((M_n-d_n)/c_n\leq x)\approx H_\theta (x)$
+    \item For $y_n\approx c_n x+ d_n$: $\mathbb{P}(M_n\leq y)\approx H_\xi((y-d_n)/c_n=H_{\xi,d_n,c_n}$
+    \item $m$ blocks of size $n$: $M^1_n,\dots,M^m_n$
+\end{itemize}
+\textbf{Algorithm:} $\theta_{\text{"MLE"}}=\arg\max_\theta l(\theta; M^1_n,\dots,M^m_n),$
+where $\theta=(\xi, \mu=d_n, \sigma=c_n)$, $l(\theta; M^1_n,\dots,M^m_n)=\sum_i^m \log(h_\theta(M^i_n))$, $h_\theta(x)=h_\xi((x-\mu)/\sigma)$ and
+$h_\xi(x)=
+\begin{cases}
+(1+\xi x)^{-(1+1/\xi)}H_\xi(x)1\{1+\xi>0\},\; \xi\neq 0\\
+e^{-x}H_0(x)\; \text{ else}
+\end{cases}$.
+
+\textbf{Remarks:}
+\begin{itemize}
+    \item Indicator in $h_\theta$ makes life difficult, non-differentiable $\implies$ consistency and asymptotic efficiency can't be applied
+    \item $\xi>-1/2\implies$ regularity \textit{does} hold
+    \item In defining blocks, bias and variance must be traded off (bias-variance tradeoff)
+    \begin{itemize}
+        \item Bias is reduced by increasing the block size $n$
+        \item Variance is reduced by increasing the number of blocks $m$
+        \item There is no general best strategy known to find the optimal block size
+    \end{itemize}
+    \item Can be used to estimate: size of an event with prescribed frequency (return level problem) and frequency of an event with prescribed size (return period problem)
+\end{itemize}
+
+\subsection*{Return levels and return periods}
+\textbf{$k$ $n$-block return level:} $r_{n,k}=q^-_{M_n}(1-1/k)=\text{VaR}_{1-1/k}(M_n)$
+
+\textit{Intuition:} $P(M_n>r_{n,k})\approx1/k$, so $r_{n,k}$ is expected level exceeded once every $k$ blocks of size $n$
+
+\textbf{Return period of $\{M_n>u\}$}: $k_{n,u}=1/\bar F_{M_n}(u)=1/(1-F_{M_n}(u))$
+
+
+\textit{Intuition:} $r_{n,k_{n,u}} \approx u$,
+so $k_{n,u}$ is the number of $n$-blocks for which we expect to see a single $n$-block exceeding $u$
+
+\textbf{MLE:} $\hat F_{M_n} := H_{\hat\xi,\hat\mu,\hat\sigma} \implies$
+
+$\hat r_{n,k} = H^{-1}_{\hat\xi,\hat\mu,\hat\sigma} (1 - 1/k)=
+\begin{cases}
+\hat\mu + \frac{\hat\sigma}{\hat\xi}\big( (-\log(1-1/k))^{-\hat\xi} -1 \big),\;
+\hat\xi\neq 0\\
+\hat\mu - \hat\sigma \log(- \log(1 - 1/k)),\quad\quad \hat\xi=0
+\end{cases}$,
+$\hat k_{n,u} = 1/  \bar H_{\hat\xi,\hat\mu,\hat\sigma} (u)$
+
+\textbf{Q:}$\mathbb{P}$(next period’s max.
+risk-factor change exceeds all previous ones)?
+
+\textbf{A:} $1 - H_{\hat\xi,\hat\mu,\hat\sigma}$ (largest previous maximum)
+
+\subsection*{Peaks over threshold}
+\textbf{Excess distribution} above threshold $u$:\\
+$F_u(x)=\mathbb{P}(X-u\leq x|X>u)=\frac{F(x+u)-F(u)}{1-F(u)},\; x\in[0,x_F-u)$
+
+\textbf{Mean excess function:} $e(u)=\E[X-u|X>u]$, if $\E[|X|]<\infty$
+
+\textbf{Pf:} $e(u)=''=\frac{\E\int^\infty_u 1\{X>u\}dx}{\bar F(u)}=\frac{\int^\infty_u \E[1\{X>u\}]dx}{\bar F(u)}=\frac{1}{\bar F(u)}\int^{x_F}_u \bar F(x) dx$
+
+\textbf{Thm:} $E[|X|]<\infty$, $F$ cont.
+
+\[\implies \ES(X)=e(\VaR(X))+\VaR(x)\]
+
+\textbf{Examples:}
+\begin{itemize}
+    \item TODO!!!::
+\end{itemize}
+
+\sep
+
+\textbf{Generalized Pareto distribution (GPD):}
+
+\[\textcolor{red}{G_{\xi,\beta}(x)}=
+\begin{cases}
+1-(1+\xi x/\beta)^{-1/\xi}1\{ x\geq 0 \},\quad\quad\quad\quad \xi>0\\
+(1-\exp(-x/\beta))1\{ x\geq 0 \},\quad\quad\quad\quad\quad \xi=0\\
+1-(1+\xi x/\beta)^{-1/\xi}1\{0\leq x\leq -\beta/\xi\},\quad \xi<0\\
+\end{cases}\]
+We call $\beta$ \textit{scale} \& $\xi$ \textit{shape}.
+
+\textbf{Density:}
+\[g_{\xi,\beta}(x)=
+\begin{cases}
+\frac{1}{\beta}(1+\xi x/\beta)^{-(1+1/\xi)}1\{x\geq0\},\quad \xi>0\\
+\frac{1}{\beta}\exp(-x/\beta)1\{x\geq0\},\quad\quad\quad\quad\quad\quad \xi=0\\
+\frac{1}{\beta}(1+\xi x/\beta)^{-(1+1/\xi)}1\{0\leq x\leq-\beta/\xi\},\quad \xi<0
+\end{cases}\]
+
+\textbf{Notable cases:} The larger $\xi$, the heavier tailed $G_{\xi,\beta}$
+\begin{itemize}
+    \item $\xi>0:\text{Par}(1/\xi, \beta/\xi)$. $\E[X_k ] = \infty \iff k \geq 1/\xi$
+    \item $\xi=0: \text{Exp}(1/\beta)$
+    \item $\xi<0$: short-tailed Pareto type II distribution
+    \item $\xi \leq 0: \E[X] = \beta/(1 - \xi)$
+\end{itemize}
+
+\textbf{Thm:} $G_{\xi,\beta} \in \text{MDA}(H_\xi )$
+
+\textcolor{red}{\textbf{Pickands–Balkema–de Haan Thm:}}
+$\exists \beta:\R\rightarrow\R_{>0}$ measurable s.t. $\lim
+_{u\uparrow x_F}\sup_{0<x<x_F-u}|F_u(x) - G_{\xi,\beta(u)}(x)|= 0$
+if and only if $F\in \text{MDA}(H_\xi)$.
+\sep
+
+\textbf{Peaks over threshold (POT) method:}
+Given: $X_1,\dots, X_n \sim F \in \text{MDA}(H_\xi )$
+\begin{enumerate}
+    \item Number $N_u := \#\{i \in {1,\dots, n} : X_i > u\}$ of exceedences $\tilde X_1,\dots \tilde X_{N_u}$
+    \item If $Y_i=X_i-u$, $i\in\{1,\dots,N_u\}$ i.i.d. \& roughly $\sim G_{\xi,\beta}$
+    
+    $l(\xi,\beta;Y_1,\dots,Y_{N_u})=\sum^{N_u}_{i=1} \log g_{\xi,\beta}(Y_i)$\\ 
+    $=\begin{cases}
+    -N_u\log\beta - (1+1/\xi)\sum^{N_u}_{i=1}\log(1+\xi Y_i/ \beta),\; \beta\neq 0\\
+    -N_u\log\beta - \sum^{N_u}_{i=1} Y_i / \beta,\quad\quad \xi=0
+    \end{cases}$
+    \item Maximize log-likelihood '' w.r.t. $\xi$ and $\beta$ s.t. $1+\xi Y_i/\beta>0$ for $i\in\{1,\dots,N_u\}$
+\end{enumerate}
+
+\textbf{Thm:} $F_u\sim G_{\xi,\beta} \implies F_\nu\sim G_{\xi,\beta+\xi(\nu-u)}$ for $\nu\geq u$
+
+\textbf{Thm:} $\xi\in (-\infty, 0)\cup (0,1)$, then $\exists e$ and $e(\nu)=\frac{\beta+\xi(\nu - u)}{1-\xi}$
+
+\textbf{Sample mean excess function:}\\
+$e_n(\nu)=\frac{\sum^n_{i=1}(X_i-\nu)1\{X_i>\nu \}}{\sum^n_{i=1}1\{X_i>\nu \}},\; X_1,\dots,X_n$
+
+\textbf{Mean excess plot:} Graph=$(X_{(i)},e_n(X_{(i)})),\; i\in\{1,\dots,n\},$ where $X_{(1)}\leq\dots\leq X_{(n)}$ are ordered losses
+
+\begin{itemize}
+    \item If the data supports the GPD model over $u$, $e_n(v)$ should become increasingly linear for higher values of $v\geq u$
+    \item An upward, zero or downward trend indicates whether $\xi<0,\xi=0,\xi>0$
+    \item Select $u$ as the smallest point where $e_n(v)$, $v \geq u$, becomes linear
+    \item RULE OF THUMB: One needs a couple of thousand data points and can often take u around the 0.9 quantile
+    \item he sample mean excess plot is rarely perfectly linear
+(particularly for large u where one averages over a small number of excesses)
+\end{itemize}
+
+\subsection*{Modeling tails and measures of tail risk}
+Let $N_u = \sum^n_{i=1} 1\{X_i >u\}$ be the random number of excedances of $u$ by an iid sample $X_1, \dots X_n$
+
+$\bar F(x)=\bar F(u)\bar F_u(x-u)$
+
+Estimate  $\bar F(u)$ empirically by $N_u/n$ and  $\bar F_u(x - u)$ by $1 - G_{\hat\xi,\hat\beta}(x - u)$
+
+\textbf{Bias-variance tradeoff}: A high u reduces bias in estimating the excess function but increases the variance in estimating  $\hat F(u)$
+
+\textbf{GPD based VaR and ES estimates}
+
+For $ \alpha > 1 - N_u/n$ and $\hat\xi  \neq 0:$
+\[ \hat \VaR(X) = u + \frac{\hat\beta}{ \hat\xi} ((\frac{ 1 - \alpha}{ N_u/n})^{\hat \xi} -1 )^{-1}
+\]
+
+For $ \alpha > 1 - N_u/n$ and $\hat\xi  \in (-\infty,0) \cup (0,1):$
+
+\[ \hat \ES (X) = e(\hat \VaR(X))+\hat \VaR(X)=\frac{\hat \VaR(X)}{1-\hat\xi}+\frac{\beta -\hat \xi u }{1-\hat \xi}\]
+
+\textbf{Advantage:} 1. Estimating $\VaR$ like this is usually better than empirical quantile estimator (non-parametric) $X_{[\alpha n]}$
+2. We get confidence intervals for $F(x)$, $\VaR$, $\ES$

@@ -1,0 +1,90 @@
+\section{Regularization}
+\term{Def:} Any aspect of learning intended to lower generalization error (but not train. error).
+
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\term{E.g.} \item Informed reg: prior knowledge \item Simplicity bias: simpler models \item Data augment. \& cross-task learning \item Model averaging, ensemble methods, drop-out
+\end{inparaitem}
+
+\subsection*{Norm-based Regularization}
+$\mathcal{R}_\Omega(\bs{\theta};\mathcal{S})=\mathcal{R}(\bs{\theta};\mathcal{S})+\Omega(\bs{\theta})$, w. $\mathcal{S}$ train data sample, $\Omega$ functional
+\term{E.g.} $\Omega(\bs{\theta})=\frac{1}{2}\sum^L_{l=1}\mu^l||\bs{\Theta}^l||_F^2, \; \mu^l\geq 0$
+
+\term{Weight Decay/$L_2$-regularization:}
+$\nabla \Omega=\mu\bs{\theta}$ or $\frac{ \partial\Omega}{\partial \theta^l_{ij}}=\mu\theta^l_{ij}$
+
+Grad. desc. then: $\bs{\theta}(k+1)=(1-\mu\eta)\bs{\theta}(k)-\eta\nabla \mathcal{R}(\bs{\theta}(k))$
+
+Approx: $\mathcal{R}(\bs{\theta})\approx \mathcal{R}(\bs{\theta}^*)+\frac{1}{2}(\bs{\theta}-\bs{\theta}^*)^T\bs{H}_{\theta^*}(\bs{\theta}-\bs{\theta}^*)$
+
+$\nabla \mathcal{R}_{\Omega}=\bs{0}\iff \bs{\theta}=\bs{Q}(\bs{\Lambda}+\mu \bs{I})^{-1}\bs{\Lambda}\bs{Q}^T\bs{\theta}^*,$ w. $\bs{H}=\bs{Q}\bs{\Lambda}\bs{Q}^T$, $\bs{\Lambda}=$diag$(\lambda_1,\dots,\lambda_d)$
+
+\subsection*{Regul via Contrained Optim $\min_{||\bs{\theta}||\leq r}\mathcal{R}(\bs{\theta})$}
+
+\term{Projected Gradient Descent}
+$\bs{\theta}(k+1)=\prod_r[\bs{\theta}(k)-\eta\nabla\mathcal{R}(\bs{\theta}(k))],$ w. $\prod_r(\bs{v}):=\min \{a,\frac{r}{||\bs{v}||}\}\bs{v}$
+
+\subsection*{Early Stopping: Equiv to L2 reg w $\lambda=$}
+Stop when validation loss flattens.
+
+\subsection*{Ensemble Methods: Bagging}
+\term{Bagging:} Combine $k$ models $\bs{\theta}^k$ trained on $r$ bootstrapped samples $\mathcal{S}^k_r\subset \mathcal{S}$ (w replacement)
+
+\term{Prediction:} $p(\bs{y}|\bs{x})=\frac{1}{K}\sum^K_{k=1}p(\bs{y}|\bs{x};\bs{\theta}^k)$
+
+\subsection*{Other Ensembling}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Stochastic model training \item SGD init. \item Different architect.s \& model classes 
+\end{inparaitem}
+
+\subsection*{Distillation}
+Transfer knowledge from complex (source) model into simpler (target) model.
+
+\term{Blackbox distillation:}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item label additional data w source model
+\item train target model on augmented data
+\item refinement: use soft targets
+\end{inparaitem}
+
+\subsection*{Dropout (set weight $i$ to 0 w prob $\pi_i$)}
+Realizes ensemble
+$p(y|\bs{x})=p\sum_{\bs{Z}}p(\bs{Z})p(y|\bs{x},\bs{Z})$ w. random mask $\bs{Z}$ defining dropbox probabilities $\pi^l_i$
+
+\term{Prediction:} average $\approx10-20$ samples or $\tilde{\theta}_{ij}^l x_j\leftarrow \pi^{l-1}_j\theta_{ij}^l x_j=\E_{\bs{Z}} z^{l-1}_j\theta^l_{ij}x_j$
+
+\term{Thm:} approx. (sometimes exact) to geometrically averaged ensemble
+
+
+\subsection*{Data Augmentation}
+\term{Virtual e.g.s:} $\mathcal{D}^*=\mathcal{D}\cup\{(\tau(\bs{x}),y) : (\bs{x},y)\in\mathcal{D} \}$
+
+$\tau=$ 
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Rotation
+\item Noise
+\item Reflection
+\item Color shift
+\item Crop
+\item PCA component/noise
+\item Resize
+\end{inparaitem}
+
+\term{Noise Injection}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Inputs \item Weights \item Outputs
+\end{inparaitem}
+
+\subsection*{Task Augmentation}
+\term{Pre-training}
+Initialize weights trained on simple/partial task, fine-tune on full task
+
+\term{SemiSupervised}
+\#unlabeled>\#labeled data
+
+Define generative model w log-likelihoods.
+
+Optimize \textbf{additive combination} of supervised and unsupervised risk, while \textbf{sharing parameters}.
+(+) More eff. (-) More exp. than pre-training
+
+\subsection*{Multi-Task Learning}
+Jointly learn shared low level representations $\forall$ tasks but high level representions per task.

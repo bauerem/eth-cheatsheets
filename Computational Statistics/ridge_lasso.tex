@@ -1,0 +1,18 @@
+\section*{Ridge/Lasso:} 
+Situation where $p>>n$. Center and scale all the $x_i$ so that all $\beta_i$ equally penallized.\\
+\textbf{Ridge}: $\beta=(X^TX+\lambda I)^{-1}X^TY$ (for $\lambda>0$ matrix is inv.able)
+
+Has some bias but variance+MSE are considerably better than $\beta_{LS}$
+
+\textbf{Ridge} $\Vert\beta\Vert_2^2$; \textbf{Lasso} $\Vert\beta\Vert_1$;
+\textbf{Elastic net} (\texttt{glmnet})  $\alpha\Vert\beta\Vert_1+\frac{1-\alpha}{2}\Vert\beta\Vert_2^2$ but (lecnotes)  $\lambda_1\Vert\beta\Vert_1+\lambda_2 \Vert\beta\Vert_2^2,  \alpha=\frac{\lambda_2}{\lambda_1+\lambda_2}$\\
+\textit{Soft thresholding} (special p=1 case): $\hat{\beta}_{\text{LASSO}} = \text{sgn}(\beta_0) \text{max}\{0, |\beta_0| - \lambda\}$
+\begin{codebox}{r}{Ridge \& Lasso}
+library(glmnet) # data must be a MATRIX!
+grid <- 10^seq(from=10,to=-2,length=100)
+ridge <- glmnet(x[train,], y[train], alpha=0, lambda=grid)
+lasso <- glmnet(x[train,], y[train], alpha=1, lambda=grid)
+# Coefficients for specific lambda_val
+coef(lasso, s=lambda_val)
+cv.glmnet(mm, y, alpha=0.5, nfolds=10)#For inbuilt CV
+\end{codebox}

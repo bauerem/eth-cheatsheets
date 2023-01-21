@@ -1,0 +1,238 @@
+\chapter{Misc}
+
+%\section{Tipps}
+%
+%Wert einer Reihe berechnen: Parseval-Identität (K3 S2.4, S3.1)
+%
+%\section{Definitionen}
+
+\section{Konvergenz, Mittelwertsatz}
+
+\begin{namedtheorem}{Definition (Konvergenz)}
+  Sei $D\subset\R^n$ offen, $f:D\rightarrow\R$ eine Funktion und $(f_n)_n$ eine Funktionenfolge mit $f_n:D\rightarrow\R$ für alle $n\in\N$. Falls
+  \begin{itemize}
+    \item $\forall x\in D\ lim_{n\rightarrow\infty}f_n(x)=f(x)$ ist $f_n$ punktweise konvergent,
+    \item $lim_{n\rightarrow\infty}\sup_{x\in D}|f_n(x)-f(x)|=0$ ist $f_n$ gleichmässig konvergent.
+  \end{itemize}
+  Anders ausgedrückt gilt $(f_n)_n$ gleichmässig konvergent $ \Leftrightarrow \forall\epsilon\,\exists N\in\N\,\forall n\in\N: (n\geq N \implies (\forall x\in D: |f_n(x)-f(x)|<\epsilon))$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz}
+  Falls $(f_n)_n$ eine Folge stetiger Funktionen gleichmässig gegen $f$ konvergiert, dann ist $f$ stetig.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Satz (Mittelwertsatz)}
+Sei $f:U\subset\R^n\rightarrow\R$ diffb. Falls $x_0+th\in U\ \forall t\in[0,1]$ und ein $h\in\R^n$, dann existiert ein $t_{\xi}\in(0,1)$, sodass $f(x_0+h)-f(x_0)=\partial_h f(x_0+t_{\xi}h)$. Für $f:[a,b]\rightarrow\R$, diffbar auf $(a,b)$, existiert ein $\xi\in(a,b)$, sodass $f'(\xi)=\frac{f(b)-f(a)}{b-a}$.
+\end{namedtheorem}
+
+\section{Vertauschungssätze}
+% $\lim_{n\rightarrow\infty}\int f_n(x)\Dx = \int f(x)\Dx \Leftarrow \lim_{n\rightarrow\infty} f_n = f$ gleichmässig.
+
+% $\partial_t\int f(t,x)\Dx = \int \partial_tf(t,x)\Dx \Leftarrow \exists g\in L^1\ |\partial_tf(t,x)| < g(x)$
+
+% $\partial_x \sum_i f(x,i) = \sum_i \partial_x f(x,i) \Leftarrow \sum_i |\partial_x f(x,i)| < \infty$.
+
+Es wird vorrausgesetzt, dass alle Grenzwerte und Ableitungen existieren, Funktionen integrierbar sind und die zu integrierende Gebiet schön sind.
+\begin{adjustbox}{angle=0}
+%\begin{table}[!htb]
+  \fontsize{8}{10}\selectfont
+  \centering
+  \begin{tabular}{lcl}
+%     &&\\
+%     \hline
+     $\sum_n |\partial_x f_n(x)| < \infty$ & $\Rightarrow$ & $\partial_x \sum_n f_n(x) = \sum_n \partial_x f_n(x)$\\
+     $\lim_{n\rightarrow\infty} f_n = f$ glm. & $\Rightarrow$ & $\int \sum_n f_n(x) = \sum_n \int f_n(x)$\\
+%     \hline
+     $\lim_{n\rightarrow\infty} f_n = f$ glm. & $\Rightarrow$ & $\lim_{n\rightarrow\infty}\int f_n(x)\Dx = \int f(x)\Dx$ \\
+     $\partial_tf(x,t)$ glm. stetig & $\Rightarrow$ & $\partial_t\int_a^b f(x,t)\Dx = \int_a^b \partial_t f(x,t)\Dx$\\
+%     \hline
+     $0\leq f_n\leq f_{n+1}, \int f_n(x)\Dx \leq c$ & $\Rightarrow$ & $\lim_{n\rightarrow\infty} \int f_n(x)\Dx = \int f(x)\Dx$ \\
+     $\exists g\in L^1:\ |f_n(t,x)| < g(x)$ & $\Rightarrow$ & $\lim_{n\rightarrow\infty} \int f_n(x)\Dx = \int f(x)\Dx$ \\
+     $\exists g\in L^1:\ |\partial_tf(t,x)| < g(x)$ & $\Rightarrow$ & $\partial_t\int f(t,x)\Dx = \int \partial_tf(t,x)\Dx $ \\
+     $f\in C_0,\Sr$ & $\Rightarrow$ & $\partial_t\int f(t,x)\Dx = \int \partial_tf(t,x)\Dx $ \\
+     $\int_F\left(\int_E|f(x,y)|\Dx\right)\D y<\infty$ & $\Rightarrow$ & $\int_F\left(\int_E f\ \Dx\right)\D y=\int_E\left(\int_F f\ \D y\right)\D x$ \\
+%      $\int_{E\times F}|f(x)|\Dx$, $\int_F\left(\int_E|f(x,y)|\Dx\right)\D y$ oder $\int_E\left(\int_F|f(x,y)|\D y\right)\D x$ & $\Rightarrow$ & $\int_{E\times F}f(x)\Dx=\int_F\left(\int_E f(x,y)\Dx\right)\D y=\int_E\left(\int_F f(x,y) \D y\right)\D x$ \\
+  \end{tabular}
+%\end{table}
+\end{adjustbox}
+
+% \begin{namedtheorem}{Ableitungen und Summen}
+% darf man vertauschen, wenn man die abgeleiteten Summanden nach oben durch etwas Summierbares abschätzen kann
+% \end{namedtheorem}
+
+\section{Trigonometrie}
+\hspace*{\fill} \\
+$\left.\begin{aligned}
+  \sin(ax)=
+  \begin{cases}
+    |\cdot|\ \text{max} & ax = (2n+1)\frac{\pi}{2} \quad\quad\quad\quad\quad 0\\
+    0 & ax= (2n+0)\frac{\pi}{2}=n\pi  \quad |\cdot|\ \text{max}
+  \end{cases}
+\end{aligned}\right\rbrace = \cos(ax)$
+
+$\sin x = \frac{e^{ix}-e^{-ix}}{2i},\  \cos x = \frac{e^{ix}+e^{-ix}}{2}, \quad \sinh x = \frac{e^x-e^{-x}}2, \  \cosh x = \frac{e^x+e^{-x}}2$
+
+$A\cos x + B \sin x = \frac{A-iB}2e^{ix} + \frac{A+iB}2e^{-ix}$
+
+$\sin^2x+\cos^2x = 1$ \quad\quad $\sin x+\cos x = \frac{1}{1+i} e^{ix} + \frac{1}{1-i}e^{-ix}$ \quad\quad $\cosh^2x-\sinh^2x=1$
+
+$\sin(x\pm y)=\sin(x)\cos(y)\pm\cos(x)\sin(y), \quad \sin 2x=2\sin x \cos x$
+
+$\cos(x\pm y)=\cos(x)\cos(y)\mp\sin(x)\sin(y), \quad \cos 2x=\cos^2 x - \sin^2 x$
+
+$\sin x \sin y = \frac12(\cos (x-y)-\cos(x+y)),\quad\quad \sin^2(x)=\frac12(1-\cos(2x))$
+
+$\cos x \cos y = \frac12(\cos (x-y)+\cos(x+y)), \quad\quad \cos^2(x)=\frac12(1+\cos(2x))$
+
+$\sin x \cos y = \frac12(\sin (x-y)+\sin(x+y)), \quad\quad \sin x\cos x = \frac12\sin(2x)$
+
+$1+\tan^2x = \frac1{\cos^2x}, \quad\quad \tan(x+y)=\frac{\tan x + \tan y}{1-\tan x \tan y}$, \quad\quad $\scalprod{x,y}=\cos(\gamma)|x||y|$
+
+
+\section{Ungleichungen, Abschätzungen und other}
+\hspace*{\fill} \\
+$|\scalprod{u,v}|\leq\norm{u}\norm{v}$, \quad\quad $2|ab| \leq |a|^2+|b|^2$, \quad\quad $||x|-|y||\leq|x\pm y|\leq|x|+|y|$
+
+$|\int_Ef(x)\Dx|\leq\int_E|f(x)|\Dx, \quad (1+x)^n \geq 1+nx,\ x\geq-1,\ n\in\N$
+
+Faktorisierung $ax^2+bx = a(x+\frac{b}{2a})^2-\frac{b^2}{4a}$
+
+$\Sr$, $\C_0^0$ (und somit auch $C_0$, $C^{\infty}$, $C^n$ $\forall n$, $C^0$) sind dicht in $L^p$.
+
+
+\section{Integrale und Reihen}
+\hspace*{\fill} \\
+$\sum_{k=0}^n q^k = \begin{cases}
+  \frac{1-q^{n+1}}{1-q} & q\neq1 \\
+  n+1 & q=1
+\end{cases}, \quad \sum_{k=0}^{\infty} q^k = \begin{cases}
+  \frac{1}{1-q} & |q|<1 \\
+  \infty & \text{sonst}
+\end{cases}$,
+\quad $\underset{k = 0}{\overset{n}{\prod}}(2k + 1) = \frac{(2k)!}{2^kk!}$
+
+$e^x = \sum_{n=0}^{\infty}\frac{x^n}{n!},\quad \log(x) = \sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}(x-1)^n,\quad \frac1{1-x}=\sum_{n=0}^{\infty}x^n \ |x|<1$
+
+$\sin x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}x^{2n+1} = x-\frac{x^3}{6}+\ldots \quad \cos x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!}x^{2n} = 1-\frac{x^2}{2}+\ldots$
+
+
+$\int \sin(nx)\cos(mx)\Dx = \begin{cases}
+  -\dfrac{\cos\left(\left(n+m\right)x\right)}{2\left(n+m\right)}-\dfrac{\cos\left(\left(n-m\right)x\right)}{2\left(n-m\right)} + C & n\neq\pm m\\
+  -\dfrac1{4n} \cos\left(2nx\right) + C & n=m
+\end{cases}$
+
+$\int \sin(nx)\sin(mx)\Dx = \begin{cases}
+  \dfrac{\sin\left(\left(n-m\right)x\right)}{2\left(n-m\right)}-\dfrac{\sin\left(\left(n+m\right)x\right)}{2\left(n+m\right)} + C & n\neq\pm m \\
+  \pm\frac{x}2\mp\frac1{3n}\sin(2nx) + C & n=\pm m
+\end{cases}$ 
+
+$\int \cos(nx)\cos(mx)\Dx = \begin{cases}
+  \dfrac{\sin\left(\left(n+m\right)x\right)}{2\left(n+m\right)}+\dfrac{\sin\left(\left(n-m\right)x\right)}{2\left(n-m\right)} + C & n\neq\pm m \\
+  \frac{x}2+\frac1{4n}\sin(2nx) + C & n=\pm m
+\end{cases}$
+
+$\int_{a}^{a+2\pi l/n} \sin(nx)\D x = \int_{a}^{a+(2l+1)\pi/n} \cos(nx)\D x = 0,\ a\in\R,\ l\in\N$
+
+$\int_0^{l\pi} \sin(nx)\cos(mx)\Dx = C\delta_{nm},\ l\in\N$
+
+$\int_{-\pi}^{\pi} \sin(nx)\cos(mx)\D x = \int_{0}^{2\pi} \sin(nx)\cos(mx)\D x = 0$
+  
+$\int_{\R}e^{-x^2/a}\Dx = \sqrt{a\pi} \quad \int_{0}^{\infty}e^{-x^2/a}\Dx= \frac12\sqrt{a\pi}$ 
+% \quad $\int e^{-a(x+by)^2}\D y=\sqrt{\frac{\pi}{ab}}e^{a(b-1)x^2}$
+
+%$\int_{0}^1f(x)\Dx = \lim_{n\rightarrow\infty}\frac1n\sum_{k=1}^nf(k/n)$ TODO stimmt das?
+
+%$\int \sin(ax)e^{-\frac{2\pi in}Lx}\D x = \dfrac{L\mathrm{e}^{-\frac{2\mathrm{i}{\pi}nx}{L}}\left(2\mathrm{i}{\pi}n\sin\left(ax\right)+aL\cos\left(ax\right)\right)}{4{\pi}^2n^2-a^2L^2} + C$
+
+%$\int \cos(ax)e^{-\frac{2\pi in}Lx}\D x = \dfrac{\mathrm{e}^{-\frac{2\mathrm{i}{\pi}nx}{L}}\left(aL^2\sin\left(ax\right)-2\mathrm{i}{\pi}Ln\cos\left(ax\right)\right)}{a^2L^2-4{\pi}^2n^2} + C$
+
+
+\section{Koordinatensysteme}
+
+\begin{namedtheorem}{Polarkoordinaten}
+  $x=r\cos\phi$, $y=r\sin\phi$, $r=\sqrt{x^2+y^2}$, $\phi=\arctan(y/x)$ für $x>0$, $0\leq r\leq\infty$, $0\leq\phi<2\pi$. $\triangle = \partial_r^2+\frac1r\partial_r+\frac1{r^2}\partial_{\phi}^2$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Kugelkoordinaten}
+  $x=r\sin\theta\cos\phi$, $y=r\sin\theta\sin\phi$, $z=r\cos\theta$\\
+  $r=\sqrt{x^2+y^2+z^2}$, $\theta=\arccos\left(\frac{z}{r}\right)$, $\phi=\arg(x,y)$, $0\leq r \leq \infty$, $0\leq\phi<2\pi$, $0\leq\theta\leq\pi$. $\D V = r^2\D r \sin\theta \D \theta \D\phi$. $\triangle = \frac1{r^2}\partial_r(r^2\partial_r)+\frac1{r^2\sin\theta}\partial_{\theta}(\sin\theta\partial_{\theta})+\frac1{\sin^2\theta}\partial_{\phi}^2$
+\end{namedtheorem}
+
+\section{Ansätze}
+
+\begin{namedtheorem}{Integral}
+HDI: Zu zeigen $f(x) = \int g(x) \mathrm{d}x$, zeige $\frac{\mathrm{d}}{\mathrm{d}x}f(x) = g(x)$; \enspace definiere Integral als neue Funktion, forme um und finde Gleichung fürs Integral; \enspace Integral ableiten und mit PI DGL herleiten $\partial I = \int g \partial_x f \overset{pI}{=} a \int f g = aI \implies I=I_0e^{ax}$; \enspace $f \notin L^1 \Rightarrow$ konvergenzerzeugender Faktor $e^{- |x| \delta}, e^{-\delta x^2}$; \enspace Fubini; \enspace Integrand zu Ableitung einer Funktion umformen (z.B. $\cos x \sin x = -\frac{1}{2}\partial_xcos^2x$); \enspace partielle Integration.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Fourierreihen}
+Reihenansatz gleiches Format wie Reihe der Randbedingung; \enspace sin, cos in exp-Darstellungen zerlegen; \enspace Reihendarstellung der Randbedingung einsetzen; \enspace PZB, Geometrische Reihe; \enspace Residuensatz; \enspace beachte $n = 0$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Fouriertransformation}
+Gaussfunktionen; \enspace Hermitefunktionen als EV der FT, $(P(x)e^{-x^2/2})\fhat(k)$: $P(x)$ als Linearkombination von Hermitepolynomen schreiben; \enspace Residuensatz; \enspace Formel für rotationsinvariante Funktionen (beachte $k = 0$); \enspace gegeben $f$, zu zeigen $\hat{f} = g$: zeige alternativ $g\fcheck = f$; \enspace beachte k = 0.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Fundamentallösungen}
+Gleichung Fouriertransformieren, für Rücktransformation Residuensatz
+\end{namedtheorem}
+
+\begin{namedtheorem}{PDE}
+Periodische Funktion $\rightarrow$ FR; \enspace Separation probieren; \enspace Fouriertransformation in der Variable, in der die Anfangsbedinungen gegeben sind.
+\end{namedtheorem}
+
+\section{PDEs}
+
+\begin{namedtheorem}{Schroedinger equation}
+Falls $\psi_0$ die TISE $\hat{H}\psi_0 = E\psi$ mit Eigenwert $E$ löst, so ist $\psi = e^{-iEt/\hbar}\psi_0$ eine Lösung der TDSE $\hat{H}\psi(x, t) = i\hbar \frac{\partial}{\partial t}\psi(x, t)$.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Heat equation}
+Ring (periodisch): Fourierreihenansatz, sonst allgemein $\R$: Lösung durch Faltung Wärmeleitungskern und Anfangsbedingung.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Wave equation}
+Fouriertransformation der PDE, um eine DGL für $\hat{f}$ zu bekommen. Rücktransformieren.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Saite}
+Separation der Variablen, Lösung als Superposition schreiben.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Membran}
+Separation der Variablen, Koordinatentransformation zu Polarkoordinaten, Separation der Variablen, Bessel-DGL erkennen, Randbedingungen durch Nullstellen der Besselfunktionen festsetzen.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Elektrostatik}
+Transformation zu Kugelkoordinaten, Separation der Variablen, Kugelfunktionen verwenden.
+\end{namedtheorem}
+
+\begin{namedtheorem}{Dirichlet, Neumann}
+Greensche Funktion aus Kapitel 5.3, Satz 3.1.
+\end{namedtheorem}
+
+\section{Multiple Choice}
+
+$g(x)=\sin^{2017}(x)=\sum_{n\in\Z}c_ne^{inx}$. Richtig: 1) $\lim_{n\rightarrow\pm\infty}n^{2018}|c_n|\rightarrow0$, da $g\in C^{\infty}(\R)$. 2) $c_n=0$ für n gerade. 3) $c_{2017}=-2^{-2017}i$, da $\sin^{2017}(x)=(\frac{-i}2(e^{ix}-e^{-ix}))^{2017}$. Falsch: 4) $\sum_{n\in\Z}c_n=1$, da $\sum_{n\in\Z}c_n=sin^{2017}(0)=0$.
+
+Richtig: 1) $\hat{f}$ ist stetig für alle $f\in L^1$. 2) Ist $f$ gerade, so ist auch $\hat{f}$ gerade, da $e^{i(2017-n)x}e^{-inx}=e^{i(2017-2n)x}$. 3) Wenn $f(x)=0$ für $|x|>1$, dann ist $\hat{f}\in C^{\infty}(\R)$. Falsch: 4) $\hat{f}$ ist $2\pi$-periodisch für alle $f\in L^1$.
+
+$\triangle u=0$ auf $B_1(\R^3)$ mit $u(x)=x_3^2$ für $|x|=1$. Richtig: 1) $0\leq u(x)\leq 1$ für alle $x\in B_1$. 2) $\max\{u(x),x\in B_1\} = 1$. Falsch: 3) $u(0)=0$ 4) $\int_{B_1}u(x)\Dx = 0$.
+
+$\partial_x^2u=\partial_tu$, $u(0,x)=1/(1+x^2)^2$. Richtig: 1) $\int_{\R}u(x,t)\Dx$ ist konstant in $t\geq0$. 2) $lim_{t\rightarrow\infty}\hat{u}(k,t)=0$ für alle $k\neq0$. Falsch: 3) $u(x,t)=0$ für alle $(x,t)$, sodass $|x|>1/\sqrt{t}$. 4) $\hat{u}(-k,t)=-\hat{k,t}$ für alle $t>0,k\in\R$.
+
+Sind zwei jeweilige Lösungen eindeutig? Richtig: 1) $\triangle u(x)=0,x\in\R^3\setminus\{0\}$, u rot.inv., $u(1,0,1)=1$, $u(x)\rightarrow0$ für $|x|\rightarrow\infty$. 2) $\triangle u(x)=0, \forall x\in\R^n |x|<1$, $u(x)=1 \forall x\in\R^n |x|=1$. Falsch: 3) $\triangle u(x)=0, x\in\R^n$. 4) $\triangle u(x)=0\forall x\in\R^n |x|<1$, $x\nabla u(x)=0 \forall x\in\R^n |x|=1$.
+
+$f(x)=\sin(x)e^{-x^4}$. Richtig: 1) $\lim_{k\rightarrow\pm\infty}\partial^n_k\hat{f}(k)=0 \forall n\in\Z_{\geq0}$. 2) $\hat{f}\in L^2$, da $f\in\Sr(\R)$. Falsch: 3) $\hat{f}(k)\in\R \forall k\in\R$, da $f$ ungerade. 4) $\hat{f}$ ist glatt mit kompaktem Träger, da $\int_{\R}\cos(kx)e^{-x^4}\Dx>0 \forall k\in\R$.
+
+$f(x)=e^{-x^4}$. Richtig: 1) $\lim_{k\rightarrow\pm\infty}k^n\hat{f}(k)=0$. 2) $\hat{f}\in C^{\infty}$. 3) Es gibt eine holomorphe Funktion $F:\C\rightarrow\C$, so dass $\hat{f}(k)=F(k) \forall k\in\R$. Falsch: 4) $\hat{f}(0)=0$.
+
+$u(r,\theta,\phi)=\sum_{l=0}^N\sum_{m=-l}^la_{l,m}rlY(\theta,\phi)$. Richtig: 1) $\triangle u=0$. 2) $\int_{\R^3}|u(x)|^2\Dx=\sum_{l=0}^N\sum_{m=-l}^l|a_{l,m}|^2$. 3) $a_{l,m}=\int_0^{2\pi}\int_0^{\pi}\overline{Y_{l,m}(\theta,\phi)}u(1,\theta,\phi)\sin\theta\D\theta\D\phi$. 4) Wenn $a_{l,m}=0$ für $m\neq0$, dann ist $u$ invariant unter Rotationen um die z-Achse.
+
+Welche Reihe konvergiert? Richtig: 1) $\sum_{l=0}^{\infty}l^22^{-l}P_l(x)$. 2) $\sum_{l=0}^{\infty}P_{n^2}(x)$. 3) $\sum_{l=0}^{\infty}\frac{(-1)^l}{\sqrt{l}}P_l(x)$. Falsch: 4) $\sum_{l=0}^{\infty}(-1)^lP_l(x)$.
+
+Richtig: 1) $\int_{-1}^1P_{23}(x)\Dx=0$, da $\scalprod{P_0,P_{23}}=0$. 2) $\scalprod{P_l,P_{l'}}=0$. Fal.: 3) $\scalprod{P_l,P_l}=1$.
+
+Was definiert temperierte Distribution? Richtig: 1,2) $\phi\mapsto\int_{\R} f(x)\phi(x)\Dx$ für $f\in L^1(\R), L^2(\R)$. Falsch: 3) $\phi\mapsto\int_{\R} e^{x^2}\phi(x)\Dx$. 4) $\phi\mapsto\sup_{x\in\R}\phi(x)$, da nicht linear.
+
+Richtig: 1) $x\delta'(x)=-\delta(x)$. 2) $\int_{\R}\delta'(x)\phi(x+a)\Dx=-\delta'(a)$. 3) $\partial^3_{x}|x|=2\delta'(x)$. 4) $x^2\delta'=0$.  Falsch: 5) $\delta'(2x)=2\delta'(x)$. 6) $x\delta'=0$, da z.B. $x\delta'[e^{-x^2}]=\delta[(xe^{-x^2})']=-1$. 7) $\delta(3x)=3\delta(x)$, da $\delta(3x)=\frac13\delta(x)$. 8) $\hat{\delta}(k)=\sum_{n=-\infty}^{\infty}k^n$, da $\hat{\delta}(k)=1$.
+

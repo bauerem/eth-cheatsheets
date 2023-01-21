@@ -1,0 +1,42 @@
+\section*{Bagging-Boosting}
+\subsection*{Bootstrap Aggregating (Bagging)}
+Variance reduction technique.
+Need a simple estimator $\hat g$ (for instance a tree). \\
+1) Take $B$ bootstrap samples \\
+2) For each bootstrap sample, train an estimator $\hat g_1,\dots,\hat g_B$. \\
+3) Aggregation: $\hat g_{bag}(\cdot) = \frac{1}{B}\sum_{i=1}^B\hat g_i(\cdot)$ \\
+Note: $\hat g_{bag} = \hat g + (\hat g_{bag} - \hat g)\; \rightarrow$ Add bs bias estimate in order to reduce variance \\
+\textbf{classification:} in this case, majority voting (or average base estimator probs of being in each class)\\
+\textbf{Subsample aggregating (Subagging):} Like Bagging but just take subset of the dataset (without repetition) instead of bootstrapping. $m < n$ size of the subsets\\
+\textbf{Out-of-Bag Error:}
+Only let trees predict for an example that have not been trained with it (should be $\approx 1/3$) for all samples and average to get a valid estimate for the test error. \\
+\textbf{Random Forests:}$B$ Bagged trees. $B$ bootstrap samples each w tree. They reduce dependence between tree estimates by only allowing a random subset of $\texttt{m}_{\texttt{try}}$ predictors at each split. Default: regression $p/3$, classification $\sqrt{p}$. (R option: mtry).
+\begin{tabular}{|l|l|l|l|}
+\hline
+                 & Tree & Bagging & Random Forrest \\ \hline
+Performance      & -    & +       & ++             \\ \hline
+Computation      & +    & -       & +/-            \\ \hline
+Interpretation   & +    & -       & -              \\ \hline
+Out-of-bag error & -    & +       & +              \\ \hline
+\end{tabular}
+\begin{codebox}{r}{Random forest}
+library(randomForest)
+rf <- randomForest(y ~ . , data = mydata, mtry=p-1, importance = TRUE, ntree = 100)
+# mtry: no. of features from which you chose a split. 
+# if mtry = n_predictors then you have bagged trees
+oob <- mean((rf$predicted-y.train)^2) #OOB Reg.
+oob <- rf$err.rate #Classification
+importance(rf) #Get feature importance
+\end{codebox}
+\subsection*{Feature Importance Measures for RF}
+\textbf{1) Mean Decrease in [Gini index]/[RSE]}: Take mean over how much model performance improves when splitting on this variable. 
+\textbf{2) Mean Decrease in Accuracy}: After fitting RF, perturb variable and measure how much performance decreases.
+\subsection*{Boosting}
+Bias reduction technique. Make $\hat g$ be very simple (stamp or small tree). Iteratively train a $\hat g$ predictor on the current model and then update the model: $f \gets f + \nu g$. ($\nu$ usually is $.1$) The other parameter is $M$.
+
+
+Alg: 1. Sample $(X^*_1,Y^*_1),\dots,(X^*_n,Y^*_n)\rightarrow \hat \theta^*$ 2. BS above $\rightarrow \hat g_1^*,\dots, \hat g_B^*$ 3. $\hat g_{\text{Bag}} := \frac{1}{B}\sum_i \hat g_i^*\approx \E^*[\hat g^*]$
+
+Bias: $\hat g_{\text{Bag}}=\hat g + (\E^*[\hat g^*]-\hat g)=\hat g + $BS estimate of bias
+
+For tree based estimators it can be shown that $\text{Var}(g_{\text{Bag}}(x))\stackrel{\text{asymp}}{\leq} \text{Var}(g(x))$

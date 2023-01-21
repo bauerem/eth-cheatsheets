@@ -1,0 +1,43 @@
+\section*{Empirical Properties of Financial Data}
+\subsection*{Stylized facts of financial return series}
+\textbf{Scope/def:} Stylized facts often apply to daily log-returns (also to intra-daily, weekly, monthly). Tick-by-tick (high-frequency) data have their own stylized facts (not discussed here) and annual returns (low-frequency) data are more difficult (data sparsity; non-stationarity)
+
+\textbf{Discrete-time risk-factor changes:} $X_t=Z_t-Z_{t-1}$, e.g. $Z_t=\log S_t$, in which case $X_t=\log(S_t/S_{t-1})\approx S_t/S_{t-1}-1=(S_t-S_{t-1})/S_{t-1}$; the former called (log-)return, latter (classical) return.
+
+\subsection*{Longer time-interval return series}
+\textbf{Setting:} daily$\rightarrow$weekly$\rightarrow$monthly$\rightarrow$quarterly$\rightarrow$yearly
+
+\textbf{Non-overlapping $h$-period log-return at $t\in\{h,2h,\dots,nh\}$:}
+
+$X_t^{(h)}=\log(\frac{S_t}{S_{t-h}})=\log(\frac{S_t}{S_{t-1}}\frac{S_{t-1}}{S_{t-2}}\cdots\frac{S_{t-h+1}}{S_{t-h}})=\sum^{h-1}_{i=0}X_{t-i}$
+
+\begin{itemize}
+    \item As $h\rightarrow \infty$ CLT effects take place (less heavy-tailed, less empirical serial correlation)
+    \item As $h\rightarrow \infty$ less data is available
+    \item Possible remedy: Consider overlapping returns
+    $\{X^{(h)}_t:t\in \{h, h+k, \dots,h+nk\}\} \text{ for } 1\leq k <h$;
+    More data but serially dependent
+\end{itemize}
+
+\subsection*{Stylized facts: univariate return series}
+\begin{enumerate}[label=(U\arabic*),itemsep=5pt,leftmargin=1cm]
+    \item Return series not iid but little serial correlation
+    \item Absolute or squared returns series show profound serial correlation
+    \item Conditional expected returns are close to zero
+    \item Volatility (conditional standard deviation) appears to vary over time
+    \item Extreme returns appear in clusters
+    \item Return series are leptokurtic or heavy-tailed (power-like tail)
+\end{enumerate}
+
+\subsection*{Multivariate return series}
+Similar to U1, $X_t$ and $Y_t$ show little correlation for two asset returns $(X_t)_t$ and $(Y_t)_t$.
+
+Contemporaneous dependence
+
+\subsection*{Stylized f.s: multivariate return series}
+\begin{enumerate}[label=(M\arabic*),itemsep=5pt,leftmargin=1cm]
+    \item Multivariate return series show little evidence of cross-correlation, except for contemporaneous returns (i.e. at the same $t$)
+    \item Multivariate series of absolute returns show profound cross-correlation
+    \item Correlations between contemporaneous returns vary over time
+    \item Extreme returns in one series often coincide with extreme returns in several other series (e.g. tail dependence)
+\end{enumerate}

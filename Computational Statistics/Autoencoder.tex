@@ -1,0 +1,22 @@
+\section*{Autoencoder}
+Find $E:\mathbb{R}^d \rightarrow \mathbb{R}^e$, $D:\mathbb{R}^e \rightarrow \mathbb{R}^d$, $e < d$, such that $\sum_i||x_i - D(E(x_i))||^2_2$ is minimized. 
+
+For linear restriction of $E$ and $D$, let $X = U \Sigma V^{\top}$, X design matrix.
+Project $x_i$ on first $e$ right-singular vectors $v_1, ..., v_e$.\\
+$\Rightarrow  E(x) = x^{\top} [v_1, ..., v_e]$, $D(x) = x^{\top} [v_1, ..., v_e]^{\top}$.
+
+\subsection*{Probability}
+$\mathcal{N}(x;\mu,\Sigma)=\det(2\pi\Sigma)^{-1/2}exp[(x-\mu)^T\Sigma^{-1}(x-\mu)/2]$
+
+$KL(p,q)=\int p(x)\log(\frac{p(x)}{q(x)})dx=\E^{p}[-log(\frac{q(x)}{p(x)})]\stackrel{\text{Jen.}}{\geq}-log(E^{p}[\frac{q(x)}{p(x)}])=0$
+
+$KL(p,q\sim\mathcal{N})\stackrel{*}{=}\frac{1}{2}[\log\frac{\det\Sigma_q}{\det\Sigma_p}-d+\text{Tr}(\Sigma_q^{-1}\Sigma_p)+(\mu_p-\mu_q)^T\Sigma_q^{-1}(\mu_p-\mu_q)]$
+\subsection*{Autoencoding Variational Bayes$\;\;\;$}
+$\log p_{\theta}(x^{1},\dots,x^n)=\sum_i\log p_{\theta}(x^{i})=\sum_i\E_{q_{\phi}(\cdot|x^i)}[\log(\frac{q_{\phi}(z|x^i)}{p_{\theta}(z|x^i)})]+\E_{q_{\phi}(\cdot|x^i)}[\log\frac{p_{\theta}(z,x^i)}{q_{\phi}(z|x^i)}]=\sum_i KL(q_{\phi}(\cdot|x^i),p_{\theta}(\cdot|x^i))+\mathcal{L}(\theta;\phi,x^i)=\sum_i KL(\cdots)+ELBO_{\phi,\theta}$
+
+Goal: min: $-ELBO_{\phi,\theta}\stackrel{*}{=}KL(q_{\phi}(\cdot|x^i),p_{\theta}(\cdot))-\E_{q_{\phi}(\cdot|x^i)}[\log p_{\theta}(x^i|z)]$
+
+\textbf{VAE}: $q_{\phi}(z|x)\sim\mathcal{N}\big(\mu(x),\text{diag}(\sigma^2(x))\big),p_{\theta}(x|z)\sim\mathcal{N}(x'(z),I),p_{\theta}=\mathcal{N}(0,I)$
+
+$ELBO=-\frac{1}{2}[\big(\sum^d_j \sigma^2_j(x^i)-\log\sigma^2_j(x^i)\big)-d+||\mu(x^i)||^2]-\frac{1}{2}\E_{q_{\phi}(z|x^i)}[||x^i-x'||^2]+const.$
+

@@ -1,0 +1,2024 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.22)  12 AUG 2019 21:04
+entering extended mode
+**./mmpi.tex
+(mmpi.tex
+LaTeX2e <2018-04-01> patch level 5
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\memoir\memoir.cls"
+Document Class: memoir 2018/12/12 v3.7h configurable book, report, article docu
+ment class
+\onelineskip=\skip41
+\lxvchars=\skip42
+\xlvchars=\skip43
+\@memcnta=\count80
+\c@@memmarkcntra=\count81
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty
+"
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ifetex\ifetex.sty"
+Package: ifetex 2018/03/31 v1.2a ifetex
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\plain\ifetex\ifetex.tex")
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.st
+y"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.
+sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+\stockheight=\skip44
+\stockwidth=\skip45
+\trimtop=\skip46
+\trimedge=\skip47
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\memoir\mem9.clo"
+File: mem9.clo 2008/01/30 v0.4 memoir class 9pt size option
+)
+\binding=\skip48
+\spinemargin=\skip49
+\foremargin=\skip50
+\uppermargin=\skip51
+\lowermargin=\skip52
+\headdrop=\skip53
+\normalrulethickness=\skip54
+\mem@maxheadheight=\skip55
+\mem@maxfootheight=\skip56
+\headwidth=\skip57
+\c@storedpagenumber=\count82
+\memPD=\dimen102
+\m@mabparskip=\skip58
+\thanksmarkwidth=\skip59
+\thanksmarksep=\skip60
+\droptitle=\skip61
+\c@book=\count83
+\c@part=\count84
+\c@chapter=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@subparagraph=\count90
+\beforechapskip=\skip62
+\midchapskip=\skip63
+\afterchapskip=\skip64
+\chapindent=\skip65
+\bottomsectionskip=\skip66
+\secindent=\skip67
+\beforesecskip=\skip68
+\aftersecskip=\skip69
+\subsecindent=\skip70
+\beforesubsecskip=\skip71
+\aftersubsecskip=\skip72
+\subsubsecindent=\skip73
+\beforesubsubsecskip=\skip74
+\aftersubsubsecskip=\skip75
+\paraindent=\skip76
+\beforeparaskip=\skip77
+\afterparaskip=\skip78
+\subparaindent=\skip79
+\beforesubparaskip=\skip80
+\aftersubparaskip=\skip81
+\pfbreakskip=\skip82
+\c@@ppsavesec=\count91
+\c@@ppsaveapp=\count92
+\ragrparindent=\dimen103
+\everylistparindent=\dimen104
+\parsepi=\skip83
+\topsepi=\skip84
+\itemsepi=\skip85
+\parsepii=\skip86
+\topsepii=\skip87
+\topsepiii=\skip88
+\itemsepii=\skip89
+\itemsepiii=\skip90
+\partopsepii=\skip91
+\partopsepiii=\skip92
+\m@msavetopsep=\skip93
+\m@msavepartopsep=\skip94
+\@enLab=\toks14
+\abstitleskip=\skip95
+\absleftindent=\skip96
+\abs@leftindent=\dimen105
+\absrightindent=\skip97
+\absparindent=\skip98
+\absparsep=\skip99
+\c@vslineno=\count93
+\c@poemline=\count94
+\c@modulo@vs=\count95
+\c@memfvsline=\count96
+\vleftskip=\skip100
+\vrightskip=\skip101
+\stanzaskip=\skip102
+\versewidth=\skip103
+\vgap=\skip104
+\vindent=\skip105
+\vleftmargin=\dimen106
+\c@verse=\count97
+\c@chrsinstr=\count98
+\beforepoemtitleskip=\skip106
+\afterpoemtitleskip=\skip107
+\c@poem=\count99
+\beforePoemTitleskip=\skip108
+\midPoemTitleskip=\skip109
+\afterPoemTitleskip=\skip110
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
+\col@sep=\dimen107
+\ar@mcellbox=\box26
+\extrarowheight=\dimen108
+\NC@list=\toks15
+\extratabsurround=\skip111
+\backup@length=\skip112
+\ar@cellbox=\box27
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\dcolumn.sty"
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\delarray.sty
+"
+Package: delarray 2014/10/28 v1.01 array delimiter package (DPC)
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\tabularx.sty
+"
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+\TX@col@width=\dimen109
+\TX@old@table=\dimen110
+\TX@old@col=\dimen111
+\TX@target=\dimen112
+\TX@delta=\dimen113
+\TX@cols=\count100
+\TX@ftn=\toks16
+)
+\heavyrulewidth=\dimen114
+\lightrulewidth=\dimen115
+\cmidrulewidth=\dimen116
+\belowrulesep=\dimen117
+\belowbottomsep=\dimen118
+\aboverulesep=\dimen119
+\abovetopsep=\dimen120
+\cmidrulesep=\dimen121
+\cmidrulekern=\dimen122
+\defaultaddspace=\dimen123
+\@cmidla=\count101
+\@cmidlb=\count102
+\@aboverulesep=\dimen124
+\@belowrulesep=\dimen125
+\@thisruleclass=\count103
+\@lastruleclass=\count104
+\@thisrulewidth=\dimen126
+\ctableftskip=\skip113
+\ctabrightskip=\skip114
+\abovecolumnspenalty=\count105
+\@linestogo=\count106
+\@cellstogo=\count107
+\@cellsincolumn=\count108
+\crtok=\toks17
+\@mincolumnwidth=\dimen127
+\c@newflo@tctr=\count109
+\mem@margin@floatbox=\box28
+\@contcwidth=\skip115
+\@contindw=\skip116
+\abovecaptionskip=\skip117
+\belowcaptionskip=\skip118
+\subfloattopskip=\skip119
+\subfloatcapskip=\skip120
+\subfloatcaptopadj=\skip121
+\subfloatbottomskip=\skip122
+\subfloatlabelskip=\skip123
+\subfloatcapmargin=\dimen128
+\c@@contsubnum=\count110
+\m@mscap@capbox=\box29
+\m@mscap@fbox=\box30
+\sidecapsep=\dimen129
+\sidecapwidth=\dimen130
+\m@m@tempdima=\dimen131
+\m@mscapraise=\dimen132
+\sidecapraise=\dimen133
+\m@mscapmainwidth=\dimen134
+\m@mscaplkern=\dimen135
+\beforeepigraphskip=\skip124
+\afterepigraphskip=\skip125
+\epigraphwidth=\skip126
+\epigraphrule=\skip127
+LaTeX Info: Redefining \em on input line 7592.
+LaTeX Info: Redefining \emph on input line 7600.
+\tocentryskip=\skip128
+\tocbaseline=\skip129
+\cftparskip=\skip130
+\cftbeforebookskip=\skip131
+\cftbookindent=\dimen136
+\cftbooknumwidth=\dimen137
+\cftbeforepartskip=\skip132
+\cftpartindent=\skip133
+\cftpartnumwidth=\skip134
+\cftbeforechapterskip=\skip135
+\cftchapterindent=\skip136
+\cftchapternumwidth=\skip137
+\cftbeforesectionskip=\skip138
+\cftsectionindent=\skip139
+\cftsectionnumwidth=\skip140
+\cftbeforesubsectionskip=\skip141
+\cftsubsectionindent=\skip142
+\cftsubsectionnumwidth=\skip143
+\cftbeforesubsubsectionskip=\skip144
+\cftsubsubsectionindent=\skip145
+\cftsubsubsectionnumwidth=\skip146
+\cftbeforeparagraphskip=\skip147
+\cftparagraphindent=\skip148
+\cftparagraphnumwidth=\skip149
+\cftbeforesubparagraphskip=\skip150
+\cftsubparagraphindent=\skip151
+\cftsubparagraphnumwidth=\skip152
+\prechapterprecisshift=\dimen138
+\c@maxsecnumdepth=\count111
+\bibindent=\dimen139
+\bibitemsep=\skip153
+\indexcolsep=\skip154
+\indexrule=\skip155
+\indexmarkstyle=\toks18
+\@indexbox=\insert199
+\glossarycolsep=\dimen140
+\glossaryrule=\dimen141
+\sideparvshift=\skip156
+\sideins=\insert198
+\sidebartopsep=\skip157
+\sidebarhsep=\skip158
+\sidebarvsep=\skip159
+\sidebarwidth=\skip160
+\footmarkwidth=\skip161
+\footmarksep=\skip162
+\footparindent=\skip163
+\footinsdim=\skip164
+\footinsv@r=\insert197
+\@mpfootinsv@r=\insert196
+\m@m@k=\count112
+\m@m@h=\dimen142
+\m@mipn@skip=\skip165
+\sidefootins=\insert195
+\sidefootadjust=\skip166
+\sidefootheight=\skip167
+\sidefoothsep=\skip168
+\sidefootvsep=\skip169
+\sidefootwidth=\skip170
+\m@mdownsf=\skip171
+\c@sidefootnote=\count113
+\sidefootmarkwidth=\skip172
+\sidefootmarksep=\skip173
+\sidefootparindent=\skip174
+\c@pagenote=\count114
+\c@pagenoteshadow=\count115
+\mem@pn@lastkern=\skip175
+\every@verbatim=\toks19
+\afterevery@verbatim=\toks20
+\verbatim@line=\toks21
+\tab@position=\count116
+\verbatim@in@stream=\read1
+\verbatimindent=\skip176
+\verbatim@out=\write3
+\bvboxsep=\skip177
+\c@memfbvline=\count117
+\c@bvlinectr=\count118
+\bvnumlength=\skip178
+\fb@frw=\dimen143
+\fb@frh=\dimen144
+\FrameRule=\dimen145
+\FrameSep=\dimen146
+\c@cp@cntr=\count119
+LaTeX Info: Redefining \: on input line 12114.
+LaTeX Info: Redefining \! on input line 12116.
+\c@ism@mctr=\count120
+\c@xsm@mctr=\count121
+\c@csm@mctr=\count122
+\c@ksm@mctr=\count123
+\c@xksm@mctr=\count124
+\c@cksm@mctr=\count125
+\c@msm@mctr=\count126
+\c@xmsm@mctr=\count127
+\c@cmsm@mctr=\count128
+\c@bsm@mctr=\count129
+\c@workm@mctr=\count130
+\c@sheetsequence=\count131
+\c@lastsheet=\count132
+\c@lastpage=\count133
+\c@figure=\count134
+\c@lofdepth=\count135
+\cftbeforefigureskip=\skip179
+\cftfigureindent=\skip180
+\cftfigurenumwidth=\skip181
+\c@table=\count136
+\c@lotdepth=\count137
+\cftbeforetableskip=\skip182
+\cfttableindent=\skip183
+\cfttablenumwidth=\skip184
+Package abstract [2008/07/23] emulated by memoir.
+Package appendix [2008/07/23] emulated by memoir.
+Package booktabs [2016/05/16] emulated by memoir.
+Package ccaption [2008/07/23] emulated by memoir.
+Package changepage [2008/07/23] emulated by memoir.
+Package chngcntr [2008/07/23] emulated by memoir.
+Package chngpage [2008/07/23] emulated by memoir.
+Package crop emulated by memoir.
+Package enumerate [2008/07/23] emulated by memoir.
+Package epigraph [2008/07/23] emulated by memoir.
+Package ifmtarg [2008/07/23] emulated by memoir.
+Package index [2008/07/23] emulated by memoir.
+Package makeidx [2008/07/23] emulated by memoir.
+Package moreverb [2008/07/23] emulated by memoir.
+Package mparhack [2008/07/23] emulated by memoir.
+Package needspace [2008/07/23] emulated by memoir.
+Package newfile [2008/07/23] emulated by memoir.
+Package nextpage [2008/07/23] emulated by memoir.
+Package pagenote [2008/07/23] emulated by memoir.
+Package parskip [2008/07/23] emulated by memoir.
+Package patchcmd [2008/07/23] emulated by memoir.
+Package setspace [2008/07/23] emulated by memoir.
+Package shortvrb [2008/07/23] emulated by memoir.
+Package showidx [2008/07/23] emulated by memoir.
+Package titleref [2008/07/23] emulated by memoir.
+Package titling [2008/07/23] emulated by memoir.
+Package tocbibind [2008/07/23] emulated by memoir.
+Package tocloft [2008/07/23] emulated by memoir.
+Package tocvsec2 [2008/07/23] emulated by memoir.
+Package verbatim [2008/07/23] emulated by memoir.
+Package verse [2008/07/23] emulated by memoir.
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ot1enc.def"
+File: ot1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding OT1 on input line 48.
+)) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.sty
+"
+Package: babel 2018/09/26 3.24 The Babel package
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.def"
+File: switch.def 2018/09/26 3.24 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-english\englis
+h.ldf"
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2018/09/26 3.24 Babel common definitions
+\babel@savecnt=\count138
+\U@D=\dimen147
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txtbabel.def
+")
+\bbl@dirlevel=\count139
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2018/04/06 v1.3b Input encoding file
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\mathpazo.sty"
+Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup4
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
+y"
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip185
+
+For additional information on amsmath, use the `?' option.
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks24
+\ex@=\dimen148
+)) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.st
+y"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen149
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count140
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count141
+\leftroot@=\count142
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count143
+\DOTSCASE@=\count144
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box31
+\strutbox@=\box32
+\big@size=\dimen150
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count145
+\c@MaxMatrixCols=\count146
+\dotsspace@=\muskip10
+\c@parentequation=\count147
+\dspbrk@lvl=\count148
+\tag@help=\toks25
+\row@=\count149
+\column@=\count150
+\maxfields@=\count151
+\andhelp@=\toks26
+\eqnshift@=\dimen151
+\alignsep@=\dimen152
+\tagshift@=\dimen153
+\tagwidth@=\dimen154
+\totwidth@=\dimen155
+\lineht@=\dimen156
+\@envbody=\toks27
+\multlinegap=\skip186
+\multlinetaggap=\skip187
+\mathdisplay@stack=\toks28
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.st
+y"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.st
+y"
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup7
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ntheorem\ntheorem.st
+y"
+Style `ntheorem', Version 1.33 <2011/08/15>
+Package: ntheorem 2011/08/15 1.33
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\theorem@style=\toks29
+\theorem@@style=\toks30
+\theorembodyfont=\toks31
+\theoremnumbering=\toks32
+\theorempreskipamount=\skip188
+\theorempostskipamount=\skip189
+\theoremframepreskipamount=\skip190
+\theoremframepostskipamount=\skip191
+\theoreminframepreskipamount=\skip192
+\theoreminframepostskipamount=\skip193
+\theorem@preskip=\toks33
+\theorem@postskip=\toks34
+\theorem@framepreskip=\toks35
+\theorem@framepostskip=\toks36
+\theorem@inframepreskip=\toks37
+\theorem@inframepostskip=\toks38
+\theoremindent=\dimen157
+\theorem@indent=\dimen158
+\theoremrightindent=\dimen159
+\theorem@rightindent=\dimen160
+\theoremheaderfont=\toks39
+\theoremseparator=\toks40
+\theoremprework=\toks41
+\theorempostwork=\toks42
+\theoremsymbol=\toks43
+\qedsymbol=\toks44
+\theoremkeyword=\toks45
+\qedsymbol=\toks46
+\thm@topsep=\skip194
+\thm@topsepadd=\skip256
+Package ntheorem Info: Option `thmmarks' loaded on input line 1175.
+\c@endNonectr=\count152
+\c@currNonectr=\count153
+\mysavskip=\skip257
+Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
+ line 1175.
+\thm@amstmpdepth=\dimen161
+\tagwidth=\dimen162
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.st
+y"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks47
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.st
+y"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graphic
+s.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex.
+def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen163
+\Gin@req@width=\dimen164
+) ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\soul\soul.sty"
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks48
+\SOUL@lasttoken=\toks49
+\SOUL@cmds=\toks50
+\SOUL@buffer=\toks51
+\SOUL@token=\toks52
+\SOUL@spaceskip=\skip258
+\SOUL@ttwidth=\dimen165
+\SOUL@uldp=\dimen166
+\SOUL@ulht=\dimen167
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.st
+y"
+Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count154
+\calc@Bcount=\count155
+\calc@Adimen=\dimen168
+\calc@Bdimen=\dimen169
+\calc@Askip=\skip259
+\calc@Bskip=\skip260
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count156
+\calc@Cskip=\skip261
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
+Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.
+sty"
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwarerr
+.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.s
+ty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+))
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.c
+fg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+\AM@pagewidth=\dimen170
+\AM@pageheight=\dimen171
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.de
+f"
+File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box33
+\AM@global@opts=\toks53
+\AM@toc@title=\toks54
+\c@AM@survey=\count157
+\AM@templatesizebox=\box34
+) (config/conf_extrapackages.tex
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\varioref.sty"
+Package: varioref 2016/02/16 v1.5c package for extended references (FMi)
+\c@vrcnt=\count158
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\datetime\datetime.st
+y"
+Package: datetime 2015/03/20 v2.60 Date Time Package
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.st
+y"
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count159
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fmtcount\fmtcount.st
+y"
+Package: fmtcount 2017/12/24 v3.05
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.te
+x"
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.t
+ex"
+\XKV@toks=\toks55
+\XKV@tempa@toks=\toks56
+)
+\XKV@depth=\count160
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fmtcount\fcprefix.st
+y"
+Package: fcprefix 2012/09/28
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fmtcount\fcnumparser
+.sty"
+Package: fcnumparser 2017/06/15
+\fc@digit@counter=\count161
+))
+\c@padzeroesN=\count162
+\fc@tmpcatcode=\count163
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fmtcount\fc-english.
+def"
+File: fc-english.def 2016/01/12
+)
+\@DT@modctr=\count164
+\@ordinalctr=\count165
+\@orgargctr=\count166
+\@strctr=\count167
+\@tmpstrctr=\count168
+\@DT@loopN=\count169
+\@DT@X=\count170
+
+
+Package fmtcount Warning: \ordinal already defined use \FCordinal instead. on i
+nput line 484.
+
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\datetime\datetime-de
+faults.sty"
+Package: datetime-defaults 2013/09/10
+)
+\@day=\count171
+\@month=\count172
+\@year=\count173
+\c@HOUR=\count174
+\c@HOURXII=\count175
+\c@MINUTE=\count176
+\c@TOHOUR=\count177
+\c@TOMINUTE=\count178
+\c@SECOND=\count179
+\currenthour=\count180
+\currentminute=\count181
+\currentsecond=\count182
+Package datetime Info: No datetime.cfg file found, using default settings on in
+put line 308.
+\@dtctr=\count183
+\dayofyear=\count184
+\dayofweek=\count185
+LaTeX Info: Redefining \today on input line 736.
+\dt@a=\toks57
+\dt@b=\toks58
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mathtools.
+sty"
+Package: mathtools 2019/07/31 v1.22 mathematical typesetting tools
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mhsetup.st
+y"
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count186
+\l_MT_multwidth_dim=\dimen172
+\origjot=\skip262
+\l_MT_shortvdotswithinadjustabove_dim=\dimen173
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen174
+\l_MT_above_intertext_sep=\dimen175
+\l_MT_below_intertext_sep=\dimen176
+\l_MT_above_shortintertext_sep=\dimen177
+\l_MT_below_shortintertext_sep=\dimen178
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\esvect\esvect.sty"
+Package: esvect 
+\symesvector=\mathgroup8
+LaTeX Font Info:    Redeclaring math symbol \fldr on input line 38.
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.st
+y"
+\lst@mode=\count187
+\lst@gtempboxa=\box35
+\lst@token=\toks59
+\lst@length=\count188
+\lst@currlwidth=\dimen179
+\lst@column=\count189
+\lst@pos=\count190
+\lst@lostspace=\dimen180
+\lst@width=\dimen181
+\lst@newlines=\count191
+\lst@lineno=\count192
+\lst@maxwidth=\dimen182
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.sty
+"
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+\c@lstnumber=\count193
+\lst@skipnumbers=\count194
+\lst@framebox=\box36
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.cf
+g"
+File: listings.cfg 2019/02/27 1.8b listings configuration
+))
+Package: listings 2019/02/27 1.8b (Carsten Heinz)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.st
+y"
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang2.st
+y"
+File: lstlang2.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang3.st
+y"
+File: lstlang3.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.st
+y"
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang2.st
+y"
+File: lstlang2.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang3.st
+y"
+File: lstlang3.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.st
+y"
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang2.st
+y"
+File: lstlang2.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang3.st
+y"
+File: lstlang3.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.sty
+"
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfcprot\pdfcprot.st
+y"
+Package: pdfcprot 2002/02/27 v1.5 character protruding using pdflatex (cs)
+\c@CPROT@family=\count266
+\c@CPROT@family@temp=\count267
+\c@CPROT@series=\count268
+\c@CPROT@series@temp=\count269
+\c@CPROT@shape=\count270
+\c@CPROT@shape@temp=\count271
+\c@CPROT@size=\count272
+\c@CPROT@size@temp=\count273
+\c@CPROT@temp@chars=\count274
+Package pdfcprot Info: You've requested char protruding for TS1 encoding
+(pdfcprot)             but TS1 encoding doesn't seem to be loaded.
+(pdfcprot)             Maybe you forgot a '\usepackage{textcomp}'. on input lin
+e 805.
+Package pdfcprot Info: You've requested char protruding for TS1 encoding
+(pdfcprot)             but TS1 encoding doesn't seem to be loaded.
+(pdfcprot)             Maybe you forgot a '\usepackage{textcomp}'. on input lin
+e 805.
+Package pdfcprot Info: You've requested char protruding for TS1 encoding
+(pdfcprot)             but TS1 encoding doesn't seem to be loaded.
+(pdfcprot)             Maybe you forgot a '\usepackage{textcomp}'. on input lin
+e 805.
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\multirow\multirow.st
+y"
+Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
+\multirow@colwidth=\skip263
+\multirow@cntb=\count275
+\multirow@dima=\skip264
+\bigstrutjot=\dimen183
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
+\c@tracingmulticols=\count276
+
+
+Package multicol Warning: May not work with the twocolumn option on input line 
+141.
+
+\mult@box=\box37
+\multicol@leftmargin=\dimen184
+\c@unbalance=\count277
+\c@collectmore=\count278
+\doublecol@number=\count279
+\multicoltolerance=\count280
+\multicolpretolerance=\count281
+\full@width=\dimen185
+\page@free=\dimen186
+\premulticols=\dimen187
+\postmulticols=\dimen188
+\multicolsep=\skip265
+\multicolbaselineskip=\skip266
+\partial@page=\box38
+\last@line=\box39
+\maxbalancingoverflow=\dimen189
+\mult@rightbox=\box40
+\mult@grightbox=\box41
+\mult@gfirstbox=\box42
+\mult@firstbox=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\c@columnbadness=\count282
+\c@finalcolumnbadness=\count283
+\last@try=\dimen190
+\multicolovershoot=\dimen191
+\multicolundershoot=\dimen192
+\mult@nat@firstbox=\box61
+\colbreak@box=\box62
+\mc@col@check@num=\count284
+))
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\adjustbox\adjustbox.
+sty"
+Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\adjustbox\adjcalc.st
+y"
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\adjustbox\trimclip.s
+ty"
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\collectbox\collectbo
+x.sty"
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box63
+)
+\tc@llx=\dimen193
+\tc@lly=\dimen194
+\tc@urx=\dimen256
+\tc@ury=\dimen257
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\adjustbox\tc-pdftex.
+def"
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen258
+\adjbox@Height=\dimen259
+\adjbox@Depth=\dimen260
+\adjbox@Totalheight=\dimen261
+\adjbox@pwidth=\dimen262
+\adjbox@pheight=\dimen263
+\adjbox@pdepth=\dimen264
+\adjbox@ptotalheight=\dimen265
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ifoddpage\ifoddpage.
+sty"
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count285
+LaTeX Info: Redefining \checkoddpage on input line 45.
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\varwidth\varwidth.st
+y"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box64
+\sift@deathcycles=\count286
+\@vwid@loff=\dimen266
+\@vwid@roff=\dimen267
+)) (config/conf_layoutsetup.tex
+
+******************************************************
+Stock height and width: 845.04684pt by 597.50787pt
+Top and edge trims: 0pt and 0pt
+Page height and width: 845.04684pt by 597.50787pt
+Text height and width: 599pt by 452pt
+Spine and edge margins: 72.26999pt and 73.23788pt
+Upper and lower margins: 124.53117pt and 121.51567pt
+Headheight and headsep: 11pt and 16.26118pt
+Footskip: 23.84923pt
+Columnsep and columnseprule: 10pt and 0pt
+Marginparsep and marginparwidth: 10pt and 52.26999pt
+Sidecapsep and sidecapwidth: 10pt and 4pt
+Sidebarhsep and sidebarwidth: 10pt and 4pt
+Sidebarvsep and sidebartopsep: 10pt and 0pt
+Sidebarheight: 596.99997pt
+Sidefoothsep and sidefootwidth: 10pt and 4pt
+Sidefootvsep and sidefootheight: 10pt and 596.99997pt
+******************************************************
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\vmargin\vmargin.sty"
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+\PaperWidth=\dimen268
+\PaperHeight=\dimen269
+)) (config/conf_theoremsetup.tex
+\c@currtheoremctr=\count287
+\c@endtheoremctr=\count288
+\c@theorem=\count289
+\c@currexamplectr=\count290
+\c@endexamplectr=\count291
+\c@currremarkctr=\count292
+\c@endremarkctr=\count293
+\c@currcorollaryctr=\count294
+\c@endcorollaryctr=\count295
+\c@currdefinitionctr=\count296
+\c@enddefinitionctr=\count297
+\c@currlemmactr=\count298
+\c@endlemmactr=\count299
+\c@currpropositionctr=\count300
+\c@endpropositionctr=\count301
+\c@currgenericthmctr=\count302
+\c@endgenericthmctr=\count303
+\c@genericthm=\count304
+\c@currproofctr=\count305
+\c@endproofctr=\count306
+)
+\c@proof=\count307
+ (config/conf_macrosetup.tex)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.st
+y"
+Package: hyperref 2018/09/30 v6.88a Hypertext links for LaTeX
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hy
+perref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-ge
+neric.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty
+"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.s
+ty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen270
+\Hy@linkcounter=\count308
+\Hy@pagecounter=\count309
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2018/09/30 v6.88a Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count310
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperref.cf
+g"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4409.
+Package hyperref Info: Hyper figures OFF on input line 4535.
+Package hyperref Info: Link nesting OFF on input line 4540.
+Package hyperref Info: Hyper index ON on input line 4543.
+Package hyperref Info: Plain pages OFF on input line 4550.
+Package hyperref Info: Backreferencing OFF on input line 4555.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4788.
+\c@Hy@tempcnt=\count311
+ ("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5141.
+\XeTeXLinkMargin=\dimen271
+\Fld@menulength=\count312
+\Field@Width=\dimen272
+\Fld@charsize=\dimen273
+Package hyperref Info: Hyper figures OFF on input line 6396.
+Package hyperref Info: Link nesting OFF on input line 6401.
+Package hyperref Info: Hyper index ON on input line 6404.
+Package hyperref Info: backreferencing OFF on input line 6411.
+Package hyperref Info: Link coloring ON on input line 6414.
+Package hyperref Info: Link coloring with OCG OFF on input line 6421.
+Package hyperref Info: PDF/A mode OFF on input line 6426.
+LaTeX Info: Redefining \ref on input line 6466.
+LaTeX Info: Redefining \pageref on input line 6470.
+\Hy@abspage=\count313
+\c@Item=\count314
+\c@Hfootnote=\count315
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\memoir\memhfixc.sty"
+Package: memhfixc 2013/05/30 v1.17 nameref/hyperref package fixes for memoir cl
+ass
+\c@memhycontfloat=\count316
+\c@Hpagenote=\count317
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+"
+File: hpdftex.def 2018/09/30 v6.88a Hyperref driver for pdfTeX
+\Fld@listcount=\count318
+\c@bookmark@seq@number=\count319
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfilech
+eck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip267
+)
+
+LaTeX Warning: Unused global option(s):
+    [titlepage].
+
+(mmpi.aux)
+\openout1 = `mmpi.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 89.
+
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1pplx.fd"
+File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mkii
+"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count320
+\scratchdimen=\dimen274
+\scratchbox=\box65
+\nofMPsegments=\count321
+\nofMParguments=\count322
+\everyMPshowfont=\toks60
+\MPscratchCnt=\count323
+\MPscratchDim=\dimen275
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
+\everyMPtoPDFconversion=\toks61
+)
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-ba
+se.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\AtBeginShipoutBox=\box66
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.s
+ty"
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+\c@lstlisting=\count326
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <9> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 89.
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <10> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 89.
+Package pdfcprot Info: I didn't find pplxbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfcprot\pplmnOT1.cp
+a")
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <8> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 89.
+Package pdfcprot Info: I didn't find pplxbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <7> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 89.
+Package pdfcprot Info: I didn't find pplxbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssbxnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find pplxmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmnOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <7> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 89.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 89.
+
+Package pdfcprot Info: I didn't find cmssmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <9> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 89.
+
+Package pdfcprot Info: I didn't find cmssmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <8> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 89.
+
+Package pdfcprot Info: I didn't find cmssmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmitOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmslOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmslOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmslOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package pdfcprot Info: I didn't find cmssmslOT1.cpa.
+(pdfcprot)              As a fallback I will try pplmnOT1.cpa. on input line 89
+.
+Package pdfcprot Info: File pplmnOT1.cpa{} used for the adjustment
+(pdfcprot)             of the char protruding. It seems that it isn't the one
+(pdfcprot)             you intended to use. on input line 89.
+Package hyperref Info: Link coloring ON on input line 89.
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitles
+tring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count327
+LaTeX Info: Redefining \Ref on input line 515.
+)
+Redoing nameref's sectioning
+Redoing nameref's label
+LaTeX Info: Redefining \nameref on input line 89.
+LaTeX Info: Redefining \ref on input line 89.
+LaTeX Info: Redefining \pageref on input line 89.
+LaTeX Info: Redefining \nameref on input line 89.
+(mmpi.out) (mmpi.out)
+\@outlinefile=\write4
+\openout4 = `mmpi.out'.
+
+LaTeX Info: Redefining \Ref on input line 89.
+ [1
+
+
+
+{C:/Users/EAB/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 108.
+ (mmpi.toc
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 3.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omlzplm.fd"
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 3.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omszplm.fd"
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 3.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omxzplm.fd"
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 3.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.fd"
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 3.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 3.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 3.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 3.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Try loading font information for U+esvect on input line 3.
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\esvect\uesvect.fd"
+File: uesvect.fd 
+)
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 17.
+
+
+("C:\Users\EAB\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ufplmbb.fd"
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+))
+
+Class memoir Warning: The material used in the headers is too large
+(10.0pt) for the given head height (0.0pt), it is recommended to
+either increase the head height or redesign the header
+(in both cases you will find help in the memoir manual). on input line 108.
+
+
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.108 \mainmatter
+                  [1
+
+
+
+
+] (sections/sec_f_reihen.tex
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 6.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 6.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 6.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 6.
+
+Overfull \hbox (9.82982pt too wide) in paragraph at lines 2--13
+[] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/pplx/bx/n' in size <7.5> not available
+(Font)              Font shape `OT1/pplx/b/n' tried instead on input line 25.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 25.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.81505pt on input line 25.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.93938pt on input line 25.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 4.68907pt on input line 25.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.81505pt on input line 25.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.93938pt on input line 25.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 4.68907pt on input line 25.
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <4.50005> not available
+(Font)              size <5> substituted on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/esvect/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/esvect/m/n' in size <4.50005> not available
+(Font)              size <5> substituted on input line 25.
+
+Package hyperref Info: bookmark level for unknown genericthm defaults to 0 on i
+nput line 25.
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+[]\OT1/pplx/m/it/7.5 Sei $\OML/zplm/m/it/7.5 f \OMS/zplm/m/n/7.5 2 \OML/zplm/m/
+it/7.5 C[]\OT1/zplm/m/n/7.5 (\U/fplmbb/m/n/7.5 R\OT1/zplm/m/n/7.5 /\OML/zplm/m/
+it/7.5 L\U/fplmbb/m/n/7.5 Z\OT1/zplm/m/n/7.5 )$\OT1/pplx/m/it/7.5 . Dann gilt $
+\OML/zplm/m/it/7.5 f\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) 
+=
+ []
+
+LaTeX Font Info:    Font shape `OT1/pplx/bx/it' in size <7.5> not available
+(Font)              Font shape `OT1/pplx/b/it' tried instead on input line 67.
+LaTeX Font Info:    Try loading font information for OMS+pplx on input line 73.
+
+LaTeX Font Info:    No file OMSpplx.fd. on input line 73.
+
+LaTeX Font Warning: Font shape `OMS/pplx/m/it' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbullet' on input line 73.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 73.
+
+
+LaTeX Font Warning: Font shape `OMS/pplx/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 74.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+[]\OT1/pplx/m/it/7.5 Sei $\OML/zplm/m/it/7.5 f \OMS/zplm/m/n/7.5 2 \OML/zplm/m/
+it/7.5 C[]\OT1/zplm/m/n/7.5 (\U/fplmbb/m/n/7.5 R\OT1/zplm/m/n/7.5 /\OT1/pplx/m/
+n/7.5 2\OML/zplm/m/it/7.5 \U/fplmbb/m/n/7.5 Z\OT1/zplm/m/n/7.5 )$ \OT1/pplx/m/
+it/7.5 und $\OML/zplm/m/it/7.5 K\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/ppl
+x/m/n/7.5 , \OML/zplm/m/it/7.5 t\OT1/zplm/m/n/7.5 ) =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+[]\OT1/pplx/m/it/7.5 sind arith-metis-che Mit-tel von Fourier-
+ []
+
+
+Underfull \hbox (badness 1424) in paragraph at lines 136--137
+\OT1/pplx/m/it/7.5 die N-te Fejersche Summe $\OML/zplm/m/it/7.5 []f\OT1/zplm/
+m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) = [] [][] [][] \OML/zplm/m/it/
+7.5 f[] []\OT1/zplm/m/n/7.5 ([]\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 )$\OT1/ppl
+x/m/it/7.5 . Dann gilt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
+[]\OT1/pplx/m/it/7.5 sind endliche Lin-ear-kom-bi-na-tio-nen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--176
+[]\OT1/pplx/m/it/7.5 Zeige: 1) $[][] \OMS/zplm/m/n/7.5 j\OML/zplm/m/it/7.5 @[]f
+[]e[]\OMS/zplm/m/n/7.5 j\OT1/pplx/m/n/7.5 ,  [][] \OMS/zplm/m/n/7.5 j\OML/zplm/
+m/it/7.5 @[]f[]e[]\OMS/zplm/m/n/7.5 j \OML/zplm/m/it/7.5 < \OMS/zplm/m/n/7.5 1 
+)$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--176
+\OT1/pplx/m/it/7.5 Ableitung und Summe konnen ver-tauscht wer-den, Al-ter-na-t
+iv: In
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--176
+[][] [][] []\OT1/zplm/m/n/7.5 (\OMS/zplm/m/n/7.5  \OML/zplm/m/it/7.5 n[]\OT1/zp
+lm/m/n/7.5 )[](\OML/zplm/m/it/7.5 in\OT1/zplm/m/n/7.5 )[]\OML/zplm/m/it/7.5 e[]
+f[]$ \OT1/pplx/m/it/7.5 konnen limes und Summe ver-
+ []
+
+) (sections/sec_f_transf.tex
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
+[]\OT1/pplx/m/it/7.5 Die Hermite-Funktionen
+ []
+
+
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+ [1
+
+
+
+
+]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 86.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 86.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37807pt on input line 86.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.29405pt on input line 86.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 86.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 86.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 86.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\subset' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\in' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\infty' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 124.
+
+
+Underfull \hbox (badness 1112) in paragraph at lines 135--136
+[]\OT1/pplx/m/it/7.5 Fur $\OML/zplm/m/it/7.5 ' \OMS/zplm/m/n/7.5 2 \OML/zplm/m
+/it/7.5 C[]\OT1/zplm/m/n/7.5 (\U/fplmbb/m/n/7.5 R[]\OT1/zplm/m/n/7.5 )$ \OT1/pp
+lx/m/it/7.5 und $\OML/zplm/m/it/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5  \
+OMS/zplm/m/n/7.5 2 \U/fplmbb/m/n/7.5 N[]$ \OT1/pplx/m/it/7.5 definieren wir $\O
+MS/zplm/m/n/7.5 k\OML/zplm/m/it/7.5 '\OMS/zplm/m/n/7.5 k[] \OT1/zplm/m/n/7.5 =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
+[]\OT1/pplx/m/it/7.5 Keine Schwartz-Funktionen sind nicht glatte Funk-tio-nen, 
+$\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 ,  \OT1/zplm/m/n/7.5 (\OT1/pplx/m/n/7.
+5 1 \OT1/zplm/m/n/7.5 +
+ []
+
+
+Underfull \hbox (badness 6910) in paragraph at lines 225--227
+[]$\OML/zplm/m/it/7.5 g \OMS/zplm/m/n/7.5 2 \OML/zplm/m/it/7.5 L[]$ \OT1/pplx/m
+/n/7.5 ro-ta-tion-sin-vari-ant $ \OT1/zplm/m/n/7.5 =[]\OMS/zplm/m/n/7.5 )  []$ 
+\OT1/pplx/m/n/7.5 ro-ta-tion-sin-vari-ant, da $[]\OT1/zplm/m/n/7.5 (\OML/zplm/m
+/it/7.5 k\OT1/zplm/m/n/7.5 ) =
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 233--234
+\OT1/pplx/m/it/7.5 ster Gat-tung) der Ord-nung $\OML/zplm/m/it/7.5 $ \OT1/pplx
+/m/it/7.5 ist die durch die kon-ver-gente Poten-zreihe $\OML/zplm/m/it/7.5 J[]\
+OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 z\OT1/zplm/m/n/7.5 ) =
+ []
+
+
+Underfull \hbox (badness 3826) in paragraph at lines 303--304
+\OT1/pplx/m/n/7.5 2\OML/zplm/m/it/7.5 i [][] []\OT1/zplm/m/n/7.5 (\OML/zplm/m/
+it/7.5 f\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 p\OT1/zplm/m/n/7.5 ) \OMS/zplm/m
+/n/7.5   [][] [][] \OML/zplm/m/it/7.5 f\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\
+OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x
+ \OT1/zplm/m/n/7.5 = \OT1/pplx/m/n/7.5 2\OML/zplm/m/it/7.5 i [][] []\OT1/zplm/
+m/n/7.5 (\OML/zplm/m/it/7.5 f\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 p\OT1/zplm/
+m/n/7.5 )$\OT1/pplx/m/it/7.5 . $\OT1/zplm/m/n/7.5  []$ \OT1/pplx/m/it/7.5 in
+ []
+
+
+Underfull \hbox (badness 1231) in paragraph at lines 303--304
+\OT1/pplx/m/it/7.5 der pos-i-tiven oder neg-a-tiven ima-ginaren Ebene wahlen,
+ so dass $\OMS/zplm/m/n/7.5 j [][] \OML/zplm/m/it/7.5 f\OT1/zplm/m/n/7.5 (\OML/
+zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 d\OML
+/zplm/m/it/7.5 x\OMS/zplm/m/n/7.5 j 
+ []
+
+
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 323--329
+[][] [] [][]\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 K[]\OT1/zplm/m/n/7.5 (\OMS/zp
+lm/m/n/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 t\OT1/zplm/m/n/7.5 ) \OMS/zp
+lm/m/n/7.5  \OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 )[][](\OML/zplm/m/it/7.5 k\O
+T1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 k 
+\OT1/zplm/m/n/7.5 =$ $[][](\OML/zplm/m/it/7.5 K[]\OT1/zplm/m/n/7.5 (\OMS/zplm/m
+/n/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 t\OT1/zplm/m/n/7.5 ) \OMS/zplm/m
+/n/7.5  \OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 )[][][][](\OML/zplm/m/it/7.5 x\O
+T1/zplm/m/n/7.5 ) =$
+ []
+
+
+Underfull \hbox (badness 3019) in paragraph at lines 333--334
+[]\OT1/pplx/m/it/7.5 Fur $\OML/zplm/m/it/7.5 f\OT1/zplm/m/n/7.5 (\OML/zplm/m/i
+t/7.5 x\OT1/zplm/m/n/7.5 ) = \OML/zplm/m/it/7.5 e[] []\OT1/zplm/m/n/7.5 (\OML/z
+plm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) : [](\OML/zplm/m/it/7.5 k\OT1/zplm/m/n/7.5 ) 
+=$ $[][] \OML/zplm/m/it/7.5 e[] []\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/z
+plm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]dx \OT1/zplm/m/n/7.5 +
+ []
+
+) (sections/sec_ortho.tex
+Underfull \hbox (badness 3168) in paragraph at lines 13--14
+\OML/zplm/m/it/7.5 b[] [] ![]t\OT1/zplm/m/n/7.5 ) [] []$ \OT1/pplx/m/it/7.5 ein
+e Losungs (falls $\OML/zplm/m/it/7.5 a[]\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5
+ b[]$ \OT1/pplx/m/it/7.5 schnell genug ab-fallen fur $\OML/zplm/m/it/7.5 n \OM
+S/zplm/m/n/7.5 !
+ []
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 13--14
+\OMS/zplm/m/n/7.5 1$\OT1/pplx/m/it/7.5 ). Die Ko-ef-fizien-ten wer-den aus den 
+An-fangs-be-din-gun-gen $[][] \OML/zplm/m/it/7.5 a[] [] [] \OT1/zplm/m/n/7.5 =
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 91.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 91.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 91.
+
+
+Underfull \hbox (badness 3240) in paragraph at lines 154--157
+[]$\OML/zplm/m/it/7.5 H[]\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7
+.5 ) \OMS/zplm/m/n/7.5   \OT1/pplx/m/n/7.5 2\OML/zplm/m/it/7.5 xH[]\OT1/zplm/m/
+n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) + \OT1/pplx/m/n/7.5 2\OT1/zplm/m
+/n/7.5 (\OML/zplm/m/it/7.5 n \OT1/zplm/m/n/7.5 + \OT1/pplx/m/n/7.5 1\OT1/zplm/m
+/n/7.5 )\OML/zplm/m/it/7.5 H[]\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/
+m/n/7.5 ) = \OT1/pplx/m/n/7.5 0$\OT1/pplx/m/it/7.5 , $\OML/zplm/m/it/7.5 H[]\OT
+1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) \OMS/zplm/m/n/7.5  
+ []
+
+
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+ [3]
+Underfull \hbox (badness 1735) in paragraph at lines 256--257
+\OT1/pplx/m/it/7.5 Ansatz $\OML/zplm/m/it/7.5 u\OT1/zplm/m/n/7.5 (\OML/zplm/m/i
+t/7.5 r\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/
+it/7.5 '\OT1/zplm/m/n/7.5 ) = [][] [][](\OML/zplm/m/it/7.5 a[]r[] \OT1/zplm/m/n
+/7.5 + \OML/zplm/m/it/7.5 b[]r[]\OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 Y[]\OT1/z
+plm/m/n/7.5 (\OML/zplm/m/it/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 '\OT1/z
+plm/m/n/7.5 )$ \OT1/pplx/m/it/7.5 bzw. $\OML/zplm/m/it/7.5 u\OT1/zplm/m/n/7.5 (
+\OML/zplm/m/it/7.5 r\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 \OT1/pplx/m/n/7.5 ,
+ \OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 ) =
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 259--260
+[]\OT1/pplx/m/n/7.5 F[]ur $\OML/zplm/m/it/7.5 u\OT1/zplm/m/n/7.5 (\OML/zplm/m/i
+t/7.5 r\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/
+it/7.5 '\OT1/zplm/m/n/7.5 ) = [][] [][] \OML/zplm/m/it/7.5 a[]r[]Y\OT1/zplm/m/n
+/7.5 (\OML/zplm/m/it/7.5 \OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 '\OT1/zplm/m/n
+/7.5 )$ \OT1/pplx/m/n/7.5 gilt: $\OMS/zplm/m/n/7.5 4\OML/zplm/m/it/7.5 u \OT1/z
+plm/m/n/7.5 = \OT1/pplx/m/n/7.5 0$; $[][] \OMS/zplm/m/n/7.5 j\OML/zplm/m/it/7.5
+ u\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 )\OMS/zplm/m/n/7.5 j
+[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x \OT1/zplm/m/n/7.5 =
+ []
+
+) (sections/sec_distr.tex
+Underfull \hbox (badness 4242) in paragraph at lines 6--7
+[]\OT1/pplx/m/it/7.5 ist eine stetige lin-eare Ab-bil-dung $\OML/zplm/m/it/7.5 
+! \OT1/zplm/m/n/7.5 :
+ []
+
+
+Underfull \hbox (badness 4378) in paragraph at lines 23--24
+[]$\OML/zplm/m/it/7.5 U[]!\OT1/zplm/m/n/7.5 [\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/
+7.5 ] = \OMS/zplm/m/n/7.5 j [] \OML/zplm/m/it/7.5 A\OMS/zplm/m/n/7.5 j\OML/zplm
+/m/it/7.5 !\OT1/zplm/m/n/7.5 [\OML/zplm/m/it/7.5 U[]'\OT1/zplm/m/n/7.5 ]$\OT1/p
+plx/m/it/7.5 , wobei
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 95.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 95.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 95.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+[]$\OML/zplm/m/it/7.5 P\OT1/zplm/m/n/7.5 (\OT1/pplx/m/n/7.5 1\OT1/zplm/m/n/7.5 
+/\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 )[\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 
+] = [][] [][] []\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1
+/zplm/m/n/7.5 )\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x \OT1/zplm/m/n/7.5 + [][]
+ []\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5
+ )\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x$ \OT1/pplx/m/n/7.5 und $[]\OT1/zplm/m
+/n/7.5 [\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 ] =
+ []
+
+
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+ [4]
+Underfull \hbox (badness 5756) in paragraph at lines 157--165
+[]\OT1/pplx/m/it/7.5 Fur Dis-tri-bu-tion $\OML/zplm/m/it/7.5 E\OT1/zplm/m/n/7.
+5 [\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x[]\OT1/pplx/m/n/7
+.5 , \OML/zplm/m/it/7.5 x[]\OT1/zplm/m/n/7.5 )] = [][] \OML/zplm/m/it/7.5 '\OT1
+/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 t\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 t\OT1
+/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 t$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--165
+\OML/zplm/m/it/7.5 E\OT1/zplm/m/n/7.5 [(\OMS/zplm/m/n/7.5  \OML/zplm/m/it/7.5 @
+[] \OMS/zplm/m/n/7.5   \OML/zplm/m/it/7.5 @[] \OT1/zplm/m/n/7.5 + \OT1/pplx/m/n
+/7.5 1\OT1/zplm/m/n/7.5 ) [][] \OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm
+/m/it/7.5 x[]\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 x[]\OT1/zplm/m/n/7.5 )\OML/
+zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ] = \
+OML/zplm/m/it/7.5 E\OT1/zplm/m/n/7.5 [[][](\OMS/zplm/m/n/7.5  \OML/zplm/m/it/7.
+5 @[] \OMS/zplm/m/n/7.5   \OML/zplm/m/it/7.5 @[] \OT1/zplm/m/n/7.5 +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--165
+\OT1/pplx/m/n/7.5 1\OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\O
+ML/zplm/m/it/7.5 x[]\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 x[]\OT1/zplm/m/n/7.5
+ )\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.
+5 ] = \OML/zplm/m/it/7.5 E\OT1/zplm/m/n/7.5 [[][](\OML/zplm/m/it/7.5 ix[] \OT1/
+zplm/m/n/7.5 + \OML/zplm/m/it/7.5 ix[] \OT1/zplm/m/n/7.5 + \OT1/pplx/m/n/7.5 1\
+OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x[]
+\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 x[]\OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5
+ e[]\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ] =
+ []
+
+
+Underfull \hbox (badness 3179) in paragraph at lines 157--165
+[][] [][]\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 ix[] \OT1/zplm/m/n/7.5 + \OML/zp
+lm/m/it/7.5 ix[] \OT1/zplm/m/n/7.5 + \OT1/pplx/m/n/7.5 1\OT1/zplm/m/n/7.5 )\OML
+/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x[]\OT1/pplx/m/n/7.5 , \O
+ML/zplm/m/it/7.5 x[]\OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]\OT1/pplx/m/n/7.5 
+d\OML/zplm/m/it/7.5 x\OT1/pplx/m/n/7.5 d\OML/zplm/m/it/7.5 t \OT1/zplm/m/n/7.5 
+= [][] \OML/zplm/m/it/7.5 '\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x[]\OT1/pplx/m
+/n/7.5 , \OML/zplm/m/it/7.5 x[]\OT1/zplm/m/n/7.5 ) [][](\OML/zplm/m/it/7.5 ix[]
+ \OT1/zplm/m/n/7.5 + \OML/zplm/m/it/7.5 ix[] \OT1/zplm/m/n/7.5 +
+ []
+
+) (sections/sec_dirichlet.tex
+Underfull \hbox (badness 2460) in paragraph at lines 48--49
+[]\OT1/pplx/m/it/7.5 Falls $\OML/zplm/m/it/7.5 u$ \OT1/pplx/m/it/7.5 eine Losu
+ng von (D) ist, hat man $\OML/zplm/m/it/7.5 u\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/
+7.5 x\OT1/zplm/m/n/7.5 ) =
+ []
+
+
+Underfull \hbox (badness 6876) in paragraph at lines 68--69
+[]\OT1/pplx/m/it/7.5 Der \OT1/pplx/b/it/7.5 Poisson-Kern \OT1/pplx/m/it/7.5 ist
+ definiert durch $\OML/zplm/m/it/7.5 H\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 y\O
+T1/pplx/m/n/7.5 , \OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) = []\OML/zplm/m/it/7.
+5 G\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 y\OT1/pplx/m/n/7.5 , \OML/zplm/m/it/7.
+5 x\OT1/zplm/m/n/7.5 ) =
+ []
+
+) (sections/sec_proofs.tex
+Underfull \hbox (badness 2134) in paragraph at lines 12--13
+[]$\OMS/zplm/m/n/7.5 j\OML/zplm/m/it/7.5 f[]e[]\OMS/zplm/m/n/7.5 j \OT1/zplm/m/
+n/7.5 = \OMS/zplm/m/n/7.5 j\OML/zplm/m/it/7.5 f[]\OMS/zplm/m/n/7.5 j )$ \OT1/pp
+lx/m/it/7.5 ab-so-lute Kon-ver-genz, $\OMS/zplm/m/n/7.5 j\OML/zplm/m/it/7.5 f\O
+T1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 ) \OMS/zplm/m/n/7.5   []
+[] \OML/zplm/m/it/7.5 f[]e[]\OMS/zplm/m/n/7.5 j 
+ []
+
+) (sections/sec_lebesgue.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 41.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 41.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 41.
+
+) (sections/sec_appendix.tex
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+ [5]
+Underfull \hbox (badness 5548) in paragraph at lines 35--58
+\OT1/pplx/m/n/7.5 Es wird vor-raus-ge-setzt, dass alle Gren-zw-erte und Ableitu
+n-gen ex-istieren,
+ []
+
+
+Underfull \hbox (badness 4316) in paragraph at lines 35--58
+\OT1/pplx/m/n/7.5 Funk-tio-nen in-te-grier-bar sind und die zu in-te-gri-erende
+ Ge-biet sch[]on sind.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+[]\OT1/pplx/m/it/7.5 Gaussfunktionen; Hermitefunktionen als EV der FT,
+ []
+
+
+Underfull \hbox (badness 5893) in paragraph at lines 172--173
+\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 P\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\
+OT1/zplm/m/n/7.5 )\OML/zplm/m/it/7.5 e[]\OT1/zplm/m/n/7.5 )[][](\OML/zplm/m/it/
+7.5 k\OT1/zplm/m/n/7.5 )$\OT1/pplx/m/it/7.5 : $\OML/zplm/m/it/7.5 P\OT1/zplm/m/
+n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 )$ \OT1/pplx/m/it/7.5 als Lin-ear-
+kom-bi-na-tion von Her-mitepoly-nomen schreiben;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
+[]\OT1/pplx/m/it/7.5 Gleichung Fouri-er-trans-formieren, fur Ruck-trans-for-m
+a-tion
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 231--232
+[]\OT1/pplx/m/n/7.5 Welche Reihe kon-vergiert? Richtig: 1) $[][] \OML/zplm/m/it
+/7.5 l[]\OT1/pplx/m/n/7.5 2[]\OML/zplm/m/it/7.5 P[]\OT1/zplm/m/n/7.5 (\OML/zplm
+/m/it/7.5 x\OT1/zplm/m/n/7.5 )$\OT1/pplx/m/n/7.5 . 2) $[][] \OML/zplm/m/it/7.5 
+P[]\OT1/zplm/m/n/7.5 (\OML/zplm/m/it/7.5 x\OT1/zplm/m/n/7.5 )$\OT1/pplx/m/n/7.5
+ . 3)
+ []
+
+)
+
+Class memoir Warning: The material used in the headers is too large
+(10.0pt) for the given head height (0.0pt), it is recommended to
+either increase the head height or redesign the header
+(in both cases you will find help in the memoir manual). on input line 136.
+
+\tf@thm=\write5
+\openout5 = `mmpi.thm'.
+
+
+Overfull \vbox (10.0pt too high) has occurred while \output is active []
+
+ [6]
+\tf@toc=\write6
+\openout6 = `mmpi.toc'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
+
+(mmpi.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
+Package rerunfilecheck Info: File `mmpi.out' has not changed.
+(rerunfilecheck)             Checksum: 1838082DC332CE0061F95DD81D0A2ADD;4177.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 16922 strings out of 492970
+ 249841 string characters out of 3127481
+ 539611 words of memory out of 3000000
+ 20028 multiletter control sequences out of 15000+200000
+ 90909 words of font info for 263 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 62i,17n,122p,1023b,527s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<
+C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mbsy10.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmex10.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/EAB/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/EAB/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/EA
+B/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy7.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mat
+hpazo/fplmbb.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/mathpazo/fplmbi.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/mathpazo/fplmr.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/EAB/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/EAB/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Use
+rs/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb><C:
+/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs5.pfb>
+<C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs7.p
+fb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/upl
+b8a.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatin
+o/uplbi8a.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/p
+alatino/uplr8a.pfb><C:/Users/EAB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+urw/palatino/uplri8a.pfb>
+Output written on mmpi.pdf (8 pages, 377428 bytes).
+PDF statistics:
+ 698 PDF objects out of 1000 (max. 8388607)
+ 292 named destinations out of 1000 (max. 500000)
+ 12745 words of extra memory for PDF output out of 14400 (max. 10000000)
+

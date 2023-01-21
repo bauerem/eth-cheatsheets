@@ -1,0 +1,30 @@
+\section{Approximation Theory}
+%\term{Limit point}: $p \in S$ is a limit point if $\forall$ neighborhood of $p$, $\exists s \in S, s \neq p$ is contained in it. \\
+%\term{Closure} (of set $E$): $E \cup E'$, where $E'$ is the set of all limit points. \\
+%\term{Dense set} ($A$ in $X$): If $\forall x \in X$: $x \in A \lor x \text{ limit point of } A$. \\
+%$\mathbf{||f||_{\infty}} = \text{sup}_{x \in S} |f(x)|$\\
+%\term{approx-err$(f, g)$} $:= ||f - g||_{\infty}$ \\
+%\term{approx-err$(f, \mathcal{G})$} $:= \text{inf} \{g \in \mathcal{G}: \text{appr.-err}(f, g)\}$ \\
+\term{approx-err$(f, \mathcal{G})$} $:= \inf\{ ||f - g||_{\infty} : g \in \mathcal{G}\}$ \\
+
+%\term{Uniform converg.} ($(g_m) \xrightarrow{\infty} f$): \\ $\forall \epsilon > 0 \; \exists m \geq 1: \; ||f - g_m||_{\infty} < \epsilon$ \\
+$f \simeq \mathcal{G}:\iff \text{appr.-err}(f, \mathcal{G}) = 0 \; \lor \; \mathcal{G} \ni g_m \rightarrow f$ \\
+$\mathcal{F} \simeq \mathcal{G}:\iff \mathcal{G} \stackrel{\text{dense}}{\subseteq} \mathcal{F} \iff \forall f \in \mathcal{F}: f \simeq \mathcal{G}$\\
+$\mathcal{G}$ \term{Universal Approxor}: $C(S) \simeq \mathcal{G}(S), S \stackrel{\text{cpt}}{\subseteq} \mathbb{R}^n$\\
+\term{$C(\mathbb{R})$ UAs:}
+polys, $C_{pw}(\mathbb{R})$, ReLU/$\sigma\in C^\infty$ layer\\
+\term{Linear -> ReLUs:}
+$ax + b \; = \; (ax + b)_+ - (-ax - b)_+$
+
+\term{Weierstrass Thm}: Polys $\mathcal{P}$ dense in $C^0([a,b])$. \\
+\term{Univers. of MLPs}: $\forall f\in C(\mathbb{R})$, $\sigma \in C^{\infty}(\mathbb{R})$ \\
+$f(\mathbf{x}) \approx \sum_{k=1}^m \sum_{j=1}^{m_k} c_{kj} \sigma(a_{kj}(\theta_k^{\top} \mathbf{x}) + b_{kj})$
+
+$\mathcal{H}^n_{\sigma}=<f(x)= \sigma(\theta^Tx) : \theta\in\mathbb{R}^n>, \sigma\in C^{\infty}$/ReLu
+
+\textcolor{red}
+{ \term{MLPs:}$\mathcal{H}_{\sigma}(K)\stackrel{dense}{\subset} C(K), \sigma\in C^{\infty}(\mathbb{R}),\forall K$ cmpt}
+
+Make any funct. on $[0, 1]$ fit to $[a, b]$: $\phi(t) = (1 - t)a + tb \forall t \in [0, 1]$;
+Make any funct. have $f(0)=f(1)=0$:
+$\tilde{f}(x) = f(x) - [f(0) + x(f(1) - f(0))]$

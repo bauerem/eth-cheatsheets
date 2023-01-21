@@ -1,0 +1,67 @@
+\section{$(\mathcal{V},\mathcal{E},\mathcal{W})$-Graph Neural Networks }
+\subsection*{Spectral Convolution}
+$x:=(v_1,\dots,v_n), n=|\mathcal{V}|,$ incid matr $\nabla\in\mathbb{R}^{|\mathcal{E}|\times |\mathcal{V}|}$
+
+\term{Edge derivative} $``\nabla_{i,j}x''=\frac{\partial}{\partial e_{i,j}}x:=A_{i,j}(x_j-x_i)$
+
+\term{2nd order derivative/Laplacian} $Lx:=\nabla^T\nabla x$
+
+\term{Diagonal degree matr.} $D_{ii}:=\sum_j A_{i,j}$, $D_{i\neq j}=0$
+
+\term{Corollary} $L=D-A$
+
+\term{Normalized Laplacian} $L'=I-D^{-1/2}AD^{-1/2}=D^{1/2}LD^{1/2}$ (in practice use this since $\lambda_i\le 2$).
+
+$L=\nabla^T\nabla$ sym. pos. def. $\implies L=U\Lambda U^T$.
+
+\term{Graph Fourier basis trafo:} $\hat{x}=U^Tx$, $x=U\hat{x}$
+
+\term{Spectral Graph Convol.:} $h(L)x:=Uh(\Lambda)U^Tx$
+\term{Comp Complexity of ":} $\mathcal{O}(|\mathcal{V}|^3)$
+
+\term{Trick, use polys:} $p(t)=\sum^K_{i=0}\alpha_i t^i$
+
+\term{Filtering operation:}
+$p(L)x:=Up(\Lambda)U^Tx=U\Big(\sum^K_{i=0}\alpha_i\Lambda^i\Big)U^Tx=\sum^K_{i=0}\alpha_i L^i$
+
+\term{Comp Complexity of " (if $L$ sparse):} $\mathcal{O}(|\mathcal{E}|)$
+
+\term{In practice:}
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Learn $c_{in}\cdot c_{out}$ polynomial kernels $p_{i,j}(t)=\sum^K_{k=0}\alpha_{i,j,k}t^k$
+\item add bias $\beta_j$
+\item sum over $c_{in}$ input channels
+\end{inparaitem}
+
+\term{Graph Convolution Layer:} Input $X^i_{in}\in\mathbb{R}^n$ (channel $i$), output:
+$X^j_{out}=\sum^{c_{in}}_{i=1}p_{i,j}(L)X^i_{in}+b_j$.
+
+\term{\#params:} $c_{in} \cdot c_{out}\cdot (K+1)+c_{out}$
+
+\term{ChebNet:} \begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item Learn Chebyshev polys for scalability+stablity
+\item Graph coarsening
+\end{inparaitem}
+
+\subsection*{Vertex Convolution/GNN}
+
+\begin{inparaitem}[$\color{mygreen} \triangleright$]
+\item \term{Shared edge operation:} $e(X^{(k)}_i,X^{(k)}_j,A_{i,j})$
+\item \term{Shared node operation:} $h(X^{(k)}_i)$
+\item aggregation $\text{AGG}$ + combination $\text{COMB}$ funcs
+\end{inparaitem}
+
+$Z^{(k)}_i=\text{AGG}(\{e(X^{(k)}_i,X^{(k)}_j,A_{i,j}):v_i\sim v_j\})$
+
+$X^{(k+1)}_i=\text{COMB}(Z^{(k)}_i,h(X^{(k)}_i))$
+
+\subsection*{1st order spectral convolution/GCN}
+\term{Simultaneous activity propagation:}
+
+$\bs{X}^{l+1}=\sigma( \bs{W}^{l}\bs{X}^{l}\bs{Q} )$ ($\bs{W}\bs{X}$ along dimensions, $\bs{X}\bs{Q}$ along datapts), $\tilde{\bs{A}}:=\bs{A}+\bs{I}$,
+$\bs{Q}=\tilde{\bs{D}}^{-1/2}\tilde{\bs{A}}\tilde{\bs{D}}^{-1/2}$, diagonal degree $\tilde{\bs{D}}$ of $\tilde{\bs{A}}$, i.e. 
+$q_{ij}=\frac{a_{ij}+\delta_{ij}}{\sqrt{\tilde{d}_{i}\tilde{d}_{j}}}, \tilde{d}_{i}=1+\sum_j A_{ij}, \delta_{ij}=1\{i=j\}$
+
+$(\bs{X}^l\bs{Q})_{ij}=([\bs{x}^l[1],\dots,\bs{x}^l[n]]\cdot \bs{Q})_{ij}=\sum^n_{k=1}x_{ik}q_{kj}$
+
+%\textcolor{red}{Emmanuel TODO: probably should add ``justifying GCNs'' slides}

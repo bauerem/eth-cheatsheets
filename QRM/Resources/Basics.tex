@@ -1,0 +1,345 @@
+\section*{Basics}
+
+Ideas for stuff to add: SSLN + WLLN + CLT (simple formulation on slide 2 from Extreme Value Theory slides)
+
+HOPITAL'S RULE
+
+INTEGRALS (IE HIGHER MOMENTS)
+
+$\exp(x)=\lim_{n\rightarrow \infty} (1+\frac{x}{n})^n=\sum^\infty_{k=0}\frac{x^k}{k!}$
+
+
+
+\section*{Probability}
+\subsection*{Conditional Probability}
+$\bbP(A|B) = \frac{\bbP(A\cap B)}{\bbP(B)}$
+
+% Cummulative Distribution Function
+\subsection*{Cummulative Distribution Function}
+\[
+    F_X(x) = \mathbb{P}[X \leq x] = \int_{-\infty}^x f(x') dx'
+\]
+Let $X$ be a random variable. The CDF $F_X : \mathbb{R} \to [0, 1]$ given by
+$\mathbf{F_X(x) = \mathbb{P}[X \leq x]}$ satisfies
+\begin{itemize}
+\item Normal: $\lim_{x \to -\infty} F_X(x) = 0$ and
+    $\lim_{x \to \infty}F_X(x) = 1$
+\item Right-Continuity: $F_X(x_n) \downarrow F_X(x) \text{ for } x_n
+  \downarrow x \in \mathbb{R}$
+\item Monotonicity: $F_X(a) \leq F_L(b) \text{ for } a \leq b$
+\end{itemize}
+
+\subsection*{Multivariate}
+$f_{Y|X=x}(y)=\frac{f_{X,Y}(x,y)}{f_X(x)}$
+
+\subsection*{Expectation Value}
+$\mathbb{E}[X] = \sum_{i=1}^\infty x_i p_i$
+
+$\mathbb{E}[X] = \int_{-\infty}^\infty x \textcolor{red}{f(x)} dx$
+
+$\mathbb{E}$ is linear: $\mathbb{E}[\sum_{i=1}^N a_i X_i]
+= \sum_{i=1}^N a_i \mathbb{E}[X_i]$
+
+\subsection*{Conditionality}
+
+$\E[Y|X=x]=\int y f_{Y|X=x}(y) dy=\int y f_{X,Y}(x,y)/f_X(x) dy$
+
+$\E[X]=\E[X|A]\mathbb{P}(A)+\E[X|A^c]\mathbb{P}(A^c)$
+
+$\implies \E[X|A]=\E[1_A X|A]=\frac{\E[X1_A]}{\mathbb{P}(A)}$
+
+\[
+  \mathbb{E}[X|X \textcolor{red}{\geq} \mu] = \frac{1}{\textcolor{red}
+  {\mathbb{P}}[X \geq \mu]} \int_\mu^\infty xf(x)dx
+\]
+with $\mathbb{P}[X\geq\mu] = \int_\mu^\infty f(x)dx$
+
+\subsection*{Variance}
+$Var(X) = \mathbb{E}[(X - \mathbb{E}[X])^2]
+        = \mathbb{E}[X^2] - \mathbb{E}[X]^2$
+
+\subsection*{Marginal PDF}
+Given two continuous RV $X$ and $Y$ whose joint distribution is known, then:
+\[
+    f_X(x) = \int_c^d f_{X,Y}(x,y) dy \quad \text{resp.} \quad
+    f_Y(y) = \int_a^b f_{X,Y}(x,y) dx
+\]
+for $x\in [a,b]$ and $y \in [c,d]$.
+
+\subsection*{Marginal CDF}
+If joint CDF is known:
+
+\textbf{Discrete RV:}
+\[
+    F_{X,Y}(x,y) = \bbP[X \leq x, Y \leq y]
+\]
+\textbf{Continous RV:}
+\[
+    F_{X,Y}(x,y) = \int_a^x \int_c^y f_{X,Y}(x',y')dy'dx'
+\]
+
+If $X$ and $Y$ jointly take values on $[a,b] \times [c,d]$ then
+\[
+    F_X(x) = F_{X,Y}(x,d) \quad \text{and} \quad F_Y(y) = F_{X,Y}(b_y)
+\]
+If $\textcolor{red}{d = \infty}$ then
+\[
+    F_X(x) = \lim_{y \to \infty} F_{X,Y}(x,y)
+\]
+Likewise for $F_Y(y)$.
+
+\subsection*{Empirical Distribution Function}
+\textbf{Def:} Let $x_1, \dots, x_n$ be independent realizations of a random variable $X$. The
+corresponding \textit{empirical distribution function} 
+$\hat{F}_X : \mathbb{R} \to [0, 1]$ is given by the step function
+\[
+  \hat{F}_X(x) = \frac{1}{n} \sum_{i=1}^n 1_{\{x_i \leq x\}} \qquad x\in
+  \mathbb{R}.
+\]
+
+\textbf{Law of Large Numbers (LLN) for the edf:}
+
+For all $x\in\R: \hat{F}_n(x)\rightarrow F(x)$ as $n\rightarrow \infty\; \mathbb{P}-$a.s.
+
+\textbf{Glivenko-Cantelli Theorem for the edf:}
+
+$\sup_{x\in\R} | \hat{F}_n(x) - F(x)|\rightarrow 0$ as $n\rightarrow \infty\; \mathbb{P}-$a.s.
+
+\textbf{Statistical tests for the edf:}
+\begin{itemize}
+    \item \textbf{Kolmogorov-Smirnov:} \\
+    $T_n=\sup_{x\in\R} |\hat F_n(x) - F(x)|$
+    \item \textbf{Cramér-von Mises:} \\
+    $T_n=n\int_\R [\hat F_n(x) - F(x)]^2 dF(x)$
+    \item \textbf{Anderson-Darling:} \\
+    $T_n=n\int_\R \frac{[\hat F_n(x) - F(x)]^2}{F(x)(1-F(x))} dF(x)$
+    \item \textbf{Jarque-Bera (if $F\sim \mathcal{N}(\mu, \sigma^2)$):} \\
+    Let $\hat \beta_n$ and $\hat \kappa_n$ be sample versions of
+    \[\text{skewness: } \beta=\frac{\E[(X-\mu)^3]}{\sigma^3}\; \text{ \&}\]
+    \[\text{kurtosis } \kappa=\frac{\E[(X-\mu)^4]}{\sigma^4}.\]
+    Then under the null-hypothesis, for large $n$:
+    \[\frac{n}{6}\big (\hat \beta_n ^ 2 + \frac{(\hat \kappa_n-3)^2}{4} \big)\sim\chi^2_2\]
+\end{itemize}
+
+\textbf{Graphical tests for the edf:} \\
+Denote $x_{(1)}\leq\cdots\leq x_{(n)}$ ordered sample and \\
+$\hat{F}_X(x) = \frac{1}{n} \sum_{i=1}^n 1_{\{x_i \leq x\}}=\frac{1}{n} \sum_{i=1}^n 1_{\{x_{(i)} \leq x\}}$
+\begin{itemize}
+    \item \textbf{P-P Plot:} \\
+        \[\text{Graph} = \big\{ (p_i, F(x_{(i)})): i\in [n]\text{ and }\]
+        \[p_i=\frac{i-1/2}{n}\approx \frac{i}{n}\approx\hat F_n(x_{(i)})\}\]
+        If points are close to diagonal then $\hat F_n \approx F$.
+    \item \textbf{Q-Q Plot:} \\
+        \[\text{Graph}=\{(q(p_i), F(x_{(i)})): i\in [n] \big\} \]
+        where $u\mapsto q(u)$ is a quantile function of $F$. \\
+        If points are close to diagonal then $\hat F_n \approx F$.
+    \begin{itemize}
+    \item tail differences better visible than in P-P
+    \item
+        If $\hat F_n \approx F=\mathcal{N}(\mu, \sigma^2)$ then Graph approximately follows: $y=\mu+\sigma x$
+    \item S-shaped $\implies$ heavier-tailed than $\mathcal{N}$
+    \item Daily returns typically have kurtosis $\kappa > 3$. They are ``leptokurtic'': narrower center, heavier tails than $\mathcal{N}(\mu,\sigma^2)$ for which $\kappa=3$
+    \end{itemize}
+\end{itemize}
+
+
+\subsection*{Bayes Theorem}
+$P(A | B) = \frac{P(B | A)P(A)}{P(B)}$
+\subsection*{Law of Total Probability}
+$P(A) = \sum_n P(A | B_n) P(B_n)$ where $B_n$ discrete and finite.
+\paragraph{Example:} $Y \sim Bernoulli$ and $Z \sim Exp(\lambda)$. \\
+$\mathbb{P}[YZ \leq x] = \mathbb{P}[YZ \leq x | Y = 1]\mathbb{P}[Y=1]
++ \mathbb{P}[YZ \leq x | Y = 0]\mathbb{P}[Y = 0]$
+
+\subsection*{Student-t}
+PDF:
+\[
+    f_\nu(x) = c \big(1+\frac{x^2}{\nu}\bigg)^{-\lambda}
+\]
+for
+\[
+    c = \frac{\Gamma(\frac{\nu+1}{2})}{\sqrt{\nu\pi}} \Gamma(\frac{\nu}{2})
+    \qquad
+    \lambda = \frac{\nu+1}{2}
+\]
+where for any positive integer: $\Gamma(n) = (n-1)!$
+
+
+
+TODO: amma function / S3A4
+
+\sep
+
+
+
+\section*{Common Distributions}
+TODO: Add chi squared
+
+% Normal distribution
+\subsection*{Normal}
+\textbullet Can NOT use Gaussian Integral for Gaussian Functions!
+\textbullet Use a sub for computations!
+
+TODO: See S2A1. Note: See the question I asked in the mathematics Discord.
+TODO: Add Normaldistribution
+
+\[
+    f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+    , \quad \mu\in\R, \sigma^2 > 0
+\]
+$\E[X] = \mu$ (See example) \\
+$\text{Var}[X] = \sigma$ (See example)
+
+\subsection*{Bernoulli}
+\warning Takes value $1$ with prob. $p$ and $0$ with prob. $q = 1 - p$.
+\warning Binomial Dist. with $n=1$.
+
+\[
+  f(k;p) = \begin{cases}
+    p & k = 1 \\
+    q = 1-p & k = 0
+  \end{cases}
+\]
+$f(k;p) = p^k(1-p)^{1-k} = pk + (1-p)(1-k)$ for $k \in (0, 1)$ 
+
+$\mathbb{E}[X] = Pr(X = 1) \cdot 1 + Pr(X = 0)\cdot 0 = p$ \\
+$\mathbb{E}[X^2] = p = \mathbb{E}[X]$ \\
+$Var[X] = pq = p(1-p)$
+
+
+% Poisson
+\subsection*{Poisson: Pois($\lambda$)}
+\[
+  \mathbb{P}[N = n] = e^{-\lambda}\frac{\lambda^n}{n!}
+  \quad n = \textcolor{red}{0}, 1, 2, \dots
+\]
+
+$\mathbb{E}[N] = \lambda$ (Use Series for exp.)
+
+$\mathbb{E}[N^{\textcolor{red}{2}}] = \lambda^2 + \mathbb{E}[N] = \lambda^2 +  \lambda$ (Use factorial trick)
+
+$Var[N] = \lambda = \mathbb{E}[N]$
+
+% Exponential
+\subsection*{Exponential: $\text{Exp}(\lambda)$ w. $\lambda>0$}
+
+PDF: $f(x) = \lambda e^{-\lambda x} 1\{ x \geq 0 \}$; CDF: $F(x) = (1- e^{-\lambda x}) 1\{ x \geq 0 \}$
+
+$\E[X] = \frac{1}{\lambda}$ \& $E[X^{\textcolor{red}{2}}] = \frac{2}{\lambda^2}$ $\implies$ $Var[X] = \frac{1}{\lambda^2}$
+
+
+\subsection*{Uniform}
+$\Var U=\frac{(b-a)^2}{12}$; Quantile: $q(u)=-\log(1-u)/\lambda$
+
+
+\subsection*{Gamma distribution}
+$f_{\Gamma(\alpha,\beta)}(x)=\beta^\alpha x^{\alpha-1}e^{-\beta x}/\Gamma (\alpha)$
+
+\subsection*{Pareto}
+TODO: Add pareto distribution. See S1P4.c
+
+\sep
+
+\section*{Mathematical Tools}
+\subsection*{Integrals}
+\begin{align*}
+    \int 1\cdot \log(x) dx &= x(\log(x)-1) \\
+    \int_{-\infty}^\infty e^{-x^2} dx &= \sqrt{\pi} \\
+    \int_{-\infty}^\infty e^{-x^2/2} dx &= \sqrt{2\pi}
+\end{align*}
+
+\subsection*{Partial Integration}
+\[
+  \int_a^b u v' dx = [u v]^b_a - \int_a^b u' v dx
+\]
+
+\subsection*{Direct Integration}
+\[
+    \int f(g(x))g'(x)dx = F(g(x))
+\]
+
+\subsection*{Identities}
+\textbf{Factorials:} $\frac{n^2}{n!} = \frac{n(n-1) + n}{n!} = \frac{1}{(n-2)!} + \frac{1}{(n-1)!}$
+
+\section*{Concepts}
+\subsection*{Main Goal of Regulation}
+Ensure that financial institutions have enough capital to remain solvent.
+
+\subsection*{Three Pillars of Financial Regulation}
+The three pillar concept is at the basis of the Basel II and Solvency II
+regulatory frameworks.
+
+\paragraph{Pillar 1: Minimal Capital Charge} Requirement for the calculation of
+the regulatory capital to ensure that a bank holds sufficient capital for its
+\textcolor{green}{credit risk} in the \textit{banking book},
+\textcolor{green}{market risk} in the \textit{trading book} and
+\textcolor{green}{operational risk}.
+
+\paragraph{Pillar 2: Supervisory Review Process} Local regulators review the
+checks and balances put in place for capital adequacy assessments, ensure that
+banks have adequate regulatory capital and perform stress tests of a bank's
+capital adequacy.
+
+\paragraph{Pillar 3: Market Discipline}
+Banks are required to make their risk management processes more transparent.
+
+\subsection*{Model Uncertainty}
+Model uncertainty refers to the uncertainty about the accuracy of a model. It
+results from imprecise and idealized assumptions, which, to some degree, have
+to be made in every modeling framework.
+
+\subsection*{Knightian Uncertainty}
+In economics, Knightian uncertainty is a lack of any quantifiable knowledge 
+about some possible occurrence, as opposed to the presence of quantifiable
+risk. The concept acknowledges some fundamental degree of ignorance, a limit 
+to knowledge, and an essential unpredictability of future events.
+
+\subsection*{Ambiguity Aversion}
+In decision theory and economics, ambiguity aversion is a preference for known 
+risks over unknown risks. An ambiguity-averse individual would rather choose 
+an alternative where the probability distribution of the outcomes is known 
+over one where the probabilities are unknown.
+
+TODO: Pic
+
+\subsection*{Innovation}
+In time series analysis (or forecasting) — as conducted in statistics, signal processing, and many other fields — the innovation is the difference between the observed value of a variable at time t and the optimal forecast of that value based on information available prior to time t. If the forecasting method is working correctly, successive innovations are uncorrelated with each other, i.e., constitute a white noise time series.
+\subsection*{Empirical Distribution Function}
+Let $x_1, \dots, x_n$ be independent realizations of a random variable $X$. The
+corresponding \textit{empirical distribution function} 
+$\hat{F}_X : \mathbb{R} \to [0, 1]$ is given by the step function
+\[
+  \hat{F}_X(x) = \frac{1}{n} \sum_{i=1}^n 1_{\{x_i \leq x\}} \qquad x\in
+  \mathbb{R}
+\]
+whereas $1_{\{\cdot\}}$ is the indicator function.
+
+\textbf{An application: Generating Loss Distr.}
+We can approximate the dist. of $L_{t+1}$ by the edf above:
+\[
+  \hat{F}_X(x) = \frac{1}{n} \sum_{i=1}^n 1_{\{\textcolor{red}{l_{l-i+1}}
+  \leq x\}}
+\]
+where $l_{t-n+1}, \dots, l_t$ are the last $n$ realized losses. Each of those
+losses has equal probability (hence the $1/n$ and the indicator function).
+
+\textbf{Advantage} Easy to implement, no modeling assumptions, no eastimation
+required (you just look at past losses).
+
+\textbf{Drawbacks} Sufficient data for all risk-factors required, makes
+predictions based on past data.
+
+
+
+
+%\sep
+
+%On slide 12 of the extreme value slides there is a statement involving \(H^{\theta}\).
+
+%If I'm not mistaken only \(H_{\xi}\), \(H_{\xi,\mu, \sigma}\) are defined.
+
+%So what is \(H^{\theta}\)? Is it \(H_{1/\theta}\) or \(H_{\theta}\) or something else?
+
+%Similarly, \(H^{\theta}_{\xi}\) is mentioned below.
+
+%Since \(\theta\) has a value restricted to (0,1], I suppose that the \(H^{\theta}\) is parameterized by \(\theta\) and the significance of \(\theta\) is not merely to distinguish it from \(H\)

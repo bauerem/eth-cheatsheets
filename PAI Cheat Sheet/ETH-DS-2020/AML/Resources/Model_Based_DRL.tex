@@ -1,0 +1,79 @@
+\section{Model Based (Deep) RL}
+
+%\subsection*{Model-based (Deep) RL} {\fontsize{9.5}{6}\selectfont Learn MDP, optimize $\pi$ on it}
+
+MLE estimate from path trajectory $\tau$:
+
+{\fontsize{9.7}{6}\selectfont $P(X_{t+1} | X_t, A) \approx \frac{Cnt(X_{t+1}, X_t, A)}{Cnt(X_t, A)}$;
+$r(x,a) \approx \nicefrac{1}{N_{x,a}} \hspace*{-5mm} \sum\limits_{t: X_t = x, A_t = a} \hspace*{-5mm} R_t$}
+
+\textbf{$\mathbf{\epsilon_t}$ greedy:} Tradeoff exploration-exploitation
+W.p. $\epsilon_t$: rand. action; w.p. $1 - \epsilon_t$: best action.
+If $\epsilon_t \vDash RM$ $\implies$ converge to $\pi^*$ w.p. 1.
+
+\textbf{Robbins Monro (RM):} $\sum_t \epsilon_t = \infty$, $\sum_t \epsilon_t^2 < \infty$
+
+\textbf{$\mathbf{R_{max}}$ Algorithm:} Set unknown $r(x,a)$ to $R_{max}$, $r(x,a) \leq R_{max}, \forall x,a$, add \mhl{fairy tale state $x^*$}, set $P(x^* | x,a) = 1$, compute $\pi$. Repeat: run $\pi$ while updating $r(x,a)$, $P(x' | x,a)$, then recompute $\pi$.
+
+\textcolor{violet}{Thm(*)}: W.p. $1 - \delta$, $R_{max}$ will reach $\epsilon$-opt policy in \#steps poly in $|X|, |A|, T, \nicefrac{1}{\epsilon}, \log(1 - \delta), R_{max}$.
+
+Note: MDP is assumed ergodic.
+
+\textbf{Problems of Model-based RL:} - Memory required: $P(x'|x,a) \approx \mathcal{O}(|X|^2 |A|)$, $r(x,a) \approx \mathcal{O}(|X||A|)$
+
+- Computation: repeatedly solve MDP (VI, PI)
+
+
+\subsection*{Planning \textcolor{blue}{\textnormal{(Off)}} \textcolor{myblue}{\textnormal{(cont. obsv. states)}}}
+
+\textbf{MPC (known deterministic dynamics)}
+
+Assume known model $x_{t+1} = f(x_t, a_t)$, plan over finite horizon $H$. At each step $t$, maximize:
+
+\mhl{$J_H(a_{t:t+H-1}) := \sum_{\tau = t:t+H-1} \gamma^{\tau - t} r_\tau(x_\tau(a_{t:\tau-1}), a_\tau)$}
+
+$x_\tau(a_{t:\tau-1}) = f(f(...(f(x_t, a_t), a_{t+1})..))$
+
+then carry out $a_t$, then replan.
+
+Optimize via gradient based methods (diff. $r, f$, cont. action) or via random shooting.
+
+\vspace*{-2mm}
+\textbf{Random shooting:} Pick rand. samples $a_{t:t+H-1}^{(i)}$
+
+\vspace*{-1mm}
+and pick sample $i^* = \arg\max_i J_H(a_{t:t+H-1}^{(i)})$
+
+\textbf{MPC with Value estimate:} $J_H(a_{t:t+H-1}) :=$
+\mhl{$\sum_{\tau = t:t+H-1} \gamma^{\tau - t} r_\tau(x_\tau(a_{t:\tau-1}), a_\tau) + \gamma^H V(x_{t+H})$}
+
+$H=1$: $J_1(a_t) = Q(x_t, a_t)$; $\pi_G = \arg\max_a J_1(a)$
+
+\textbf{MPC (known stochastic dynamics)}
+
+{\fontsize{10}{6}\selectfont $\max\limits_{a_{t:t+H-1}} \underset{x_{t+1:t+H}}{\mathbb{E}} [ \sum\limits_{\tau = t:t+H-1} \hspace*{-4mm} \gamma^{\tau - t} r_\tau + \gamma^H V(x_{t+H}) | a_{t:t+H-1} ]$}
+
+%Expectation via \hl{MC trajectory sampling}: $x_{t+1} = f(x_t, a_t, \epsilon_t)$, get unbiased estimates of $J_H$ and approx via sample average.
+
+\textbf{Parametrized policy:} ($H = 0 \Leftrightarrow$ DDPG obj.)
+
+$J_H(\theta) = \underset{x_0 \sim \mu}{\mathbb{E}} [ \sum\limits_{\tau = 0:H-1} \hspace*{-4mm} \gamma^{\tau} r_\tau + \gamma^H Q(x_{H}, \pi(x_H, \theta)) | \theta ]$
+
+\textbf{MPC (unknown dynamics):} follow $\pi$, learn $f, r, Q$ off-policy from replay buf, replan $\pi$.
+
+BUT: point estimates have poor performance, errors compound $\rightarrow$ use bayesian learning:
+
+Model distribution over $f$ (BNN, GP) and use (approximate) inference (exact, VI, MCMC,..).
+
+\textbf{Greedy exploitation for model-based RL:} \textcolor{mypink}{(*)}
+
+1) $D=\{\}$, prior $P(f|\{\})$ 2) repeat: plan new $\pi$ to maximize \mhl{$\max_\pi \mathbb{E}_{f \sim P(\cdot | D)} J(\pi, f)$}, rollout $\pi$, add new data to $D$, update posterior $P(f | D)$
+
+\textbf{PETS algorithm:} Ensemble of NNs predicting cond. Gaussian transition distr., use MPC.
+
+\textbf{Thompson Sampling:} Like greedy\textcolor{mypink}{*} BUT in 2) sample model \mhl{$f \sim P(\cdot | D)$} and then \mhl{$max_\pi J(\pi, f)$}
+
+Use epistemic noise to drive exploration.
+
+\textbf{Optimistic exploration:} Like greedy\textcolor{mypink}{*} BUT in 2) \mhl{$\max_\pi \max_{f \in M(D)} J(\pi, f)$}; with $M(D)$ set of plausible models given $D$.
+
